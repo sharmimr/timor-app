@@ -16,22 +16,80 @@
 		<link rel="stylesheet" type="text/css" href="../../../css/font_awesome.css" />
 		<link rel="stylesheet" type="text/css" href="../../../css/main.css" />
 		
+		
 		<style>
-			
+			#divCompletionMsg {
+        text-align: center;
+        color: #2d6839;
+        position: absolute;
+        bottom: 40px;
+        left: 46%; /* move to center horizontally */
+        transform: translateX(-50%); /* perfectly center it */
+      }
+      #divCorrectTextPanel {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      .whiteTick {
+        filter: brightness(10) invert(1);
+      }
+      .greenTick {
+        /* green color */
+        filter: brightness(1) invert(0);
+      }
+      .zoomTick {
+        transform: scale(1.5);
+      }
 		</style>		
 
 		<script src="../../../js/jquery-3.6.0.js"></script>
 		<script src="../../../js/jquery-ui.js"></script>
 		<script type="text/javascript" src="../../../js/main.js"></script>
-
+		
 		<script language="javascript">
 			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10"];
 			var rListIndex = 0;
 			
+			var rImgHiLightBlinkInterval = 0;
+			var rImgHiLightBlinkCount = 0;
+			
+			var rAudoSound = 1;
+			
 			function doNavigateAct(rAction) {
+			/*
+				clearInterval(rImgHiLightBlinkInterval);
+				rImgHiLightBlinkCount = 0;
+			*/
+				rAudoSound = 1;
+				
+				document.getElementById("audAlphabet").pause();
+				document.getElementById("audAlphabet").currentTime = 0;
+
+				document.getElementById("divImgA_2").getElementsByTagName("img")[0].src = "images/m.gif?" + Math.random();
+				
+				document.getElementById("divImgA_3").getElementsByTagName("img")[0].src = "images/m.gif?" + Math.random();
+				
+				document.getElementById("divImgA_6").getElementsByTagName("img")[0].src = "images/mm_1.gif?" + Math.random();
+				document.getElementById("divImgA_6_Hotspot_1").style.display = "block";
+				document.getElementById("divImgA_6_Hotspot_2").style.display = "none";
+
+				document.getElementById("divImgA_7").getElementsByTagName("img")[0].src = "images/m.gif?" + Math.random();
+				document.getElementById("divImgA_7").getElementsByTagName("img")[1].src = "images/m.gif?" + Math.random();
+				document.getElementById("divImgA_7").getElementsByTagName("img")[2].src = "images/m.gif?" + Math.random();
+
+				document.getElementById("divImgA_8").getElementsByTagName("img")[0].src = "images/mmm_1.gif?" + Math.random();
+				document.getElementById("divImgA_8_Hotspot_1").style.display = "block";
+				document.getElementById("divImgA_8_Hotspot_2").style.display = "none";
+				document.getElementById("divImgA_8_Hotspot_3").style.display = "none";
+
+				document.getElementById("divImgA_9").getElementsByTagName("img")[0].src = "images/mmm_1.gif?" + Math.random();
+				document.getElementById("divImgA_9_Hotspot_1").style.display = "block";
+				document.getElementById("divImgA_9_Hotspot_2").style.display = "none";
+				document.getElementById("divImgA_9_Hotspot_3").style.display = "none";		
+				
 				document.getElementById("vidAni").pause();
 				document.getElementById("vidAni").currentTime = 0;
-				
+
 				for (var i=0; i<rArrDivList.length; i++) {
 					document.getElementById(rArrDivList[i]).style.display = "none";
 				}
@@ -52,16 +110,19 @@
 				if (rListIndex<=0) {
 					document.getElementById("divBtnReplay").style.display = "none";
 					document.getElementById("divBtnBack").style.display = "none";
-					document.getElementById("divBtnNext").style.display = "inline-block";			
+					document.getElementById("divBtnNext").style.display = "inline-block";	
+          document.getElementById("divCompletionMsg").style.display = "none";					
 				} else {
 				if (rListIndex>=rArrDivList.length-1) {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
-					document.getElementById("divBtnNext").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "none";	
+          document.getElementById("divCompletionMsg").style.display = "block";		
 				} else {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
-					document.getElementById("divBtnNext").style.display = "inline-block";				
+					document.getElementById("divBtnNext").style.display = "inline-block";		
+          document.getElementById("divCompletionMsg").style.display = "none";					
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
@@ -70,9 +131,94 @@
 					document.getElementById("vidAni").currentTime = 0;
 					document.getElementById("vidAni").play();
 				}
+/*
+				switch (rListIndex) {
+					case 1:
+						doBlinkImageOne();
+						break;
+					case 2:
+						doBlinkImageTwo();
+						break;						
+					default:
+						break
+				}
+*/				
+			}
+			
+			function doBlinkImageOne() {
+				//document.getElementById("divImgA_2_1").style.display = "block";
+				clearInterval(rImgHiLightBlinkInterval);
+				rImgHiLightBlinkCount = 0;
+				rImgHiLightBlinkInterval = setInterval(
+					function () {
+						//if (rImgHiLightBlinkCount>=1) {
+							//clearInterval(rImgHiLightBlinkInterval);
+							//rImgHiLightBlinkCount = 0;
+							//document.getElementById("divImgA_2_1").style.display = "none";									
+						//} else {
+							if (document.getElementById("divImgA_2_1").style.display=="block") {
+								document.getElementById("divImgA_2_1").style.display = "none";
+							} else {
+								document.getElementById("divImgA_2_1").style.display = "block";
+							}
+							rImgHiLightBlinkCount++;
+						//}
+				}, 3000);			
+			}
+			
+			function doBlinkImageTwo() {
+				//document.getElementById("divImgA_3_1").style.display = "block";
+				clearInterval(rImgHiLightBlinkInterval);
+				rImgHiLightBlinkCount = 0;
+				rImgHiLightBlinkInterval = setInterval(
+					function () {
+						if (rImgHiLightBlinkCount>=1) {
+							clearInterval(rImgHiLightBlinkInterval);
+							rImgHiLightBlinkCount = 0;
+							document.getElementById("divImgA_3_1").style.display = "none";									
+						} else {
+							if (document.getElementById("divImgA_3_1").style.display=="block") {
+								document.getElementById("divImgA_3_1").style.display = "none";
+							} else {
+								document.getElementById("divImgA_3_1").style.display = "block";
+							}
+							rImgHiLightBlinkCount++;
+						}
+				}, 3000);			
 			}			
 
 			function doResetActivity() {
+			/*
+				clearInterval(rImgHiLightBlinkInterval);
+				rImgHiLightBlinkCount = 0;
+			*/
+				rAudoSound = 1;
+				
+				document.getElementById("audAlphabet").pause();
+				document.getElementById("audAlphabet").currentTime = 0;
+				
+				document.getElementById("divImgA_2").getElementsByTagName("img")[0].src = "images/m.gif?" + Math.random();
+				
+				document.getElementById("divImgA_3").getElementsByTagName("img")[0].src = "images/m.gif?" + Math.random();
+				
+				document.getElementById("divImgA_6").getElementsByTagName("img")[0].src = "images/mm_1.gif?" + Math.random();
+				document.getElementById("divImgA_6_Hotspot_1").style.display = "block";
+				document.getElementById("divImgA_6_Hotspot_2").style.display = "none";
+				
+				document.getElementById("divImgA_7").getElementsByTagName("img")[0].src = "images/m.gif?" + Math.random();
+				document.getElementById("divImgA_7").getElementsByTagName("img")[1].src = "images/m.gif?" + Math.random();
+				document.getElementById("divImgA_7").getElementsByTagName("img")[2].src = "images/m.gif?" + Math.random();
+
+				document.getElementById("divImgA_8").getElementsByTagName("img")[0].src = "images/mmm_1.gif?" + Math.random();
+				document.getElementById("divImgA_8_Hotspot_1").style.display = "block";
+				document.getElementById("divImgA_8_Hotspot_2").style.display = "none";
+				document.getElementById("divImgA_8_Hotspot_3").style.display = "none";
+
+				document.getElementById("divImgA_9").getElementsByTagName("img")[0].src = "images/mmm_1.gif?" + Math.random();
+				document.getElementById("divImgA_9_Hotspot_1").style.display = "block";
+				document.getElementById("divImgA_9_Hotspot_2").style.display = "none";
+				document.getElementById("divImgA_9_Hotspot_3").style.display = "none";			
+				
 				document.getElementById("vidAni").pause();
 				document.getElementById("vidAni").currentTime = 0;
 				
@@ -98,6 +244,11 @@
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				if (rListIndex >= rArrDivList.length - 1) {
+          document.getElementById("divCompletionMsg").style.display = "block";
+        } else {
+          document.getElementById("divCompletionMsg").style.display = "none";
+        }
 			}
 			
 			function doReplayVideo(rObj) {
@@ -111,7 +262,83 @@
 			function doEndVideo(rObj) {
 				document.getElementById("divBtnVidReplayMain").style.display = "block";
 			}
-		</script>
+			
+			function doPlayAudio(rObj, rSlideId) {
+				document.getElementById("audAlphabet").pause();
+				document.getElementById("audAlphabet").currentTime = 0;
+				switch (rSlideId) {
+					case 2:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/m1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/m2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/m3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 3:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/m1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/m2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/m3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 6:
+						document.getElementById("audAlphabet").src = "media/audio/m1.m4a";
+						document.getElementById("audAlphabet").play();					
+						break;	
+					case 7:
+						document.getElementById("audAlphabet").src = "media/audio/m1.m4a";
+						document.getElementById("audAlphabet").play();					
+						break;
+					case 8:
+						document.getElementById("audAlphabet").src = "media/audio/m1.m4a";
+						document.getElementById("audAlphabet").play();					
+						break;
+					case 9:
+						document.getElementById("audAlphabet").src = "media/audio/m1.m4a";
+						document.getElementById("audAlphabet").play();					
+						break;						
+					case 10:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/m1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/m2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/m3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;						
+					default:
+						break;
+				}
+			}
+		</script>		
 	</head>
 
 	<body bgcolor="#000000">
@@ -121,20 +348,9 @@
 					<td width="100%" height="100%" align="center" valign="middle">
 						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
 							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
-								<!--
-								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
-									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
-										<tr>
-											<td align="left" valign="middle">
-												<div style="font-size:300%;"></div>
-											</td>
-										</tr>
-									</table>
-								</div>
-								-->
-								
-								<!--Slide Begin-->
-								<div id="div_1" name="divMyselfLang" class="clsSlide">
+
+
+								<div id="div_1" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
 									<div style="position:relative; width:100%; height:100%; border:0px solid #333333;">
 										<div style="position:absolute; width:100%; height:100%; left:0px; top:0px;">
 											<img width="100%" height="100%" src="../../../images/myself_language_title_main_images/main_bg.png" />
@@ -150,88 +366,128 @@
 											</table>
 										</div>
 									</div>
-								</div>
+								</div>								
 								<div id="div_2" name="divMyselfLang" class="clsSlide">
-									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
-										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+									<div style="position:relative; width:100%; height:50px; top: 0px; border:0px solid #333333;">
+										<table width="100%" height="50%" cellspacing="5" cellpadding="5" border="0">
 											<tr>
 												<td align="center" valign="top">
 													<div class="clsSubTitle">Son ohin</div>
 												</td>
 											</tr>
 										</table>
-									</div>								
-									<div style="position:absolute; left: 290px; top:55px; cursor:default; display:block;">
-										<img width="auto" height="180" src="images/m.png" />
+									</div>
+									<div style="position:relative; width:240px; height:165px; left:0px; top:0px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 2);">
+										<!--
+										<div id="divImgA_2_1" name="divImgA" style="display:none;">
+											<img width="auto" height="420" src="images/m.gif" style="position:absolute; left:0px; top:0px;" />
+										</div>
+										-->
+										<div id="divImgA_2" name="divImgA" style="position:relative; top:0px; text-align:center; display:block;">
+											<img width="auto" height="190" src="images/m.gif" />
+										</div>
 									</div>								
 								</div>
 								<div id="div_3" name="divMyselfLang" class="clsSlide">
-									<div style="position:relative; width:100%; height:auto; top:0px; border:0px solid #333333;">
-										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+									<div style="position:relative; width:100%; height:50px; top: 0px; border:0px solid #333333;">
+										<table width="100%" height="50%" cellspacing="5" cellpadding="5" border="0">
 											<tr>
 												<td align="center" valign="top">
 													<div class="clsSubTitle">animál ohin</div>
 												</td>
 											</tr>
 										</table>
+									</div>	
+									<div style="position:relative; width:100%; height:auto; top: 0px; border:0px solid #333333;">
+										<table width="100%" height="auto" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td width="45%" align="right" valign="top">
+													<div style="position:absolute; width:130px; height:165px; left:150px; top:0px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 3);">
+														<div id="divImgA_3" name="divImgA">
+															<img width="auto" height="190" src="images/m.gif" />
+														</div>
+													</div>
+												</td>
+												<td width="10%"></td>
+												<td width="45%" align="left" valign="top">
+													<div style="position:absolute; left: 499px; top:0px; cursor:default; display:block;">
+														<img width="auto" height="160" src="images/duck1.png" />
+													</div>
+													<div class="clsPageText" style="position:absolute; left:479px; top:150px;">manu-rade</div>
+												</td>												
+											</tr>
+										</table>
 									</div>
-									<div style="position:absolute; left: 160px; top:55px; cursor:default; display:block;">
-										<img width="auto" height="180" src="images/m.png" />
-									</div>
-									<div style="position:absolute; left: 499px; top:55px; cursor:default; display:block;">
-										<img width="auto" height="160" src="images/duck1.png" />
-									</div>
-									<div class="clsPageText" style="position:absolute; left:479px; top:204px;">manurade</div>
 								</div>
 								<div id="div_4" name="divMyselfLang" class="clsSlide">
 									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
 										<table width="75%" height="auto" cellspacing="5" cellpadding="5" border="0">
 											<tr>
 												<td width="46%" align="center" valign="top">
-													<div class="clsSubTitle">kór ohin</div>
+													<div class="clsSubTitle">kór</div>
 													<div style="position:relative;"><img width="auto" height="150" src="images/color.png" /></div>
 													<div class="clsPageText" style="position:relative; top:-20px;">mean</div>
 												</td>
 												<td width="5%"></td>
 												<td width="46%" align="center" valign="top">
-													<div class="clsSubTitle">forma ohin</div>
+													<div class="clsSubTitle">forma</div>
 													<div style="position:relative; top:0px;"><img width="auto" height="130" src="images/shape.png" /></div>
 													<div class="clsPageText" style="position:relative; top:0px;">triángulu</div>
 												</td>												
 											</tr>
 										</table>
-									</div>								
+									</div>
 								</div>
 								<div id="div_5" name="divMyselfLang" class="clsSlide">
-									<div id="divVidAni" name="divVidAni" style="position:absolute; text-align: center; border:0px solid green; display:block;">
-										<video id="vidAni" name="vidAni" style="position: absolute; width: 180px; height: auto; left: 269px; top: 1px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/m.mp4" onended="javascript:doEndVideo(this);">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+										<video id="vidAni" name="vidAni" width="auto" height="250" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/m.mp4" onended="javascript:doEndVideo(this);">
 									</div>
 									<div id="divBtnVidReplayMain" name="divBtnVidReplayMain" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
-										<div id="divBtnVidReplay" name="divBtnVidReplay" class="clsReplayVideo" onclick="javascript:doReplayVideo(this);">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:54%; top:100px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo(this);">
 											<img width="auto" height="100%" src="../../../images/replay.png" />
 										</div>										
-									</div>	
-								</div>
+									</div>
+								</div>								
 								<div id="div_6" name="divMyselfLang" class="clsSlide">
 									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
 										<table width="100%" height="310" cellspacing="5" cellpadding="5" border="0">
+											<td width="50%" align="right" valign="top">
+												<div id="divImgA_6" name="divImgA">
+													<div style="position:absolute; left: 64px; top: 40px;"><img width="auto" height="150" left="60" src="images/mm_1.gif" /></div>
+													<div style="position:absolute; left:340px; top:325px; font-size:250%;">boot</div>
+													<div style="position:absolute; left:510px; top:325px; font-size:250%;">ki’ik</div>
+													<script>
+														function doShowSlide6Part(rObj, rSlideId) {
+															if (rObj.id=="divImgA_6_Hotspot_1") {
+																document.getElementById("divImgA_6").getElementsByTagName("img")[0].src = "images/mm_2.gif";
+																document.getElementById("divImgA_6_Hotspot_1").style.display = "none";
+																document.getElementById("divImgA_6_Hotspot_2").style.display = "block";																
+															}
+															doPlayAudio(rObj, rSlideId);
+														}
+													</script>
+													<div id="divImgA_6_Hotspot_1" name="divImgA_6_Hotspot" style="position:absolute; width:100px; height:155px; left:70px; top:35px; border:0px solid red; cursor:pointer; display:none;" onclick="javascript:doShowSlide6Part(this, 6);">
+													</div>
+													<div id="divImgA_6_Hotspot_2" name="divImgA_6_Hotspot" style="position:absolute; width:170px; height:155px; left:70px; top:35px; border:0px solid red; cursor:pointer; display:none;" onclick="javascript:doShowSlide6Part(this, 6);">
+													</div>														
+												</div>
+											</td>
 											<tr>
 												<td width="100%" align="left" valign="top">
-													<div style="position:absolute; left: 64px; top: 40px;"><img width="auto" height="150" src="images/mm.png" /></div>
-													<div class="clsPageText" style="position:absolute; left: 70px; top: 191px;">boot</div>
-													<div class="clsPageText" style="position:absolute; left: 172px; top: 191px;">ki’ik</div>
+													<div class="clsPageText" style="position:absolute; left: 82px; top: 191px;">boot</div>
+													<div class="clsPageText" style="position:absolute; left: 187px; top: 191px;">ki’ik</div>
 													<div style="position:absolute; left: 300px; top:75px;"><img width="auto" height="145" src="images/table1.png" /></div>
 													<div class="clsPageText" style="position:absolute; left: 325px; top: 29px;">meza</div>
 													<div style="position:absolute; left: 547px; top:66px;"><img width="auto" height="132" src="images/duck1.png" /></div>
-													<div class="clsPageText" style="position:absolute; left: 512px; top: 189px;">manurade</div>
+													<div class="clsPageText" style="position:absolute; left: 512px; top: 189px;">manu-rade</div>
 												</td>
 											</tr>
 										</table>
 									</div>
 								</div>
 								<div id="div_7" name="divMyselfLang" class="clsSlide">
-									<div style="position:relative; width:100%; height:auto; top:0px; border:0px solid #333333;">
-										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+									<div style="position:relative; width:100%; height:50px; top: 0px; border:0px solid #333333;">
+										<table width="100%" height="50%" cellspacing="5" cellpadding="5" border="0">
 											<tr>
 												<td align="center" valign="top">
 													<div class="clsSubTitle">koko hamutuk</div>
@@ -239,61 +495,112 @@
 											</tr>
 										</table>
 									</div>
-									<div style="position:relative; width:100%; height:auto; top:0px; border:0px solid #333333;">
-										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+									<div id="divImgA_7" name="divImgA" style="position: relative; top: 0px;">
+										<div style="position:relative; top:20px; cursor:default; display:inline-block;">
+											<img width="auto" height="170" src="images/m.gif" />
+											<img width="auto" height="170" src="images/m.gif" />
+											<img width="auto" height="170" src="images/m.gif" />
+										</div>
+										<div id="divImgA_7_Hotspot_1" name="divImgA_7_Hotspot" style="position:absolute; width:435px; height:150px; left:145px; top:30px; border:0px solid red; cursor:pointer; display:block;" onclick="javascript:doPlayAudio(this, 7);">
+										</div>
+									</div>
+								</div>
+								<div id="div_8" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:50px; top: 0px; border:0px solid #333333;">
+										<table width="100%" height="50%" cellspacing="5" cellpadding="5" border="0">
 											<tr>
 												<td align="center" valign="top">
-													<div style="position:relative; top:0px; cursor:default; display:inline-block;">
-														<img width="auto" height="120" src="images/m.png" />
-													</div>
-													<div style="position:relative; top:0px; cursor:default; display:inline-block;">
-														<img width="auto" height="120" src="images/m.png" />
-													</div>
-													<div style="position:relative; top:0px; cursor:default; display:inline-block;">
-														<img width="auto" height="120" src="images/m.png" />
-													</div>
+													<div class="clsSubTitle">koko hamutuk</div>
 												</td>
 											</tr>
 										</table>
 									</div>
-								</div>
-								<div id="div_8" name="divMyselfLang" class="clsSlide">
 									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
 										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
 											<tr>
 												<td align="center" valign="middle">
-													<div class="clsSubTitle">koko hamutuk</div>
-												</td>
-											</tr>
-										</table>
-									</div>
-									<div style="position:relative; width:100%; top:0px; cursor:default; top:-25px; display:inline-block;">
-										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
-											<tr>
-												<td align="center" valign="middle">
-													<img width="auto" height="160" src="images/mmm.png" />
+													<div>
+														<div id="divImgA_8" name="divImgA" style="position:relative; top:-10px; cursor:default; display:inline-block;">
+															<img width="auto" height="200" src="images/mmm_1.gif" />
+														</div>
+													</div>													
+													<script>
+														function doShowSlide8SecondImageAndPlayAudio(rObj, rSlideId) {
+															document.getElementById("divImgA_8").getElementsByTagName("img")[0].src = "images/mmm_2.gif";
+															document.getElementById("divImgA_8_Hotspot_1").style.display = "block";
+															document.getElementById("divImgA_8_Hotspot_2").style.display = "block";
+															document.getElementById("divImgA_8_Hotspot_3").style.display = "none";
+															doPlayAudio(rObj, rSlideId);
+														}
+														
+														function doShowSlide8ThirdImageAndPlayAudio(rObj, rSlideId) {
+															document.getElementById("divImgA_8").getElementsByTagName("img")[0].src = "images/mmm_3.gif";
+															document.getElementById("divImgA_8_Hotspot_1").style.display = "block";
+															document.getElementById("divImgA_8_Hotspot_2").style.display = "block";
+															document.getElementById("divImgA_8_Hotspot_3").style.display = "block";
+															doPlayAudio(rObj, rSlideId);
+														}														
+														
+														function doPlaySlide8ThirdAudio(rObj, rSlideId) {
+															doPlayAudio(rObj, rSlideId);
+														}
+													</script>
+													<div id="divImgA_8_Hotspot_1" name="divImgA_8_Hotspot" style="position:absolute; width:60px; height:60px; left:270px; top:10px; border:0px solid red; cursor:pointer; display:none;" onclick="javascript:doShowSlide8SecondImageAndPlayAudio(this, 8);">
+													</div>
+													<div id="divImgA_8_Hotspot_2" name="divImgA_8_Hotspot" style="position:absolute; width:130px; height:60px; left:270px; top:70px; border:0px solid red; cursor:pointer; display:none;" onclick="javascript:doShowSlide8ThirdImageAndPlayAudio(this, 8);">
+													</div>
+													<div id="divImgA_8_Hotspot_3" name="divImgA_8_Hotspot" style="position:absolute; width:190px; height:60px; left:270px; top:130px; border:0px solid red; cursor:pointer; display:none;" onclick="javascript:doPlaySlide8ThirdAudio(this, 8);">
+													</div>													
 												</td>
 											</tr>
 										</table>
 									</div>
 								</div>
 								<div id="div_9" name="divMyselfLang" class="clsSlide">
-									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
-										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+									<div style="position:relative; width:100%; height:50px; top: 0px; border:0px solid #333333;">
+										<table width="100%" height="50%" cellspacing="5" cellpadding="5" border="0">
 											<tr>
-												<td align="center" valign="middle">
-													<div class="clsSubTitle">koko hamutuk basa-liman</div>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">Koko basa-liman hamutuk</div>
 												</td>
 											</tr>
 										</table>
 									</div>
 									<div>
-										<div style="position:absolute; left: 128px; top:72px; cursor:default; display:inline-block;">
-											<img width="auto" height="160" src="images/mmm.png" />
+										<div id="divImgA_9" name="divImgA" style="position:relative; top:-10px; left: 70px; cursor:default; display:inline-block;">
+											<img width="auto" height="200" src="images/mmm_1.gif" />
 										</div>
-										<div style="position:absolute; width:75px; display:inline-block;"></div>
-										<div style="position:absolute; left: 410px; top:69px; cursor:default; display:inline-block;">
-											<img width="auto" height="160" src="images/clap.png" />
+										<script>
+											function doShowSlide9SecondImageAndPlayAudio(rObj, rSlideId) {
+												document.getElementById("divImgA_9").getElementsByTagName("img")[0].src = "images/mmm_2.gif";
+												document.getElementById("divImgA_9_Hotspot_1").style.display = "block";
+												document.getElementById("divImgA_9_Hotspot_2").style.display = "block";
+												document.getElementById("divImgA_9_Hotspot_3").style.display = "none";
+												doPlayAudio(rObj, rSlideId);
+											}
+											
+											function doShowSlide9ThirdImageAndPlayAudio(rObj, rSlideId) {
+												document.getElementById("divImgA_9").getElementsByTagName("img")[0].src = "images/mmm_3.gif";
+												document.getElementById("divImgA_9_Hotspot_1").style.display = "block";
+												document.getElementById("divImgA_9_Hotspot_2").style.display = "block";
+												document.getElementById("divImgA_9_Hotspot_3").style.display = "block";
+												doPlayAudio(rObj, rSlideId);
+											}														
+											
+											function doPlaySlide9ThirdAudio(rObj, rSlideId) {
+												doPlayAudio(rObj, rSlideId);
+											}
+										</script>
+										<div id="divImgA_9_Hotspot_1" name="divImgA_9_Hotspot" style="position:absolute; width:60px; height:60px; left:130px; top:70px; border:0px solid red; cursor:pointer; display:none;" onclick="javascript:doShowSlide9SecondImageAndPlayAudio(this, 9);">
+										</div>
+										<div id="divImgA_9_Hotspot_2" name="divImgA_9_Hotspot" style="position:absolute; width:130px; height:60px; left:130px; top:130px; border:0px solid red; cursor:pointer; display:none;" onclick="javascript:doShowSlide9ThirdImageAndPlayAudio(this, 9);">
+										</div>
+										<div id="divImgA_9_Hotspot_3" name="divImgA_9_Hotspot" style="position:absolute; width:190px; height:60px; left:130px; top:190px; border:1
+										0px solid red; cursor:pointer; display:none;" onclick="javascript:doPlaySlide9ThirdAudio(this, 9);">
+										</div>										
+										<div style="position:relative; width:175px; display:inline-block;"></div>
+										<div style="position:relative; top:0px; left:-30px; cursor:default; display:inline-block;">
+											<img width="auto" height="220" src="images/clap.png" />
 										</div>
 									</div>
 								</div>
@@ -302,21 +609,56 @@
 										<table width="100%" height="auto" cellspacing="5" cellpadding="5" border="0">
 											<tr>
 												<td align="left" valign="top">
-													<div style="position:absolute; left: 55px; top:65px;"><img width="auto" height="190" src="images/girl.png" /></div>
-													<div class="clsPageText" style="position:absolute; left:83px; top:20px;">dehan</div>
-													<div style="position:absolute; left:228px; top:43px;"><img width="auto" height="150" src="images/m.png" /></div>
-													<div class="clsPageText" style="position:absolute; left:279px; top:205px;">m</div>
-													<div style="position:absolute; left:387px; top:30px;"><img width="auto" height="110" src="images/duck2.png" /></div>
-													<div class="clsPageText" style="position:absolute;left:482px; top:23px;">manurade</div>
+													<div style="position:absolute; left: 89px; top:10px;"><img width="auto" height="190" src="images/girl.png" /></div>
+													<div class="clsPageText" style="position:absolute; left:108px; top:205px;">dehan</div>
+													<div>
+													<div id="divImgA_10" name="divImgA" style="position:absolute; left: 260px; top: 40px; cursor:pointer;">
+														<img width="auto" height="170" src="images/m.gif" onclick="javascript:doPlayAudio(this, 10);">
+													</div>
+													</div>
+													<div class="clsPageText" style="position:absolute; left:311px; top:205px;">m</div>
+													<div style="position:absolute; left:400px; top:30px;"><img width="auto" height="110" src="images/duck2.png" /></div>
+													<div class="clsPageText" style="position:absolute;left:510px; top:23px;">manu-rade</div>
 													<div style="position:absolute; left: 454px; top:125px;"><img width="auto" height="135" src="images/table2.png" /></div>
 													<div class="clsPageText" style="position:absolute; left:467px; top:202px;">meza</div>
 												</td>
 											</tr>
 										</table>
-									</div>
-								</div>
-								<!--Slide End-->
-								
+									</div>	
+									<div id="divCompletionMsg" style="margin-top: 5px">
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <span
+                              id="childText"
+                              style="
+                                font-size: 16px;
+                                font-weight: bold;
+                                margin-left: 5px;
+                              "
+                            >
+                            </span>
+                            <img
+                              width="auto"
+                              height="30"
+                              src="../../../images/tick.png"
+                              onclick="enlargeTick()"
+                              id="divCorrectTextPanel"
+                              class="whiteTick"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+								</div>								
 								<!--Buttons Begin-->								
 								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
 									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
@@ -375,11 +717,24 @@
 					</td>
 				</tr>
 			</table>
+			<audio id="audAlphabet" name="audAlphabet"></audio>
 		</div>
 		<script language="javascript">
-			doResetActivity();
-			doResetMainNavButton();
-		</script>
+      const activeChildId = sessionStorage.getItem("active_child_name");
+
+      const text = 'bele lolos halo lian husi letra ‘m’.';
+
+      document.getElementById("childText").innerText =
+        (activeChildId ? activeChildId + " " : "") + text;
+      doResetActivity();
+      doResetMainNavButton();
+      function enlargeTick() {
+        const img = document.getElementById("divCorrectTextPanel");
+        img.classList.toggle("zoomTick");
+        img.classList.toggle("greenTick");
+        img.classList.remove("whiteTick");
+      }
+    </script>
 		<script src="../../../activity-tracker.js"></script>
 	</body>
 </html>

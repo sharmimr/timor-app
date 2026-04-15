@@ -19,6 +19,30 @@
 		<script src="../../js/jquery-3.6.0.js"></script>
 		<script src="../../js/jquery-ui.js"></script>
 		<script type="text/javascript" src="../../js/main.js"></script>
+		<style>
+			#divCompletionMsg {
+        text-align: center;
+        color: #2d6839;
+        position: absolute;
+        top: 200px;
+        left: 50%; /* move to center horizontally */
+        transform: translateX(-50%); /* perfectly center it */
+      }
+			#divCorrectTextPanel {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      .whiteTick {
+        filter: brightness(10) invert(1);
+      }
+      .greenTick {
+        /* green color */
+        filter: brightness(1) invert(0);
+      }
+      .zoomTick {
+        transform: scale(1.5);
+      }
+		</style>
 	
 		<script language="javascript">
 			var rArrDivList = ["div_1", "div_2"];
@@ -52,16 +76,19 @@
 				if (rListIndex<=0) {
 					document.getElementById("divBtnReplay").style.display = "none";
 					document.getElementById("divBtnBack").style.display = "none";
-					document.getElementById("divBtnNext").style.display = "inline-block";			
+					document.getElementById("divBtnNext").style.display = "inline-block";		
+          document.getElementById("divCompletionMsg").style.display = "none";		
 				} else {
 				if (rListIndex>=rArrDivList.length-1) {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
 					document.getElementById("divBtnNext").style.display = "none";
+          document.getElementById("divCompletionMsg").style.display = "block";	
 				} else {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
-					document.getElementById("divBtnNext").style.display = "inline-block";				
+					document.getElementById("divBtnNext").style.display = "inline-block";	
+          document.getElementById("divCompletionMsg").style.display = "none";				
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
@@ -100,6 +127,11 @@
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				if (rListIndex >= rArrDivList.length - 1) {
+          document.getElementById("divCompletionMsg").style.display = "block";
+        } else {
+          document.getElementById("divCompletionMsg").style.display = "none";
+        }
 			}
 		</script>
 	</head>
@@ -118,6 +150,39 @@
 									<div id="divVidAni" name="divVidAni" style="position:absolute; left:0px; width:auto; height:275px; left:0px; top:0px; border:0px solid green; display:block;">
 										<video id="vidAni" name="vidAni" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="left:0px; width:auto; height:275px;" src="media/video/animation.mp4" onended="javascript:doEndVideo(this);">
 									</div>
+									<div id="divCompletionMsg" style="margin-top: 5px">
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <span
+                              id="childText"
+                              style="
+                                font-size: 12px;
+                                font-weight: bold;
+                                margin-left: 5px;
+                              "
+                            >
+                            </span>
+                            <img
+                              width="auto"
+                              height="30"
+                              src="../../images/tick.png"
+                              onclick="enlargeTick()"
+                              id="divCorrectTextPanel"
+                              class="whiteTick"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>	
 								</div>
 								
 								<!--Buttons Begin-->								
@@ -181,9 +246,21 @@
 		</div>
 
 		<script language="javascript">
-			doResetActivity();
-			doResetMainNavButton();
-		</script>
+      const activeChildId = sessionStorage.getItem("active_child_name");
+
+      const text = 'rona música (Hamoos sala aula)';
+
+      document.getElementById("childText").innerText =
+        (activeChildId ? activeChildId + " " : "") + text;
+      doResetActivity();
+      doResetMainNavButton();
+      function enlargeTick() {
+        const img = document.getElementById("divCorrectTextPanel");
+        img.classList.toggle("zoomTick");
+        img.classList.toggle("greenTick");
+        img.classList.remove("whiteTick");
+      }
+    </script>
 		<script src="../../activity-tracker.js"></script>
 	</body>
 </html>

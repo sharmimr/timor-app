@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Teacher App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/main.css" />
+		
+		<style>
+			
+		</style>		
+
+		<script src="../../../js/jquery-3.6.0.js"></script>
+		<script src="../../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				document.getElementById("vidAni").pause();
+				document.getElementById("vidAni").currentTime = 0;
+				
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				
+				if (rListIndex==4) {
+					document.getElementById("vidAni").currentTime = 0;
+					document.getElementById("vidAni").play();
+				}
+			}			
+
+			function doResetActivity() {
+				document.getElementById("vidAni").pause();
+				document.getElementById("vidAni").currentTime = 0;
+				
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+			
+			function doReplayVideo(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain").style.display = "none";
+					document.getElementById("vidAni").currentTime = 0;
+					document.getElementById("vidAni").play();
+				}
+			}
+			
+			function doEndVideo(rObj) {
+				document.getElementById("divBtnVidReplayMain").style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="middle">
+												<div style="font-size:300%;"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								-->
+								
+								<!--Slide Begin-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:100%; border:0px solid #333333;">
+										<div style="position:absolute; width:100%; height:100%; left:0px; top:0px;">
+											<img width="100%" height="100%" src="../../../images/myself_language_title_main_images/main_bg.png" />
+										</div>
+										<div style="position:absolute; width:100%; height:90%; left:0px; top:0px; border:0px solid red;">
+											<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="top">
+														<div class="clsMainTitleWhite">Son ohin</div>
+														<div><img width="auto" height="150" src="images/t.png" /></div>														
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div id="div_2" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">Son ohin</div>
+												</td>
+											</tr>
+										</table>
+									</div>								
+									<div style="position:absolute; left: 315px; top:55px; cursor:default; display:block;">
+										<img width="auto" height="180" src="images/t.png" />
+									</div>								
+								</div>
+								<div id="div_3" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; top:0px; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">animál ohin</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; left: 160px; top:55px; cursor:default; display:block;">
+										<img width="auto" height="180" src="images/t.png" />
+									</div>
+									<div style="position:absolute; left: 369px; top:55px; cursor:default; display:block;">
+										<img width="auto" height="160" src="images/lizad.png" />
+									</div>
+									<div class="clsPageText" style="position:absolute; left:514px; top:204px;">teki</div>
+								</div>
+								<div id="div_4" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="75%" height="auto" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td width="46%" align="center" valign="top">
+													<div class="clsSubTitle">kór ohin</div>
+													<div style="position:relative;"><img width="auto" height="150" src="images/color.png" /></div>
+													<div class="clsPageText" style="position:relative; top:-20px;">verde</div>
+												</td>
+												<td width="5%"></td>
+												<td width="46%" align="center" valign="top">
+													<div class="clsSubTitle">forma ohin</div>
+													<div style="position:relative; top:0px;"><img width="auto" height="130" src="images/shape.png" /></div>
+													<div class="clsPageText" style="position:relative; top:0px;">triángulu</div>
+												</td>												
+											</tr>
+										</table>
+									</div>								
+								</div>
+								<div id="div_5" name="divMyselfLang" class="clsSlide">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; text-align: center; border:0px solid green; display:block;">
+										<video id="vidAni" name="vidAni" style="position: absolute; width: 130px; height: auto; left: 289px; top: 1px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/t.mp4" onended="javascript:doEndVideo(this);">
+									</div>
+									<div id="divBtnVidReplayMain" name="divBtnVidReplayMain" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" class="clsReplayVideo" onclick="javascript:doReplayVideo(this);">
+											<img width="auto" height="100%" src="../../../images/replay.png" />
+										</div>										
+									</div>	
+								</div>
+								<div id="div_6" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="310" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td width="100%" align="left" valign="top">
+													<div style="position:absolute; left: 64px; top: 40px;"><img width="auto" height="150" src="images/tt.png" /></div>
+													<div class="clsPageText" style="position:absolute; left: 70px; top: 191px;">boot</div>
+													<div class="clsPageText" style="position:absolute; left: 172px; top: 191px;">ki’ik</div>
+													<div style="position:absolute; left: 324px; top:75px;"><img width="auto" height="125" src="images/lizad.png" /></div>
+													<div class="clsPageText" style="position:absolute; left: 339px; top:28px;">teki</div>
+													<div style="position:absolute; left: 503px; top:107px;"><img width="auto" height="102" src="images/tent.png" /></div>
+													<div class="clsPageText" style="position:absolute; left: 549px; top: 199px;">tenda</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div id="div_7" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; top:0px; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">koko hamutuk</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:relative; width:100%; height:auto; top:0px; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="position:relative; top:0px; cursor:default; display:inline-block;">
+														<img width="auto" height="120" src="images/t.png" />
+													</div>
+													<div style="position:relative; top:0px; cursor:default; display:inline-block;">
+														<img width="auto" height="120" src="images/t.png" />
+													</div>
+													<div style="position:relative; top:0px; cursor:default; display:inline-block;">
+														<img width="auto" height="120" src="images/t.png" />
+													</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div id="div_8" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div class="clsSubTitle">koko hamutuk</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:relative; width:100%; top:0px; cursor:default; top:-25px; display:inline-block;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<img width="auto" height="160" src="images/ttt.png" />
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div id="div_9" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div class="clsSubTitle">koko hamutuk basa-liman</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div>
+										<div style="position:absolute; left: 128px; top:72px; cursor:default; display:inline-block;">
+											<img width="auto" height="160" src="images/ttt.png" />
+										</div>
+										<div style="position:absolute; width:75px; display:inline-block;"></div>
+										<div style="position:absolute; left: 410px; top:69px; cursor:default; display:inline-block;">
+											<img width="auto" height="160" src="images/clap.png" />
+										</div>
+									</div>
+								</div>
+								<div id="div_10" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="auto" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="left" valign="top">
+													<div style="position:absolute; left: 55px; top:65px;"><img width="auto" height="190" src="images/girl.png" /></div>
+													<div class="clsPageText" style="position:absolute; left:83px; top:20px;">dehan</div>
+													<div style="position:absolute; left:228px; top:43px;"><img width="auto" height="150" src="images/t.png" /></div>
+													<div class="clsPageText" style="position:absolute; left:261px; top:205px;">t</div>
+													<div style="position:absolute; left:351px; top:30px;"><img width="auto" height="120" src="images/lizad.png" /></div>
+													<div class="clsPageText" style="position:absolute;left:514px; top:78px;">teki</div>
+													<div style="position:absolute; left: 492px; top:125px;"><img width="auto" height="95" src="images/tent.png" /></div>
+													<div class="clsPageText" style="position:absolute; left:536px; top:213px;">tenda</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<!--Slide End-->
+								
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

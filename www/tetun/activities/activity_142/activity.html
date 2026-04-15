@@ -52,7 +52,16 @@
         };
       }
 
-      getMousePos();
+      function fixCanvasResolution() {
+        const ratio = window.devicePixelRatio || 1;
+
+        const rect = canvas.getBoundingClientRect();
+
+        canvas.width = rect.width * ratio;
+        canvas.height = rect.height * ratio;
+
+        context.scale(ratio, ratio);
+      }
 
       function doNavigateAct(rAction) {
         for (var i = 0; i < rArrDivList.length; i++) {
@@ -771,6 +780,7 @@
       var clickDrag = [];
       var canvas = document.getElementById("myCanvas");
       var context = document.getElementById("myCanvas").getContext("2d");
+      // fixCanvasResolution();
       var rSelectedColor = "#000000";
       context.strokeStyle = rSelectedColor;
       context.lineJoin = "round";
@@ -992,17 +1002,17 @@
           drawNew();
         }
 
-        function touchstartEventHandler(e) {
-          paint = true;
-          if (paint) {
-            addClick(
-              e.touches[0].pageX - canvas.offsetLeft,
-              e.touches[0].pageY - canvas.offsetTop,
-              false,
-            );
-            drawNew();
-          }
-        }
+        // function touchstartEventHandler(e) {
+        //   paint = true;
+        //   if (paint) {
+        //     addClick(
+        //       e.touches[0].pageX - canvas.offsetLeft,
+        //       e.touches[0].pageY - canvas.offsetTop,
+        //       false,
+        //     );
+        //     drawNew();
+        //   }
+        // }
 
         function mouseUpEventHandler(e) {
           context.closePath();
@@ -1018,17 +1028,35 @@
           drawNew();
         }
 
+        // function touchMoveEventHandler(e) {
+        //   const x = e.touches[0].pageX - canvas.offsetLeft;
+        //   const y = e.touches[0].pageY - canvas.offsetTop;
+
+        //   const currentNumber = rImageListIndex + 1;
+        //   const currentPath = numberPaths[currentNumber];
+
+        //   if (paint) {
+        //     addClick(x, y, true);
+        //     drawNew();
+        //   }
+        // }
+
+        function touchstartEventHandler(e) {
+          paint = true;
+
+          const pos = getCanvasPos(e.touches[0]);
+
+          addClick(pos.x, pos.y, false);
+          drawNew();
+        }
+
         function touchMoveEventHandler(e) {
-          const x = e.touches[0].pageX - canvas.offsetLeft;
-          const y = e.touches[0].pageY - canvas.offsetTop;
+          if (!paint) return;
 
-          const currentNumber = rImageListIndex + 1;
-          const currentPath = numberPaths[currentNumber];
+          const pos = getCanvasPos(e.touches[0]);
 
-          if (paint) {
-            addClick(x, y, true);
-            drawNew();
-          }
+          addClick(pos.x, pos.y, true);
+          drawNew();
         }
 
         function setUpHandler(isMouseandNotTouch, detectEvent) {
@@ -1078,15 +1106,21 @@
       document
         .getElementById("divEraserButton")
         .addEventListener("click", () => {
-          //doResetActivity();
-          context.clearRect(0, 0, myCanvas.width, myCanvas.height);
-          shapes = [];
-          //rSelectedColor = "#000000";
-          setTimeout(function () {
-            myCanvas.width = myCanvas.width;
-            rLineWidth = 10;
-            doResetBoard();
-          }, 100);
+          // ✅ 1. Clear canvas
+          context.clearRect(0, 0, canvas.width, canvas.height);
+
+          // ✅ 2. Clear current drawing arrays
+          clickX = [];
+          clickY = [];
+          clickDrag = [];
+
+          // ✅ 3. Clear saved drawing for current number
+          const currentNumber = rImageListIndex + 1;
+          drawings[currentNumber] = {
+            clickX: [],
+            clickY: [],
+            clickDrag: [],
+          };
         });
     </script>
 
@@ -1096,6 +1130,7 @@
         if (statusSent) return;
         statusSent = true;
         const token = localStorage.getItem("token");
+        const sid = sessionStorage.getItem("active_child_id");
         if (!token) {
           console.error("No auth token found in localStorage!");
           return;
@@ -1106,7 +1141,7 @@
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ status }),
+          body: JSON.stringify({ status, sid }),
           keepalive: true,
         })
           .then((r) => r.json())

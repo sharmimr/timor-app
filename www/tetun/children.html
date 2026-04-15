@@ -167,7 +167,7 @@
 
             // store in session immediately
             sessionStorage.setItem("active_child_id", sid);
-            console.log(sid, "SID");
+            sessionStorage.setItem("active_child_name", child.first_name);
 
             // Send sid to database
             try {

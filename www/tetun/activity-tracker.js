@@ -61,24 +61,61 @@ function shouldSendSid(updateTarget) {
   const sid = sessionStorage.getItem("active_child_id");
   return !!sid;
 }
+let questionClicked = false;
+document.addEventListener("click", (e) => {
+  const questionIcon = e.target.closest("img[src*='question_mark']");
+
+  if (questionIcon) {
+    console.log("❓ Question mark clicked");
+    questionClicked = true;
+  }
+});
 
 // ================= STATUS OBSERVER =================
 (function () {
   console.log("CHECKKKK");
 
   let statusSent = false;
+
+  document.addEventListener("click", (e) => {
+    const questionIcon = e.target.closest("img[src*='question_mark']");
+
+    if (questionIcon) {
+      console.log("❓ Question mark clicked");
+      questionClicked = true;
+
+      const activityName = sessionStorage.getItem("activity_name") || "";
+
+      const tickMark = Array.from(document.images).find((img) =>
+        img.src.toLowerCase().includes("tick"),
+      );
+
+      const isTickVisible = tickMark
+        ? window.getComputedStyle(tickMark).display !== "none"
+        : false;
+
+      if (activityName === "Barbeq ne'ebé justu" && tickMark && isTickVisible) {
+        console.log("🔥 Special BBQ condition met → COMPLETED");
+        sendStatus("completed"); // ✅ directly callable here
+      }
+    }
+  });
+
   const pagePath = window.location.pathname || "";
   const isTransportColoringActivity = pagePath.includes(
     "tetun/activities/50_transport_art_design_1/activity.html",
   );
+
   // const isActivity188 = pagePath.includes("activity_188/activity.html");
   // const isActivity185 = pagePath.includes("activity_185/activity.html");
 
   function sendStatus(status) {
+    console.log(statusSent, "statusSent");
     if (statusSent) return;
     statusSent = true;
     console.log(status);
     const token = localStorage.getItem("token");
+    const sid = sessionStorage.getItem("active_child_id");
     if (!token) {
       console.error("No auth token found in localStorage!");
       return;
@@ -90,7 +127,7 @@ function shouldSendSid(updateTarget) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ status }),
+      body: JSON.stringify({ status, sid }),
       keepalive: true,
     })
       .then((r) => r.json())
@@ -104,6 +141,7 @@ function shouldSendSid(updateTarget) {
   function observeNextArrowHidden() {
     const isactivity_33_7 = pagePath.includes("activity_33_7/activity.html");
     const isactivity_33_1 = pagePath.includes("activity_33_1/activity.html");
+
     const observer = new MutationObserver(() => {
       const nextImg = Array.from(document.images).find((img) =>
         img.src.includes("images/next_arrow.png"),
@@ -118,7 +156,82 @@ function shouldSendSid(updateTarget) {
       console.log(style, "STYLE", style.display);
 
       if (style.display === "none") {
-        console.log("✅ next_arrow.png became hidden (APK-safe) → COMPLETED");
+        // 👇 ADD YOUR TICK CHECK HERE (instead of direct completion)
+
+        const tickMark = Array.from(document.images).find((img) =>
+          img.src.toLowerCase().includes("tick"),
+        );
+        const greenTick = tickMark?.classList.contains("greenTick");
+
+        if (tickMark) {
+          if (greenTick) {
+            console.log("✅ next hidden & green tick → COMPLETED");
+            sendStatus("completed");
+            observer.disconnect();
+          } else {
+            console.log(
+              "⛔ next hidden but tick NOT green → Skipping completion",
+            );
+            const tickEl =
+              document.getElementById("divPart2TickMark_2") ||
+              document.getElementById("divPart2TickMark_1");
+
+            const styleOfDivCompletionBbq = tickEl
+              ? window.getComputedStyle(tickEl)
+              : null;
+
+            console.log(
+              tickEl,
+              styleOfDivCompletionBbq.display,
+              "STYLE OF DIV COMPLETION BBQ",
+            );
+            // console.log(
+            //   styleOfDivCompletionBbq,
+            //   "STYLE OF DIV COMPLETION BBQ",
+            //   questionClicked,
+            // );
+
+            // if (
+            //   questionClicked &&
+            //   styleOfDivCompletionBbq?.display === "inline-block"
+            // ) {
+            //   console.log("✅ BBQ tick clicked + visible → COMPLETED");
+            //   sendStatus("completed");
+            //   observer.disconnect();
+            // } else {
+            //   console.log("⛔ BBQ not clicked or not visible → Skipping");
+            // }
+          }
+        } else {
+          console.log("⛔ Tick mark present → Skipping completion");
+          sendStatus("completed");
+          observer.disconnect();
+        }
+
+        // } else {
+        //   console.log("⛔ Tick mark present → Skipping completion");
+        //   sendStatus("completed");
+        //   observer.disconnect();
+        // }
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ["style", "class"],
+    });
+  }
+
+  function observeWBNextHidden() {
+    const observer = new MutationObserver(() => {
+      const wbNext = document.getElementById("divBtnWBNext");
+      if (!wbNext) return;
+      const style = window.getComputedStyle(wbNext);
+
+      if (style.display === "none") {
+        console.log("✅ divBtnWBNext hidden → COMPLETED");
         sendStatus("completed");
         observer.disconnect();
       }
@@ -132,35 +245,80 @@ function shouldSendSid(updateTarget) {
     });
   }
 
-  // function observeWBNextHidden() {
-  //   const observer = new MutationObserver(() => {
-  //     const wbNext = document.getElementById("divBtnWBNext");
-  //     if (!wbNext) return;
-  //     const style = window.getComputedStyle(wbNext);
-
-  //     if (style.display === "none") {
-  //       console.log("✅ divBtnWBNext hidden → COMPLETED");
-  //       sendStatus("completed");
-  //       observer.disconnect();
-  //     }
-  //   });
-
-  //   observer.observe(document.body, {
-  //     childList: true,
-  //     subtree: true,
-  //     attributes: true,
-  //     attributeFilter: ["style", "class"],
-  //   });
-  // }
-
   function observeGameState() {
+    // ✅ SPECIAL CASE: Barbeq ne'ebé justu completion
+    const activityName = sessionStorage.getItem("activity_name");
+
+    const bodyText = document.body.innerText.toLowerCase();
+
+    // detect "kauze justu"
+    const hasKauzeJustu = bodyText.includes("kauze justu");
+
+    // detect tick (adjust if needed based on your DOM)
+    const hasTick = document.querySelector('img[src*="tick"]');
+
+    if (activityName === "Barbeq ne'ebé justu" && hasKauzeJustu && hasTick) {
+      console.log("🔥 Barbeq ne'ebé justu + Kauze Justu + Tick → COMPLETED");
+      sendStatus("completed");
+      observer.disconnect();
+      return;
+    }
     const correctPanel = document.getElementById("divCorrectTextPanel");
+    const completionTick = document.getElementById("divCompletionMsg");
 
     const observer = new MutationObserver(() => {
+      const tickEl =
+        document.getElementById("divPart2TickMark_2") ||
+        document.getElementById("divPart2TickMark_1");
+
+      const styleOfDivCompletionBbq = tickEl
+        ? window.getComputedStyle(tickEl)
+        : null;
+
+      console.log(
+        questionClicked && styleOfDivCompletionBbq?.display === "inline-block",
+        "STYLE OF DIV COMPLETION BBQ",
+        questionClicked,
+        styleOfDivCompletionBbq?.display,
+      );
+
+      if (
+        questionClicked &&
+        styleOfDivCompletionBbq?.display === "inline-block"
+      ) {
+        console.log("✅ BBQ tick clicked + visible → COMPLETED");
+        sendStatus("completed");
+        observer.disconnect();
+      } else {
+        console.log("⛔ BBQ not clicked or not visible → Skipping");
+      }
       /* ✅ COMPLETED CHECK */
       if (correctPanel) {
         const style = window.getComputedStyle(correctPanel);
-        if (style.display === "block") {
+        const styleOfDivCompletion = completionTick
+          ? window.getComputedStyle(completionTick)
+          : null;
+        // const styleOfDivCompletionBbq = document.getElementById(
+        //   "divPart2TickMark_2"
+        // )
+        //   ? window.getComputedStyle(
+        //       document.getElementById("divPart2TickMark_2"),
+        //     )
+        //   : document.getElementById("divPart2TickMark_1")
+        //     ? window.getComputedStyle(
+        //         document.getElementById("divPart2TickMark_1"),
+        //       )
+        //     : null;
+        console.log(
+          style.display,
+          correctPanel.classList.contains("greenTick"),
+          "Checking completion based on divCorrectTextPanel",
+        );
+        if (
+          (style.display === "block" && !completionTick) ||
+          (styleOfDivCompletion?.display === "block" &&
+            correctPanel.classList.contains("greenTick"))
+        ) {
           console.log("✅ divCorrectTextPanel visible → COMPLETED");
           sendStatus("completed");
           observer.disconnect();
@@ -418,7 +576,7 @@ async function trackClick(data) {
   document.addEventListener("click", function (e) {
     console.log("IN CLICK LISTENER");
     // ❌ EXCLUDE BACK ARROW IMAGE CLICKS (ACTIVITY SCREEN)
-    const backArrow = e.target.closest("img[src*='images/back_arrow.png']");
+    const backArrow = e.target.closest("#divMacroBtnNavPanel");
     if (backArrow) {
       console.log("⛔ Back arrow click ignored");
       return;
@@ -452,7 +610,11 @@ async function trackClick(data) {
 
     // ---------- EXTRACT TEXT ----------
     let linkName = "";
-
+    console.log(
+      el,
+      el.innerText ? el.innerText.trim() : "",
+      "ELEMENT FOR LINK NAME",
+    );
     if (el.innerText) {
       linkName = el.innerText.trim();
       if (linkName.length > 100) {
@@ -468,7 +630,8 @@ async function trackClick(data) {
 
       const imageDiv = document.getElementById("divImage_" + imageNumber);
 
-      const textDiv = imageDiv?.nextElementSibling;
+      const textDiv =
+        imageDiv?.nextElementSibling || imageDiv?.querySelector("div");
       const titleEl = document.getElementById("divTextAndImageCombination");
       if (textDiv) linkName = textDiv.innerText.trim();
       else if (titleEl) linkName = titleEl.innerText.trim();
@@ -495,6 +658,9 @@ async function trackClick(data) {
     }
 
     if (!updateTarget) return;
+    if (updateTarget === "activity_name") {
+      sessionStorage.setItem("activity_name", linkName);
+    }
     if (updateTarget === "category1" && !linkName.trim()) {
       console.log("⛔ Empty category1 ignored");
       return;
@@ -506,8 +672,9 @@ async function trackClick(data) {
     // Only for category1 → build hierarchy
     if (updateTarget === "category1") {
       finalLink = buildCategoryPath(linkName, pageLevel, pageName);
+    } else if (updateTarget === "activity_name") {
+      finalLink = sessionStorage.getItem("activity_name") || linkName;
     }
-
     const payload = {
       link: finalLink,
       page: pageName,

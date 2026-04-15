@@ -312,6 +312,15 @@ function doMacroBtnSizeAndAlignment() {
             i
           ].style.height = "40px";
         }
+        if (
+          document
+            .getElementById("divCorrectTextPanel")
+            ?.getElementsByTagName("img")[i] != null
+        ) {
+          document
+            .getElementById("divCorrectTextPanel")
+            .getElementsByTagName("img")[i].style.height = "30px";
+        }
       }
     }
 
@@ -548,7 +557,8 @@ function doSetPosterIconAndURL() {
       if (
         rFirstPartURL.indexOf(
           "activities/myself_photo/activity_photo/activity.html",
-        ) >= 0
+        ) >= 0 ||
+        rFirstPartURL.indexOf("activities/myself_language") >= 0
       ) {
         rTempPosterImageURL =
           "../../../images/activity_macro_static_images/myself.png";
