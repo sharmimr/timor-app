@@ -20,7 +20,7 @@
 		<style>
 			#divCompletionMsg {
         text-align: center;
-        color: #2d6839;
+        color: #f7f9f8;
         position: absolute;
         bottom: 40px;
         left: 46%; /* move to center horizontally */
@@ -31,7 +31,7 @@
         cursor: pointer;
       }
       .whiteTick {
-        filter: brightness(10) invert(1);
+        filter: brightness(0) invert(1);
       }
       .greenTick {
         /* green color */
@@ -47,7 +47,7 @@
 		<script type="text/javascript" src="../../../js/main.js"></script>
 		
 		<script language="javascript">
-			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10"];
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10","div_11"];
 			var rListIndex = 0;
 			
 			var rImgHiLightBlinkInterval = 0;
@@ -625,7 +625,18 @@
 											</tr>
 										</table>
 									</div>	
-									<div id="divCompletionMsg" style="margin-top: 5px">
+									
+								</div>	
+									<div id="div_11" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:100%; border:0px solid #333333;">
+										<div style="position:absolute; width:100%; height:100%; left:0px; top:0px;">
+											<img width="100%" height="100%" src="../../../images/myself_language_title_main_images/main_bg.png" />
+										</div>
+										<div style="position:absolute; width:100%; height:90%; left:0px; top:0px; border:0px solid red;">
+											<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="top">
+														<div id="divCompletionMsg" style="margin-top: 5px">
                     <table
                       width="100%"
                       height="100%"
@@ -657,8 +668,14 @@
                         </td>
                       </tr>
                     </table>
-                  </div>
-								</div>								
+                  </div>	
+														<div><img width="auto" height="150" src="images/m.png" /></div>														
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>						
 								<!--Buttons Begin-->								
 								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
 									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">

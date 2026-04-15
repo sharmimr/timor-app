@@ -24,7 +24,7 @@
         text-align: center;
         color: #2d6839;
         position: absolute;
-        top: 200px;
+        top: 130px;
         left: 50%; /* move to center horizontally */
         transform: translateX(-50%); /* perfectly center it */
       }
@@ -45,7 +45,7 @@
 		</style>
 	
 		<script language="javascript">
-			var rArrDivList = ["div_1", "div_2"];
+			var rArrDivList = ["div_1", "div_2", "div_3"];
 			var rListIndex = 0;
 			
 			var rImgHiLightBlinkInterval = 0;
@@ -150,7 +150,11 @@
 									<div id="divVidAni" name="divVidAni" style="position:absolute; left:0px; width:auto; height:275px; left:0px; top:0px; border:0px solid green; display:block;">
 										<video id="vidAni" name="vidAni" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="left:0px; width:auto; height:275px;" src="media/video/animation.mp4" onended="javascript:doEndVideo(this);">
 									</div>
-									<div id="divCompletionMsg" style="margin-top: 5px">
+									</div>
+								<div id="div_3" name="div_3" style="position:absolute; width:75%; height:auto; left:100px; top:0px; border:0px solid #333333; display:block;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; left:0px; width:auto; height:275px; left:0px; top:0px; border:0px solid green; display:block;">
+										<img width="auto" height="275" src="images/ani.png">
+									</div><div id="divCompletionMsg">
                     <table
                       width="100%"
                       height="100%"
@@ -166,7 +170,7 @@
                               style="
                                 font-size: 12px;
                                 font-weight: bold;
-                                margin-left: 5px;
+                                margin-left: 10px;
                               "
                             >
                             </span>
