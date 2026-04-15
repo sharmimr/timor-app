@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid blue;">
+								<!--Slides-->
+									<div id="divMain" name="divMain" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid #666666; display:block;">
+										<div id="divMain_Div_1" name="divMain_Div" style="position:absolute; width:auto; height:auto; left:325px; top:100px;">
+											<img id="divMain_ImgMain_1" name="divMain_ImgMain" width="auto" height="100" src="images/img_main_1.png" />
+										</div>
+										<div id="divMain_Div_2" name="divMain_Div" style="position:absolute; width:auto; height:auto; left:85px; top:5px;">
+											<img id="divMain_ImgBubble_2" name="divMain_ImgBubble" width="auto" height="135" src="images/img_bubble_2.png" />
+										</div>
+
+										<div id="divMain_DivBotText_1" name="divMain_DivBotText" style="position:absolute; width:auto; height:auto; left:67px; top:195px;">
+											<img id="divMain_ImgBotText_1" name="divMain_ImgBotText" width="100" height="auto" src="images/img_bottext_1.png" />
+										</div>
+										<div id="divMain_DivBotText_2" name="divMain_DivBotText" style="position:absolute; width:auto; height:auto; left:60px; top:245px;">
+											<img id="divMain_ImgBotText_2" name="divMain_ImgBotText" width="115" height="auto" src="images/img_bottext_2.png" />
+										</div>
+										<div id="divMain_DivBotText_3" name="divMain_DivBotText" style="position:absolute; width:auto; height:auto; left:275px; top:202px;">
+											<img id="divMain_ImgBotText_3" name="divMain_ImgBotText" width="135" height="auto" src="images/img_bottext_3.png" />
+										</div>
+										<div id="divMain_DivBotText_4" name="divMain_DivBotText" style="position:absolute; width:auto; height:auto; left:275px; top:245px;">
+											<img id="divMain_ImgBotText_4" name="divMain_ImgBotText" width="135" height="auto" src="images/img_bottext_4.png" />
+										</div>
+										<div id="divMain_DivBotText_5" name="divMain_DivBotText" style="position:absolute; width:auto; height:auto; left:510px; top:202px;">
+											<img id="divMain_ImgBotText_5" name="divMain_ImgBotText" width="85" height="auto" src="images/img_bottext_5.png" />
+										</div>
+										<div id="divMain_DivBotText_6" name="divMain_DivBotText" style="position:absolute; width:auto; height:auto; left:497px; top:245px;">
+											<img id="divMain_ImgBotText_6" name="divMain_ImgBotText" width="115" height="auto" src="images/img_bottext_6.png" />
+										</div>
+									</div>
+
+									<div id="divCommon" name="divCommon" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:none;">
+									</div>
+								<!--Slides End-->
+									<div id="divQuestionMark" name="divQuestionMark" style="position:absolute; width:auto; height:auto; left:220px; top:35px; display:block;">
+										<img width="auto" height="50" src="../../images/question_mark.png" />
+									</div>
+									<div id="divCorrectTextPanel" name="divCorrectTextPanel" style="position:absolute; width:auto; height:auto; left:390px; top:20px; display:block;">
+										<div style="position:relative; top:-5px; font-size:200%; display:inline-block;">
+											Loos
+										</div>
+										<div style="width:5px; display:inline-block;"></div>
+										<div style="display:inline-block;">
+											<img width="auto" height="50" src="../../images/tick.png" />
+										</div>														
+									</div>
+								</div>
+							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:200px; height:auto; left:250px; bottom:-10px; border:0px solid #333333; display:block; z-index:9999;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doMovePreNext('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:document.location.reload();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doMovePreNext('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+
+							<div id="divPicDisable" name="divPicDisable" style="position:absolute; width:660px; height:100%; left:0px; top:0px; border:0px solid blue; display:block; z-index:999;"></div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			var rCorrectDropCount = 0;
+			var rCurSlideId = 1;
+
+			function doHideAllMainDiv() {
+				document.getElementById("divMain").style.display = "none";
+				document.getElementById("divCommon").style.display = "none";
+				document.getElementById("divCommon").innerHTML = "";
+			}
+
+			function doMovePreNext(rAction) {
+				if (rAction=="P") {
+					rCurSlideId--;
+					if (rCurSlideId<=1) {
+						rCurSlideId = 1;
+					}
+				} else {
+				if (rAction=="N") {
+					rCurSlideId++;
+					if (rCurSlideId>=7) {
+						rCurSlideId = 7;
+					}
+				} }
+				doSetAndShowHideMainDiv(rCurSlideId);
+			}
+
+			function doSetAndShowHideMainDiv(rSlideId) {
+				doHideAllMainDiv();
+				switch (rSlideId) {
+					case 1:
+						doShowSlide1();
+						break;
+					case 2:
+						doShowSlide2();
+						break;
+					case 3:
+						doShowSlide3();
+						break;
+					case 4:
+						doShowSlide4();
+						break;
+					case 5:
+						doShowSlide5();
+						break;
+					case 6:
+						doShowSlide6();
+						break;
+					case 7:
+						doShowSlide6();
+						break;
+					default:
+						break;
+				}
+			}
+
+			function doShowSlide1() {
+				document.getElementById("divBtnBack").style.display = "none";
+				document.getElementById("divBtnReplay").style.display = "none";
+				document.getElementById("divBtnNext").style.display = "none";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "block";
+				document.getElementById("divBtnHome").style.display = "inline-block";
+				document.getElementById("divBtnBackArrow").style.display = "inline-block";
+				document.getElementById("divBtnNextArrow").style.display = "inline-block";
+				document.getElementById("divQuestionMark").style.display = "block";
+
+				for (var i=1; i<=2; i++) {
+					document.getElementById("divMain_Div_" + i).style.display = "block";
+				}
+				for (var i=1; i<=18; i++) {
+					if (document.getElementById("divMain_DivBotText_" + i)!=null && document.getElementById("divMain_DivBotText_" + i)!=undefined && document.getElementById("divMain_DivBotText_" + i)!="") {
+						document.getElementById("divMain_DivBotText_" + i).style.display = "block";
+					}
+				}
+
+				document.getElementById("divMain_DivBotText_1").style.left = "67px";
+				document.getElementById("divMain_DivBotText_1").style.top = "195px";
+
+				document.getElementById("divMain_DivBotText_2").style.left = "60px";
+				document.getElementById("divMain_DivBotText_2").style.top = "245px";
+
+				document.getElementById("divMain").style.display = "block";
+
+				window.setTimeout(
+					function() {
+						document.getElementById("divQuestionMark").style.display = "none";
+						$('#divMain_DivBotText_1').animate({left:'180px', top:'10px'}, 2500,
+							function() {
+								$('#divMain_DivBotText_2').animate({left:'170px', top:'65px'}, 2500,
+									function() {
+										document.getElementById("divCorrectTextPanel").style.display = "block";
+										document.getElementById("divBtnNext").style.display = "block";
+									}
+								);
+							}
+						);
+					}, 1000
+				);
+			}
+
+			function doGetRandomNum(min, max) { 
+			  return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			var rRndNum = 0;
+			var rHTML = "";
+
+			function doFillSlide2BotText1() {
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:67px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:60px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="115" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_7" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:200px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_7" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_7.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_8" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_8" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_8.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:535px; top:200px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:530px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide2BotText2() {
+				rHTML += '<div id="divCommon_DivBotText_11" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:55px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_12" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_11.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_12" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:63px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_12" name="divCommon_ImgBotText" width="65" height="auto" src="images/img_bottext_12.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide2BotText3() {
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:60px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_7" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_7" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_7.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_8" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_8" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_8.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide2BotText4() {
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:67px; top:185px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:60px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="115" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:185px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:535px; top:185px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:530px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide2BotText5() {
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:60px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_7" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_7" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_7.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_8" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_8" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_8.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+			}
+			function doShowSlide2() {
+				document.getElementById("divBtnBack").style.display = "inline-block";
+				document.getElementById("divBtnReplay").style.display = "inline-block";
+				document.getElementById("divBtnNext").style.display = "inline-block";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "none";
+				document.getElementById("divBtnHome").style.display = "inline-block";
+				document.getElementById("divBtnBackArrow").style.display = "inline-block";
+				document.getElementById("divBtnNextArrow").style.display = "inline-block";
+				document.getElementById("divQuestionMark").style.display = "none";
+				
+				rCorrectDropCount = 0;
+				document.getElementById("divCommon").innerHTML = "";
+				rHTML = "";
+				rHTML += '<div id="divCommon_Div_1" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:180px; top:85px;">';
+					rHTML += '<img id="divCommon_ImgMain_1" name="divCommon_ImgMain" width="auto" height="100" src="images/img_main_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_Div_2" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:240px; top:5px;">';
+					rHTML += '<img id="divCommon_ImgBubble_2" name="divCommon_ImgBubble" width="auto" height="135" src="images/img_bubble_1.png" />';
+				rHTML += '</div>';
+				
+				rCorrectDropCount = 0;
+				rRndNum = doGetRandomNum(1, 5);
+				switch (rRndNum) {
+					case 1:
+						doFillSlide2BotText1()
+						break;
+					case 2:
+						doFillSlide2BotText2()
+						break;
+					case 3:
+						doFillSlide2BotText3()
+						break;
+					case 4:
+						doFillSlide2BotText4()
+						break;
+					case 5:
+						doFillSlide2BotText5()
+						break;
+					default:
+						break;
+				}
+			
+				rHTML += '<div id="divCommon_DivCorrectDropText_1" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:330px; top:30px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivCorrectDropText_2" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:325px; top:70px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+
+				document.getElementById("divCorrectTextPanel").style.left = "535px";
+				document.getElementById("divCorrectTextPanel").style.top = "20px";
+
+				document.getElementById("divCommon").innerHTML = rHTML;
+				document.getElementById("divCommon").style.display = "block";
+
+				$(".clsBotText").draggable({
+					axis: "x, y", containment: "#divCommon", revert: true,
+					drag: function(event, ui) {
+						for (var i=1; i<=18; i++) {
+							if (document.getElementById("divCommon_DivBotText_" + i)!=null && document.getElementById("divCommon_DivBotText_" + i)!=undefined && document.getElementById("divCommon_DivBotText_" + i)!="") {
+								document.getElementById("divCommon_DivBotText_"+i).style.zIndex = "auto";
+							}
+						}
+						document.getElementById(this.id).style.zIndex = 10000;
+					}
+				});
+
+				$("#divCommon_Div_2").droppable({
+					drop: function(event, ui) {
+						var rDragName = "";
+						var rDropName = "";
+						rDragName = ui.draggable.attr("id");
+						rDropName = this.id;
+						if (rDragName=="divCommon_DivBotText_5") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_1").style.display = "block";
+						}
+						if (rDragName=="divCommon_DivBotText_6") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_2").style.display = "block";
+						}
+						if (rCorrectDropCount==2) {
+							document.getElementById("divPicDisable").style.display = "block";
+							document.getElementById("divCorrectTextPanel").style.display = "block";
+						}
+					}
+				});
+			}
+
+			function doFillSlide3BotText1() {
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:57px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:235px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:235px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:530px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="78" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide3BotText2() {
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:60px; top:200px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:285px; top:200px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:285px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:530px; top:200px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="78" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide3BotText3() {
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:65px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="78" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:235px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:235px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:500px; top:198px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:500px; top:235px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide3BotText4() {
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:50px; top:205px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="97" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:40px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:210px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:302px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:508px; top:210px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:500px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide3BotText5() {
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:60px; top:205px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:210px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:302px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_9" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:210px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_9" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_9.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_10" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_10" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_10.png" />';
+				rHTML += '</div>';
+			}
+			function doShowSlide3() {
+				document.getElementById("divBtnBack").style.display = "inline-block";
+				document.getElementById("divBtnReplay").style.display = "inline-block";
+				document.getElementById("divBtnNext").style.display = "inline-block";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "none";
+				document.getElementById("divBtnHome").style.display = "inline-block";
+				document.getElementById("divBtnBackArrow").style.display = "inline-block";
+				document.getElementById("divBtnNextArrow").style.display = "inline-block";
+				document.getElementById("divQuestionMark").style.display = "none";
+				
+				rCorrectDropCount = 0;
+				document.getElementById("divCommon").innerHTML = "";
+				rHTML = "";
+				rHTML += '<div id="divCommon_Div_1" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:325px; top:100px;">';
+					rHTML += '<img id="divCommon_ImgMain_1" name="divCommon_ImgMain" width="auto" height="100" src="images/img_main_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_Div_2" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:85px; top:5px;">';
+					rHTML += '<img id="divCommon_ImgBubble_2" name="divCommon_ImgBubble" width="auto" height="135" src="images/img_bubble_2.png" />';
+				rHTML += '</div>';
+				
+				rCorrectDropCount = 0;
+				rRndNum = doGetRandomNum(1, 5);
+				switch (rRndNum) {
+					case 1:
+						doFillSlide3BotText1();
+						break;
+					case 2:
+						doFillSlide3BotText2();
+						break;
+					case 3:
+						doFillSlide3BotText3();
+						break;
+					case 4:
+						doFillSlide3BotText4();
+						break;
+					case 5:
+						doFillSlide3BotText5();
+						break;
+					default:
+						break;
+				}
+			
+				rHTML += '<div id="divCommon_DivCorrectDropText_1" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:180px; top:10px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivCorrectDropText_2" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:175px; top:65px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+
+				document.getElementById("divCorrectTextPanel").style.left = "390px";
+				document.getElementById("divCorrectTextPanel").style.top = "20px";
+
+				document.getElementById("divCommon").innerHTML = rHTML;
+				document.getElementById("divCommon").style.display = "block";
+
+				$(".clsBotText").draggable({
+					axis: "x, y", containment: "#divCommon", revert: true,
+					drag: function(event, ui) {
+						for (var i=1; i<=18; i++) {
+							if (document.getElementById("divCommon_DivBotText_" + i)!=null && document.getElementById("divCommon_DivBotText_" + i)!=undefined && document.getElementById("divCommon_DivBotText_" + i)!="") {
+								document.getElementById("divCommon_DivBotText_"+i).style.zIndex = "auto";
+							}
+						}
+						document.getElementById(this.id).style.zIndex = 10000;
+					}
+				});
+
+				$("#divCommon_Div_2").droppable({
+					drop: function(event, ui) {
+						var rDragName = "";
+						var rDropName = "";
+						rDragName = ui.draggable.attr("id");
+						rDropName = this.id;
+						if (rDragName=="divCommon_DivBotText_1") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_1").style.display = "block";
+						}
+						if (rDragName=="divCommon_DivBotText_2") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_2").style.display = "block";
+						}
+						if (rCorrectDropCount==2) {
+							document.getElementById("divPicDisable").style.display = "block";
+							document.getElementById("divCorrectTextPanel").style.display = "block";
+						}
+					}
+				});
+			}
+
+			function doFillSlide4BotText1() {
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:65px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:61px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:310px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="120" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:535px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide4BotText2() {
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:60px; top:195px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:200px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:245px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:505px; top:200px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="135" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:500px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="150" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide4BotText3() {
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:65px; top:191px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="135" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="150" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:310px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="120" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:508px; top:193px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:505px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide4BotText4() {
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:65px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:61px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:315px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:299px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="140" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_9" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_9" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_9.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_10" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:526px; top:227px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_10" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_10.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide4BotText5() {
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:65px; top:191px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="135" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="150" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_7" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:310px; top:193px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_7" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_7.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_8" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_8" name="divCommon_ImgBotText" width="102" height="auto" src="images/img_bottext_8.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:508px; top:193px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:505px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+			}
+			function doShowSlide4() {
+				document.getElementById("divBtnBack").style.display = "inline-block";
+				document.getElementById("divBtnReplay").style.display = "inline-block";
+				document.getElementById("divBtnNext").style.display = "inline-block";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "none";
+				document.getElementById("divBtnHome").style.display = "inline-block";
+				document.getElementById("divBtnBackArrow").style.display = "inline-block";
+				document.getElementById("divBtnNextArrow").style.display = "inline-block";
+				document.getElementById("divQuestionMark").style.display = "none";
+				
+				rCorrectDropCount = 0;
+				document.getElementById("divCommon").innerHTML = "";
+				rHTML = "";
+				rHTML += '<div id="divCommon_Div_1" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:330px; top:95px;">';
+					rHTML += '<img id="divCommon_ImgMain_1" name="divCommon_ImgMain" width="auto" height="100" src="images/img_main_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_Div_2" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:150px; top:5px;">';
+					rHTML += '<img id="divCommon_ImgBubble_2" name="divCommon_ImgBubble" width="auto" height="125" src="images/img_bubble_2.png" />';
+				rHTML += '</div>';
+
+				rCorrectDropCount = 0;
+				rRndNum = doGetRandomNum(1, 5);
+				switch (rRndNum) {
+					case 1:
+						doFillSlide4BotText1();
+						break;
+					case 2:
+						doFillSlide4BotText2();
+						break;
+					case 3:
+						doFillSlide4BotText3();
+						break;
+					case 4:
+						doFillSlide4BotText4();
+						break;
+					case 5:
+						doFillSlide4BotText5();
+						break;
+					default:
+						break;
+				}
+			
+				rHTML += '<div id="divCommon_DivCorrectDropText_1" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:245px; top:30px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_1" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivCorrectDropText_2" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:243px; top:60px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+
+				document.getElementById("divCorrectTextPanel").style.left = "440px";
+				document.getElementById("divCorrectTextPanel").style.top = "20px";
+
+				document.getElementById("divCommon").innerHTML = rHTML;
+				document.getElementById("divCommon").style.display = "block";
+
+				$(".clsBotText").draggable({
+					axis: "x, y", containment: "#divCommon", revert: true,
+					drag: function(event, ui) {
+						for (var i=1; i<=18; i++) {
+							if (document.getElementById("divCommon_DivBotText_" + i)!=null && document.getElementById("divCommon_DivBotText_" + i)!=undefined && document.getElementById("divCommon_DivBotText_" + i)!="") {
+								document.getElementById("divCommon_DivBotText_"+i).style.zIndex = "auto";
+							}
+						}
+						document.getElementById(this.id).style.zIndex = 10000;
+					}
+				});
+
+				$("#divCommon_Div_2").droppable({
+					drop: function(event, ui) {
+						var rDragName = "";
+						var rDropName = "";
+						rDragName = ui.draggable.attr("id");
+						rDropName = this.id;
+						if (rDragName=="divCommon_DivBotText_15") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_1").style.display = "block";
+						}
+						if (rDragName=="divCommon_DivBotText_16") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_2").style.display = "block";
+						}
+						if (rCorrectDropCount==2) {
+							document.getElementById("divPicDisable").style.display = "block";
+							document.getElementById("divCorrectTextPanel").style.display = "block";
+						}
+					}
+				});
+			}
+
+			function doFillSlide5BotText1() {
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:65px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:64px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="115" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:310px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:228px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:530px; top:193px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="70" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide5BotText2() {
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:63px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:285px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:283px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:530px; top:193px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="65" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide5BotText3() {
+				rHTML += '<div id="divCommon_DivBotText_7" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:63px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_7" name="divCommon_ImgBotText" width="75" height="auto" src="images/img_bottext_7.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_8" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:56px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_8" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_8.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:310px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:228px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:508px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:507px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="113" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide5BotText4() {
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:63px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:62px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:285px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:283px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:535px; top:193px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide5BotText5() {
+				rHTML += '<div id="divCommon_DivBotText_9" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:63px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_9" name="divCommon_ImgBotText" width="75" height="auto" src="images/img_bottext_9.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_10" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:62px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_10" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_10.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:310px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:228px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="95" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:508px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:507px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="113" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+			}
+			function doShowSlide5() {
+				document.getElementById("divBtnBack").style.display = "inline-block";
+				document.getElementById("divBtnReplay").style.display = "inline-block";
+				document.getElementById("divBtnNext").style.display = "inline-block";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "none";
+				document.getElementById("divBtnHome").style.display = "inline-block";
+				document.getElementById("divBtnBackArrow").style.display = "inline-block";
+				document.getElementById("divBtnNextArrow").style.display = "inline-block";
+				document.getElementById("divQuestionMark").style.display = "none";
+				
+				rCorrectDropCount = 0;
+				document.getElementById("divCommon").innerHTML = "";
+				rHTML = "";
+				rHTML += '<div id="divCommon_Div_1" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:230px; top:85px;">';
+					rHTML += '<img id="divCommon_ImgMain_1" name="divCommon_ImgMain" width="auto" height="100" src="images/img_main_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_Div_2" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:275px; top:5px;">';
+					rHTML += '<img id="divCommon_ImgBubble_2" name="divCommon_ImgBubble" width="auto" height="100" src="images/img_bubble_1.png" />';
+				rHTML += '</div>';
+
+				rCorrectDropCount = 0;
+				rRndNum = doGetRandomNum(1, 5);
+				switch (rRndNum) {
+					case 1:
+						doFillSlide5BotText1();
+						break;
+					case 2:
+						doFillSlide5BotText2();
+						break;
+					case 3:
+						doFillSlide5BotText3();
+						break;
+					case 4:
+						doFillSlide5BotText4();
+						break;
+					case 5:
+						doFillSlide5BotText5();
+						break;
+					default:
+						break;
+				}
+			
+				rHTML += '<div id="divCommon_DivCorrectDropText_1" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:320px; top:20px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_1" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivCorrectDropText_2" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:318px; top:50px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_2" name="divCommon_ImgBotText" width="115" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+
+				document.getElementById("divCorrectTextPanel").style.left = "500px";
+				document.getElementById("divCorrectTextPanel").style.top = "10px";
+
+				document.getElementById("divCommon").innerHTML = rHTML;
+				document.getElementById("divCommon").style.display = "block";
+
+				$(".clsBotText").draggable({
+					axis: "x, y", containment: "#divCommon", revert: true,
+					drag: function(event, ui) {
+						for (var i=1; i<=18; i++) {
+							if (document.getElementById("divCommon_DivBotText_" + i)!=null && document.getElementById("divCommon_DivBotText_" + i)!=undefined && document.getElementById("divCommon_DivBotText_" + i)!="") {
+								document.getElementById("divCommon_DivBotText_"+i).style.zIndex = "auto";
+							}
+						}
+						document.getElementById(this.id).style.zIndex = 10000;
+					}
+				});
+
+				$("#divCommon_Div_2").droppable({
+					drop: function(event, ui) {
+						var rDragName = "";
+						var rDropName = "";
+						rDragName = ui.draggable.attr("id");
+						rDropName = this.id;
+						if (rDragName=="divCommon_DivBotText_3") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_1").style.display = "block";
+						}
+						if (rDragName=="divCommon_DivBotText_4") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_2").style.display = "block";
+						}
+						if (rCorrectDropCount==2) {
+							document.getElementById("divPicDisable").style.display = "block";
+							document.getElementById("divCorrectTextPanel").style.display = "block";
+						}
+					}
+				});
+			}
+
+			function doFillSlide6BotText1() {
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:55px; top:205px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="97" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:40px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:210px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:302px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="85" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:508px; top:205px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:500px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="105" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide6BotText2() {
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:67px; top:185px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:60px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="115" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:305px; top:185px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:295px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_5" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:535px; top:185px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_5" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_6" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:530px; top:228px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_6" name="divCommon_ImgBotText" width="100" height="auto" src="images/img_bottext_6.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide6BotText3() {
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:63px; top:188px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:62px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_3" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:285px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_3" name="divCommon_ImgBotText" width="115" height="auto" src="images/img_bottext_3.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_4" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:283px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_4" name="divCommon_ImgBotText" width="120" height="auto" src="images/img_bottext_4.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:535px; top:193px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:525px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="115" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide6BotText4() {
+				rHTML += '<div id="divCommon_DivBotText_9" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:75px; top:190px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_9" name="divCommon_ImgBotText" width="93" height="auto" src="images/img_bottext_9.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_10" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:75px; top:225px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_10" name="divCommon_ImgBotText" width="93" height="auto" src="images/img_bottext_10.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_1" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:322px; top:192px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_1.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_2" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:310px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_2" name="divCommon_ImgBotText" width="110" height="auto" src="images/img_bottext_2.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:535px; top:193px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:520px; top:230px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="120" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+			}
+
+			function doFillSlide6BotText5() {
+				rHTML += '<div id="divCommon_DivBotText_17" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:50px; top:205px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_17" name="divCommon_ImgBotText" width="97" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_18" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:37px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_18" name="divCommon_ImgBotText" width="125" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_15" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:210px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_15" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_15.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_16" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:300px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_16" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_16.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_7" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:535px; top:210px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_7" name="divCommon_ImgBotText" width="80" height="auto" src="images/img_bottext_7.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivBotText_8" name="divCommon_DivBotText" class="clsBotText" style="position:absolute; width:auto; height:auto; left:530px; top:250px; cursor:pointer;">';
+					rHTML += '<img id="divCommon_ImgBotText_8" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_8.png" />';
+				rHTML += '</div>';
+
+			}
+			function doShowSlide6() {
+				document.getElementById("divBtnBack").style.display = "inline-block";
+				document.getElementById("divBtnReplay").style.display = "inline-block";
+				document.getElementById("divBtnNext").style.display = "none";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "none";
+				document.getElementById("divBtnHome").style.display = "inline-block";
+				document.getElementById("divBtnBackArrow").style.display = "inline-block";
+				document.getElementById("divBtnNextArrow").style.display = "inline-block";
+				document.getElementById("divQuestionMark").style.display = "none";
+				
+				rCorrectDropCount = 0;
+				document.getElementById("divCommon").innerHTML = "";
+				rHTML = "";
+				rHTML += '<div id="divCommon_Div_1" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:200px; top:110px;">';
+					rHTML += '<img id="divCommon_ImgMain_1" name="divCommon_ImgMain" width="auto" height="85" src="images/img_main_5.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_Div_2" name="divCommon_Div" style="position:absolute; width:auto; height:auto; left:235px; top:5px;">';
+					rHTML += '<img id="divCommon_ImgBubble_2" name="divCommon_ImgBubble" width="auto" height="125" src="images/img_bubble_1.png" />';
+				rHTML += '</div>';
+
+				rCorrectDropCount = 0;
+				rRndNum = doGetRandomNum(1, 5);
+				switch (rRndNum) {
+					case 1:
+						doFillSlide6BotText1();
+						break;
+					case 2:
+						doFillSlide6BotText2();
+						break;
+					case 3:
+						doFillSlide6BotText3();
+						break;
+					case 4:
+						doFillSlide6BotText4();
+						break;
+					case 5:
+						doFillSlide6BotText5();
+						break;
+					default:
+						break;
+				}
+			
+				rHTML += '<div id="divCommon_DivCorrectDropText_1" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:315px; top:20px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_1" name="divCommon_ImgBotText" width="90" height="auto" src="images/img_bottext_17.png" />';
+				rHTML += '</div>';
+				rHTML += '<div id="divCommon_DivCorrectDropText_2" name="divCommon_DivBotText" style="position:absolute; width:auto; height:auto; left:300px; top:65px; display:none;">';
+					rHTML += '<img id="divCommon_ImgCorrectDropText_2" name="divCommon_ImgBotText" width="120" height="auto" src="images/img_bottext_18.png" />';
+				rHTML += '</div>';
+
+				document.getElementById("divCorrectTextPanel").style.left = "510px";
+				document.getElementById("divCorrectTextPanel").style.top = "20px";
+
+				document.getElementById("divCommon").innerHTML = rHTML;
+				document.getElementById("divCommon").style.display = "block";
+
+				$(".clsBotText").draggable({
+					axis: "x, y", containment: "#divCommon", revert: true,
+					drag: function(event, ui) {
+						for (var i=1; i<=18; i++) {
+							if (document.getElementById("divCommon_DivBotText_" + i)!=null && document.getElementById("divCommon_DivBotText_" + i)!=undefined && document.getElementById("divCommon_DivBotText_" + i)!="") {
+								document.getElementById("divCommon_DivBotText_"+i).style.zIndex = "auto";
+							}
+						}
+						document.getElementById(this.id).style.zIndex = 10000;
+					}
+				});
+
+				$("#divCommon_Div_2").droppable({
+					drop: function(event, ui) {
+						var rDragName = "";
+						var rDropName = "";
+						rDragName = ui.draggable.attr("id");
+						rDropName = this.id;
+						if (rDragName=="divCommon_DivBotText_17") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_1").style.display = "block";
+						}
+						if (rDragName=="divCommon_DivBotText_18") {
+							rCorrectDropCount++;
+							document.getElementById(rDragName).style.display = "none";
+							document.getElementById("divCommon_DivCorrectDropText_2").style.display = "block";
+						}
+						if (rCorrectDropCount==2) {
+							document.getElementById("divPicDisable").style.display = "block";
+							document.getElementById("divCorrectTextPanel").style.display = "block";
+						}
+					}
+				});
+			}
+
+			doSetAndShowHideMainDiv(rCurSlideId);
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

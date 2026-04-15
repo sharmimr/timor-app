@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rRndNum = 0; 
+			var rCorrectDisplayNum = 0;
+			
+			var myTimeout_1 = 0;
+			clearTimeout(myTimeout_1);
+			
+			var myTimeout_2 = 0;
+			clearTimeout(myTimeout_2);
+			
+			var myTimeout_3 = 0;
+			clearTimeout(myTimeout_3);
+
+			var myTimeout_4 = 0;
+			clearTimeout(myTimeout_4);
+				
+			function doGetRandomNum(min, max) {
+			  return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+			
+			function doResetAct() {
+				var rLen = document.getElementsByName("divImageMain").length;
+				for (var i=0; i<rLen; i++) {
+					document.getElementsByName("divImageMain")[i].style.display = "none";
+				}
+				
+				rLen = document.getElementsByName("divImageNumber").length;
+				for (var i=0; i<rLen; i++) {
+					document.getElementsByName("divImageNumber")[i].style.display = "none";
+				}
+
+				document.getElementById("divQuestionMark").style.display = "none";
+				document.getElementById("divAnsNum").style.display = "none";
+				document.getElementById("divNextArrowSmall").style.display = "none";
+
+				rRndNum = doGetRandomNum(4, 10);
+				rCorrectDisplayNum = rRndNum;
+				
+				for (var i=1; i<=rRndNum; i++) {
+					document.getElementById("divImageMain_" + i).style.display = "block";
+				}
+
+				/*
+				rLen = document.getElementsByName("divImageNumber").length;
+				for (var i=0; i<rLen; i++) {
+					document.getElementsByName("divImageNumber")[i].style.opacity = 1;
+					document.getElementsByName("divImageNumber")[i].style.display = "block";
+				}
+				*/
+				
+				myTimeout_1 = setTimeout(
+					function() {
+						document.getElementById("divImageNumber_1").style.opacity = 1;
+						document.getElementById("divImageNumber_1").style.display = "block";					
+						fadeOut(document.getElementById("divImageNumber_1"), 1000);
+					}, 1
+				);				
+				myTimeout_2 = setTimeout(
+					function() {
+						document.getElementById("divImageNumber_2").style.opacity = 1;
+						document.getElementById("divImageNumber_2").style.display = "block";					
+						fadeOut(document.getElementById("divImageNumber_2"), 1000);
+					}, 1000
+				);
+				myTimeout_3 = setTimeout(
+					function() {
+						document.getElementById("divImageNumber_3").style.opacity = 1;
+						document.getElementById("divImageNumber_3").style.display = "block";					
+						fadeOut(document.getElementById("divImageNumber_3"), 1000);
+					}, 2000
+				);
+				myTimeout_4 = setTimeout(
+					function() {
+						document.getElementById("divImageNumber_4").style.opacity = 1;
+						document.getElementById("divImageNumber_4").style.display = "block";					
+						fadeOut(document.getElementById("divImageNumber_4"), 1000);
+					}, 3000
+				);
+				/*
+				setTimeout(
+					function() {
+						document.getElementById("divQuestionMark").style.display = "block";
+					}, 4000
+				);
+				*/
+				document.getElementById("divQuestionMark").style.display = "block";
+			}
+			
+			var rShowNum = true;
+			function doShowAnswer(rObj) {
+				rShowNum = false;
+				myTimeout_1 = 0;
+				clearTimeout(myTimeout_1);
+				
+				myTimeout_2 = 0;
+				clearTimeout(myTimeout_2);
+				
+				myTimeout_3 = 0;
+				clearTimeout(myTimeout_3);
+
+				myTimeout_4 = 0;
+				clearTimeout(myTimeout_4);
+				
+				var rLen = document.getElementsByName("divImageNumber").length;
+
+				for (var i=0; i<rLen; i++) {
+					document.getElementsByName("divImageNumber")[i].style.opacity = 0;
+					document.getElementsByName("divImageNumber")[i].style.display = "none";
+				}			
+				document.getElementById("divQuestionMark").style.display = "none";
+				document.getElementById("imgAnsNum").src = "images/ans_num_" + rCorrectDisplayNum + ".png";
+				document.getElementById("divAnsNum").style.display = "block";
+				document.getElementById("divNextArrowSmall").style.display = "block";
+			}
+			
+			function fadeOut(elem, ms) {
+				if	(! elem)
+					return;
+
+				if	(ms) {
+					var opacity = 1;
+					var timer = setInterval( function() {
+						opacity -= 50 / ms;
+						if	(opacity <= 0) {
+							clearInterval(timer);
+							opacity = 0;
+							elem.style.display = "none";
+							//elem.style.visibility = "hidden";
+						}
+						elem.style.opacity = opacity;
+						elem.style.filter = "alpha(opacity=" + opacity * 100 + ")";
+					}, 50 );
+				} else {
+					elem.style.opacity = 0;
+					elem.style.filter = "alpha(opacity=0)";
+					elem.style.display = "none";
+					//elem.style.visibility = "hidden";
+					
+				}
+			}				
+		</script>		
+	</head>
+
+	<body bgcolor="#ffffff" style="zoom:57%">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:1280px; height:720px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="font-size:200%;">Ai-nanás iha hira?</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:60px; border:0px solid green;">
+									<div id="divMainPanel" name="divMainPanel" style="position:absolute; width:1280px; height:450px; left:0px; top:0px; border:0px solid green;">
+										<div id="divImageMain_1" name="divImageMain" style="position:absolute; width:535; height:425px; left:25px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_1" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageNumber_1" name="divImageNumber" style="position:absolute; width:535; height:425px; left:35px; top:40px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActumber_1" name="imgActumber_1" width="auto" height="75" src="images/num_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>										
+										<div id="divImageMain_2" name="divImageMain" style="position:absolute; width:535; height:425px; left:125px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_2" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageNumber_2" name="divImageNumber" style="position:absolute; width:535; height:425px; left:130px; top:40px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActumber_2" name="imgActumber" width="auto" height="75" src="images/num_2.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>										
+										<div id="divImageMain_3" name="divImageMain" style="position:absolute; width:535; height:425px; left:225px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_3" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageNumber_3" name="divImageNumber" style="position:absolute; width:535; height:425px; left:235px; top:40px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActumber_3" name="imgActumber" width="auto" height="75" src="images/num_3.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>										
+										<div id="divImageMain_4" name="divImageMain" style="position:absolute; width:535; height:425px; left:325px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_4" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageNumber_4" name="divImageNumber" style="position:absolute; width:535; height:425px; left:330px; top:40px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActumber_4" name="imgActumber" width="auto" height="75" src="images/num_4.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>										
+										<div id="divImageMain_5" name="divImageMain" style="position:absolute; width:535; height:425px; left:425px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_5" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageMain_6" name="divImageMain" style="position:absolute; width:535; height:425px; left:525px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_6" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageMain_7" name="divImageMain" style="position:absolute; width:535; height:425px; left:625px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_7" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageMain_8" name="divImageMain" style="position:absolute; width:535; height:425px; left:725px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_8" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageMain_9" name="divImageMain" style="position:absolute; width:535; height:425px; left:825px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_9" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divImageMain_10" name="divImageMain" style="position:absolute; width:535; height:425px; left:925px; top:0px; border:0px solid blue; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div>
+															<img id="imgActMainPicture_10" name="imgActMainPicture" width="auto" height="200" src="images/image_1.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>									
+										<div id="divQuestionMark" name="divQuestionMark" style="position:absolute; width:535; height:425px; left:1050px; top:-10px; border:0px solid green; cursor:pointer; display:none;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div style="position:relative; top:0px; cursor:pointer; display:inline-block;" onclick="javascript:doShowAnswer(this);">
+															<img id="imgQuestionMark" width="100" height="auto" src="../../images/question_mark_small.gif" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>
+										<div id="divAnsNum" name="divAnsNum" style="position:absolute; width:535; height:420px; left:1050px; top:20px; border:0px solid green; cursor:default; display:block;">
+											<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div style="position:relative; top:0px; cursor:pointer; display:inline-block;">
+															<img id="imgAnsNum" width="70" height="auto" src="images/ans_num_2.png" />
+														</div>
+													</td>
+												</tr>
+											</table>										
+										</div>										
+									</div>
+								</div>
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:175px; border:0px solid #333333; cursor:default; display:block;">
+									<div id="divNextArrowSmall" name="divNextArrowSmall" style="position:relative; top:3px; border:0px solid #666666; cursor:default; display:none;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="cursor:pointer; display:inline-block;" onclick="javascript:doResetAct();">
+														<img width="auto" height="50" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>								
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:45px; top:10px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="auto" height="75" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="position:relative; top:190px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="auto" height="75" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="position:relative; top:190px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="auto" height="75" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="position:relative; top:240px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="auto" height="135" src="../../images/home.png" />
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetAct();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

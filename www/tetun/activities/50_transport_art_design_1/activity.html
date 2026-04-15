@@ -1,0 +1,1819 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Timor Home App</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../css/jqueryui-style.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+
+    <style>
+      .clsImageCenter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0px solid #333333;
+      }
+      .clsColorBox {
+        width: auto;
+        height: 45px;
+        border: 0px solid #ff0000;
+      }
+    </style>
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
+
+    <script language="javascript">
+      var rArrDivList = ["div_Title", "div_1", "div_2", "div_3", "div_4"];
+      var rListIndex = 0;
+      var rPickedColor = "default";
+      
+      // Tracking variables
+      var rObjectCompletionStatus = [false, false, false, false]; // Track completion for 4 objects
+      var rObjectAttemptedStatus = [false, false, false, false]; // Track if object has any color
+      var rTotalObjects = 4;
+      var rObjectColors = {}; // Store colors for each object part
+
+      function doNavigateAct(rAction) {
+        // Save current object state before navigating away
+        if (rListIndex > 0) {
+          saveCurrentObjectState();
+        }
+
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+
+        if (rAction.toUpperCase() == "N") {
+          rListIndex++;
+        } else {
+          rListIndex--;
+        }
+
+        if (rListIndex <= 0) rListIndex = 0;
+        if (rListIndex >= rArrDivList.length - 1)
+          rListIndex = rArrDivList.length - 1;
+
+        if (rListIndex <= 0) {
+          document.getElementById("divQuestionMark").style.display = "block";
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        } else if (rListIndex >= rArrDivList.length - 1) {
+          document.getElementById("divBtnReplay").style.display =
+            "inline-block";
+          document.getElementById("divBtnBack").style.display = "inline-block";
+          document.getElementById("divBtnNext").style.display = "none";
+        } else {
+          document.getElementById("divBtnReplay").style.display =
+            "inline-block";
+          document.getElementById("divBtnBack").style.display = "inline-block";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        }
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+
+        // Load saved colors for the new object
+        if (rListIndex > 0) {
+          loadObjectState(rListIndex);
+          
+          // Update completion status display
+          updateCompletionDisplay();
+        } else {
+          // Title page
+          document.getElementById("divCorrectTextPanel").style.display = "none";
+          document.getElementById("divQuestionMark").style.display = "block";
+        }
+
+        // Only reset color panel, not object colors
+        doResetColorPanel();
+        
+        // Display current tracking status in console (for debugging)
+        displayTrackingStatus();
+      }
+
+      // Save current object state
+      function saveCurrentObjectState() {
+        if (rListIndex <= 0) return; // Don't save title page
+        
+        var currentDiv = document.getElementById(rArrDivList[rListIndex]);
+        var images = currentDiv.getElementsByTagName("img");
+        var objectIndex = rListIndex - 1;
+        
+        // Create storage for this object if it doesn't exist
+        if (!rObjectColors[objectIndex]) {
+          rObjectColors[objectIndex] = {};
+        }
+        
+        var hasAnyColor = false;
+        
+        // Save colors for each part
+        for (var i = 0; i < images.length; i++) {
+          if (images[i].getAttribute("name") == "imgObjectPart") {
+            var rImageId = images[i].id;
+            var rImageSrc = images[i].src;
+            
+            // Extract color from src path
+            var colorMatch = rImageSrc.match(/\/([^\/]+)\/\d+\.png$/);
+            if (colorMatch && colorMatch[1] !== 'default') {
+              rObjectColors[objectIndex][rImageId] = colorMatch[1];
+              hasAnyColor = true;
+            } else {
+              rObjectColors[objectIndex][rImageId] = 'default';
+            }
+          }
+        }
+        
+        // Update attempted status
+        rObjectAttemptedStatus[objectIndex] = hasAnyColor;
+        
+        // Update completion status
+        checkCurrentObjectCompletion();
+      }
+
+      // Load object state
+      function loadObjectState(index) {
+        if (index <= 0) return; // Don't load for title page
+        
+        var currentDiv = document.getElementById(rArrDivList[index]);
+        var images = currentDiv.getElementsByTagName("img");
+        var objectIndex = index - 1;
+        
+        // Load colors for each part
+        for (var i = 0; i < images.length; i++) {
+          if (images[i].getAttribute("name") == "imgObjectPart") {
+            var rImageId = images[i].id;
+            var rTempSpl = rImageId.split("_");
+            
+            var rImageNum = rTempSpl[0].substring(5);
+            var rObjectName = rTempSpl[1];
+            
+            // Check if we have a saved color for this part
+            var savedColor = 'default';
+            if (rObjectColors[objectIndex] && rObjectColors[objectIndex][rImageId]) {
+              savedColor = rObjectColors[objectIndex][rImageId];
+            }
+            
+            var rImageSrc = "images/" + rObjectName + "/" + savedColor + "/" + rImageNum + ".png";
+            images[i].src = rImageSrc;
+          }
+        }
+      }
+
+      function doPickColor(rObj, rColor) {
+        if (rObj.style.cursor == "pointer") {
+          doResetColorPanel();
+          rObj.style.border = "5px solid black";
+          rObj.style.cursor = "default";
+          rPickedColor = rColor;
+        }
+      }
+
+      function doFillColor(rObj) {
+        if (rObj.style.cursor == "pointer" && rPickedColor != "default") {
+          var rImgElm = rObj.getElementsByTagName("img")[0];
+          var rImageId = rImgElm.id;
+          var rTempSpl = rImageId.split("_");
+
+          var rImageNum = rTempSpl[0].substring(5);
+          var rObjectName = rTempSpl[1];
+
+          var rImageSrc =
+            "images/" +
+            rObjectName +
+            "/" +
+            rPickedColor +
+            "/" +
+            rImageNum +
+            ".png";
+
+          rImgElm.src = rImageSrc;
+          
+          // Save the color immediately
+          if (rListIndex > 0) {
+            var objectIndex = rListIndex - 1;
+            if (!rObjectColors[objectIndex]) {
+              rObjectColors[objectIndex] = {};
+            }
+            rObjectColors[objectIndex][rImageId] = rPickedColor;
+            
+            // Mark as attempted
+            rObjectAttemptedStatus[objectIndex] = true;
+          }
+
+          doResetColorPanel();
+          checkCurrentObjectCompletion();
+        }
+      }
+
+      function checkCurrentObjectCompletion() {
+        if (rListIndex <= 0) return false;
+        
+        var currentDiv = document.getElementById(rArrDivList[rListIndex]);
+        var images = currentDiv.getElementsByTagName("img");
+        var currentObjectIndex = rListIndex - 1;
+
+        var isCurrentObjectComplete = true;
+        var hasAnyColor = false;
+        
+        for (var i = 0; i < images.length; i++) {
+          if (images[i].getAttribute("name") == "imgObjectPart") {
+            var rImageSrc = images[i].src;
+
+            if (rImageSrc.includes("/default/")) {
+              isCurrentObjectComplete = false;
+            } else {
+              hasAnyColor = true;
+            }
+          }
+        }
+
+        // Update completion and attempted status for current object
+        rObjectCompletionStatus[currentObjectIndex] = isCurrentObjectComplete;
+        rObjectAttemptedStatus[currentObjectIndex] = hasAnyColor;
+
+        // Update display
+        updateCompletionDisplay();
+
+        return isCurrentObjectComplete;
+      }
+
+      // New function to handle completion display
+      function updateCompletionDisplay() {
+        var allComplete = checkAllObjectsComplete();
+        var completionMessage = document.getElementById("divCorrectTextPanel").querySelector('.clsPageText');
+        
+        if (rListIndex > 0) {
+          var currentObjectIndex = rListIndex - 1;
+          
+          if (rObjectCompletionStatus[currentObjectIndex]) {
+            // Current object is complete
+            document.getElementById("divQuestionMark").style.display = "none";
+            document.getElementById("divCorrectTextPanel").style.display = "block";
+
+            if (allComplete) {
+              completionMessage.innerHTML = "loos";
+            } else {
+              completionMessage.innerHTML = "";
+            }
+          } else {
+            // Current object is not complete
+            document.getElementById("divQuestionMark").style.display = "block";
+            document.getElementById("divCorrectTextPanel").style.display = "none";
+          }
+        } else {
+          // Title page
+          document.getElementById("divQuestionMark").style.display = "block";
+          document.getElementById("divCorrectTextPanel").style.display = "none";
+        }
+      }
+
+      function checkAllObjectsComplete() {
+        var allComplete = true;
+        
+        for (var i = 0; i < rTotalObjects; i++) {
+          if (!rObjectCompletionStatus[i]) {
+            allComplete = false;
+            break;
+          }
+        }
+
+        return allComplete;
+      }
+
+      function displayTrackingStatus() {
+        console.log("=== Tracking Status ===");
+        console.log("Current Object: " + (rListIndex > 0 ? "Object " + rListIndex : "Title Page"));
+        
+        console.log("\nCompletion Status:");
+        for (var i = 0; i < rTotalObjects; i++) {
+          console.log("Object " + (i+1) + ": " + (rObjectCompletionStatus[i] ? "✓ COMPLETE" : "✗ Incomplete"));
+        }
+        
+        console.log("\nAttempted Status:");
+        for (var i = 0; i < rTotalObjects; i++) {
+          console.log("Object " + (i+1) + ": " + (rObjectAttemptedStatus[i] ? "🎨 Attempted" : "⭕ Not attempted"));
+        }
+        
+        var anyAttempted = false;
+        for (var i = 0; i < rTotalObjects; i++) {
+          if (rObjectAttemptedStatus[i]) {
+            anyAttempted = true;
+            break;
+          }
+        }
+        
+        var allComplete = checkAllObjectsComplete();
+        
+        console.log("\nOverall Status:");
+        if (allComplete) {
+          console.log("🏆 COMPLETED - All objects fully colored!");
+        } else if (anyAttempted) {
+          console.log("📝 ATTEMPTED - Some objects have colors");
+        } else {
+          console.log("⭕ NOT STARTED - No colors applied yet");
+        }
+        console.log("=====================");
+      }
+
+      function doResetColorPanel() {
+        rPickedColor = "default";
+        document.getElementById("divActColorPanel").style.display = "none";
+
+        var rLen = document.getElementsByName("divActColor").length;
+
+        for (var i = 0; i < rLen; i++) {
+          document.getElementsByName("divActColor")[i].style.border =
+            "2px solid white";
+          document.getElementsByName("divActColor")[i].style.cursor = "pointer";
+        }
+
+        if (rListIndex > 0) {
+          document.getElementById("divActColorPanel").style.display = "block";
+        }
+      }
+
+      function doResetObjectPartsColor() {
+        var currentDiv = document.getElementById(rArrDivList[rListIndex]);
+        var images = currentDiv.getElementsByTagName("img");
+
+        for (var i = 0; i < images.length; i++) {
+          if (images[i].getAttribute("name") == "imgObjectPart") {
+            var rImageId = images[i].id;
+            var rTempSpl = rImageId.split("_");
+
+            var rImageNum = rTempSpl[0].substring(5);
+            var rObjectName = rTempSpl[1];
+
+            var rImageSrc =
+              "images/" + rObjectName + "/default/" + rImageNum + ".png";
+
+            images[i].src = rImageSrc;
+            
+            // Update stored colors
+            if (rListIndex > 0) {
+              var objectIndex = rListIndex - 1;
+              if (rObjectColors[objectIndex]) {
+                rObjectColors[objectIndex][rImageId] = 'default';
+              }
+            }
+          }
+        }
+        
+        // Update completion and attempted status after reset
+        if (rListIndex > 0) {
+          var objectIndex = rListIndex - 1;
+          rObjectCompletionStatus[objectIndex] = false;
+          rObjectAttemptedStatus[objectIndex] = false;
+          updateCompletionDisplay();
+        }
+      }
+
+      function doResetActivity() {
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+
+        rListIndex = 0;
+        
+        // Reset all tracking variables
+        for (var i = 0; i < rTotalObjects; i++) {
+          rObjectCompletionStatus[i] = false;
+          rObjectAttemptedStatus[i] = false;
+        }
+        rObjectColors = {};
+
+        document.getElementById("divBtnReplay").style.display = "none";
+        document.getElementById("divCorrectTextPanel").style.display = "none";
+        document.getElementById("divBtnBack").style.display = "none";
+        document.getElementById("divBtnNext").style.display = "inline-block";
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+
+        doResetObjectPartsColor();
+        doResetColorPanel();
+        
+        // Reset completion message
+        var completionMessage = document.getElementById("divCorrectTextPanel").querySelector('.clsPageText');
+        if (completionMessage) {
+          completionMessage.innerHTML = "loos";
+        }
+        
+        console.log("Activity reset - All tracking cleared");
+        displayTrackingStatus();
+      }
+    </script>
+  </head>
+
+  <body bgcolor="#000000">
+    <div
+      id="divWrapper"
+      name="divWrapper"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        border: 0px solid red;
+      "
+    >
+      <table
+        width="100%"
+        height="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tr>
+          <td width="100%" height="100%" align="center" valign="middle">
+            <div
+              id="divContainer"
+              name="divContainer"
+              style="
+                position: relative;
+                width: 730px;
+                height: 370px;
+                background-color: #ffffff;
+                border: 0px solid blue;
+              "
+            >
+              <div
+                id="divQuestionMark"
+                name="divQuestionMark"
+                style="display: block"
+              >
+                <img
+                  src="../../images/question_mark.png"
+                  style="height: 30px; position: relative; top: 10px"
+                />
+              </div>
+              <div
+                id="divCorrectTextPanel"
+                name="divCorrectTextPanel"
+                style="
+                  position: absolute;
+                  left: 320px;
+                  top: 10px;
+                  display: none;
+                "
+              >
+                <div
+                  class="clsPageText"
+                  style="position: relative; display: inline-block; top: -10px"
+                >
+                Loos
+                </div>
+                <div style="width: 5px; display: inline-block"></div>
+                <div style="display: inline-block">
+                  <img width="auto" height="40" src="../../images/tick.png" />
+                </div>
+              </div>
+              <div
+                id="divMainPanel"
+                name="divMainPanel"
+                style="
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  left: 0px;
+                  top: 0px;
+                  background: transparent;
+                  border: 0px solid green;
+                "
+              >
+                <!-- Title Begin -->
+                <div
+                  id="div_Title"
+                  name="div_Title"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <div class="clsSubTitle_2">dezeña transporte</div>
+                  <div
+                    class="clsImageCenter"
+                    style="
+                      position: absolute;
+                      width: 60%;
+                      text-align: center;
+                      top: 60px;
+                      border: 0px solid #333333;
+                    "
+                  >
+                    <img src="images/van.png" width="auto" height="190" />
+                  </div>
+                  <div
+                    class="clsImageCenter"
+                    style="
+                      position: absolute;
+                      width: 30%;
+                      left: 60%;
+                      text-align: center;
+                      top: 60px;
+                      border: 0px solid #333333;
+                    "
+                  >
+                    <img
+                      src="images/color_palate.png"
+                      width="auto"
+                      height="180"
+                    />
+                  </div>
+                </div>
+                <!-- Title End -->
+
+                <!-- Object and Color Panel Begin -->
+                <div
+                  id="divActObjectAndColorPanel"
+                  name="divActObjectAndColorPanel"
+                  style="
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    left: 0px;
+                    top: 0px;
+                    background: transparent;
+                    border: 0px solid green;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="5"
+                    cellpadding="5"
+                    border="0"
+                  >
+                    <!-- Object Panel Begin -->
+                    <tr>
+                      <td width="73%" align="left">
+                        <div
+                          id="divActObjectPanel"
+                          name="divActObjectPanel"
+                          style="
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            left: 0px;
+                            top: 24px;
+                            background: transparent;
+                            border: 0px solid green;
+                          "
+                        >
+                          <!-- Object 1 Begin -->
+                          <div
+                            id="div_1"
+                            name="div_1"
+                            style="
+                              position: absolute;
+                              width: 100%;
+                              height: auto;
+                              left: 0px;
+                              top: 0px;
+                              border: 0px solid #333333;
+                              display: none;
+                            "
+                          >
+                            <div
+                              style="
+                                position: relative;
+                                width: 100%;
+                                height: auto;
+                                border: 0px solid #333333;
+                              "
+                            >
+                              <div
+                                style="
+                                  position: relative;
+                                  left: 47px;
+                                  top: 5px;
+                                  cursor: default;
+                                  display: block;
+                                  border: 0px solid red;
+                                "
+                              >
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 0px;
+                                    top: 0px;
+                                    border: 0px solid #ff0000;
+                                  "
+                                >
+                                  <img
+                                    width="436"
+                                    height="240"
+                                    src="images/object1/img_object1_main.png"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 26px;
+                                    top: 2px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image1_object1"
+                                    name="imgObjectPart"
+                                    width="317"
+                                    height="20"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 3px;
+                                    top: 22px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image2_object1"
+                                    name="imgObjectPart"
+                                    width="188"
+                                    height="144"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 190px;
+                                    top: 22px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image3_object1"
+                                    name="imgObjectPart"
+                                    width="84"
+                                    height="144"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 274px;
+                                    top: 22px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image4_object1"
+                                    name="imgObjectPart"
+                                    width="151"
+                                    height="144"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 4px;
+                                    top: 166px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image5_object1"
+                                    name="imgObjectPart"
+                                    width="425"
+                                    height="35"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 43px;
+                                    top: 23px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image6_object1"
+                                    name="imgObjectPart"
+                                    width="82"
+                                    height="67"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 131px;
+                                    top: 23px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image7_object1"
+                                    name="imgObjectPart"
+                                    width="53"
+                                    height="67"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 283px;
+                                    top: 31px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image8_object1"
+                                    name="imgObjectPart"
+                                    width="110"
+                                    height="70"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 1px;
+                                    top: 114px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image9_object1"
+                                    name="imgObjectPart"
+                                    width="14"
+                                    height="38"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 414px;
+                                    top: 128px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image10_object1"
+                                    name="imgObjectPart"
+                                    width="10"
+                                    height="19"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 423px;
+                                    top: 135px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image11_object1"
+                                    name="imgObjectPart"
+                                    width="11"
+                                    height="62"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 76px;
+                                    top: 148px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image12_object1"
+                                    name="imgObjectPart"
+                                    width="79"
+                                    height="80"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 292px;
+                                    top: 157px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image13_object1"
+                                    name="imgObjectPart"
+                                    width="80"
+                                    height="80"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 363px;
+                                    top: 80px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image14_object1"
+                                    name="imgObjectPart"
+                                    width="22"
+                                    height="20"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 94px;
+                                    top: 164px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image15_object1"
+                                    name="imgObjectPart"
+                                    width="48"
+                                    height="48"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 311px;
+                                    top: 174px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image16_object1"
+                                    name="imgObjectPart"
+                                    width="42"
+                                    height="47"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Object 1 End -->
+
+                          <!-- Object 2 Begin -->
+                          <div
+                            id="div_2"
+                            name="div_2"
+                            style="
+                              position: absolute;
+                              width: 100%;
+                              height: auto;
+                              left: 0px;
+                              top: 0px;
+                              border: 0px solid #333333;
+                              display: none;
+                            "
+                          >
+                            <div
+                              style="
+                                position: relative;
+                                width: 100%;
+                                height: auto;
+                                border: 0px solid #333333;
+                              "
+                            >
+                              <div
+                                style="
+                                  position: relative;
+                                  left: 65px;
+                                  top: 13px;
+                                  cursor: default;
+                                  display: block;
+                                  border: 0px solid red;
+                                "
+                              >
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 0px;
+                                    top: 0px;
+                                    border: 0px solid #ff0000;
+                                    display: block;
+                                  "
+                                >
+                                  <img
+                                    width="403"
+                                    height="240"
+                                    src="images/object2/img_object2_main.png"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 174px;
+                                    top: 4px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image1_object2"
+                                    name="imgObjectPart"
+                                    width="225"
+                                    height="108"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 35px;
+                                    top: 13px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image2_object2"
+                                    name="imgObjectPart"
+                                    width="229"
+                                    height="156"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 265px;
+                                    top: 114px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image3_object2"
+                                    name="imgObjectPart"
+                                    width="122"
+                                    height="39"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 5px;
+                                    top: 96px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image4_object2"
+                                    name="imgObjectPart"
+                                    width="119"
+                                    height="79"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 209px;
+                                    top: 71px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image5_object2"
+                                    name="imgObjectPart"
+                                    width="54"
+                                    height="65"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 102px;
+                                    top: 19px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image6_object2"
+                                    name="imgObjectPart"
+                                    width="151"
+                                    height="47"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 304px;
+                                    top: 118px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image7_object2"
+                                    name="imgObjectPart"
+                                    width="77"
+                                    height="48"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Object 2 End -->
+
+                          <!-- Object 3 Begin -->
+                          <div
+                            id="div_3"
+                            name="div_3"
+                            style="
+                              position: absolute;
+                              width: 100%;
+                              height: auto;
+                              left: 0px;
+                              top: 0px;
+                              border: 0px solid #333333;
+                              display: none;
+                            "
+                          >
+                            <div
+                              style="
+                                position: relative;
+                                width: 100%;
+                                height: auto;
+                                border: 0px solid #333333;
+                              "
+                            >
+                              <div
+                                style="
+                                  position: relative;
+                                  left: 120px;
+                                  top: 5px;
+                                  cursor: default;
+                                  display: block;
+                                  border: 0px solid red;
+                                "
+                              >
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 0px;
+                                    top: 0px;
+                                    border: 0px solid #ff0000;
+                                  "
+                                >
+                                  <img
+                                    width="336"
+                                    height="240"
+                                    src="images/object3/img_object3_main.png"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 61px;
+                                    top: 3px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image1_object3"
+                                    name="imgObjectPart"
+                                    width="223"
+                                    height="177"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 3px;
+                                    top: 110px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image2_object3"
+                                    name="imgObjectPart"
+                                    width="163"
+                                    height="110"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 182px;
+                                    top: 22px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image3_object3"
+                                    name="imgObjectPart"
+                                    width="151"
+                                    height="72"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 98px;
+                                    top: 38px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image4_object3"
+                                    name="imgObjectPart"
+                                    width="33"
+                                    height="19"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 32px;
+                                    top: 63px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image5_object3"
+                                    name="imgObjectPart"
+                                    width="47"
+                                    height="27"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 271px;
+                                    top: 106px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image6_object3"
+                                    name="imgObjectPart"
+                                    width="37"
+                                    height="131"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 212px;
+                                    top: 91px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image7_object3"
+                                    name="imgObjectPart"
+                                    width="46"
+                                    height="38"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Object 3 End -->
+
+                          <!-- Object 4 Begin -->
+                          <div
+                            id="div_4"
+                            name="div_4"
+                            style="
+                              position: absolute;
+                              width: 100%;
+                              height: auto;
+                              left: 0px;
+                              top: -20px;
+                              border: 0px solid #333333;
+                              display: none;
+                            "
+                          >
+                            <div
+                              style="
+                                position: relative;
+                                width: 100%;
+                                height: auto;
+                                border: 0px solid #333333;
+                              "
+                            >
+                              <div
+                                style="
+                                  position: relative;
+                                  left: 190px;
+                                  top: 5px;
+                                  cursor: default;
+                                  display: block;
+                                  border: 0px solid red;
+                                "
+                              >
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 0px;
+                                    top: 0px;
+                                    border: 0px solid #ff0000;
+                                  "
+                                >
+                                  <img
+                                    width="240"
+                                    height="243"
+                                    src="images/object4/img_object4_main.png"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 18px;
+                                    top: 85px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image1_object4"
+                                    name="imgObjectPart"
+                                    width="137"
+                                    height="111"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 134px;
+                                    top: 108px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image2_object4"
+                                    name="imgObjectPart"
+                                    width="91"
+                                    height="77"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 9px;
+                                    top: 101px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image3_object4"
+                                    name="imgObjectPart"
+                                    width="26"
+                                    height="36"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 24px;
+                                    top: 74px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image4_object4"
+                                    name="imgObjectPart"
+                                    width="87"
+                                    height="32"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 117px;
+                                    top: 60px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image5_object4"
+                                    name="imgObjectPart"
+                                    width="75"
+                                    height="45"
+                                  />
+                                </div>
+                                <div
+                                  style="
+                                    position: absolute;
+                                    left: 105px;
+                                    top: 33px;
+                                    border: 0px solid red;
+                                    display: block;
+                                    cursor: pointer;
+                                  "
+                                  onclick="javascript: doFillColor(this);"
+                                >
+                                  <img
+                                    id="image6_object4"
+                                    name="imgObjectPart"
+                                    width="58"
+                                    height="24"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Object 4 End -->
+                        </div>
+                      </td>
+                      <!-- Object Panel End -->
+
+                      <!-- Color Panel Begin -->
+                      <td width="20%" align="right" valign="top">
+                        <div
+                          id="divActColorPanel"
+                          name="divActColorPanel"
+                          style="
+                            position: relative;
+                            width: 100%;
+                            height: 86%;
+                            left: 0px;
+                            top: 0px;
+                            background: transparent;
+                            border: 0px solid green;
+                            display: block;
+                          "
+                        >
+                          <table width="100%" border="0">
+                            <tr height="0">
+                              <td width="100%" colspan="2"></td>
+                            </tr>
+                            <tr>
+                              <td width="50%" align="right" valign="top">
+                                <div
+                                  id="divActColorBrown"
+                                  name="divActColor"
+                                  style="
+                                    border: 2px solid white;
+                                    cursor: pointer;
+                                  "
+                                  onclick="
+                                    javascript: doPickColor(this, 'brown');
+                                  "
+                                >
+                                  <img
+                                    class="clsColorBox"
+                                    src="images/colors/brown.png"
+                                  />
+                                </div>
+                              </td>
+                              <td width="50%" align="left" valign="top">
+                                <div
+                                  id="divActColorOrange"
+                                  name="divActColor"
+                                  style="
+                                    border: 2px solid white;
+                                    cursor: pointer;
+                                  "
+                                  onclick="
+                                    javascript: doPickColor(this, 'orange');
+                                  "
+                                >
+                                  <img
+                                    class="clsColorBox"
+                                    src="images/colors/orange.png"
+                                  />
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="50%" align="right" valign="top">
+                                <div
+                                  id="divActColorYellow"
+                                  name="divActColor"
+                                  style="
+                                    border: 2px solid white;
+                                    cursor: pointer;
+                                  "
+                                  onclick="
+                                    javascript: doPickColor(this, 'yellow');
+                                  "
+                                >
+                                  <img
+                                    class="clsColorBox"
+                                    src="images/colors/yellow.png"
+                                  />
+                                </div>
+                              </td>
+                              <td width="50%" align="left" valign="top">
+                                <div
+                                  id="divActColorGreen"
+                                  name="divActColor"
+                                  style="
+                                    border: 2px solid white;
+                                    cursor: pointer;
+                                  "
+                                  onclick="
+                                    javascript: doPickColor(this, 'green');
+                                  "
+                                >
+                                  <img
+                                    class="clsColorBox"
+                                    src="images/colors/green.png"
+                                  />
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="50%" align="right" valign="top">
+                                <div
+                                  id="divActColorBlue"
+                                  name="divActColor"
+                                  style="
+                                    border: 2px solid white;
+                                    cursor: pointer;
+                                  "
+                                  onclick="
+                                    javascript: doPickColor(this, 'blue');
+                                  "
+                                >
+                                  <img
+                                    class="clsColorBox"
+                                    src="images/colors/blue.png"
+                                  />
+                                </div>
+                              </td>
+                              <td width="50%" align="left" valign="top">
+                                <div
+                                  id="divActColorPurple"
+                                  name="divActColor"
+                                  style="
+                                    border: 2px solid white;
+                                    cursor: pointer;
+                                  "
+                                  onclick="
+                                    javascript: doPickColor(this, 'purple');
+                                  "
+                                >
+                                  <img
+                                    class="clsColorBox"
+                                    src="images/colors/purple.png"
+                                  />
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td width="50%" align="right" valign="top">
+                                <div
+                                  id="divActColorPink"
+                                  name="divActColor"
+                                  style="
+                                    border: 2px solid white;
+                                    cursor: pointer;
+                                  "
+                                  onclick="
+                                    javascript: doPickColor(this, 'pink');
+                                  "
+                                >
+                                  <img
+                                    class="clsColorBox"
+                                    src="images/colors/pink.png"
+                                  />
+                                </div>
+                              </td>
+                              <td width="50%" align="left" valign="top">
+                                <div
+                                  id="divActColorGray"
+                                  name="divActColor"
+                                  style="
+                                    border: 2px solid white;
+                                    cursor: pointer;
+                                  "
+                                  onclick="
+                                    javascript: doPickColor(this, 'gray');
+                                  "
+                                >
+                                  <img
+                                    class="clsColorBox"
+                                    src="images/colors/gray.png"
+                                  />
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      </td>
+                      <td width="7%"></td>
+                      <!-- Color Panel End -->
+                    </tr>
+                  </table>
+                </div>
+                <!-- Object and Color Panel End -->
+
+                <!--Buttons Begin-->
+                <div
+                  id="divBtnPanel"
+                  name="divBtnPanel"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    bottom: 0px;
+                    border: 0px solid #333333;
+                    display: block;
+                  "
+                >
+                  <div
+                    id="divBtnBack"
+                    name="divBtnBack"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doNavigateAct('P');"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      bottom="-50px"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              class="clsMicroBack"
+                              src="../../images/back_arrow.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      width: 10px;
+                      display: inline-block;
+                    "
+                  ></div>
+                  <div
+                    id="divBtnReplay"
+                    name="divBtnReplay"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doResetActivity();"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block; bottom: -50px">
+                            <img
+                              class="clsMicroReplay"
+                              src="../../images/replay.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      width: 10px;
+                      display: inline-block;
+                    "
+                  ></div>
+                  <div
+                    id="divBtnNext"
+                    name="divBtnNext"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doNavigateAct('N');"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              class="clsMicroNext"
+                              src="../../images/next_arrow.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                id="divMacroBtnNavPanel"
+                name="divMacroBtnNavPanel"
+                style="
+                  position: absolute;
+                  width: 65px;
+                  height: 100%;
+                  right: 0px;
+                  top: 0px;
+                  border: 0px solid red;
+                "
+              >
+                <div
+                  id="divPosterImage"
+                  name="divPosterImage"
+                  class="clsMacroPosterImage"
+                  style="cursor: pointer"
+                >
+                  <img
+                    id="imgPoster"
+                    name="imgPoster"
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+                <div
+                  id="divBtnBackArrow"
+                  name="divBtnBackArrow"
+                  class="clsMacroBack"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'P');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/back_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnNextArrow"
+                  name="divBtnNextArrow"
+                  class="clsMacroNext"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'N');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/next_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnHome"
+                  name="divBtnHome"
+                  class="clsMacroHome"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'H');"
+                >
+                  <img width="100%" height="100%" src="../../images/home.png" />
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script language="javascript">
+      doResetActivity();
+      doResetMainNavButton();
+    </script>
+    <script src="../../activity-tracker.js"></script>
+  </body>
+</html>

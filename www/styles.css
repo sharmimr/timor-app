@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* 🌫️ Blurred dark background */
+.bg {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25)),
+    url("tetun/images/bg.jpeg") center / cover no-repeat;
+  filter: blur(10px) brightness(0.4);
+  transform: scale(1.1);
+}
+
+/* 🎮 Landscape screen area */
+.screen {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 📱 Central panel like image */
+.login-box {
+  width: 80vw;
+  max-width: 520px;
+  min-height: 240px;
+
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25)),
+    url("tetun/images/bg.jpeg") center / cover no-repeat;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #4a90e2;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background: #357bd8;
+}
+
+/* Skip button can reuse same style */
+.skip-btn {
+  background: #6c757d;
+}
+
+.skip-btn:hover {
+  background: #5a6268;
+}
+
+.login-box h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+/* Inputs */
+.login-box input {
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+}
+
+/* Button */
+.login-box button {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  background: #f2cb28;
+  color: rgb(28, 28, 28);
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background: #f9f599;
+}
+
+/* 🌄 Landscape tuning */
+@media (orientation: landscape) and (max-height: 450px) {
+  .login-box {
+    padding: 16px;
+    min-height: 200px;
+  }
+
+  .login-box h2 {
+    font-size: 18px;
+  }
+
+  input,
+  button {
+    font-size: 13px;
+    padding: 8px;
+  }
+}
+.error {
+  color: #ffd2d2;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+input.error-input {
+  outline: 2px solid #ff6b6b;
+}
+/* Shake animation */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+.login-form input {
+  width: 100%;
+  display: block; /* 👈 prevents inline behavior */
+}

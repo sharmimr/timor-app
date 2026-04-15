@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rCountNum = 5;
+			var rArrActList = [{DivList:["divBird_1"], Number:"number_1.png"}, {DivList:["divBird_1", "divBird_2"], Number:"number_2.png"}, {DivList:["divBird_1", "divBird_2", "divBird_3"], Number:"number_3.png"}, {DivList:["divBird_1", "divBird_2", "divBird_3", "divBird_4"], Number:"number_4.png"}, {DivList:["divBird_1", "divBird_2", "divBird_3", "divBird_4", "divBird_5"], Number:"number_5.png"}];
+			var rListIndex = 0;
+			var rDispType = "SEQ";
+			
+			function doResetAct() {
+				rArrActList = [{DivList:["divBird_1"], Number:"number_1.png"}, {DivList:["divBird_1", "divBird_2"], Number:"number_2.png"}, {DivList:["divBird_1", "divBird_2", "divBird_3"], Number:"number_3.png"}, {DivList:["divBird_1", "divBird_2", "divBird_3", "divBird_4"], Number:"number_4.png"}, {DivList:["divBird_1", "divBird_2", "divBird_3", "divBird_4", "divBird_5"], Number:"number_5.png"}];
+				rListIndex = 0;
+				rDispType = "SEQ";
+				
+				doSetUpActAndShow();
+			}
+		
+			function doGetNext(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					if (rDispType=="SEQ") {
+						rListIndex++;
+						if (rListIndex>=rCountNum) {
+							rDispType = "RND";
+							rArrActList = [{DivList:["divBird_3"], Number:"number_1.png"}, {DivList:["divBird_2"], Number:"number_1.png"}, {DivList:["divBird_4"], Number:"number_1.png"}, {DivList:["divBird_1"], Number:"number_1.png"}, {DivList:["divBird_5"], Number:"number_1.png"}, {DivList:["divBird_5", "divBird_4"], Number:"number_2.png"}, {DivList:["divBird_5", "divBird_2", "divBird_4"], Number:"number_3.png"}, {DivList:["divBird_4", "divBird_2", "divBird_5", "divBird_1"], Number:"number_4.png"}, {DivList:["divBird_1", "divBird_2", "divBird_3", "divBird_4", "divBird_5"], Number:"number_5.png"}];
+							rListIndex = Math.floor(Math.random() * rArrActList.length);
+						}
+					} else {
+					if (rDispType=="RND") {
+						rListIndex = Math.floor(Math.random() * rArrActList.length);
+					} }
+					doSetUpActAndShow();
+				}
+			}
+			
+			function doSetUpActAndShow() {
+				var rNumberImage = "";
+
+				for (var i=1; i<=5; i++) {
+					document.getElementById("divBird_" + i).style.display = "none";
+				}
+				
+				for (var i=0; i<rArrActList[rListIndex].DivList.length; i++) {
+					document.getElementById(rArrActList[rListIndex].DivList[i]).style.display = "block";
+				}				
+				
+				rNumberImage = rArrActList[rListIndex].Number;
+				document.getElementById("imgNumber").src = "images/" + rNumberImage;				
+				
+				document.getElementById("imgQuestionMark").src = "../../images/question_mark_big.gif?ID=" + Math.random();
+				document.getElementById("divQuestionMark").style.display = "block";
+				document.getElementById("divNumberAndNextArrowSmall").style.display = "none";
+				
+				if (rDispType=="SEQ") {
+					if (rListIndex<=0) {
+						document.getElementById("divBottomBtnPanel").style.display = "none";
+					} else {
+						document.getElementById("divBottomBtnPanel").style.display = "block";
+					}
+				} else {
+					document.getElementById("divBottomBtnPanel").style.display = "block";
+				}
+			}
+			
+			function doShowAnswer(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divQuestionMark").style.display = "none";
+					document.getElementById("divNumberAndNextArrowSmall").style.display = "block";				
+				}
+			}
+
+			function doReplay(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					doResetAct();
+				}
+			}
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="middle">
+												<div style="font-size:25px;"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								-->
+								<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid green;">
+									<div id="divActivityMain" name="divActivityMain" style="position:absolute; width:100%; height:auto; left:0; top:0px; border:0px solid red; display:block;">
+										<table width="100%" height="100%" align="center" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="left" valign="top">
+													<div id="divActivitySub" name="divActivitySub" style="position:relative; width:655px; height:164px; left:0px; top:0px; border:0px solid red; display:block;">
+														<div id="divBranch" name="divBranch" style="position:absolute; left:0px; top:0px;">
+															<img width="100%" height="auto" src="images/branch.png" />
+														</div>
+														<div id="divBird_1" name="divBird" style="position:absolute; left:0px; top:0px; display:none;">
+															<img width="auto" height="164" src="images/bird_1.png" />
+														</div>
+														<div id="divBird_2" name="divBird" style="position:absolute; left:131px; top:0px; display:none;">
+															<img width="auto" height="164" src="images/bird_2.png" />
+														</div>
+														<div id="divBird_3" name="divBird" style="position:absolute; left:262px; top:0px; display:none;">
+															<img width="auto" height="164" src="images/bird_3.png" />
+														</div>
+														<div id="divBird_4" name="divBird" style="position:absolute; left:393px; top:0px; display:none;">
+															<img width="auto" height="164" src="images/bird_4.png" />
+														</div>
+														<div id="divBird_5" name="divBird" style="position:absolute; left:524px; top:0px; display:none;">
+															<img width="auto" height="164" src="images/bird_5.png" />
+														</div>
+														<div id="divQuestionMark" name="divQuestionMark" style="position:absolute; width:100%; height:auto; left:0px; top:125px; border:0px solid green; display:none;">
+															<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+																<tr>
+																	<td align="center" valign="middle">
+																		<div style="position:relative; left:0px; top:0px; cursor:pointer; display:inline-block;" onclick="javascript:doShowAnswer(this);">
+																			<img id="imgQuestionMark" width="60" height="auto" src="../../images/question_mark_big.gif" />
+																		</div>
+																	</td>
+																</tr>
+															</table>										
+														</div>
+														<div id="divNumberAndNextArrowSmall" name="divNumberAndNextArrowSmall" style="position:relative; width:100%; height:auto; left:0px; top:120px; border:0px solid green; display:none;">
+															<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+																<tr>
+																	<td width="100%" align="center" valign="middle">
+																		<div style="position:relative; top:15px; display:inline-block;">
+																			<img id="imgNumber" name="imgNumber" width="auto" height="80" src="images/number_5.png" />
+																		</div>
+																		<div style="position:relative; width:25px; display:inline-block;"></div>
+																		<div id="divNextArrowSmall" name="divNextArrowSmall" style="position:relative; width:65px; height:auto; left:0px; top:0px; cursor:pointer; display:inline-block;" onclick="javascript:doGetNext(this);">
+																			<img width="100%" height="auto" src="../../images/next_arrow.png" />
+																		</div>																		
+																	</td>
+																</tr>
+															</table>
+														</div>														
+													</div>
+												</td>
+											</tr>
+										</table>										
+									</div>
+								</div>
+								<div id="divBottomBtnPanel" name="divBottomBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:5px; border:0px solid #333333; cursor:default; display:none;">
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; top:3px; border:0px solid #666666; cursor:default; display:inline-block;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="cursor:pointer; display:inline-block;" onclick="javascript:doReplay(this);">
+														<img width="auto" height="40" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>								
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			doResetAct();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

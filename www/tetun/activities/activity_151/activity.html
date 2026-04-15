@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsCandel {
+				position: absolute;
+				/*
+				width: 34px;
+				height: 153px;
+				*/
+			}
+			.clsCandelAni {
+				position: absolute;
+				/*width: 34px;
+				height: 153px;
+				*/
+				display: none;
+			}
+			.clsCandelAni_1 {
+				position: absolute;
+				/*width: 20px;
+				height: 40px;
+				*/
+				display: none;
+			}
+			.clsNextAudio {
+				position: absolute;
+				width: 34px;
+				height: 153px;
+				left: 860px;
+				top: 625px;
+				cursor: pointer;
+				z-index: 10000;
+				display: none;
+			}
+			.clsSubTitle_2_Top {
+			    position: absolute;
+			    width: 80%;
+			    top: 20px;
+			    left: 10%;
+			    font-size:140%;
+			    line-height: 1.3; 
+			    border:0px solid blue;
+			}
+
+			input {
+			  outline: none
+			}			
+			
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2"];
+			var rListIndex = 0;
+			
+			var rImgHiLightBlinkInterval = 0;
+			var rImgHiLightBlinkCount = 0;	
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			/****** myself *******/	
+			function doShowHide_1(){
+				document.getElementById('divCandel_1').style.display='none';
+				document.getElementById('divCandel_1_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_2(){
+				document.getElementById('divCandel_2').style.display='none';
+				document.getElementById('divCandel_2_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_3(){
+				document.getElementById('divCandel_3').style.display='none';
+				document.getElementById('divCandel_3_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_4(){
+				document.getElementById('divCandel_4').style.display='none';
+				document.getElementById('divCandel_4_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_5(){
+				document.getElementById('divCandel_5').style.display='none';
+				document.getElementById('divCandel_5_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_6(){
+				document.getElementById('divCandel_6').style.display='none';
+				document.getElementById('divCandel_6_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_7(){
+				document.getElementById('divCandel_7').style.display='none';
+				document.getElementById('divCandel_7_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_8(){
+				document.getElementById('divCandel_8').style.display='none';
+				document.getElementById('divCandel_8_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			
+			function doShowHide_9(){
+				document.getElementById('divCandel_9').style.display='none';
+				document.getElementById('divCandel_9_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_10(){
+				document.getElementById('divCandel_10').style.display='none';
+				document.getElementById('divCandel_10_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_11(){
+				document.getElementById('divCandel_11').style.display='none';
+				document.getElementById('divCandel_11_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_12(){
+				document.getElementById('divCandel_12').style.display='none';
+				document.getElementById('divCandel_12_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_13(){
+				document.getElementById('divCandel_13').style.display='none';
+				document.getElementById('divCandel_13_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_14(){
+				document.getElementById('divCandel_14').style.display='none';
+				document.getElementById('divCandel_14_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_15(){
+				document.getElementById('divCandel_15').style.display='none';
+				document.getElementById('divCandel_15_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}
+			function doShowHide_16(){
+				document.getElementById('divCandel_16').style.display='none';
+				document.getElementById('divCandel_16_Ani').style.display='block';
+				document.getElementById('divAudio').style.display='block';
+			}		
+
+			function doBirthdayAudio() {
+				var rAudBirthday = document.getElementById("aud_Birthday");
+				rAudBirthday.play();
+			}
+			/****** myself *******/	
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--Slides-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_1" style="top: 80px; color: #5c2f0e;">Feliz </br>aniversáriu</div>
+								</div>
+								<div id="div_2" name="divMyselfLang" class="clsSlide" style="position:relative; width:100%; left:0px; border:0px solid red; display: block;">
+									<div class="clsSubTitle_2_Top" style="top:0px; text-align:center; color: #5c2f0e;">Feliz aniversáriu,</div>
+									<!--
+									<br />
+									<div class="clsSubTitle_1" contenteditable style="top:10px;text-align:center; color: #5c2f0e; font-size:175%; outline:none;">Maria</div>
+									-->
+									<input type="text" style="position:relative; width:75%; height:20px; top:30px; font-size:20px;; text-align:center;" />
+									<div style="position: absolute; left: 230px; top: 105px;"><img width="auto" height="150" src="images/9.png" /></div>
+                    				
+                    				<!-- Candel -->
+                    				<div id="divCandel_1_Main" name="divCandel_1_Main" style="position:absolute; width:34px; height:100px; left:30px; top:115px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doShowHide_1();">
+                    					<div id="divCandel_1" name="divCandel_1" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/1.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:500px; top:105px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doShowHide_2();">
+                    					<div id="divCandel_2" name="divCandel_2" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/2.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:540px; top:100px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doShowHide_3();">
+                    					<div id="divCandel_3" name="divCandel_3" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/3.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:575px; top:105px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doShowHide_4();">
+                    					<div id="divCandel_4" name="divCandel_4" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/4.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:610px; top:105px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doShowHide_5();">
+                    					<div id="divCandel_5" name="divCandel_5" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/5.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:70px; top:105px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doShowHide_6();">
+                    					<div id="divCandel_6" name="divCandel_6" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/6.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:110px; top:115px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doShowHide_7();">
+                    					<div id="divCandel_7" name="divCandel_7" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/7.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:145px; top:115px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doShowHide_8();">
+                    					<div id="divCandel_8" name="divCandel_8" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/8.png" /></div>
+                    				</div>
+<!--
+                    				<div style="position:absolute; width:34px; height:100px; left:530px; top:150px; cursor:pointer; border:0px solid blue;" onclick="javascript:doShowHide_9();">
+                    					<div id="divCandel_9" name="divCandel_9" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/1.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:565px; top:135px; cursor:pointer; border:0px solid blue;" onclick="javascript:doShowHide_10();">
+                    					<div id="divCandel_10" name="divCandel_10" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/6.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:595px; top:145px; cursor:pointer; border:0px solid blue;" onclick="javascript:doShowHide_11();">
+                    					<div id="divCandel_11" name="divCandel_11" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/7.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:630px; top:135px; cursor:pointer; border:0px solid blue;" onclick="javascript:doShowHide_12();">
+                    					<div id="divCandel_12" name="divCandel_12" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/8.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:40px; top:155px; cursor:pointer; border:0px solid blue;" onclick="javascript:doShowHide_13();">
+                    					<div id="divCandel_13" name="divCandel_13" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/2.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:80px; top:135px; cursor:pointer; border:0px solid blue;" onclick="javascript:doShowHide_14();">
+                    					<div id="divCandel_14" name="divCandel_14" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/3.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:120px; top:145px; cursor:pointer; border:0px solid blue;" onclick="javascript:doShowHide_15();">
+                    					<div id="divCandel_15" name="divCandel_15" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/4.png" /></div>
+                    				</div>
+                    				<div style="position:absolute; width:34px; height:100px; left:155px; top:135px; cursor:pointer; border:0px solid blue;" onclick="javascript:doShowHide_16();">
+                    					<div id="divCandel_16" name="divCandel_16" class="clsCandel" style="top: 0px; left: 0px;"><img width="auto" height="90" src="images/5.png" /></div>
+                    				</div>									
+-->
+									<div id="divCandel_1_Ani" name="divCandel_1_Ani" class="clsCandelAni" style="top: 75px; left: 315px; border:0px solid red;"><img width="auto" height="50" src="images/1.gif" /></div>
+                    				<div id="divCandel_2_Ani" name="divCandel_2_Ani" class="clsCandelAni" style="top: 95px; left: 340px; border:0px solid red;"><img width="auto" height="50" src="images/2.gif" /></div>
+                    				<div id="divCandel_3_Ani" name="divCandel_3_Ani" class="clsCandelAni" style="top: 75px; left: 350px; border:0px solid red;"><img width="auto" height="50" src="images/3.gif" /></div>
+                    				<div id="divCandel_4_Ani" name="divCandel_4_Ani" class="clsCandelAni" style="top: 95px; left: 375px; border:0px solid red;"><img width="auto" height="50" src="images/4.gif" /></div>
+                    				<div id="divCandel_5_Ani" name="divCandel_5_Ani" class="clsCandelAni" style="top: 95px; left: 305px; border:0px solid red;"><img width="auto" height="50" src="images/5.gif" /></div>
+                    				<div id="divCandel_6_Ani" name="divCandel_6_Ani" class="clsCandelAni" style="top: 75px; left: 385px; border:0px solid red;"><img width="auto" height="50" src="images/6.gif" /></div>
+                    				<div id="divCandel_7_Ani" name="divCandel_7_Ani" class="clsCandelAni" style="top: 93px; left: 410px; border:0px solid red;"><img width="auto" height="50" src="images/7.gif" /></div>
+                    				<div id="divCandel_8_Ani" name="divCandel_8_Ani" class="clsCandelAni" style="top: 75px; left: 420px; border:0px solid red;"><img width="auto" height="50" src="images/8.gif" /></div>
+
+<!--									
+									<div id="divCandel_9_Ani" name="divCandel_9_Ani" class="clsCandelAni_1" style="top: 125px; left: 330px; border:0px solid red;"><img width="auto" height="25" src="images/1.gif" /></div>
+                    				<div id="divCandel_10_Ani" name="divCandel_10_Ani" class="clsCandelAni_1" style="top: 125px; left: 315px; border:0px solid red;"><img width="auto" height="25" src="images/6.gif" /></div>
+                    				<div id="divCandel_11_Ani" name="divCandel_11_Ani" class="clsCandelAni_1" style="top: 125px; left: 351px; border:0px solid red;"><img width="auto" height="25" src="images/7.gif" /></div>
+                    				<div id="divCandel_12_Ani" name="divCandel_12_Ani" class="clsCandelAni_1" style="top: 125px; left: 405px; border:0px solid red;"><img width="auto" height="25" src="images/8.gif" /></div>
+                    				<div id="divCandel_13_Ani" name="divCandel_13_Ani" class="clsCandelAni_1" style="top: 123px; left: 295px; border:0px solid red;"><img width="auto" height="25" src="images/2.gif" /></div>
+                    				<div id="divCandel_14_Ani" name="divCandel_14_Ani" class="clsCandelAni_1" style="top: 125px; left: 370px; border:0px solid red;"><img width="auto" height="25" src="images/3.gif" /></div>
+                    				<div id="divCandel_15_Ani" name="divCandel_15_Ani" class="clsCandelAni_1" style="top: 123px; left: 425px; border:0px solid red;"><img width="auto" height="25" src="images/4.gif" /></div>
+                    				<div id="divCandel_16_Ani" name="divCandel_16_Ani" class="clsCandelAni_1" style="top: 125px; left: 390px; border:0px solid red;"><img width="auto" height="25" src="images/5.gif" /></div>
+-->									
+                    				<div id="divAudio" name="divAudio" class="clsAudio" style="position:absolute; left:435px; top:260px; border:0px solid red; cursor:pointer; z-index:5000;" onclick="javascript:doBirthdayAudio();">
+										<img width="auto" height="45" src="images/10.png" />
+									</div>
+                   					<audio id="aud_Birthday" src="media/audio/happy_birthday_song.mp3"></audio>
+								</div>
+								
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:document.location.reload();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:document.location.href = '../../theme_celebration_level_3_play.html';">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<!--
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								-->
+								<!--
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>
+								-->
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			//doResetMainNavButton();
+		</script>		
+	</body>
+</html>

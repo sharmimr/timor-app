@@ -1,0 +1,1797 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Timor Home App</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/jqueryui-style.css" />
+    <link rel="stylesheet" type="text/css" href="css/font_awesome.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <style>
+      body {
+        /*zoom: 40%;*/
+      }
+    </style>
+
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <script language="javascript">
+      var rStrMainActivityList =
+        "theme_myself_level_3_language.html~activities/myself_language/activity_a/activity.html~activities/myself_language/activity_b/activity.html~activities/myself_language/activity_c/activity.html~activities/myself_language/activity_d/activity.html~activities/myself_language/activity_e/activity.html~activities/myself_language/consolidated_week1/activity.html~activities/myself_language/activity_f/activity.html~activities/myself_language/activity_g/activity.html~activities/myself_language/activity_h/activity.html~activities/myself_language/activity_i/activity.html~activities/myself_language/activity_j/activity.html~activities/myself_language/consolidated_week2/activity.html~activities/myself_language/activity_k/activity.html~activities/myself_language/activity_l/activity.html~activities/myself_language/activity_m/activity.html~activities/myself_language/activity_n/activity.html~activities/myself_language/activity_o/activity.html~activities/myself_language/consolidated_week3/activity.html~activities/myself_language/activity_p/activity.html~activities/myself_language/activity_q/activity.html~activities/myself_language/activity_r/activity.html~activities/myself_language/activity_s/activity.html~activities/myself_language/activity_t/activity.html~activities/myself_language/consolidated_week4/activity.html~activities/myself_language/activity_u/activity.html~activities/myself_language/activity_v/activity.html~activities/myself_language/activity_w/activity.html~activities/myself_language/activity_x/activity.html~activities/myself_language/activity_y/activity.html~activities/myself_language/activity_z/activity.html~activities/myself_language/consolidated_week5/activity.html~activities/104_dog_spell_puzzle/activity.html~activities/116_blue_color_spell_puzzle/activity.html~activities/activity_141/activity.html~activities/activity_147/activity.html~activities/activity_154/activity.html~activities/activity_155/activity.html~activities/activity_185/activity.html";
+
+      function doNavigateToActivity(rObj, rActURL) {
+        if (rObj.style.cursor == "pointer") {
+          document.location.href =
+            rActURL + "?MainActivityList=" + rStrMainActivityList;
+        }
+      }
+    </script>
+  </head>
+
+  <body bgcolor="#000000">
+    <div
+      id="divWrapper"
+      name="divWrapper"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        border: 0px solid red;
+      "
+      class="clsDivWrapper"
+    >
+      <table
+        width="100%"
+        height="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tr>
+          <td width="100%" height="100%" align="center" valign="middle">
+            <div
+              id="divContainer"
+              name="divContainer"
+              style="
+                position: absolute;
+                width: 730px;
+                height: 310px;
+                left: 50%;
+                margin-left: -365px;
+                top: 50%;
+                margin-top: -155px;
+                border: 0px solid blue;
+              "
+            >
+              <div
+                style="
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  left: 0px;
+                  top: 0px;
+                  border: 0px solid green;
+                "
+              >
+                <div
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid red;
+                  "
+                >
+                  <table
+                    align="center"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="center" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            left: 0px;
+                            top: 0px;
+                            border: 0px solid blue;
+                          "
+                        >
+                          <img
+                            width="100%"
+                            height="100%"
+                            src="images/theme/myself/level_3/wooden_board.png"
+                          />
+                          <div
+                            style="
+                              position: absolute;
+                              width: 449px;
+                              height: 210px;
+                              left: 136px;
+                              top: 35px;
+                              background: #ffffff;
+                              border: 0px solid red;
+                            "
+                          ></div>
+                          <div
+                            style="
+                              position: absolute;
+                              width: 450px;
+                              height: 140px;
+                              left: 135px;
+                              top: 100px;
+                              border: 0px solid green;
+                              overflow: hidden;
+                              overflow-y: auto;
+                            "
+                          >
+                            <table
+                              width="100%"
+                              height="auto"
+                              align="center"
+                              cellspacing="0"
+                              cellpadding="0"
+                              border="0"
+                            >
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_1"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_a/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/a.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            a
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_2"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_b/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/b.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            b
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_3"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_c/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/c.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            c
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_4"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_d/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/d.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            d
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr height="25">
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_5"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_e/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/e.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            e
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_6"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/consolidated_week1/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/w1.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            Son semana nian 1
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_7"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_f/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/f.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            f
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_8"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_g/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/g.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            g
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr height="25">
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_9"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_h/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/h.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            h
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_10"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_i/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/i.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            i
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_11"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_j/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/j.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            j
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_12"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/consolidated_week2/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/w2.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            Son semana nian 2
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr height="25">
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_13"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_k/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/k.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            k
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_14"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_l/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/l.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            l
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_15"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_m/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/m.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            m
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_16"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_n/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/n.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            n
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr height="25">
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_17"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_o/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/o.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            o
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_18"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/consolidated_week3/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/w3.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            Son semana nian 3
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_19"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_p/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/p.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            p
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_20"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_q/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/q.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            q
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr height="25">
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_21"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_r/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/r.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            r
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_22"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_s/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/s.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            s
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_23"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_t/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/t.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            t
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_24"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/consolidated_week4/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/w4.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            Son semana nian 4
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr height="25">
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_25"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_u/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/u.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            u
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_26"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_v/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/v.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            v
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_27"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_w/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/w.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            w
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_28"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_x/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/x.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            x
+                                          </div>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr height="25">
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_29"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_y/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/y.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            y
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_30"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/activity_z/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/z.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            z
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_31"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/myself_language/consolidated_week5/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/w5.png"
+                                          />
+                                          <div
+                                            style="
+                                              position: relative;
+                                              top: 0px;
+                                              font-size: 12px;
+                                            "
+                                          >
+                                            Son semana nian 5
+                                          </div>
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_32"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/104_dog_spell_puzzle/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/dog.png"
+                                          />
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="100%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_33"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/116_blue_color_spell_puzzle/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/color.png"
+                                          />
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_34"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/activity_141/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/whiteboard_lang.png"
+                                          />
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_35"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/activity_147/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/whiteboard_lang.png"
+                                          />
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td width="100%" align="center" valign="middle">
+                                  <table
+                                    width="75%"
+                                    height="auto"
+                                    align="center"
+                                    cellspacing="0"
+                                    cellpadding="0"
+                                    border="0"
+                                  >
+                                    <tr>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_36"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/activity_154/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/activity_154.png"
+                                          />
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="middle"
+                                      >
+                                        <div
+                                          id="divImage_37"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/activity_155/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/activity_155.png"
+                                          />
+                                        </div>
+                                      </td>
+                                      <td
+                                        width="25%"
+                                        align="center"
+                                        valign="top"
+                                        colspan="2"
+                                      >
+                                        <div
+                                          id="divImage_38"
+                                          name="divImage"
+                                          style="
+                                            color: #88552a;
+                                            font-size: 20px;
+                                            border: 0px solid blue;
+                                            cursor: pointer;
+                                            display: inline-block;
+                                          "
+                                          onclick="
+                                            javascript: doNavigateToActivity(
+                                              this,
+                                              'activities/activity_185/activity.html',
+                                            );
+                                          "
+                                        >
+                                          <img
+                                            width="100"
+                                            height="auto"
+                                            src="images/myself_language_activity_thumbnail_images/activity_185.png"
+                                          />
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="divHeadTitleText"
+                  name="divHeadTitleText"
+                  class="clsPageThumbnailHead"
+                >
+                  Ha'u-nia son
+                </div>
+              </div>
+              <div
+                id="divMacroBtnNavPanel"
+                name="divMacroBtnNavPanel"
+                style="
+                  position: absolute;
+                  width: 65px;
+                  height: 100%;
+                  right: 0px;
+                  top: 0px;
+                  border: 0px solid red;
+                "
+              >
+                <div
+                  id="divPosterImage"
+                  name="divPosterImage"
+                  class="clsMacroPosterImage"
+                  style="cursor: pointer"
+                  onclick="
+                    javascript: document.location.href =
+                      'theme_myself_level_2.html';
+                  "
+                >
+                  <img
+                    id="imgPoster"
+                    name="imgPoster"
+                    width="100%"
+                    height="100%"
+                    src="images/activity_macro_static_images/myself.png"
+                  />
+                </div>
+                <div
+                  id="divBtnBackArrow"
+                  name="divBtnBackArrow"
+                  style="
+                    position: absolute;
+                    width: auto;
+                    height: 65px;
+                    left: 0px;
+                    top: 80px;
+                    border: 0px solid blue;
+                    cursor: pointer;
+                    display: block;
+                  "
+                  onclick="
+                    javascript: document.location.href =
+                      'theme_myself_level_2.html';
+                  "
+                >
+                  <img width="100%" height="100%" src="images/back_arrow.png" />
+                </div>
+                <div
+                  id="divBtnHome"
+                  name="divBtnHome"
+                  style="
+                    position: absolute;
+                    width: auto;
+                    height: 105px;
+                    left: 0px;
+                    top: 200px;
+                    border: 0px solid blue;
+                    cursor: pointer;
+                    display: block;
+                  "
+                  onclick="javascript: document.location.href = 'index.html';"
+                >
+                  <img width="100%" height="100%" src="images/home.png" />
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script src="activity-tracker.js"></script>
+  </body>
+</html>

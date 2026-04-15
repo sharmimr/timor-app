@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSubTitle_White {
+			    position: relative;
+			    width: 100%;
+			    font-size:250%;
+			    top: 0px;
+			    color: #ffffff; 
+			    text-shadow: -2px 2px 4px #000000;
+			}
+			.clsPageText_White {
+			    position:absolute; 
+			    font-size:200%;
+			    color: #ffffff; 
+			    text-shadow: -2px 2px 4px #000000;
+			}
+			.clsPageTextSmall_White {
+			    position:absolute; 
+			    font-size:140%;
+			    color: #ffffff; 
+			    text-shadow: -2px 2px 4px #000000;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19", "div_20", "div_21", "div_22", "div_23", "div_24", "div_25", "div_26", "div_27", "div_28", "div_29", "div_30", "div_31", "div_32", "div_33", "div_34", "div_35", "div_36"];
+			var rListIndex = 0;
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+			
+			function doNavigate(rNum) {
+				switch (rNum) {
+					case 1:
+						document.location.href = "../activity_51_crocodile_story/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=" + rListIndex;
+						break;				
+					case 2:
+						document.location.href = "../activity_68_crocodile_story/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=" + rListIndex;
+						break;
+					case 3:
+						document.location.href = "../activity_69_crocodile_story/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=" + rListIndex;
+						break;
+					case 4:
+						document.location.href = "../lafaek_istoria_crocodile/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=" + rListIndex;
+						break;						
+					default:
+						break;
+				}
+			}			
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="middle">
+												<div style="font-size:200%;"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<!--Slides-->
+								<div id="div_1" name="div_1" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+													<div style="position: relative; top:-50px; "><img width="730" height="auto" src="images/12.png" /></div>
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 0px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei Bruma
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 250px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Kolan ki'ik
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_2" name="div_2" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/1.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Kolam bruma
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 250px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Kolan ki'ik
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_3" name="div_3" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/1.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Kolam bruma
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 250px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Pesa munon tata bei ana iso.
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_4" name="div_4" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/1.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Kolam bruma
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 220px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Mori her  kolam bruma nan iso<br /> bruma loba tata bei sai somoli.
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_5" name="div_5" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/1.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Kolam bruma
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 250px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													U manara eto pita rae
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_6" name="div_6" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/2.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Kolam bruma
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_7" name="div_7" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/2.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:150%; top: 210px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Sole rae iri/bana Tata Bei bruma u<br />sai pe kolam nurat leti sole.
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_8" name="div_8" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/2.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 255px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Lelo mat bana, los rae iri pita.
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_9" name="div_9" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/2.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 255px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei  u kole loba bro hui. 
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_10" name="div_10" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/3.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Anana mane isu mane laran bloi
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_11" name="div_11" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/3.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Anana mane iso u nurat bloi
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 255px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													- Her tempu munon, Anana mane iso mai.
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_12" name="div_12" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/3.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Anana mane iso u nurat bloi
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													U pner tatabei  iso u kole loba i u tugu,<br />“ Heta ke akontese  sao  bruma ?
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div id="div_13" name="div_13" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/3.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Anana mane iso u nurat bloi
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													- Tatabei dale, a bro i kole loba.</br>A manara leti kolam iso mane ke ae desi.”
+												</div>
+											</td>
+										</tr>
+									</table>						
+								</div>
+
+								<div id="div_14" name="div_14" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/3.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Anana mane iso u nurat bloi
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													- Anana mane ke laran bloi u bua Tatabei<br />ana u i odila loa ae iso.
+												</div>
+											</td>
+										</tr>
+									</table>						
+								</div>
+
+								<div id="div_15" name="div_15" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/5.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Dale pna’a  iso
+												</div>
+											</td>
+										</tr>							
+									</table>						
+								</div>
+
+								<div id="div_16" name="div_16" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/5.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Dale pna’a  iso
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei sinti bloi desi peni le é tukudun.</br>Su u dalae le anana mane iso u.
+												</div>
+											</td>
+										</tr>							
+									</table>						
+								</div>
+								<div id="div_17" name="div_17" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/5.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Dale pna’a  iso
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 255px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Obrigadu pita ko ajuda a.
+												</div>
+											</td>
+										</tr>							
+									</table>						
+								</div>
+								<div id="div_18" name="div_18" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/5.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Dale pna’a  iso
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													A dale pna se kiti manara sole pasiar,</br>a odi kiti la man-mane ko manara.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_19" name="div_19" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/6.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Sole mesa la tasi
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_20" name="div_20" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/6.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Sole mesa la tasi
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 255px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													To nour meselo, anana mane u’u manara eto tasi.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_21" name="div_21" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/6.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Sole mesa la tasi
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 255px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													U eto tatabei  i  tugu leti sape u.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_22" name="div_22" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/6.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Sole mesa la tasi
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei manara i kontente, i ro’o<br/>nurat loe abertura ae iso pe tasi. 
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_23" name="div_23" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/7.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei iso mane ke kole
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_24" name="div_24" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/7.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei iso mane ke kole
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 255px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Ro’o nani ai-aer rata tatabei mos kole loba.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_25" name="div_25" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/7.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei iso mane ke kole
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													U nurat a’a bel anana mane u’u,<br/>U nurat hali ro lara bloi.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_26" name="div_26" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/7.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei iso mane ke kole
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei negi olara pe ikan los Sut siru’u, ro’o mao manara <br/>u’u dole leti a’a atu mane ke ajuda bel kiti.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_27" name="div_27" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/9.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei so mekei kole
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_28" name="div_28" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/9.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei so mekei kole
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei su kole riko i telebo nani pita.</br>Su udale le anana mane u.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_29" name="div_29" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/9.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei so mekei kole
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													“A telebo sole kro pita, a sai nahati ko sao.”</br>Tatabei u’u tapa ni mat i ena kabae 
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_30" name="div_30" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/10.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei sai Timor Loro Sa’e
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_31" name="div_31" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/10.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei sai Timor Loro Sa’e
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Helhele, ni isin muda pita. Iso u’u sai ae pita,<br />sai  rae nuba iso bloi desi los rae bouk.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_32" name="div_32" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/10.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Tatabei sai Timor Loro Sa’e
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Kai-pu seri, los loa seri. Rae bouk su<br />meges tatabei iso, i ni galan Timor. 
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_33" name="div_33" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/11.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Timor ni morin
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_34" name="div_34" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/11.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Dale pna’a istori timor ni’in
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Anana mane ke laran bloi,uni sao nor, bloi los<br />povu mane mori bloi le rae Timor ni teten,
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_35" name="div_35" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/11.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Dale pna’a istori timor ni’in
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; line-height: 1.3; font-size:150%; top: 222px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													olara nahati ro si sao tatabei Timor, Dale istori su’u<br />le anana nor, u’u mori putu los sao nor.
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>
+								<div id="div_36" name="div_36" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; top:0px; cursor:default; display:block;">
+													<img width="730" height="385" src="images/12.png" />
+												</div>
+												<div style="position:absolute; width: 100%; text-align: center; font-size:175%; font-weight: bold; top: 15px; color: #ffffff; text-shadow: -2px 2px 4px #000000;">
+													Timor ni morin
+												</div>
+											</td>
+										</tr>							
+									</table>
+								</div>								
+
+								<div id="divNumTopPanel" name="divNumTopPanel" style="position:absolute; width:auto; height:auto; left:10px; bottom:0px; border:0px solid red; cursor:pointer; display:inline-block; z-index:10000;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="top">
+												<div style="cursor:pointer; display:block;" onclick="javascript:doNavigate(1);">
+													<img width="auto" height="25" src="images/number_1.png" />
+												</div>
+											</td>
+											<td>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+											</td>
+											<td align="center" valign="top">
+												<div style="cursor:pointer; display:block;" onclick="javascript:doNavigate(2);">
+													<img width="auto" height="25" src="images/number_2.png" />
+												</div>
+											</td>
+											<td>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+											</td>
+											<td align="center" valign="top">
+												<div style="cursor:pointer; display:block;" onclick="javascript:doNavigate(3);">
+													<img width="auto" height="25" src="images/number_3.png" />
+												</div>
+											</td>
+											<td>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+											</td>
+											<td align="center" valign="top">
+												<div style="cursor:pointer; display:block;" onclick="javascript:doNavigate(4);">
+													<img width="auto" height="25" src="images/number_4.png" />
+												</div>
+											</td>											
+										</tr>
+									</table>									
+								</div>
+								
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; top:285px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img height="25" width="auto" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:document.location.href = '../activity_51_crocodile_story/activity.html';">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img height="25" width="auto" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img height="25" width="auto" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="top:210px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->						
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

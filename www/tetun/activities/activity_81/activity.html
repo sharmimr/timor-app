@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSlideImgTop {
+				position: absolute; 
+				width: 100%; 
+				text-align: center; 
+				top: 10px;
+				border: 0px solid red;
+			}
+			.clsSubTitle_2_Bottom {
+			    position: absolute;
+			    width: 80%;
+			    bottom: 52px;
+			    left: 10%;
+			    font-size:140%;
+			    line-height: 1.3; 
+			    border:0px solid blue;
+			}
+			.clsSubTitle_2_Top {
+			    position: absolute;
+			    width: 80%;
+			    top: 213px;
+			    left: 10%;
+			    font-size:133%;
+			    line-height: 1.1; 
+			    border:0px solid blue;
+			}
+/*-------------------------------------------*/
+
+			.clsLabelMobileTextCenter {
+			    font-size:140%;
+			    color:#000000;
+				line-height: 1.3;
+			}
+
+/*-------------------------------------------*/	
+/* Slide 6--- Two part img -------*/
+
+			.clsImgTwoPart_Left {
+				position: absolute;
+				width: 40%;
+				height: 100%;
+				left: 10%;
+				border: 0px solid red;
+			}
+			.clsImgTwoPart_Right {
+				position: absolute;
+				width: 40%;
+				height: 100%;
+				left: 50%;
+				border: 0px solid red;
+			}
+			.clsContainerCenter{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				line-height: 1.3; 
+				display: flex;
+				justify-content:center;
+				align-items: center;
+				border: 0px solid blue;
+			}
+			.clsImageHeigh_WithoutText {
+				position: relative; 
+				width:100%; 
+				height: 195px; 
+				left: 0px; 
+				border:0px solid #333333;
+			}
+			.clsImageHeigh_WithText {
+				position: relative; 
+				width:100%; 
+				height: 165px; 
+				left: 0px; 
+				border:0px solid #333333;
+			}
+
+/*--------- Label text ----------*/
+			.clsLabelTextMobile_1 {
+				line-height: 1.3; 
+			    font-size: 130%; 
+			    color:#000000;
+			    border: 0px solid red;
+			}
+			.clsImageBox {
+			    position:absolute; 
+			    width: 130px;
+			    height: 130px;
+			    border: 0px solid red;
+			}
+
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			//var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19", "div_20", "div_21", "div_22", "div_23", "div_24", "div_25", "div_26", "div_27", "div_28", "div_29", "div_30", "div_31", "div_32", "div_33", "div_34", "div_35", "div_36", "div_37", "div_38", "div_39"];
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19", "div_20", "div_21", "div_22", "div_24", "div_25", "div_26", "div_27", "div_28", "div_29", "div_30", "div_31", "div_32", "div_33", "div_34", "div_35", "div_36", "div_37", "div_38", "div_39"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--Slides-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImg"><img src="images/1.png" width="auto" height="310"/></div>
+                    				<div class="clsSubTitle_1" style="position: absolute; font-size: 30px; left: 55px; top: 10px;">Istória Páskua nian</div>
+								</div>
+								<div id="div_2" name="divMyselfLang" class="clsSlide">
+									<div style="position: absolute; left: 100px; top: 20px;"><img width="auto" height="270" src="images/2.png" /></div>
+									<div style="position: absolute; width: 450px; left: 230px; top:50px; font-size: 80%; color: #000000;">Hei, Maria, </br>Tanbasá mak tempu Páskua </br>espesiál tebes?</div>
+								</div>
+								<div id="div_3" name="divMyselfLang" class="clsSlide">
+	                    			<div style="position: absolute; width:100%; left: 0px; top:10px; border:0px solid #333333;">
+	                    				<div class="clsImageHeigh_WithText">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_a.png" /></div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_b.png" /></div>
+											</div>
+	                    				</div>
+	                					<div style="position: relative; width:100%; height: 32px; left: 0px; border:0px solid #333333;">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter clsLabelTextMobile_1" >Sesta</div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter clsLabelTextMobile_1">Domingu</div>
+											</div>
+	                					</div>
+	                				</div>
+                    				<div class="clsSubTitle_2_Top">Sira sente oinsá?</div>
+								</div>
+								<div id="div_4" name="divMyselfLang" class="clsSlide">
+	                    			<div style="position: absolute; width:100%; left: 0px; top:10px; border:0px solid #333333;">
+	                    				<div class="clsImageHeigh_WithText">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_a.png" /></div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_b.png" /></div>
+											</div>
+	                    				</div>
+	                					<div style="position: relative; width:100%; height: 32px; left: 0px; border:0px solid #333333;">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter clsLabelTextMobile_1" >Sesta</div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter clsLabelTextMobile_1">Domingu</div>
+											</div>
+	                					</div>
+	                				</div>
+                    				<div class="clsSubTitle_2_Top">Nia hatudu domin boot mai ita hodi mate iha krús iha Sexta-Feira Santa.</div>
+								</div>
+								<div id="div_5" name="divMyselfLang" class="clsSlide">
+	                    			<div style="position: absolute; width:100%; left: 0px; top:10px; border:0px solid #333333;">
+	                    				<div class="clsImageHeigh_WithText">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_a.png" /></div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_b.png" /></div>
+											</div>
+	                    				</div>
+	                					<div style="position: relative; width:100%; height: 32px; left: 0px; border:0px solid #333333;">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter clsLabelTextMobile_1" >Sesta</div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter clsLabelTextMobile_1">Domingu</div>
+											</div>
+	                					</div>
+	                				</div>
+                    				<div class="clsSubTitle_2_Top">Maibé, Nia moris fali iha Domingu Páskua.</br> Nia moris hias hosi mate.</div>
+								</div>
+								<div id="div_6" name="divMyselfLang" class="clsSlide">
+	                    			<div style="position: absolute; width:100%; left: 0px; top:10px; border:0px solid #333333;">
+	                    				<div class="clsImageHeigh_WithText">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_a.png" /></div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_b.png" /></div>
+											</div>
+	                    				</div>
+	                					<div style="position: relative; width:100%; height: 32px; left: 0px; border:0px solid #333333;">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter clsLabelTextMobile_1" >Sesta</div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter clsLabelTextMobile_1">Domingu</div>
+											</div>
+	                					</div>
+	                				</div>
+                    				<div class="clsSubTitle_2_Top">Iha Páskua ita selebra katak Jezús sei moris hela, </br>iha ita-nia fuan.</div>
+								</div>
+								<div id="div_7" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/7.png" width="auto" height="185"/></div>
+                    				<div class="clsSubTitle_2_Top">Waooo, ne'e furak tebes!</div>
+								</div>
+								<div id="div_8" name="divMyselfLang" class="clsSlide">
+	                    			<div style="position: absolute; width:100%; left: 0px; top:10px; border:0px solid #333333;">
+	                    				<div class="clsImageHeigh_WithText">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_a.png" /></div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_b.png" /></div>
+											</div>
+	                    				</div>
+	                					<div style="position: relative; width:100%; height: 32px; left: 0px; border:0px solid #333333;">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter clsLabelTextMobile_1" >Sesta</div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter clsLabelTextMobile_1">Domingu</div>
+											</div>
+	                					</div>
+	                				</div>
+                    				<div class="clsSubTitle_2_Top">Bé halo dramatizasaun Páskua nian.</div>
+								</div>
+								<div id="div_9" name="divMyselfLang" class="clsSlide">
+	                    			<div style="position: absolute; width:100%; left: 0px; top:10px; border:0px solid #333333;">
+	                    				<div class="clsImageHeigh_WithText">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_a.png" /></div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_b.png" /></div>
+											</div>
+	                    				</div>
+	                					<div style="position: relative; width:100%; height: 32px; left: 0px; border:0px solid #333333;">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter clsLabelTextMobile_1" >Sesta</div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter clsLabelTextMobile_1">Domingu</div>
+											</div>
+	                					</div>
+	                				</div>
+                    				<div class="clsSubTitle_2_Top">Bé imita mate iha Krús hanesan Jesus, tuir mai moris foun!</div>
+								</div>
+								<div id="div_10" name="divMyselfLang" class="clsSlide">
+	                    			<div style="position: absolute; width:100%; left: 0px; top:10px; border:0px solid #333333;">
+	                    				<div class="clsImageHeigh_WithText">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_a.png" /></div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter"><img width="auto" height="150" src="images/3_b.png" /></div>
+											</div>
+	                    				</div>
+	                					<div style="position: relative; width:100%; height: 32px; left: 0px; border:0px solid #333333;">
+											<div class="clsImgTwoPart_Left">
+												<div class="clsContainerCenter clsLabelTextMobile_1" >Sesta</div>
+											</div>
+											<div class="clsImgTwoPart_Right">
+												<div class="clsContainerCenter clsLabelTextMobile_1">Domingu</div>
+											</div>
+	                					</div>
+	                				</div>
+                    				<div class="clsSubTitle_2_Top">Bá mak ita hakarak hatene liu kona-ba Páskua?</div>
+								</div>
+								<div id="div_11" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/7.png" width="auto" height="185"/></div>
+                    				<div class="clsSubTitle_2_Top">Sin! Páskua kona-ba esperansa no domin, ka lae?</div>
+								</div>
+								<div id="div_12" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/12.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Loos duni! Ida ne’e hanoin/ fó hanoin fali mai ita katak domin maka forte liu no bele halo buat hotu sai di’ak.</div>
+								</div>
+								<div id="div_13" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop" style="position: absolute; top: 30px;"><img src="images/13.png" width="auto" height="165"/></div>
+                   					<div style="position: absolute; left: 320px; top: 15px;"><img width="auto" height="180" src="images/question_mark_small.gif" /></div>
+                    				<div class="clsSubTitle_2_Top">Oinsá ema selebra Páskua iha Timor-Leste?</div>
+								</div>
+								<div id="div_14" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/14.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Iha Páskua, família sira ba misa halo orasaun no dehan obrigadu ba Maromak!</div>
+								</div>
+								<div id="div_15" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/15.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Iha Domingu molok Páskua, ami ba misa lori ai-tahan palma atu simu bensaun husi Maromak nian husi padre.</div>
+								</div>
+								<div id="div_16" name="divMyselfLang" class="clsSlide" >
+                   					<div class="clsSlideImgTop"><img src="images/16.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Depois ne'e, saida mak akontese?</div>
+								</div>
+								<div id="div_17" name="divMyselfLang" class="clsSlide" >
+                   					<div class="clsSlideImgTop"><img src="images/17.png" width="auto" height="180"/></div>
+                    				<div class="clsSubTitle_2_Top" style="top: 185px;">Tuir mai, ita selebra Kinta-feira Santa,</br>loron Kinta ikus tuir mai.</div>
+								</div>
+								<div id="div_18" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/17.png" width="auto" height="180"/></div>
+                    				<div class="clsSubTitle_2_Top" style="top: 185px;">Iha Kinta-feira Santa, família sira ba misa no padre hatudu oinsá Jesus fase ninia belun sira nia ain, atu hatudu domin ba sira, no hatudu katak Jesus tau matan ba ita hotu.</div>
+								</div>
+								<div id="div_19" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/17.png" width="auto" height="180"/></div>
+                    				<div class="clsSubTitle_2_Top" style="top: 185px;">Bé imita fase malu nia ain, hanesan Jesus!</div>
+								</div>
+								<div id="div_20" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/20.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Iha Sexta-feira Santa, </br>ami ba halo Via-Sakrus iha foho ka igreja.</div>
+								</div>
+								<div id="div_21" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/21.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Iha tuku 3 tarde iha Sexta-feira Santa, </br>ami halo beija ba Krús no hanoin oinsá Jesus mate ba ami.</div>
+								</div>
+								<div id="div_22" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/22.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Imi bele halo hanesan beija Krús agora?</div>
+								</div>
+								<div id="div_24" name="divMyselfLang" class="clsSlide" >
+                   					<div class="clsSlideImgTop"><img src="images/23.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Tuir mai, iha Sábadu Páskua ami ba misa tarde. Naroman mate. Nakukun.</div>
+								</div>
+								<div id="div_25" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/24.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Amlulik sira sunu ahi Páskua nian hodi fó naroman.</div>
+								</div>
+								<div id="div_26" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/25.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Depois ami kaer lilin Páskua nian.</div>
+								</div>
+								<div id="div_27" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/25.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Naroman reprezenta Jezús ne'ebé nabilan di'ak no esperansa.</div>
+								</div>
+								<div id="div_28" name="divMyselfLang" class="clsSlide" >
+                   					<div class="clsSlideImgTop"><img src="images/25.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Bé imita sunu kandela, hanesan iha Misa!</div>
+								</div>
+								<div id="div_29" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/28.png" width="auto" height="180"/></div>
+                    				<div class="clsSubTitle_2_Top" style="top: 185px;">Tuir mai iha Domingu Páskua ita ba misa fali, </br>selebra katak Jesus moris foun. </br>Loron ida ne'e mak laran-moris no festa boot!</div>
+								</div>
+								<div id="div_30" name="divMyselfLang" class="clsSlide" >
+                   					<div class="clsSlideImgTop"><img src="images/29.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Depois Misa, ita hamutuk han hahán gostu atu selebra Jesus iha Páskua.</div>
+								</div>
+								<div id="div_31" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/30.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Iha Páskua, labarik balun pinta manu-tolun tanba sira hanesan simbolu ba moris foun.</div>
+								</div>
+								<div id="div_32" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/31.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top" style="width:90%; left:5%;">Jesús nia istória hatudu mai ita katak domin bele hadi'a buat hotu, </br>no ita sempre bele hahú moris foun.</div>
+								</div>
+								<div id="div_33" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/31.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top" style="width:90%; left:5%;">Se ema ruma sente triste ka iha tempu difisil, <br>Páskua bele ajuda sira sente di’ak.</div>
+								</div>
+								<div id="div_34" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/31.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top" style="width:90%; left:5%;">Ida ne’e hanorin ita katak, meske iha tempu difisil, </br>sempre iha  esperansa ba tempu alegria/haksolok nian.</div>
+								</div>
+								<div id="div_35" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/31.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Loos duni! Iha Timor-Leste, Páskua kona-ba fiar, esperansa, família, no tulun ema seluk.</div>
+								</div>
+								<div id="div_36" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/31.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Ne’e tempu atu fahe domin, ajuda ema,</br>  no hamutuk kontente.</div>
+								</div>
+								<div id="div_37" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/36.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Páskua lori ema hotu besik liután ba malu no hakonu </br>ita-nia fuan ho esperansa.</div>
+								</div>
+								<div id="div_38" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/31.png" width="auto" height="200"/></div>
+                    				<div class="clsSubTitle_2_Top">Páskua mak festa di’ak liu!</div>
+								</div>
+								<div id="div_39" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImg"><img src="images/1.png" width="auto" height="310"/></div>
+                    				<div class="clsSubTitle_1" style="position: absolute; font-size: 30px; left: 55px; top: 10px;">Páskua feliz!</div>
+								</div>
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>

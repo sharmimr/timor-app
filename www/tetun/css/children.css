@@ -1,0 +1,97 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Background (landscape, warm brown) */
+.bg {
+  position: fixed;
+  inset: 0;
+  /* background: linear-gradient(135deg, #6f563f, #8b6b4a, #6f563f); */
+  background: #000000;
+  z-index: -1;
+}
+
+/* Center screen */
+.screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main panel (like login card) */
+.panel {
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25)),
+    url("../images/bg.jpeg") center / cover no-repeat;
+  padding: 35px 45px;
+  border-radius: 22px;
+  width: 90%;
+  max-width: 720px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+/* Title */
+.panel h2 {
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Children layout */
+.children-container {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Child card */
+.child-card {
+  width: 150px;
+  padding: 22px 15px;
+  background: #ffffff;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+}
+
+.child-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Avatar circle */
+.avatar {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.25)),
+    url("tetun/images/default_bg.png") center / cover no-repeat;
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Child ID text (GREEN as requested) */
+.child-id {
+  font-size: 15px;
+  font-weight: 600;
+  color: #28c76f; /* green */
+}
+
+/* Error */
+.error {
+  margin-top: 20px;
+  color: #ffdddd;
+  font-size: 14px;
+}

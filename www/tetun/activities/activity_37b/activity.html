@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+			
+			function doReplayVideo(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain").style.display = "none";
+					document.getElementById("vidAni").currentTime = 0;
+					document.getElementById("vidAni").play();
+				}
+			}
+			
+			function doEndVideo(rObj) {
+				document.getElementById("divBtnVidReplayMain").style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+
+								<!--Slides-->
+								<div id="div_1" name="div_1" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 63px;"><img src="images/1.png" width="auto" height="190"/></div>
+                    				<div class="clsSubTitle_1">Maria halimar bola</div>
+								</div>
+								<div id="div_2" name="div_2" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 63px;"><img src="images/1.png" width="auto" height="190"/></div>
+                    				<div class="clsPageTextSmall" style="left:427px; top: 105px;">Maria hateke.</div>
+								</div>
+								<div id="div_3" name="div_3" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 58px;"><img src="images/3.png" width="auto" height="198"/></div>
+                    				<div class="clsPageTextSmall" style="left:399px; top:70px;">Maria soe.</div>
+								</div>
+								<div id="div_4" name="div_4" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 57px;"><img src="images/4.png" width="auto" height="210"/></div>
+                    				<div class="clsPageTextSmall" style="left:222px; top:174px;">Tama</br>golu.</div>
+								</div>
+								<div id="div_5" name="div_5" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 57px;"><img src="images/4.png" width="auto" height="210"/></div>
+                    				<div class="clsPageTextSmall" style="left:222px; top:174px;">Tama</br>golu.</div>
+                    				<div class="clsPageTextSmall" style="left:428px; top:50px;">skor</div>
+                    				<div style="position: absolute; left:478px; top:42px;"><img width="auto" height="43"  src="images/number-1.png"></div>
+								</div>
+								<div id="div_6" name="div_6" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 57px;"><img src="images/1.png" width="auto" height="210"/></div>
+                    				<div class="clsPageTextSmall" style="left:428px; top:50px;">skor</div>
+                    				<div style="position: absolute; left:478px; top:42px;"><img width="auto" height="43"  src="images/number-1.png"></div>
+                    				<div class="clsPageTextSmall" style="left:420px; top:93px;">Maria hateke.</div>
+								</div>
+								<div id="div_7" name="div_7" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 57px;"><img src="images/3.png" width="auto" height="210"/></div>
+                    				<div class="clsPageTextSmall" style="left:428px; top:50px;">skor</div>
+                    				<div style="position: absolute; left:478px; top:42px;"><img width="auto" height="43"  src="images/number-1.png"></div>
+                    				<div class="clsPageTextSmall" style="left:420px; top:93px;">Maria soe.</div>
+								</div>
+								<div id="div_8" name="div_8" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 57px;"><img src="images/4.png" width="auto" height="210"/></div>
+                    				<div class="clsPageTextSmall" style="left:428px; top:50px;">skor</div>
+                    				<div style="position: absolute; left:478px; top:42px;"><img width="auto" height="43"  src="images/number-2.png"></div>
+                    				<div class="clsPageTextSmall" style="left:137px; top:180px;">Maria hatama</br>tan golu.</div>
+								</div>
+								<div id="div_9" name="div_9" class="clsSlide">
+                   					<div style="position: absolute; width: 100%; text-align: center; top: 57px;"><img src="images/4.png" width="auto" height="210"/></div>
+                    				<div class="clsPageTextSmall" style="left:428px; top:50px;">skor</div>
+                    				<div style="position: absolute; left:478px; top:42px;"><img width="auto" height="43"  src="images/number-3.png"></div>
+                    				<div class="clsPageTextSmall" style="left:167px; top:180px;">Golu ida tan.</div>
+								</div>
+								<div id="div_10" name="div_10" class="clsSlide">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div class="clsMainTitleWhite" style="position:absolute; width: 100%; text-align: center; top: 100px; color: #000000;">Reve istória</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_11" name="div_11" class="clsSlide">
+									<div style="position:absolute; width:100%; left:0px; top:45px; border:0px solid blue;">
+										<div class="clsThreePartText-1">Maria hateke.</div>
+									</div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+									</div>
+								</div>
+								<div id="div_12" name="div_12" class="clsSlide">
+									<div style="position:absolute; width:100%; left:0px; top:45px; border:0px solid blue;">
+										<div class="clsThreePartText-2">Maria soe.</div>
+									</div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartImg-2">
+											<div class="clsThreePartImgCenter"><img width="auto" height="130" src="images/3.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+										<div class="clsThreePartLine-2"></div>
+									</div>
+								</div>
+								<div id="div_13" name="div_13" class="clsSlide">
+									<div style="position:absolute; width:100%; left:0px; top:45px; border:0px solid blue;">
+										<div class="clsThreePartText-3">Tama golu.</div>
+									</div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartImg-2">
+											<div class="clsThreePartImgCenter"><img width="auto" height="130" src="images/3.png"></div>
+										</div>
+										<div class="clsThreePartImg-3">
+											<div class="clsThreePartImgCenter"><img width="auto" height="135" src="images/4.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+										<div class="clsThreePartLine-2"></div>
+									</div>
+								</div>
+								<div id="div_14" name="div_14" class="clsSlide">
+									<div class="clsSubTitle_2">Sekuénsia</div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartImg-2">
+											<div class="clsThreePartImgCenter"><img width="auto" height="130" src="images/3.png"></div>
+										</div>
+										<div class="clsThreePartImg-3">
+											<div class="clsThreePartImgCenter"><img width="auto" height="135" src="images/4.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+										<div class="clsThreePartLine-2"></div>
+									</div>
+								</div>
+								<div id="div_15" name="div_15" class="clsSlide">
+									<div class="clsSubTitle_2" style="color: #d0d0d0;">Sekuénsia</div>
+									<div style="position:absolute; width:100%; left:0px; top:45px; border:0px solid blue;">
+										<div class="clsThreePartText-1">hahú</div>
+									</div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+									</div>
+								</div>
+								<div id="div_16" name="div_16" class="clsSlide">
+									<div class="clsSubTitle_2" style="color: #d0d0d0;">Sekuénsia</div>
+									<div style="position:absolute; width:100%; left:0px; top:45px; border:0px solid blue;">
+										<div class="clsThreePartText-1">hahú</div>
+										<div class="clsThreePartText-2">klaran</div>
+									</div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartImg-2">
+											<div class="clsThreePartImgCenter"><img width="auto" height="130" src="images/3.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+										<div class="clsThreePartLine-2"></div>
+									</div>
+								</div>
+								<div id="div_17" name="div_17" class="clsSlide">
+									<div class="clsSubTitle_2" style="color: #d0d0d0;">Sekuénsia</div>
+									<div style="position:absolute; width:100%; left:0px; top:45px; border:0px solid blue;">
+										<div class="clsThreePartText-1">hahú</div>
+										<div class="clsThreePartText-2">klaran</div>
+										<div class="clsThreePartText-3">remata</div>
+									</div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartImg-2">
+											<div class="clsThreePartImgCenter"><img width="auto" height="130" src="images/3.png"></div>
+										</div>
+										<div class="clsThreePartImg-3">
+											<div class="clsThreePartImgCenter"><img width="auto" height="135" src="images/4.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+										<div class="clsThreePartLine-2"></div>
+									</div>
+								</div>
+								<div id="div_18" name="div_18" class="clsSlide">
+									<div style="position: absolute; left: 337px; top:18px;"><img width="auto" height="90" src="images/question-small.gif" /></div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="130" src="images/3.png"></div>
+										</div>
+										<div class="clsThreePartImg-2">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartImg-3">
+											<div class="clsThreePartImgCenter"><img width="auto" height="135" src="images/4.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+										<div class="clsThreePartLine-2"></div>
+									</div>
+								</div>
+								<div id="div_19" name="div_19" class="clsSlide" style="display: block;">
+									<div class="clsPageText" style="left: 285px; top: 0px;">Loos</div>
+									<div style="position: absolute; left: 357px; top:8px;"><img width="auto" height="45" src="images/right.png" /></div>
+									<div style="position:absolute; width:100%; height:205px; left:0px; top:65px; border:0px solid blue;">
+										<div class="clsThreePartImg-1">
+											<div class="clsThreePartImgCenter"><img width="auto" height="133" src="images/1.png"></div>
+										</div>
+										<div class="clsThreePartImg-2">
+											<div class="clsThreePartImgCenter"><img width="auto" height="130" src="images/3.png"></div>
+										</div>
+										<div class="clsThreePartImg-3">
+											<div class="clsThreePartImgCenter"><img width="auto" height="135" src="images/4.png"></div>
+										</div>
+										<div class="clsThreePartLine-1"></div>
+										<div class="clsThreePartLine-2"></div>
+									</div>
+								</div>
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

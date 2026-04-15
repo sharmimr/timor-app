@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsPic {
+				position: relative;
+				width: auto;
+				height: 75px;
+				vertical-align: middle;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rArrPicList = [["2.png", "1.png", "3.png", "5.png", "4.png", "6.png"], ["1.png", "2.png", "3.png", "6.png", "4.png", "5.png"], ["4.png", "1.png", "3.png", "5.png", "6.png", "2.png"], ["3.png", "1.png", "2.png", "5.png", "4.png", "6.png"], ["6.png", "5.png", "3.png", "4.png", "2.png", "1.png"]];
+			var rAllCorrectCount = 0;
+			
+			function doGetRndPicList() {
+				rAllCorrectCount = 0;
+				document.getElementById("divQuestionMark").style.display = "block";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divBtnPanel").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "none";
+					
+				for (var i=1; i<=6; i++) {
+					var rInnerHTML = '<img id="imgDrop_' + i + '" name="imgDrop_' + i + '" class="clsPic" />';
+					document.getElementById("divDrop_"+i).innerHTML = rInnerHTML;
+				}			
+				var rRndId = Math.floor(Math.random() * rArrPicList.length);
+				for (var i=0; i<rArrPicList[rRndId].length; i++) {
+					document.getElementById("imgDrop_" + (i+1)).src = "images/" + rArrPicList[rRndId][i];
+				}
+				
+				for (var i=1; i<=6; i++) {
+					document.getElementById("divDropMainText_"+i).style.display = "none";
+					document.getElementById("divDropMain_"+i).style.display = "block";
+					document.getElementById("divDragMain_"+i).style.display = "block";
+				}				
+			}			
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:absolute; width:100%; height:auto; left:0px; top:15px; border:0px solid #333333;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #666666;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div id="divQuestionMark" name="divQuestionMark" style="display:block;">
+														<img width="auto" height="70" src="../../images/question_mark.png" />
+													</div>
+													<div id="divCorrectTextPanel" name="divCorrectTextPanel" style="display:none;">
+														<div style="position:relative; top:-5px; font-size:300%; display:inline-block;">
+															Loos
+														</div>
+														<div style="width:5px; display:inline-block;"></div>
+														<div style="display:inline-block;">
+															<img width="auto" height="55" src="../../images/tick.png" />
+														</div>														
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>
+								<div style="position:absolute; width:90%; height:300px; left:50px; top:110px; border:0px solid blue;">
+									<div id="divDragAndDropMain" name="divDragAndDropMain" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #666666;">
+										<div id="divDropMainPanel" name="divDropMainPanel" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #666666;">
+											<div id="divDropMain_1" name="divDropMain" class="clsBoxDrop" style="position:absolute; width:100px; height:100px; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block; z-index:1001;">
+												<div id="divDrop_1" name="divDrop" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<img id="imgDrop_1" name="imgDrop" class="clsPic" src="images/1.png" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div id="divDropMainText_1" name="divDropMainText" style="position:absolute; width:100px; height:100px; left:0px; top:0px; text-align:center; border:0px solid red; display:none; z-index:1001;">
+												<div id="divDropSubText_1" name="divDropSubText" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDropText_1" name="divDropText" style="position:relative; left:10px; top:25px; font-size:100%; border:0px solid red;"></div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											
+											<div id="divDropMain_2" name="divDropMain" class="clsBoxDrop" style="position:absolute; width:100px; height:100px; left:100px; top:0px; text-align:center; border:0px solid red; display:inline-block; z-index:1001;">
+												<div id="divDrop_2" name="divDrop" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<img id="imgDrop_2" name="imgDrop" class="clsPic" src="images/2.png" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div id="divDropMainText_2" name="divDropMainText" style="position:absolute; width:100px; height:100px; left:0px; top:0px; text-align:center; border:0px solid red; display:none; z-index:1001;">
+												<div id="divDropSubText_2" name="divDropSubText" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDropText_2" name="divDropText" style="position:relative; left:10px; top:25px; font-size:100%; border:0px solid red;"></div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+											<div id="divDropMain_3" name="divDropMain" class="clsBoxDrop" style="position:absolute; width:100px; height:100px; left:200px; top:0px; text-align:center; border:0px solid red; display:inline-block; z-index:1001;">
+												<div id="divDrop_3" name="divDrop" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<img id="imgDrop_3" name="imgDrop" class="clsPic" src="images/3.png" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+											<div id="divDropMainText_3" name="divDropMainText" style="position:absolute; width:100px; height:100px; left:0px; top:0px; text-align:center; border:0px solid red; display:none; z-index:1001;">
+												<div id="divDropSubText_3" name="divDropSubText" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDropText_3" name="divDropText" style="position:relative; left:10px; top:25px; font-size:100%; border:0px solid red;"></div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>											
+
+											<div id="divDropMain_4" name="divDropMain" class="clsBoxDrop" style="position:absolute; width:100px; height:100px; left:300px; top:0px; text-align:center; border:0px solid red; display:inline-block; z-index:1001;">
+												<div id="divDrop_4" name="divDrop" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<img id="imgDrop_4" name="imgDrop" class="clsPic" src="images/4.png" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div id="divDropMainText_4" name="divDropMainText" style="position:absolute; width:100px; height:100px; left:0px; top:0px; text-align:center; border:0px solid red; display:none; z-index:1001;">
+												<div id="divDropSubText_4" name="divDropSubText" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDropText_4" name="divDropText" style="position:relative; left:10px; top:25px; font-size:100%; border:0px solid red;"></div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>											
+
+											<div id="divDropMain_5" name="divDropMain" class="clsBoxDrop" style="position:absolute; width:100px; height:100px; left:400px; top:0px; text-align:center; border:0px solid red; display:inline-block; z-index:1001;">
+												<div id="divDrop_5" name="divDrop" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<img id="imgDrop_5" name="imgDrop" class="clsPic" src="images/5.png" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div id="divDropMainText_5" name="divDropMainText" style="position:absolute; width:100px; height:100px; left:0px; top:0px; text-align:center; border:0px solid red; display:none; z-index:1001;">
+												<div id="divDropSubText_5" name="divDropSubText" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDropText_5" name="divDropText" style="position:relative; left:10px; top:25px; font-size:100%; border:0px solid red;"></div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>											
+
+											<div id="divDropMain_6" name="divDropMain" class="clsBoxDrop" style="position:absolute; width:100px; height:100px; left:500px; top:0px; text-align:center; border:0px solid red; display:inline-block; z-index:1001;">
+												<div id="divDrop_6" name="divDrop" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<img id="imgDrop_6" name="imgDrop" class="clsPic" src="images/6.png" />
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											<div id="divDropMainText_6" name="divDropMainText" style="position:absolute; width:100px; height:100px; left:0px; top:0px; text-align:center; border:0px solid red; display:none; z-index:1001;">
+												<div id="divDropSubText_6" name="divDropSubText" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDropText_6" name="divDropText" style="position:relative; left:10px; top:25px; font-size:100%; border:0px solid red;"></div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</div>
+										
+										<div id="divDragMainPanel" name="divDragMainPanel" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #666666;">
+											<div id="divDragMain_1" name="divDragMain" class="clsBoxDrag" style="position:absolute; width:100px; height:auto; left:10px; top:100px; text-align:center; border:0px solid red; cursor:pointer; display:inline-block; z-index:1001;">
+												<div id="divDrag_1" name="divDrag" style="position:absolute; width:100%; height:auto; left:0px; top:-5px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDragArea_1" name="divDragArea" style="font-size:115%; border:0px solid red;">kuadradu</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+											
+											<div id="divDragMain_2" name="divDragMain" class="clsBoxDrag" style="position:absolute; width:100px; height:auto; left:110px; top:95px; text-align:center; border:0px solid red; cursor:pointer; display:inline-block; z-index:1001;">
+												<div id="divDrag_2" name="divDrag" style="position:absolute; width:100%; height:auto; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDragArea_2" name="divDragArea" style="font-size:115%; border:0px solid red;">sírkulu</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+											<div id="divDragMain_3" name="divDragMain" class="clsBoxDrag" style="position:absolute; width:100px; height:auto; left:200px; top:95px; text-align:center; border:0px solid red; cursor:pointer; display:inline-block; z-index:1001;">
+												<div id="divDrag_3" name="divDrag" style="position:absolute; width:100%; height:auto; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDragArea_3" name="divDragArea" style="font-size:115%; border:0px solid red;">triángulu</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+											<div id="divDragMain_4" name="divDragMain" class="clsBoxDrag" style="position:absolute; width:100px; height:auto; left:300px; top:95px; text-align:center; border:0px solid red; cursor:pointer; display:inline-block; z-index:1001;">
+												<div id="divDrag_4" name="divDrag" style="position:absolute; width:100%; height:auto; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDragArea_4" name="divDragArea" style="font-size:115%; border:0px solid red;">retángulu</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+											<div id="divDragMain_5" name="divDragMain" class="clsBoxDrag" style="position:absolute; width:100px; height:auto; left:430px; top:95px; text-align:center; border:0px solid red; cursor:pointer; display:inline-block; z-index:1001;">
+												<div id="divDrag_5" name="divDrag" style="position:absolute; width:100%; height:auto; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDragArea_5" name="divDragArea" style="font-size:115%; border:0px solid red;">ovál</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+											<div id="divDragMain_6" name="divDragMain" class="clsBoxDrag" style="position:absolute; width:100px; height:auto; left:525px; top:95px; text-align:center; border:0px solid red; cursor:pointer; display:inline-block; z-index:1001;">
+												<div id="divDrag_6" name="divDrag" style="position:absolute; width:100%; height:auto; left:0px; top:0px; text-align:center; border:0px solid red; display:inline-block;">
+													<table>
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divDragArea_6" name="divDragArea" style="font-size:115%; border:0px solid red;">fitun</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</div>											
+										</div>
+									</div>
+									<div id="divPicDisable" name="divPicDisable" style="position:absolute; width:615px; height:140px; left:0px; top:0px; border:0px solid blue; display:block; z-index:9999;"></div>
+								</div>
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; top:255px; border:0px solid #333333; display:none;">
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doGetRndPicList();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>							
+								
+								<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+									<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+										<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+									</div>							
+									<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+										<img width="100%" height="100%" src="../../images/back_arrow.png" />
+									</div>
+									<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+										<img width="100%" height="100%" src="../../images/next_arrow.png" />
+									</div>					
+									<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+										<img width="100%" height="100%" src="../../images/home.png" />
+									</div>
+								</div>								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			function doCheckAllDropCorrect() {
+				if (rAllCorrectCount>=6) {
+					document.getElementById("divQuestionMark").style.display = "none";
+					document.getElementById("divCorrectTextPanel").style.display = "block";
+					document.getElementById("divBtnPanel").style.display = "block";
+					document.getElementById("divPicDisable").style.display = "block";				
+				}
+			}
+		</script>
+		
+		<script language="javascript">
+			$(".clsBoxDrag").draggable({
+				axis: "x,y", containment: "#divDragAndDropMain", revert: true,
+				drag: function(event, ui) {
+					for (var i=1; i<=6; i++) {
+						document.getElementById("divDragMain_"+i).style.zIndex = "auto";
+					}
+					document.getElementById(this.id).style.zIndex = 9998;
+				}
+			});
+			
+			$(".clsBoxDrop").droppable({
+				drop: function(event, ui) {
+					var rDragName = "";
+					var rDropName = "";
+					rDragName = ui.draggable.attr("id");
+					rDropName = this.id;
+					
+					var rImgSRC = document.getElementById(rDropName).getElementsByTagName("img")[0].src;
+					var rImgSRCSpl = rImgSRC.split("/");
+					var rImgName = rImgSRCSpl[rImgSRCSpl.length-1];
+					var rDropTextName = "divDropMainText_" + rDropName.split("_")[1];
+					if (rDragName=="divDragMain_1" && rImgName=="4.png") {
+						document.getElementById(rDropName).style.display = "none";
+						document.getElementById(rDragName).style.display = "none";
+						document.getElementById(rDropTextName).getElementsByTagName("div")[1].innerHTML = document.getElementById(rDragName).getElementsByTagName("div")[1].innerHTML;
+						document.getElementById(rDropTextName).style.display = "inline-block";
+						rAllCorrectCount++;
+					}
+					if (rDragName=="divDragMain_2" && rImgName=="1.png") {
+						document.getElementById(rDropName).style.display = "none";
+						document.getElementById(rDragName).style.display = "none";
+						document.getElementById(rDropTextName).getElementsByTagName("div")[1].innerHTML = document.getElementById(rDragName).getElementsByTagName("div")[1].innerHTML;
+						document.getElementById(rDropTextName).style.display = "inline-block";
+						rAllCorrectCount++;
+					}
+					if (rDragName=="divDragMain_3" && rImgName=="6.png") {
+						document.getElementById(rDropName).style.display = "none";
+						document.getElementById(rDragName).style.display = "none";
+						document.getElementById(rDropTextName).getElementsByTagName("div")[1].innerHTML = document.getElementById(rDragName).getElementsByTagName("div")[1].innerHTML;
+						document.getElementById(rDropTextName).style.display = "inline-block";
+						rAllCorrectCount++;
+					}
+					if (rDragName=="divDragMain_4" && rImgName=="3.png") {
+						document.getElementById(rDropName).style.display = "none";
+						document.getElementById(rDragName).style.display = "none";
+						document.getElementById(rDropTextName).getElementsByTagName("div")[1].innerHTML = document.getElementById(rDragName).getElementsByTagName("div")[1].innerHTML;
+						document.getElementById(rDropTextName).style.display = "inline-block";
+						rAllCorrectCount++;
+					}
+					if (rDragName=="divDragMain_5" && rImgName=="2.png") {
+						document.getElementById(rDropName).style.display = "none";
+						document.getElementById(rDragName).style.display = "none";
+						document.getElementById(rDropTextName).getElementsByTagName("div")[1].innerHTML = document.getElementById(rDragName).getElementsByTagName("div")[1].innerHTML;
+						document.getElementById(rDropTextName).style.display = "inline-block";
+						rAllCorrectCount++;
+					}
+					if (rDragName=="divDragMain_6" && rImgName=="5.png") {
+						document.getElementById(rDropName).style.display = "none";
+						document.getElementById(rDragName).style.display = "none";
+						document.getElementById(rDropTextName).getElementsByTagName("div")[1].innerHTML = document.getElementById(rDragName).getElementsByTagName("div")[1].innerHTML;
+						document.getElementById(rDropTextName).style.display = "inline-block";
+						rAllCorrectCount++;
+					}
+					
+					var rTempLeft = document.getElementById(rDropName).style.left;
+					var rTempLeftSpl = rTempLeft.split("px");
+					var rFinalTempLeft = Number(rTempLeftSpl[0]);
+					document.getElementById(rDropTextName).style.left = (rFinalTempLeft+10) + "px";
+
+					doCheckAllDropCorrect();
+				}
+			});			
+		</script>
+		
+		<script language="javascript">
+			doGetRndPicList();
+			doResetMainNavButton();
+		</script>	
+    <script src="../../activity-tracker.js"></script>	
+	</body>
+</html>

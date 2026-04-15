@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSlideImgTop {
+				position: relative;
+				width: 100%;
+				height: 435px;
+				left: 0px;
+				top: 0px;
+				border: 0px solid red;
+			}
+			.clsSubTitleTabletBottom {
+				position:absolute; 
+				width: 80%;
+				top: 440px; 
+				text-align: center; 
+				left: 10%; 
+				line-height: 1.3; 
+				font-size:250%; 
+				color: #000000;
+				border: 0px solid red;
+			}
+		    @import "compass/css3";
+		    @keyframes fadeIn { 
+		    from { opacity: 0; } 
+		        }
+	        .clsFadeInOut {
+	          position: relative;
+	          top: 100px;
+	          
+	          font: italic bold 5em/1 Bodoni, serif;
+	          color: #555;
+	          text-align: center;
+	          
+	          animation: fadeIn 1s infinite alternate;
+	        }
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+			function doShowOrHideMother() {
+				doHideAllPopUp();
+				var v = document.getElementById("divSpeechMother");
+				if (v.style.display === "none") {
+				 v.style.display = "block";
+				} else {
+				 v.style.display = "none";
+				}
+				v.style.zIndex = 10000;
+				document.getElementById("divDisable").style.display = "block";
+			}
+			function doShowOrHideHouse() {
+				doHideAllPopUp();
+				var v = document.getElementById("divSpeechHouse");
+				if (v.style.display === "none") {
+				 v.style.display = "block";
+				} else {
+				 v.style.display = "none";
+				}
+				v.style.zIndex = 10000;
+				document.getElementById("divDisable").style.display = "block";
+			}
+			function doShowOrHideGrandma() {
+				doHideAllPopUp();
+				var v = document.getElementById("divSpeechGrandma");
+				if (v.style.display === "none") {
+				 v.style.display = "block";
+				} else {
+				 v.style.display = "none";
+				}
+				v.style.zIndex = 10000;
+				document.getElementById("divDisable").style.display = "block";
+			}
+			function doShowOrHideWarrior() {
+				doHideAllPopUp();
+				var v = document.getElementById("divSpeechWarrior");
+				if (v.style.display === "none") {
+				 v.style.display = "block";
+				} else {
+				 v.style.display = "none";
+				}
+				v.style.zIndex = 10000;
+				document.getElementById("divDisable").style.display = "block";
+			}
+			function doShowOrHideMan() {
+				doHideAllPopUp();
+				var v = document.getElementById("divSpeechMan");
+				if (v.style.display === "none") {
+				 v.style.display = "block";
+				} else {
+				 v.style.display = "none";
+				}
+				v.style.zIndex = 10000;
+				document.getElementById("divDisable").style.display = "block";
+			}
+
+			function doCloseMother() {
+				document.getElementById("divSpeechMother").style.display = "none";
+				document.getElementById("divDisable").style.display = "none";
+			}
+			function doCloseHouse() {
+				document.getElementById("divSpeechHouse").style.display = "none";
+				document.getElementById("divDisable").style.display = "none";
+			}
+			function doCloseWarrior() {
+				document.getElementById("divSpeechWarrior").style.display = "none";
+				document.getElementById("divDisable").style.display = "none";
+			}
+			function doCloseGrandma() {
+				document.getElementById("divSpeechGrandma").style.display = "none";
+				document.getElementById("divDisable").style.display = "none";
+			}
+			function doCloseMan() {
+				document.getElementById("divSpeechMan").style.display = "none";
+				document.getElementById("divDisable").style.display = "none";
+			}
+			
+			function doHideAllPopUp() {
+				document.getElementById("divSpeechMother").style.display = "none";
+				document.getElementById("divSpeechHouse").style.display = "none";
+				document.getElementById("divSpeechWarrior").style.display = "none";
+				document.getElementById("divSpeechGrandma").style.display = "none";
+				document.getElementById("divSpeechMan").style.display = "none";
+
+				document.getElementById("divSpeechMother").style.zIndex = "auto";
+				document.getElementById("divSpeechHouse").style.zIndex = "auto";
+				document.getElementById("divSpeechWarrior").style.zIndex = "auto";
+				document.getElementById("divSpeechGrandma").style.zIndex = "auto";
+				document.getElementById("divSpeechMan").style.zIndex = "auto";
+
+				document.getElementById("divDisable").style.display = "none";
+			}
+			
+			var rStrMainActivityList = "theme_environment_level_3_play.html~activities/activity_65/activity.html~activities/activity_66/activity.html~activities/activity_89/activity.html~activities/activity_90/activity.html~activities/activity_91/activity.html~activities/activity_92/activity.html~activities/activity_93/activity.html";
+			function doNavigateToActivity(rObj, rActURL) {
+				if (rObj.style.cursor=="pointer") {
+					document.location.href = rActURL + "?MainActivityList=" + rStrMainActivityList;
+				}
+			}
+			
+			function doGoToAct(rObj, rURL) {
+				document.location.href = rURL;
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--Slides-->
+								<div id="div_1" name="div_1" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:block;">
+                    				<div class="clsMainTitleTablet">Halimar Uma-lulik</div>
+                    				<div style="position: absolute; width: auto; height: 720px; left:0px; top:0px; border:0px solid #333333;">
+                    					<img width="730" height="310" src="images/village_background.gif" />
+                    				</div>
+									<div style="position: absolute; left:310px; top:0px; border:0px solid #333333; cursor:pointer;">
+										<img width="420" height="139" src="images/rays_sun.gif" />
+										<div class="clsFadeInOut" name="clsFadeInOut" style="position: absolute; left:0px; top:0px;"><img width="420" height="139" src="images/blink.png" /></div>
+										<div id="divHotSpot_1" name="divHotSpot_1" style="position:absolute; width:96px; height:85px; left:163px; top:55px; border:1px solid red; cursor:pointer;" onclick="javascript:doShowOrHideHouse()">
+										</div>
+									</div>
+									<div id="" name="" style="position: absolute; left:64px; top:178px; border:0px solid #333333; cursor:pointer;">
+										<img width="68" height="120" src="images/Mother.gif" />
+										<div id="divHotSpot_2" name="divHotSpot_2" style="position:absolute; width:56px; height:110px; left:6px; top:7px; border:1px solid red; cursor:pointer;" onclick="doShowOrHideMother()">
+										</div>
+									</div>
+									<div id="" name="" style="position: absolute; left:338px; top:214px; border:0px solid #333333; cursor:pointer;">
+										<img width="100" height="75" src="images/grandma.gif" />
+										<div id="divHotSpot_3" name="divHotSpot_3" style="position:absolute; width:85px; height:63px; left:0px; top:4px; border:1px solid red; cursor:pointer;" onclick="doShowOrHideGrandma()">
+										</div>
+									</div>
+									<div id="" name="" style="position: absolute; left:506px; top:142px; border:0px solid #333333; cursor:pointer;">
+										<img width="168" height="75" src="images/Warrior.gif" />
+										<div id="divHotSpot_4" name="divHotSpot_4" style="position:absolute; width:160px; height:70px; left:0px; top:3px; border:1px solid red; cursor:pointer;" onclick="doShowOrHideWarrior()">
+										</div>
+									</div>
+									<div id="" name="" style="position: absolute; left:481px; top:217px; border:0px solid #333333; cursor:pointer;">
+										<img width="210" height="92" src="images/man.gif" />
+										<div id="divHotSpot_5" name="divHotSpot_5" style="position:absolute; width:43px; height:89px; left:8px; top:2px; border:1px solid red; cursor:pointer;" onclick="doShowOrHideMan()">
+										</div>
+									</div>
+									<div id="" name="" style="position: absolute; left:140px; top:176px; border:0px solid #333333;">
+										<img width="145" height="133" src="images/dog.gif" />
+									</div>
+
+									<!--Popup start-->
+									<div id="divSpeechMother" name="divSpeechMother" style="position: absolute; left:48px; top:60px; border:0px solid #333333; display:none;">
+										<img width="auto" height="383" style="border:0px solid red;" src="images/blessing_basket_speech_bubble.png" />
+										<div id="divSpeechMotherClose" name="divSpeechMotherClose" style="position: absolute; left:480px; top:70px; border:0px solid #333333; cursor:pointer;" onclick="javascript:doCloseMother()">
+											<img width="auto" height="50" src="images/close.png" />
+										</div>
+										<div style="position:absolute; width:71px; height: 48px; left:486px; bottom:146px; border:0px solid red; cursor:pointer;" onclick="javascript:doNavigateToActivity(this, '../activity_91/activity.html');">
+										</div>
+									</div>
+									<div id="divSpeechGrandma" name="divSpeechGrandma" style="position: absolute; left:500px; top:150px; border:0px solid #333333; display:none;" >
+										<img width="auto" height="383" src="images/tais_grandma_weaving_speech_bubble.png" />
+										<div id="divSpeechGrandma(Close" name="divSpeechGrandma(Close" style="position: absolute; left:480px; top:70px; border:0px solid #333333; cursor:pointer;" onclick="javascript:doCloseGrandma()">
+											<img width="auto" height="50" src="images/close.png" />
+										</div>
+										<div style="position:absolute; width:71px; height: 48px; left:486px; bottom:146px; border:0px solid red; cursor:pointer;" onclick="javascript:doNavigateToActivity(this, '../activity_92/activity.html');">
+										</div>										
+									</div>
+									<div id="divSpeechMan" name="divSpeechMan" style="position: absolute; left:600px; top:160px; border:0px solid #333333; display:none;">
+										<img width="auto" height="383" src="images/corn_harvest_speech_bubble.png" />
+										<div id="divSpeechManClose" name="divSpeechManClose" style="position: absolute; left:480px; top:70px; border:0px solid #333333; cursor:pointer;" onclick="javascript:doCloseMan()">
+											<img width="auto" height="50" src="images/close.png" />
+										</div>
+										<div style="position:absolute; width:71px; height: 48px; left:486px; bottom:146px; border:0px solid red; cursor:pointer;" onclick="javascript:doNavigateToActivity(this, '../activity_93/activity.html');">
+										</div>										
+									</div>
+									<div id="divSpeechHouse" name="divSpeechHouse" style="position: absolute; left:700px; top:10px; border:0px solid #333333; display:none; zoom:0.4;">
+										<img width="auto" height="383" src="images/traditional_uma_house_speech_bubble.png" />
+										<div id="divSpeechHouseClose" name="divSpeechHouseClose" style="position: absolute; left:480px; top:70px; border:0px solid #333333; cursor:pointer;" onclick="javascript:doCloseHouse()">
+											<img width="auto" height="50" src="images/close.png" />
+										</div>
+										<div style="position:absolute; width:71px; height: 48px; left:486px; bottom:146px; border:0px solid red; cursor:pointer;" onclick="javascript:doNavigateToActivity(this, '../activity_90/activity.html');">
+										</div>										
+									</div>
+									<div id="divSpeechWarrior" name="divSpeechWarrior" style="position: absolute; left:1200px; top:50px; border:0px solid #333333; display:none; zoom:0.4;">
+										<img width="auto" height="383" src="images/surik_sword_speech_bubble.png" />
+										<div id="divSpeechWarriorClose" name="divSpeechWarriorClose" style="position: absolute; left:480px; top:70px; border:0px solid #333333; cursor:pointer;" onclick="javascript:doCloseWarrior()">
+											<img width="auto" height="50" src="images/close.png" />
+										</div>
+										<div style="position:absolute; width:71px; height: 48px; left:486px; bottom:146px; border:0px solid red; cursor:pointer;" onclick="javascript:doNavigateToActivity(this, '../activity_89/activity.html');">
+										</div>										
+									</div>
+									<!--Popup End-->
+									<div id="divDisable" name="divDisable" style="position:absolute; width:100%; height:310px; left:0px; top:0px; border:10px solid blue; display:none;"></div>
+								</div>
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:-15px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:document.location.reload();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSlideImgTop {
+				position: relative;
+				width: 100%;
+				height: 435px;
+				left: 0px;
+				top: 100px;
+				border: 0px solid red;
+			}
+			.clsSubTitleTabletBottom {
+				position:absolute; 
+				width: 80%;
+				top: 440px; 
+				text-align: center; 
+				left: 10%; 
+				line-height: 1.3; 
+				font-size:250%; 
+				color: #000000;
+				border: 0px solid red;
+			}
+			.clsSubTitleTablet_Bottom {
+			    position:absolute; 
+			    width: 80%;
+			    left: 10%;
+			    bottom: 100px; 
+			    text-align: center; 
+			    line-height: 1.3; 
+			    font-size:250%; 
+			    color: #000000;
+			    border: 0px solid red;
+			}
+
+			.clsFlipCard {
+				position: absolute;
+				width: 200px;
+				height: 133px;
+				left: 0px;
+				top: 0px;
+				cursor: pointer;
+				opacity: 0.5; /* Remove after see the table */
+				border: 0px solid green;
+				/*display: none;*/
+			}
+			.clsAniFlipCard {
+				position: relative;
+				width: 50px;
+				height: 50px;
+				left: 0px;
+				top: 0px;
+				border: 0px solid green;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				/*
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				*/
+				document.getElementById("divBtnReplay").style.display = "inline-block";
+				document.getElementById("divBtnBack").style.display = "none";
+				document.getElementById("divBtnNext").style.display = "none";
+
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				doShuffleArray(rArrOpenAniImgList);
+				rArrCloseAniImgList = [];
+				for (var i=0; i<rArrOpenAniImgList.length; i++) {
+					var rTempSpl = rArrOpenAniImgList[i].split("_");
+					var rTempVal = rTempSpl[0] + "_" + "b.gif";
+					rArrCloseAniImgList.push(rTempVal);
+				}
+			
+				rArrCorrectAniImgList = [];
+				for (var i=0; i<rArrOpenAniImgList.length; i++) {
+					var rTempSpl = rArrOpenAniImgList[i].split("_");
+					var rTempVal = rTempSpl[0] + "_" + "c.gif";
+					rArrCorrectAniImgList.push(rTempVal);
+				}				
+				
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				/*
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				*/
+				//document.getElementById("divBtnNext").style.display = "none";
+
+				document.getElementById("divBtnReplay").style.display = "inline-block";
+				document.getElementById("divBtnBack").style.display = "none";
+				document.getElementById("divBtnNext").style.display = "none";
+				
+				var rDivFlipLen = document.getElementsByName("divFlip").length;
+				for (var i=1; i<=rDivFlipLen; i++) {
+					document.getElementById("divFlip_"+i).style.cursor = "pointer";
+					document.getElementById("divFlip_"+i).getElementsByTagName("img")[0].src = "images/woodtexture.png";
+				}
+
+				document.getElementById("divDisable").style.display = "none";				
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+			
+			function doShuffleArray(rArray) {
+				var rCurrentIndex = rArray.length;
+				while (rCurrentIndex != 0) {
+					var rRandomIndex = Math.floor(Math.random() * rCurrentIndex);
+					rCurrentIndex--;
+					[rArray[rCurrentIndex], rArray[rRandomIndex]] = [rArray[rRandomIndex], rArray[rCurrentIndex]];
+				}
+			}			
+			
+			var rArrOpenAniImgList = ["1_a.gif", "1_a.gif", "2_a.gif", "2_a.gif", "3_a.gif", "3_a.gif", "4_a.gif", "4_a.gif", "5_a.gif", "5_a.gif", "6_a.gif", "6_a.gif"];
+			var rArrCloseAniImgList = ["1_b.gif", "1_b.gif", "2_b.gif", "2_b.gif", "3_b.gif", "3_b.gif", "4_b.gif", "4_b.gif", "5_b.gif", "5_b.gif", "6_b.gif", "6_b.gif"];
+			var rArrCorrectAniImgList = ["1_c.gif", "1_c.gif", "2_c.gif", "2_c.gif", "3_c.gif", "3_c.gif", "4_c.gif", "4_c.gif", "5_c.gif", "5_c.gif", "6_c.gif", "6_c.gif"];
+			
+			
+			var rFirstClickedDiv = "";
+			var rSecondClickedDiv = "";
+			var rCloseAniImage = "";
+			var rCorrectAniImage = "";
+			var rDivIdNum = 0;
+			var rDivIdNum_1 = 0;
+			var rDivIdNum_2 = 0;
+			var rNumberOfCorrect = 0;
+			function doOpenImage(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					if (rFirstClickedDiv=="") {
+						rFirstClickedDiv = rObj.id;
+					} else {
+						rSecondClickedDiv = rObj.id;
+					}
+					
+					rDivIdNum = Number(rObj.id.split("_")[1]);
+					rObj.getElementsByTagName("img")[0].src = "images/" + rArrOpenAniImgList[rDivIdNum-1];
+					
+					if (rFirstClickedDiv!="" && rSecondClickedDiv=="") {
+						document.getElementById("divDisable").style.display = "block";
+						window.setTimeout(function() {
+							document.getElementById("divDisable").style.display = "none";
+						}, 1000);						
+					}
+
+					if (rFirstClickedDiv!="" && rSecondClickedDiv!="") {
+						document.getElementById("divDisable").style.display = "block";
+						window.setTimeout(function() {
+							doCkeckCorrect();
+						}, 1000);					
+					}
+				}
+			}
+			
+			
+			function doCkeckCorrect() {
+				rDivIdNum_1 = Number(rFirstClickedDiv.split("_")[1]);
+				rDivIdNum_2 = Number(rSecondClickedDiv.split("_")[1]);
+					
+				var rFirstImageSpl = document.getElementById(rFirstClickedDiv).getElementsByTagName("img")[0].src.split("/");
+				var rFirstImage = rFirstImageSpl[rFirstImageSpl.length-1];
+				
+				var rSecondImageSpl = document.getElementById(rSecondClickedDiv).getElementsByTagName("img")[0].src.split("/");
+				var rSecondImage = rSecondImageSpl[rSecondImageSpl.length-1];
+
+				if (rFirstImage==rSecondImage) {
+					rNumberOfCorrect++;
+					window.setTimeout(function() {
+						document.getElementById(rFirstClickedDiv).getElementsByTagName("img")[0].src = "images/" + rArrCorrectAniImgList[rDivIdNum_1-1];
+						document.getElementById(rSecondClickedDiv).getElementsByTagName("img")[0].src = "images/" + rArrCorrectAniImgList[rDivIdNum_2-1];
+						
+						document.getElementById(rFirstClickedDiv).style.cursor = "default";
+						document.getElementById(rSecondClickedDiv).style.cursor = "default";						
+										
+						rFirstClickedDiv = "";
+						rSecondClickedDiv = "";
+						rCloseAniImage = "";
+						rCorrectAniImage = "";
+						rDivIdNum = 0;
+						rDivIdNum_1 = 0;
+						rDivIdNum_2 = 0;
+						window.setTimeout(function() {
+							document.getElementById("divDisable").style.display = "none";
+							if (rNumberOfCorrect>=6) {
+								doResetActivity();
+							}
+						}, 1000);
+					}, 1000);				
+				} else {
+					document.getElementById(rFirstClickedDiv).getElementsByTagName("img")[0].src = "images/" + rArrCloseAniImgList[rDivIdNum_1-1];
+					document.getElementById(rSecondClickedDiv).getElementsByTagName("img")[0].src = "images/" + rArrCloseAniImgList[rDivIdNum_2-1];
+					
+					window.setTimeout(function() {
+						document.getElementById(rFirstClickedDiv).getElementsByTagName("img")[0].src = "images/woodtexture.png";
+						document.getElementById(rSecondClickedDiv).getElementsByTagName("img")[0].src = "images/woodtexture.png";
+
+						rFirstClickedDiv = "";
+						rSecondClickedDiv = "";
+						rCloseAniImage = "";
+						rCorrectAniImage = "";
+						rDivIdNum = 0;
+						rDivIdNum_1 = 0;
+						rDivIdNum_2 = 0;
+						
+						document.getElementById("divDisable").style.display = "none";
+					}, 500);					
+				}
+				
+				
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div id="div_1" name="div_1" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:block;">
+                    				<div class="clsMainTitleTablet" style="position:relative; top:0px; font-size:150%; font-weight:normal;">Hanoin ai-fuan</div>
+                    				<div style="position: absolute; width: 600px; height: 225px; left: 50px; top: 35px; border:0px solid red;">
+	                    				<!-- Animation -->
+										<table width="50%" height="100%" align="center" border="0">
+											<tr>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_1" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_1" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_2" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_2" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_3" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_3" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_4" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_4" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+											</tr>
+											<tr height="10">
+												<td colspan="4">
+												</td>
+											</tr>
+											<tr>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_5" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_5" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_6" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_6" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_7" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_7" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_8" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_8" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+											</tr>
+											<tr height="10">
+												<td colspan="4">
+												</td>
+											</tr>
+											<tr>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_9" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_9" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_10" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_10" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_11" name="divFlip" class="clsAniFlipCard" style="cursor:pointer;" onclick="javascript:doOpenImage(this);"><img id="imgFlip_11" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+												<td width="25%" align="center" valign="top">
+													<div id="divFlip_12" name="divFlip" class="clsAniFlipCard" style="cursor:pointer" onclick="javascript:doOpenImage(this);"><img id="imgFlip_12" class="clsAniFlipCard" src="images/woodtexture.png" /></div>
+												</td>
+											</tr>
+										</table>
+                    				</div>
+									<div id="divDisable" name="divDisable" style="position: absolute; width: 600px; height: 225px; left: 50px; top: 35px; border:0px solid red; display:none;"></div>
+								</div>			
+								<!--Slides End-->							
+								<div id="divBtnPanel" name="divBtnPanel" style="position:relative; width:100%; height:40px; left:0px; top:265px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:document.location.reload();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>
+							</div>
+
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>

@@ -1,0 +1,334 @@
+﻿@font-face {
+  font-family: "Andika_Regular";
+  src: url("../fonts/Andika/Andika-Regular.eot");
+  src:
+    url("../fonts/Andika/Andika-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Andika/Andika-Regular.woff2") format("woff2"),
+    url("../fonts/Andika/Andika-Regular.woff") format("woff"),
+    url("../fonts/Andika/Andika-Regular.ttf") format("truetype"),
+    url("../fonts/Andika/Andika-Regular.svg#Andika-Regular") format("svg");
+}
+@font-face {
+  font-family: "Andika_Bold";
+  src: url("../fonts/Andika/Andika-Bold.eot");
+  src:
+    url("../fonts/Andika/Andika-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Andika/Andika-Bold.woff2") format("woff2"),
+    url("../fonts/Andika/Andika-Bold.woff") format("woff"),
+    url("../fonts/Andika/Andika-Bold.ttf") format("truetype"),
+    url("../fonts/Andika/Andika-Bold.svg#Andika-Bold") format("svg");
+}
+@font-face {
+  font-family: "Andika_Italic";
+  src: url("../fonts/Andika/Andika-Italic.eot");
+  src:
+    url("../fonts/Andika/Andika-Italic.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/Andika/Andika-Italic.woff2") format("woff2"),
+    url("../fonts/Andika/Andika-Italic.woff") format("woff"),
+    url("../fonts/Andika/Andika-Italic.ttf") format("truetype"),
+    url("../fonts/Andika/Andika-Italic.svg#Andika-Italic") format("svg");
+}
+@font-face {
+  font-family: "Andika_BoldItalic";
+  src: url("../fonts/Andika/Andika-BoldItalic.eot");
+  src:
+    url("../fonts/Andika/Andika-BoldItalic.eot?#iefix")
+      format("embedded-opentype"),
+    url("../fonts/Andika/Andika-BoldItalic.woff2") format("woff2"),
+    url("../fonts/Andika/Andika-BoldItalic.woff") format("woff"),
+    url("../fonts/Andika/Andika-BoldItalic.ttf") format("truetype"),
+    url("../fonts/Andika/Andika-BoldItalic.svg#Andika-BoldItalic") format("svg");
+}
+
+html,
+body {
+  /*height:100%;*/
+  /*
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	*/
+  font-family: "Andika_Regular";
+  overflow-y: hidden;
+}
+.clsMainTitleWhite {
+  font-size: 60px;
+  color: #ffffff;
+}
+
+.clsSubTitle {
+  position: relative;
+  width: 100%;
+  font-size: 250%;
+  top: -18px;
+}
+.clsPageText {
+  position: absolute;
+  font-size: 200%;
+}
+.clsPageThumbnailHead {
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 35px;
+  font-size: 175%;
+  color: #88552a;
+}
+.clsPageTextSmall {
+  position: absolute;
+  font-size: 160%;
+  line-height: 120%;
+}
+.clsSlide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  display: none;
+}
+.clsReplayVideo {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  left: 387px;
+  top: 120px;
+  margin-left: -50px;
+  border: 0px solid green;
+  cursor: pointer;
+  display: block;
+}
+.clsMicroBack {
+  width: auto;
+  height: 40px;
+}
+.clsMicroReplay {
+  width: auto;
+  height: 40px;
+}
+.clsMicroNext {
+  width: auto;
+  height: 40px;
+}
+.clsMacroPosterImage {
+  position: absolute;
+  width: auto;
+  height: 50px;
+  left: 10px;
+  top: 10px;
+  border: 0px solid blue;
+  cursor: pointer;
+  display: block;
+}
+.clsMacroBack {
+  position: absolute;
+  width: auto;
+  height: 65px;
+  left: 0px;
+  top: 80px;
+  border: 0px solid blue;
+  cursor: pointer;
+  display: block;
+}
+.clsMacroNext {
+  position: absolute;
+  width: auto;
+  height: 65px;
+  left: 0px;
+  top: 140px;
+  border: 0px solid blue;
+  cursor: pointer;
+  display: block;
+}
+
+.clsMacroTick {
+  position: absolute;
+  width: auto;
+  height: 35px;
+  left: 10px;
+  top: 170px;
+  border: 0px solid blue;
+  cursor: pointer;
+  display: none;
+}
+.clsMacroHome {
+  position: absolute;
+  width: auto;
+  height: 105px;
+  left: 0px;
+  top: 200px;
+  border: 0px solid blue;
+  cursor: pointer;
+  display: block;
+}
+/* Three part  */
+.clsThreePartText-1 {
+  position: absolute;
+  width: 224px;
+  left: 1px;
+  top: 0px;
+  font-size: 130%;
+  line-height: 120%;
+  border: 0px solid red;
+}
+.clsThreePartText-2 {
+  position: absolute;
+  width: 224px;
+  left: 224px;
+  top: 0px;
+  font-size: 130%;
+  line-height: 120%;
+  border: 0px solid red;
+}
+.clsThreePartText-3 {
+  position: absolute;
+  width: 224px;
+  left: 446px;
+  top: 0px;
+  font-size: 130%;
+  line-height: 120%;
+  border: 0px solid red;
+}
+.clsThreePartImg-1 {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  left: 15px;
+  top: 50px;
+  border: 0px solid blue;
+}
+.clsThreePartImg-2 {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  left: 236px;
+  top: 50px;
+  border: 0px solid blue;
+}
+.clsThreePartImg-3 {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  left: 457px;
+  top: 50px;
+  border: 0px solid blue;
+}
+.clsThreePartImgCenter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clsThreePartNumber-1 {
+  position: absolute;
+  left: 90px;
+  top: 12px;
+}
+.clsThreePartNumber-2 {
+  position: absolute;
+  left: 310px;
+  top: 12px;
+}
+.clsThreePartNumber-3 {
+  position: absolute;
+  left: 563px;
+  top: 12px;
+}
+.clsThreePartLine-1 {
+  position: absolute;
+  width: 2px;
+  height: 155px;
+  left: 225px;
+  top: 37px;
+  background-color: lightgray;
+  border: 0px solid red;
+}
+.clsThreePartLine-2 {
+  position: absolute;
+  width: 2px;
+  height: 155px;
+  left: 447px;
+  top: 37px;
+  background-color: lightgray;
+  border: 0px solid red;
+}
+.clsThreePartLineImg-1 {
+  position: absolute;
+  width: 4px;
+  height: 155px;
+  left: 223px;
+  top: 31px;
+  border: 0px solid red;
+}
+.clsThreePartLineImg-2 {
+  position: absolute;
+  width: 4px;
+  height: 155px;
+  left: 444px;
+  top: 31px;
+  border: 0px solid red;
+}
+.clsSubTitle_1 {
+  position: relative;
+  width: 100%;
+  font-size: 250%;
+  top: 0px;
+  border: 1px solic red;
+}
+.clsSubTitle_2 {
+  position: relative;
+  width: 100%;
+  font-size: 170%;
+  top: 0px;
+  border: 1px solic red;
+}
+/* Three Part End */
+/*    Two part    */
+.clsTwoPartText-1 {
+  position: absolute;
+  width: 300px;
+  left: 30px;
+  top: 0px;
+  font-size: 130%;
+  border: 0px solid red;
+}
+.clsTwoPartText-2 {
+  position: absolute;
+  width: 300px;
+  left: 360px;
+  top: 0px;
+  font-size: 130%;
+  border: 0px solid red;
+}
+.clsTwoPartLineImg {
+  position: absolute;
+  width: 8px;
+  height: 155px;
+  left: 342px;
+  top: 55px;
+  border: 0px solid red;
+}
+.clsTwoPartImg-1 {
+  position: absolute;
+  width: 300px;
+  height: 170px;
+  left: 30px;
+  top: 50px;
+  border: 0px solid blue;
+}
+.clsTwoPartImg-2 {
+  position: absolute;
+  width: 300px;
+  height: 170px;
+  left: 360px;
+  top: 50px;
+  border: 0px solid blue;
+}
+.clsTwoPartImgCenter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*    Two End    */

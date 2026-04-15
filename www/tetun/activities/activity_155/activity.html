@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+			<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11"];
+			var rListIndex = 0;
+			
+			var rImgHiLightBlinkInterval = 0;
+			var rImgHiLightBlinkCount = 0;
+			
+			var rAudoSound = 1;
+			
+			function doNavigateAct(rAction) {
+			/*
+				clearInterval(rImgHiLightBlinkInterval);
+				rImgHiLightBlinkCount = 0;
+			*/
+				rAudoSound = 1
+				
+				document.getElementById("audAlphabet").pause();
+				document.getElementById("audAlphabet").currentTime = 0;
+
+				document.getElementById("divImgA_2").getElementsByTagName("img")[0].src = "images/a.gif?" + Math.random();
+				document.getElementById("divImgA_3").getElementsByTagName("img")[0].src = "images/h.gif?" + Math.random();
+				document.getElementById("divImgA_4").getElementsByTagName("img")[0].src = "images/i.gif?" + Math.random();
+				document.getElementById("divImgA_5").getElementsByTagName("img")[0].src = "images/n.gif?" + Math.random();
+				document.getElementById("divImgA_6").getElementsByTagName("img")[0].src = "images/e.gif?" + Math.random();
+				document.getElementById("divImgA_7").getElementsByTagName("img")[0].src = "images/k.gif?" + Math.random();
+				document.getElementById("divImgA_8").getElementsByTagName("img")[0].src = "images/t.gif?" + Math.random();
+				document.getElementById("divImgA_9").getElementsByTagName("img")[0].src = "images/u.gif?" + Math.random();
+				document.getElementById("divImgA_10").getElementsByTagName("img")[0].src = "images/m.gif?" + Math.random();
+
+
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				
+/*
+				switch (rListIndex) {
+					case 1:
+						doBlinkImageOne();
+						break;
+					case 2:
+						doBlinkImageTwo();
+						break;						
+					default:
+						break
+				}
+*/				
+			}
+			
+			function doBlinkImageOne() {
+				//document.getElementById("divImgA_2_1").style.display = "block";
+				clearInterval(rImgHiLightBlinkInterval);
+				rImgHiLightBlinkCount = 0;
+				rImgHiLightBlinkInterval = setInterval(
+					function () {
+						//if (rImgHiLightBlinkCount>=1) {
+							//clearInterval(rImgHiLightBlinkInterval);
+							//rImgHiLightBlinkCount = 0;
+							//document.getElementById("divImgA_2_1").style.display = "none";									
+						//} else {
+							if (document.getElementById("divImgA_2_1").style.display=="block") {
+								document.getElementById("divImgA_2_1").style.display = "none";
+							} else {
+								document.getElementById("divImgA_2_1").style.display = "block";
+							}
+							rImgHiLightBlinkCount++;
+						//}
+				}, 3000);			
+			}
+			
+			function doBlinkImageTwo() {
+				//document.getElementById("divImgA_3_1").style.display = "block";
+				clearInterval(rImgHiLightBlinkInterval);
+				rImgHiLightBlinkCount = 0;
+				rImgHiLightBlinkInterval = setInterval(
+					function () {
+						if (rImgHiLightBlinkCount>=1) {
+							clearInterval(rImgHiLightBlinkInterval);
+							rImgHiLightBlinkCount = 0;
+							document.getElementById("divImgA_3_1").style.display = "none";									
+						} else {
+							if (document.getElementById("divImgA_3_1").style.display=="block") {
+								document.getElementById("divImgA_3_1").style.display = "none";
+							} else {
+								document.getElementById("divImgA_3_1").style.display = "block";
+							}
+							rImgHiLightBlinkCount++;
+						}
+				}, 3000);			
+			}			
+
+			function doResetActivity() {
+			/*
+				clearInterval(rImgHiLightBlinkInterval);
+				rImgHiLightBlinkCount = 0;
+			*/
+				rAudoSound = 1;
+				
+				document.getElementById("audAlphabet").pause();
+				document.getElementById("audAlphabet").currentTime = 0;
+				
+				document.getElementById("divImgA_2").getElementsByTagName("img")[0].src = "images/a.gif?" + Math.random();
+				document.getElementById("divImgA_3").getElementsByTagName("img")[0].src = "images/h.gif?" + Math.random();
+				document.getElementById("divImgA_4").getElementsByTagName("img")[0].src = "images/i.gif?" + Math.random();
+				document.getElementById("divImgA_5").getElementsByTagName("img")[0].src = "images/n.gif?" + Math.random();
+				document.getElementById("divImgA_6").getElementsByTagName("img")[0].src = "images/e.gif?" + Math.random();
+				document.getElementById("divImgA_7").getElementsByTagName("img")[0].src = "images/k.gif?" + Math.random();
+				document.getElementById("divImgA_8").getElementsByTagName("img")[0].src = "images/t.gif?" + Math.random();
+				document.getElementById("divImgA_9").getElementsByTagName("img")[0].src = "images/u.gif?" + Math.random();
+				document.getElementById("divImgA_10").getElementsByTagName("img")[0].src = "images/m.gif?" + Math.random();
+
+				
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			
+			function doPlayAudio(rObj, rSlideId) {
+				document.getElementById("audAlphabet").pause();
+				document.getElementById("audAlphabet").currentTime = 0;
+				switch (rSlideId) {
+					case 2:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/a1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/a2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/a3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 3:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/h1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/h2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/h3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;	
+					case 4:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/i1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/i2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/i3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 5:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/n1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/n2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/n3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 6:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/e1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/e2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/e3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 7:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/k1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/k2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/k3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 8:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/t1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/t2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/t3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 9:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/u1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/u2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/u3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+					case 10:
+						if (rAudoSound==1) {
+							document.getElementById("audAlphabet").src = "media/audio/m1.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==2) {
+							document.getElementById("audAlphabet").src = "media/audio/m2.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound++;
+						} else {
+						if (rAudoSound==3) {
+							document.getElementById("audAlphabet").src = "media/audio/m3.m4a";
+							document.getElementById("audAlphabet").play();
+							rAudoSound = 1;
+						} } }					
+						break;
+
+					default:
+						break;
+				}
+			}
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								
+								<div id="div_1" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:1px solid #333333; display:none;">
+									<div><img width="auto" height="310" src="images/1.png" /></div>	
+									<div class="clsMainTitleWhite" style="position: absolute; width: 100%; top: 50px; text-align: center;">Hakerek</div>
+								</div>								
+								<div id="div_2" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:50px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 2);">
+										<div id="divImgA_2" name="divImgA" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="150" src="images/a.gif" />
+										</div>
+									</div>
+								</div>
+								<div id="div_3" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:45px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 3);">
+										<div id="divImgA_3" name="divImgA" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="170" src="images/h.gif" />
+										</div>
+									</div>										
+								</div>
+								<div id="div_4" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:55px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 4);">
+										<div id="divImgA_4" name="divImgA" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="160" src="images/i.gif" />
+										</div>
+									</div>		
+								</div>
+								<div id="div_5" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:60px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 5);">
+										<div id="divImgA_5" name="divImgA" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="145" src="images/n.gif" />
+										</div>
+									</div>
+								</div>								
+								<div id="div_6" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:60px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 6);">
+										<div id="divImgA_6" name="divImgA" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="145" src="images/e.gif" />
+										</div>
+									</div>
+								</div>
+								<div id="div_7" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:57px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 7);">
+										<div id="divImgA_7" name="divImgA_7" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="160" src="images/k.gif" />
+										</div>
+									</div>
+								</div>
+								<div id="div_8" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:55px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 8);">
+										<div id="divImgA_8" name="divImgA_8" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="170" src="images/t.gif" />
+										</div>
+									</div>
+								</div>
+								<div id="div_9" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:60px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 9);">
+										<div id="divImgA_9" name="divImgA_9" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="150" src="images/u.gif" />
+										</div>
+									</div>
+								</div>
+								<div id="div_10" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div style="font-size:250%;">Lian sai</div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div style="position:absolute; width:50%; left:5%; border:0px solid red;">
+										<img width="auto" height="170" src="images/girl.png" />
+									</div>
+									<div style="position:absolute; width:50%; left:45%; text-align: center; top:60px; cursor:pointer; display:block; border:0px solid blue;" onclick="javascript:doPlayAudio(this, 10);">
+										<div id="divImgA_10" name="divImgA_10" style="position:absolute; width: 100%; top:40px; display:block;">
+											<img width="auto" height="158" src="images/m.gif" />
+										</div>
+									</div>
+								</div>	
+								<div id="div_11" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div><img width="auto" height="310" src="images/1.png" /></div>	
+									<div class="clsMainTitleWhite" style="position: absolute; width: 100%; top: 50px; text-align: center;">Hakerek</div>
+								</div>								
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<audio id="audAlphabet" name="audAlphabet"></audio>
+		</div>
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

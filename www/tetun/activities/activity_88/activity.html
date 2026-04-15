@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsLabelText_Mobile {
+				position: relative;
+			    font-size: 25px; 
+			    color:#000000;
+				line-height: 1.3;
+				top: -10px;
+			}
+			.clsLabelText_Big_Mobile {
+				position: relative;
+			    font-size: 32px; 
+			    color:#000000;
+				line-height: 1.3;
+				top: -10px;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19", "div_20", "div_21", "div_22", "div_23", "div_24", "div_25", "div_26", "div_27", "div_28", "div_29", "div_30", "div_31", "div_32", "div_33", "div_34", "div_35", "div_36", "div_37", "div_38", "div_39", "div_40", "div_41", "div_42", "div_43", "div_44", "div_45", "div_46", "div_47"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--Slides-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitle_1">Espíritu sira-nia ai-fuan</div>
+                   					<div class="clsSlideImg"><img src="images/1.png" width="auto" height="165"/></div>
+								</div>
+								<div id="div_2" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 307px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/2.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Hadomi</div>
+                					</div>
+								</div>
+								<div id="div_3" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 307px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/2.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Hadomi</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">don</div>
+                					</div>
+								</div>
+								<div id="div_4" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 307px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/2.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Hadomi</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">don</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">konfortu</div>
+                					</div>
+								</div>
+								<div id="div_5" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 307px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/2.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Hadomi</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">don</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">konfortu</div>
+                					</div>
+                					<div style="position: absolute; left: 550px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">fahe</div>
+                					</div>
+								</div>
+								<div id="div_6" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 307px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/2.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Hadomi</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">don</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">konfortu</div>
+                					</div>
+                					<div style="position: absolute; left: 550px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">fahe</div>
+                					</div>
+                					<div style="position: absolute; left: 90px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/2_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">rona</div>
+                					</div>
+								</div>
+								<div id="div_7" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 317px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/3.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Ksolok</div>
+                					</div>
+								</div>
+								<div id="div_8" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 317px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/3.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Ksolok</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">selebra</div>
+                					</div>
+								</div>
+								<div id="div_9" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 317px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/3.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Ksolok</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">selebra</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hamnasa</div>
+                					</div>
+								</div>
+								<div id="div_10" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 317px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/3.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Ksolok</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">selebra</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hamnasa</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">halimar</div>
+                					</div>
+								</div>
+								<div id="div_11" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 317px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/3.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Ksolok</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">selebra</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hamnasa</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">halimar</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/3_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">pozitivu</div>
+                					</div>
+								</div>
+								<div id="div_12" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 275px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/4.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-maus</div>
+                					</div>
+								</div>
+								<div id="div_13" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 275px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/4.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-maus</div>
+                					</div>
+                					<div style="position: absolute; left: 510px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hamnasa</div>
+                					</div>
+								</div>
+								<div id="div_14" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 275px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/4.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-maus</div>
+                					</div>
+                					<div style="position: absolute; left: 510px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hamnasa</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">laran- di'ak</div>
+                					</div>
+								</div>
+								<div id="div_15" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 275px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/4.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-maus</div>
+                					</div>
+                					<div style="position: absolute; left: 510px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hamnasa</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">laran- di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">kuida</div>
+                					</div>
+								</div>
+								<div id="div_16" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 275px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/4.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-maus</div>
+                					</div>
+                					<div style="position: absolute; left: 510px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hamnasa</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">laran- di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">kuida</div>
+                					</div>
+                					<div style="position: absolute; left: 470px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/4_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">liafuan di'ak sira</div>
+                					</div>
+								</div>
+								<div id="div_17" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/5.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Dame</div>
+                					</div>
+								</div>
+								<div id="div_18" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/5.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Dame</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">husu deskulpa</div>
+                					</div>
+								</div>
+								<div id="div_19" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/5.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Dame</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">husu deskulpa</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">troka malu</div>
+                					</div>
+								</div>
+								<div id="div_20" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/5.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Dame</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">husu deskulpa</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">troka malu</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hela kalma</div>
+                					</div>
+								</div>
+								<div id="div_21" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/5.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Dame</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">husu deskulpa</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">troka malu</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hela kalma</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/5_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">konfortu</div>
+                					</div>
+								</div>
+								<div id="div_22" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/6.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Pasiénsia</div>
+                					</div>
+								</div>
+								<div id="div_23" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/6.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Pasiénsia</div>
+                					</div>
+                					<div style="position: absolute; left: 520px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+								</div>
+								<div id="div_24" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/6.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Pasiénsia</div>
+                					</div>
+                					<div style="position: absolute; left: 520px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">aprende</div>
+                					</div>
+								</div>
+								<div id="div_25" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/6.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Pasiénsia</div>
+                					</div>
+                					<div style="position: absolute; left: 520px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">aprende</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">kuida</div>
+                					</div>
+								</div>
+								<div id="div_26" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/6.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Pasiénsia</div>
+                					</div>
+                					<div style="position: absolute; left: 520px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+                					<div style="position: absolute; left: 60px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">aprende</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">kuida</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/6_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">rona</div>
+                					</div>
+								</div>
+								<div id="div_27" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/7.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+								</div>
+								<div id="div_28" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/7.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">ajuda</div>
+                					</div>
+								</div>
+								<div id="div_29" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/7.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">ajuda</div>
+                					</div>
+                					<div style="position: absolute; left: 490px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">ambiente moos</div>
+                					</div>
+								</div>
+								<div id="div_30" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/7.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">ajuda</div>
+                					</div>
+                					<div style="position: absolute; left: 490px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">ambiente moos</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">karidade</div>
+                					</div>
+								</div>
+								<div id="div_31" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/7.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">ajuda</div>
+                					</div>
+                					<div style="position: absolute; left: 490px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">ambiente moos</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">karidade</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/7_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">inklui</div>
+                					</div>
+								</div>
+								<div id="div_32" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/8.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+								</div>
+								<div id="div_33" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/8.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">perdua</div>
+                					</div>
+								</div>
+								<div id="div_34" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/8.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">perdua</div>
+                					</div>
+                					<div style="position: absolute; left: 70px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">onestidade</div>
+                					</div>
+								</div>
+								<div id="div_35" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/8.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">perdua</div>
+                					</div>
+                					<div style="position: absolute; left: 70px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">onestidade</div>
+                					</div>
+                					<div style="position: absolute; left: 520px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">umildade</div>
+                					</div>
+								</div>
+								<div id="div_36" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/8.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Laran-di'ak</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">perdua</div>
+                					</div>
+                					<div style="position: absolute; left: 70px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">onestidade</div>
+                					</div>
+                					<div style="position: absolute; left: 520px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">umildade</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/8_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">enkoraja</div>
+                					</div>
+								</div>
+								<div id="div_37" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/9.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Fidelidade</div>
+                					</div>
+								</div>
+								<div id="div_38" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/9.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Fidelidade</div>
+                					</div>
+                					<div style="position: absolute; left: 70px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">bele fiar</div>
+                					</div>
+								</div>
+								<div id="div_39" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/9.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Fidelidade</div>
+                					</div>
+                					<div style="position: absolute; left: 70px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">bele fiar</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">orasaun</div>
+                					</div>
+								</div>
+								<div id="div_40" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/9.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Fidelidade</div>
+                					</div>
+                					<div style="position: absolute; left: 70px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">bele fiar</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">orasaun</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+								</div>
+								<div id="div_41" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 280px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/9.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Fidelidade</div>
+                					</div>
+                					<div style="position: absolute; left: 70px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">bele fiar</div>
+                					</div>
+                					<div style="position: absolute; left: 530px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">orasaun</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+                					<div style="position: absolute; left: 504px; top:150px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/9_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">kumpri </br>promesa sira</div>
+                					</div>
+								</div>
+								<div id="div_42" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 240px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/10.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Kontrola an rasik</div>
+                					</div>
+								</div>
+								<div id="div_43" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 240px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/10.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Kontrola an rasik</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+								</div>
+								<div id="div_44" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 240px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/10.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Kontrola an rasik</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">fahe</div>
+                					</div>
+								</div>
+								<div id="div_45" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 240px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/10.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Kontrola an rasik</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">fahe</div>
+                					</div>
+                					<div style="position: absolute; left: 510px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hela kalma</div>
+                					</div>
+								</div>
+								<div id="div_46" name="divMyselfLang" class="clsSlide">
+                					<div style="position: absolute; left: 240px; top:50px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="165" src="images/10.png" /></div>
+										<div class="clsImgCenter clsLabelText_Big_Mobile">Kontrola an rasik</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_a.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hein</div>
+                					</div>
+                					<div style="position: absolute; left: 80px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_c.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">fahe</div>
+                					</div>
+                					<div style="position: absolute; left: 510px; top:20px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_b.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">hela kalma</div>
+                					</div>
+                					<div style="position: absolute; left: 500px; top:170px; border:0px solid #333333;">
+										<div class="clsImgCenter"><img width="auto" height="90" src="images/10_d.png" /></div>
+										<div class="clsImgCenter clsLabelText_Mobile">husu deskulpa</div>
+                					</div>
+								</div>
+								<div id="div_47" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitle_1">Espíritu sira-nia ai-fuan</div>
+                   					<div class="clsSlideImg"><img src="images/1.png" width="auto" height="165"/></div>
+								</div>
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>		<script src="../../activity-tracker.js"></script>
+	</body>
+</html>

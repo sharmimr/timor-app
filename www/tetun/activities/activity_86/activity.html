@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rCountNum = 20;
+			var rArrImageList = ["stick_2.png", "stick_5.png", "stick_3.png", "stick_11.png", "stick_7.png", "stick_4.png", "stick_20.png", "stick_6.png", "stick_12.png", "stick_8.png", "stick_16.png", "stick_1.png", "stick_15.png", "stick_9.png", "stick_10.png", "stick_13.png", "stick_19.png", "stick_14.png", "stick_18.png", "stick_17.png"];
+			var rArrNumberList = ["number_2.png", "number_5.png", "number_3.png", "number_11.png", "number_7.png", "number_4.png", "number_20.png", "number_6.png", "number_12.png", "number_8.png", "number_16.png", "number_1.png", "number_15.png", "number_9.png", "number_10.png", "number_13.png", "number_19.png", "number_14.png", "number_18.png", "number_17.png"];
+			var rListIndex = 0;
+			var rDispType = "SEQ";
+			
+			function doResetAct() {
+				rArrImageList = ["stick_1.png", "stick_2.png", "stick_3.png", "stick_4.png", "stick_5.png", "stick_6.png", "stick_7.png", "stick_8.png", "stick_9.png", "stick_10.png", "stick_11.png", "stick_12.png", "stick_13.png", "stick_14.png", "stick_15.png", "stick_16.png", "stick_17.png", "stick_18.png", "stick_19.png", "stick_20.png"];
+				rArrNumberList = ["number_1.png", "number_2.png", "number_3.png", "number_4.png", "number_5.png", "number_6.png", "number_7.png", "number_8.png", "number_9.png", "number_10.png", "number_11.png", "number_12.png", "number_13.png", "number_14.png", "number_15.png", "number_16.png", "number_17.png", "number_18.png", "number_19.png", "number_20.png"];
+				rListIndex = 0;
+				rDispType = "SEQ";
+				
+				document.getElementById("divFinger").style.display = "block";
+				document.getElementById("divQuestionMark").style.display = "block";
+				document.getElementById("divNumber").style.display = "none";
+				document.getElementById("divNextArrowSmall").style.display = "none";
+
+				doSetUpActAndShow();
+			}
+			
+			function doSetUpActAndShow() {
+				var rImage = "";
+				var rNumber = "";
+
+				rImage = rArrImageList[rListIndex];
+				rNumber = rArrNumberList[rListIndex];
+
+				document.getElementById("imgActMainPicture").src = "images/" + rImage;
+				document.getElementById("imgNumber").src = "images/" + rNumber;
+				
+				if (rDispType=="RND") {
+					rArrImageList.splice(rListIndex, 1);
+					rArrNumberList.splice(rListIndex, 1);
+				}
+				
+				if (rArrImageList.length==0) {
+					rArrImageList = ["stick_1.png", "stick_2.png", "stick_3.png", "stick_4.png", "stick_5.png", "stick_6.png", "stick_7.png", "stick_8.png", "stick_9.png", "stick_10.png", "stick_11.png", "stick_12.png", "stick_13.png", "stick_14.png", "stick_15.png", "stick_16.png", "stick_17.png", "stick_18.png", "stick_19.png", "stick_20.png"];
+					rArrNumberList = ["number_1.png", "number_2.png", "number_3.png", "number_4.png", "number_5.png", "number_6.png", "number_7.png", "number_8.png", "number_9.png", "number_10.png", "number_11.png", "number_12.png", "number_13.png", "number_14.png", "number_15.png", "number_16.png", "number_17.png", "number_18.png", "number_19.png", "number_20.png"];
+				}
+				
+				if (rListIndex<=0 && rDispType == "SEQ") {
+					document.getElementById("divBtnReplay").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "block";
+				}
+				
+				//document.getElementById("imgQuestionMark").src = "../../images/question_mark_big.gif?ID=" + Math.random();
+			}
+			
+			function doShowNumber(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divQuestionMark").style.display = "none";
+					document.getElementById("divNumber").style.display = "block";
+					document.getElementById("divNextArrowSmall").style.display = "block";
+				}
+			}
+			
+			function doGetNext(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					if (rDispType=="SEQ") {
+						rListIndex++;
+						if (rListIndex>=rCountNum) {
+							rDispType = "RND";
+							rArrImageList = ["stick_1.png", "stick_2.png", "stick_3.png", "stick_4.png", "stick_5.png", "stick_6.png", "stick_7.png", "stick_8.png", "stick_9.png", "stick_10.png"];
+							rArrNumberList = ["number_1.png", "number_2.png", "number_3.png", "number_4.png", "number_5.png", "number_6.png", "number_7.png", "number_8.png", "number_9.png", "number_10.png"];
+							rListIndex = Math.floor(Math.random() * rArrImageList.length);
+						}
+					} else {
+					if (rDispType=="RND") {
+						rListIndex = Math.floor(Math.random() * rArrImageList.length);
+					} }
+					document.getElementById("divFinger").style.display = "block";
+					document.getElementById("divQuestionMark").style.display = "block";
+					document.getElementById("divNumber").style.display = "none";
+					document.getElementById("divNextArrowSmall").style.display = "none";
+					
+					doSetUpActAndShow();
+				}
+			}
+
+			function doReplay(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					doResetAct();
+				}
+			}
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:absolute; width:100%; height:90%; left:0px; top:10px; border:0px solid green;">
+									<div id="divFinger" name="divFinger" style="position:absolute; width:626px; height:153px; left:20px; top:42px; border:0px solid blue; display:block;">
+										<table width="100%" height="auto" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="middle">
+													<div>
+														<img id="imgActMainPicture" name="imgActMainPicture" width="280" height="auto" src="images/stick_1.png" />
+													</div>
+												</td>
+											</tr>
+										</table>										
+									</div>
+									<div style="position:absolute; width:92%; height:auto; left:0px; top:5px; border:0px solid #333333; cursor:default; display:block;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<table width="10%" height="100%" cellspacing="0" cellpadding="0" border="0">
+														<tr>
+															<td align="center" valign="middle">
+																<div id="divQuestionMark" name="divQuestionMark" style="position:relative; top:-5px; border:0px solid green; cursor:pointer; display:block;">
+																	<div style="position:relative; cursor:pointer; display:inline-block;" onclick="javascript:doShowNumber(this);">
+																		<img id="imgQuestionMark" width="27" height="auto" src="../../images/question_mark_small.gif" />
+																	</div>										
+																</div>
+															</td>
+															<td></td>
+															<td align="center" valign="middle">
+																<div id="divNumber" name="divNumber" style="position:relative; top:0px; border:0px solid green; display:none;">
+																	<div style="position:relative;">
+																		<img id="imgNumber" name="imgNumber" width="auto" height="40" src="images/number_1.png" />
+																	</div>										
+																</div>
+															</td>
+															<td></td>
+															<td align="center" valign="middle">
+																<div id="divNextArrowSmall" name="divNextArrowSmall" style="position:absolute; width:70px; top: 0px; border:0px solid #666666; cursor:pointer; display:none;" onclick="javascript:doGetNext(this);">
+																	<div style="display:block;">
+																		<img width="auto" height="45" src="../../images/next_arrow.png" />
+																	</div>
+																</div>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+
+								<div id="divBottomBtnPanel" name="divBottomBtnPanel" style="position:absolute; width:88%; height:auto; left:0px; bottom:50px; border:0px solid #333333; cursor:default; display:block;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="top">
+												<table width="6%" height="100%" cellspacing="0" cellpadding="0" border="0">
+													<tr>
+														<td align="center" valign="top">
+															<div id="divBtnReplay" name="divBtnReplay" style="position:absolute; width:70px; border:0px solid #666666; cursor:default; display:inline-block;">
+																<div style="cursor:pointer; display:inline-block;" onclick="javascript:doReplay(this);">
+																	<img width="auto" height="40" src="../../images/replay.png" />
+																</div>									
+															</div>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+								</div>								
+							</div>
+
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetAct();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

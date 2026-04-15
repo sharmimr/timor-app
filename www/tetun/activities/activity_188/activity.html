@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSlideImgTop {
+				position: relative;
+				width: 100%;
+				height: 435px;
+				left: 0px;
+				top: 0px;
+				border: 0px solid red;
+			}
+			.clsSubTitleTabletBottom {
+				position:absolute; 
+				width: 80%;
+				top: 440px; 
+				text-align: center; 
+				left: 10%; 
+				line-height: 1.3; 
+				font-size:250%; 
+				color: #000000;
+				border: 0px solid red;
+			}
+			.clsLabelTabletText {
+			    font-size: 35px; 
+			    color:#000000;
+				line-height: 1.3;
+			}
+			.clsSubTitleTabletText {
+				font-size:280%; 
+				color: #000000;
+				line-height: 1.3; 
+				border: 0px solid red;
+			}
+			.clsBoxSize {
+				position: absolute; 
+				width: 350px;
+				border:0px solid #333333;
+			}
+			
+			.clsDragAndDropFontSize {
+				font-size: 250%;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9"];
+			var rArrSlide1DragListLetter = ["t", "a", "i", "s"];
+			var rArrSlide2DragListLetter = ["l", "i", "l", "i", "n"];
+			var rArrSlide3DragListLetter = ["r", "a", "i"];
+			var rArrSlide4DragListLetter = ["s", "u", "r", "i", "k"];
+			var rArrSlide5DragListLetter = ["s", "o", "r", "u"];
+			var rArrSlide6DragListLetter = ["u", "m", "a"];
+			var rArrSlide7DragListLetter = ["l", "a", "f", "a", "e", "k"];
+			var rArrSlide8DragListLetter = ["d", "a", "n" , "s", "a"];
+			var rListIndex = 0;
+			
+			// Track state across all slides
+			var rAllSlidesState = {}; // Track all placed alphabets across all slides
+			
+			function doNavigateToSlide(rTempListIndex) {
+				// Store current slide state before navigating
+				if (rListIndex > 0) {
+					storeCurrentSlideState(rListIndex);
+				}
+				rListIndex = rTempListIndex;
+				doNavigateAct("No");
+			}
+			
+			// Store current slide's state
+			function storeCurrentSlideState(slideIndex) {
+				if (slideIndex < 1 || slideIndex > 8) return;
+				
+				var slideConfig = {
+					1: { prefix: "1", count: 4 },
+					2: { prefix: "2", count: 5 },
+					3: { prefix: "3", count: 3 },
+					4: { prefix: "4", count: 5 },
+					5: { prefix: "5", count: 4 },
+					6: { prefix: "6", count: 3 },
+					7: { prefix: "7", count: 6 },
+					8: { prefix: "8", count: 5 }
+				};
+				
+				var config = slideConfig[slideIndex];
+				if (!config) return;
+				
+				if (!rAllSlidesState[slideIndex]) {
+					rAllSlidesState[slideIndex] = {};
+				}
+				
+				// Store which drag items are hidden (placed)
+				for (var i = 1; i <= config.count; i++) {
+					var dragId = "divDrag_" + config.prefix + "_" + i;
+					var dragElement = document.getElementById(dragId);
+					var dropId = "divDrop_" + config.prefix + "_" + i;
+					var dropElement = document.getElementById(dropId);
+					
+					if (dragElement && dropElement) {
+						rAllSlidesState[slideIndex][dragId] = {
+							dragDisplay: dragElement.style.display,
+							dropColor: dropElement.style.color,
+							dragValue: dragElement.innerHTML
+						};
+					}
+				}
+			}
+			
+			// Restore slide's state when navigating back
+			function restoreSlideState(slideIndex) {
+				if (slideIndex < 1 || slideIndex > 8) return;
+				
+				var slideConfig = {
+					1: { prefix: "1", count: 4 },
+					2: { prefix: "2", count: 5 },
+					3: { prefix: "3", count: 3 },
+					4: { prefix: "4", count: 5 },
+					5: { prefix: "5", count: 4 },
+					6: { prefix: "6", count: 3 },
+					7: { prefix: "7", count: 6 },
+					8: { prefix: "8", count: 5 }
+				};
+				
+				var config = slideConfig[slideIndex];
+				if (!config) return;
+				
+				var slideState = rAllSlidesState[slideIndex];
+				
+				for (var i = 1; i <= config.count; i++) {
+					var dragId = "divDrag_" + config.prefix + "_" + i;
+					var dropId = "divDrop_" + config.prefix + "_" + i;
+					var dragElement = document.getElementById(dragId);
+					var dropElement = document.getElementById(dropId);
+					
+					if (dragElement && dropElement && slideState && slideState[dragId]) {
+						// Restore saved state
+						dragElement.style.display = slideState[dragId].dragDisplay;
+						dropElement.style.color = slideState[dragId].dropColor;
+					} else {
+						// Default state if not saved
+						dragElement.style.display = "block";
+						dragElement.style.color = "#000000";
+						dropElement.style.color = "lightgrey";
+					}
+				}
+				
+				// Check if current slide is complete to show/hide completion message
+				checkCurrentSlideComplete(slideIndex, config.count);
+			}
+			
+			// Check if current slide is complete
+			function checkCurrentSlideComplete(slideIndex, count) {
+				var prefix = slideIndex;
+				var allComplete = true;
+				
+				for (var i = 1; i <= count; i++) {
+					var dragElement = document.getElementById("divDrag_" + prefix + "_" + i);
+					if (dragElement && dragElement.style.display != "none") {
+						allComplete = false;
+						break;
+					}
+				}
+				
+				if (allComplete) {
+					document.getElementById("divDragAndDropAreaDisable").style.display = "block";
+					document.getElementById("divCorrectTextPanel").style.display = "block";
+				} else {
+					document.getElementById("divDragAndDropAreaDisable").style.display = "none";
+					document.getElementById("divCorrectTextPanel").style.display = "none";
+				}
+			}
+			
+			// Universal drop handler
+			function createDropHandler(slideIndex, totalItems, prefix) {
+				return function(event, ui) {
+					var rDragName = "";
+					var rDropName = "";
+					rDragName = ui.draggable.attr("id");
+					rDropName = this.id;
+					
+					if (document.getElementById(rDragName).innerHTML == document.getElementById(rDropName).innerHTML && 
+						document.getElementById(rDropName).style.color == "lightgrey") {
+						
+						// Hide the dragged item
+						document.getElementById(rDragName).style.display = "none";
+						document.getElementById(rDropName).style.color = "#000000";
+						document.getElementById(rDropName).style.zIndex = "1001";
+						document.getElementById(rDragName).style.zIndex = "1002";
+						
+						// Track this placement in global state
+						if (!rAllSlidesState[slideIndex]) {
+							rAllSlidesState[slideIndex] = {};
+						}
+						rAllSlidesState[slideIndex][rDragName] = {
+							dragDisplay: "none",
+							dropColor: "#000000",
+							dragValue: document.getElementById(rDragName).innerHTML
+						};
+					}
+					
+					// Check if current slide is complete
+					var allComplete = true;
+					for (var i = 1; i <= totalItems; i++) {
+						var dragElement = document.getElementById("divDrag_" + prefix + "_" + i);
+						if (dragElement && dragElement.style.display != "none") {
+							allComplete = false;
+							break;
+						}
+					}
+					
+					if (allComplete) {
+						document.getElementById("divDragAndDropAreaDisable").style.display = "block";
+						document.getElementById("divCorrectTextPanel").style.display = "block";
+					}
+					
+					// Check if ALL slides are complete to update the completion message
+					updateCompletionMessage();
+				};
+			}
+			
+			// Update the completion message based on overall progress
+			function updateCompletionMessage() {
+				var allComplete = checkAllSlidesComplete();
+				var completionMessage = document.getElementById("divCorrectTextPanel").querySelector('div:first-child');
+				
+				if (allComplete) {
+					completionMessage.innerHTML = "loos";
+				} else {
+					completionMessage.innerHTML = "loos";
+				}
+			}
+			
+			// Check if all slides are complete
+			function checkAllSlidesComplete() {
+				// Check if all 8 slides are complete
+				var slidesConfig = [
+					{ index: 1, count: 4, prefix: "1" }, // slide 1 has 4 items
+					{ index: 2, count: 5, prefix: "2" }, // slide 2 has 5 items
+					{ index: 3, count: 3, prefix: "3" }, // slide 3 has 3 items
+					{ index: 4, count: 5, prefix: "4" }, // slide 4 has 5 items
+					{ index: 5, count: 4, prefix: "5" }, // slide 5 has 4 items
+					{ index: 6, count: 3, prefix: "6" }, // slide 6 has 3 items
+					{ index: 7, count: 6, prefix: "7" }, // slide 7 has 6 items
+					{ index: 8, count: 5, prefix: "8" }  // slide 8 has 5 items
+				];
+				
+				var allComplete = true;
+				
+				for (var s = 0; s < slidesConfig.length; s++) {
+					var slide = slidesConfig[s];
+					var slideComplete = true;
+					
+					for (var i = 1; i <= slide.count; i++) {
+						var element = document.getElementById("divDrag_" + slide.prefix + "_" + i);
+						if (element && element.style.display != "none") {
+							slideComplete = false;
+							break;
+						}
+					}
+					
+					if (!slideComplete) {
+						allComplete = false;
+						break;
+					}
+				}
+				
+				return allComplete;
+			}
+			
+			function doNavigateAct(rAction) {
+				// Store current slide state before navigating
+				if (rListIndex > 0 && rListIndex <= 8) {
+					storeCurrentSlideState(rListIndex);
+				}
+				
+				// Hide completion message when navigating
+				document.getElementById("divDragAndDropAreaDisable").style.display = "none";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				
+				// Navigate to new slide
+				if (rAction.toUpperCase() == "NO") {
+					// do nothing
+				} else {
+					if (rAction.toUpperCase() == "N") {
+						rListIndex++;
+					} else {
+						rListIndex--;
+					}
+				}
+				
+				if (rListIndex <= 0) {
+					rListIndex = 0;
+				}
+				
+				if (rListIndex >= rArrDivList.length - 1) {
+					rListIndex = rArrDivList.length - 1;
+				}
+				
+				// Update navigation buttons
+				if (rListIndex <= 0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+					if (rListIndex >= rArrDivList.length - 1) {
+						document.getElementById("divBtnReplay").style.display = "inline-block";
+						document.getElementById("divBtnBack").style.display = "inline-block";
+						document.getElementById("divBtnNext").style.display = "none";
+					} else {
+						document.getElementById("divBtnReplay").style.display = "inline-block";
+						document.getElementById("divBtnBack").style.display = "inline-block";
+						document.getElementById("divBtnNext").style.display = "inline-block";				
+					}
+				}
+				
+				// Hide all slides
+				for (var i = 0; i < rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				// Show current slide
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				
+				// Initialize slide based on index
+				if (rListIndex == 1) {
+					initializeSlide1();
+				} else if (rListIndex == 2) {
+					initializeSlide2();
+				} else if (rListIndex == 3) {
+					initializeSlide3();
+				} else if (rListIndex == 4) {
+					initializeSlide4();
+				} else if (rListIndex == 5) {
+					initializeSlide5();
+				} else if (rListIndex == 6) {
+					initializeSlide6();
+				} else if (rListIndex == 7) {
+					initializeSlide7();
+				} else if (rListIndex == 8) {
+					initializeSlide8();
+				}
+				
+				// Restore state for the new slide
+				if (rListIndex > 0 && rListIndex <= 8) {
+					restoreSlideState(rListIndex);
+				}
+			}
+			
+			// Initialize Slide 1
+			function initializeSlide1() {
+				doShuffleSlideArray(rArrSlide1DragListLetter);
+				for (i = 1; i <= 4; i++) {
+					document.getElementById("divDrag_1_" + i).innerHTML = rArrSlide1DragListLetter[i - 1];
+				}
+				
+				$(".clsDrag").draggable({
+					axis: "x, y", 
+					containment: "#divDragAreaSlide_1", 
+					revert: true,
+					drag: function(event, ui) {
+						for (var i = 1; i <= 4; i++) {
+							document.getElementById("divDrag_1_" + i).style.zIndex = "auto";
+						}
+						document.getElementById(this.id).style.zIndex = 9998;
+					}
+				});
+				
+				$(".clsDrop").droppable({
+					drop: createDropHandler(1, 4, "1")
+				});
+			}
+			
+			// Initialize Slide 2
+			function initializeSlide2() {
+				doShuffleSlideArray(rArrSlide2DragListLetter);
+				for (i = 1; i <= 5; i++) {
+					document.getElementById("divDrag_2_" + i).innerHTML = rArrSlide2DragListLetter[i - 1];
+				}
+				
+				$(".clsDrag").draggable({
+					axis: "x, y", 
+					containment: "#divDragAreaSlide_2", 
+					revert: true,
+					drag: function(event, ui) {
+						for (var i = 1; i <= 5; i++) {
+							document.getElementById("divDrag_2_" + i).style.zIndex = "auto";
+						}
+						document.getElementById(this.id).style.zIndex = 9998;
+					}
+				});
+				
+				$(".clsDrop").droppable({
+					drop: createDropHandler(2, 5, "2")
+				});
+			}
+			
+			// Initialize Slide 3
+			function initializeSlide3() {
+				doShuffleSlideArray(rArrSlide3DragListLetter);
+				for (i = 1; i <= 3; i++) {
+					document.getElementById("divDrag_3_" + i).innerHTML = rArrSlide3DragListLetter[i - 1];
+				}
+				
+				$(".clsDrag").draggable({
+					axis: "x, y", 
+					containment: "#divDragAreaSlide_3", 
+					revert: true,
+					drag: function(event, ui) {
+						for (var i = 1; i <= 3; i++) {
+							document.getElementById("divDrag_3_" + i).style.zIndex = "auto";
+						}
+						document.getElementById(this.id).style.zIndex = 9998;
+					}
+				});
+				
+				$(".clsDrop").droppable({
+					drop: createDropHandler(3, 3, "3")
+				});
+			}
+			
+			// Initialize Slide 4
+			function initializeSlide4() {
+				doShuffleSlideArray(rArrSlide4DragListLetter);
+				for (i = 1; i <= 5; i++) {
+					document.getElementById("divDrag_4_" + i).innerHTML = rArrSlide4DragListLetter[i - 1];
+				}
+				
+				$(".clsDrag").draggable({
+					axis: "x, y", 
+					containment: "#divDragAreaSlide_4", 
+					revert: true,
+					drag: function(event, ui) {
+						for (var i = 1; i <= 5; i++) {
+							document.getElementById("divDrag_4_" + i).style.zIndex = "auto";
+						}
+						document.getElementById(this.id).style.zIndex = 9998;
+					}
+				});
+				
+				$(".clsDrop").droppable({
+					drop: createDropHandler(4, 5, "4")
+				});
+			}
+			
+			// Initialize Slide 5
+			function initializeSlide5() {
+				doShuffleSlideArray(rArrSlide5DragListLetter);
+				for (i = 1; i <= 4; i++) {
+					document.getElementById("divDrag_5_" + i).innerHTML = rArrSlide5DragListLetter[i - 1];
+				}
+				
+				$(".clsDrag").draggable({
+					axis: "x, y", 
+					containment: "#divDragAreaSlide_5", 
+					revert: true,
+					drag: function(event, ui) {
+						for (var i = 1; i <= 4; i++) {
+							document.getElementById("divDrag_5_" + i).style.zIndex = "auto";
+						}
+						document.getElementById(this.id).style.zIndex = 9998;
+					}
+				});
+				
+				$(".clsDrop").droppable({
+					drop: createDropHandler(5, 4, "5")
+				});
+			}
+			
+			// Initialize Slide 6
+			function initializeSlide6() {
+				doShuffleSlideArray(rArrSlide6DragListLetter);
+				for (i = 1; i <= 3; i++) {
+					document.getElementById("divDrag_6_" + i).innerHTML = rArrSlide6DragListLetter[i - 1];
+				}
+				
+				$(".clsDrag").draggable({
+					axis: "x, y", 
+					containment: "#divDragAreaSlide_6", 
+					revert: true,
+					drag: function(event, ui) {
+						for (var i = 1; i <= 3; i++) {
+							document.getElementById("divDrag_6_" + i).style.zIndex = "auto";
+						}
+						document.getElementById(this.id).style.zIndex = 9998;
+					}
+				});
+				
+				$(".clsDrop").droppable({
+					drop: createDropHandler(6, 3, "6")
+				});
+			}
+			
+			// Initialize Slide 7
+			function initializeSlide7() {
+				doShuffleSlideArray(rArrSlide7DragListLetter);
+				for (i = 1; i <= 6; i++) {
+					document.getElementById("divDrag_7_" + i).innerHTML = rArrSlide7DragListLetter[i - 1];
+				}
+				
+				$(".clsDrag").draggable({
+					axis: "x, y", 
+					containment: "#divDragAreaSlide_7", 
+					revert: true,
+					drag: function(event, ui) {
+						for (var i = 1; i <= 6; i++) {
+							document.getElementById("divDrag_7_" + i).style.zIndex = "auto";
+						}
+						document.getElementById(this.id).style.zIndex = 9998;
+					}
+				});
+				
+				$(".clsDrop").droppable({
+					drop: createDropHandler(7, 6, "7")
+				});
+			}
+			
+			// Initialize Slide 8
+			function initializeSlide8() {
+				doShuffleSlideArray(rArrSlide8DragListLetter);
+				for (i = 1; i <= 5; i++) {
+					document.getElementById("divDrag_8_" + i).innerHTML = rArrSlide8DragListLetter[i - 1];
+				}
+				
+				$(".clsDrag").draggable({
+					axis: "x, y", 
+					containment: "#divDragAreaSlide_8", 
+					revert: true,
+					drag: function(event, ui) {
+						for (var i = 1; i <= 5; i++) {
+							document.getElementById("divDrag_8_" + i).style.zIndex = "auto";
+						}
+						document.getElementById(this.id).style.zIndex = 9998;
+					}
+				});
+				
+				$(".clsDrop").droppable({
+					drop: createDropHandler(8, 5, "8")
+				});
+			}
+			
+			function doShuffleSlideArray(array) {
+				var currentIndex = array.length;
+				while (currentIndex != 0) {
+					var randomIndex = Math.floor(Math.random() * currentIndex);
+					currentIndex--;
+					[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+				}
+			}
+			
+			function doResetActivity() {
+				// Reset all global state
+				rAllSlidesState = {};
+				
+				document.getElementById("divDragAndDropAreaDisable").style.display = "none";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				
+				for (var i = 0; i < rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex <= 0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+					if (rListIndex >= rArrDivList.length - 1) {
+						document.getElementById("divBtnReplay").style.display = "inline-block";
+						document.getElementById("divBtnBack").style.display = "inline-block";
+						document.getElementById("divBtnNext").style.display = "none";
+					} else {
+						document.getElementById("divBtnReplay").style.display = "inline-block";
+						document.getElementById("divBtnBack").style.display = "inline-block";
+						document.getElementById("divBtnNext").style.display = "inline-block";				
+					}
+				}
+				
+				for (i = 1; i <= 4; i++) {
+					document.getElementById("divDrag_1_" + i).innerHTML = rArrSlide1DragListLetter[i-1];
+					document.getElementById("divDrag_1_" + i).style.color = "#000000";
+					document.getElementById("divDrop_1_" + i).style.color = "lightgrey";
+					document.getElementById("divDrag_1_" + i).style.display = "block";
+				}
+				
+				for (i = 1; i <= 5; i++) {
+					document.getElementById("divDrag_2_" + i).innerHTML = rArrSlide2DragListLetter[i-1];
+					document.getElementById("divDrag_2_" + i).style.color = "#000000";
+					document.getElementById("divDrop_2_" + i).style.color = "lightgrey";
+					document.getElementById("divDrag_2_" + i).style.display = "block";
+				}
+				
+				for (i = 1; i <= 3; i++) {
+					document.getElementById("divDrag_3_" + i).innerHTML = rArrSlide3DragListLetter[i-1];
+					document.getElementById("divDrag_3_" + i).style.color = "#000000";
+					document.getElementById("divDrop_3_" + i).style.color = "lightgrey";
+					document.getElementById("divDrag_3_" + i).style.display = "block";
+				}
+				
+				for (i = 1; i <= 5; i++) {
+					document.getElementById("divDrag_4_" + i).innerHTML = rArrSlide4DragListLetter[i-1];
+					document.getElementById("divDrag_4_" + i).style.color = "#000000";
+					document.getElementById("divDrop_4_" + i).style.color = "lightgrey";
+					document.getElementById("divDrag_4_" + i).style.display = "block";
+				}
+				
+				for (i = 1; i <= 4; i++) {
+					document.getElementById("divDrag_5_" + i).innerHTML = rArrSlide5DragListLetter[i-1];
+					document.getElementById("divDrag_5_" + i).style.color = "#000000";
+					document.getElementById("divDrop_5_" + i).style.color = "lightgrey";
+					document.getElementById("divDrag_5_" + i).style.display = "block";
+				}
+				
+				for (i = 1; i <= 3; i++) {
+					document.getElementById("divDrag_6_" + i).innerHTML = rArrSlide6DragListLetter[i-1];
+					document.getElementById("divDrag_6_" + i).style.color = "#000000";
+					document.getElementById("divDrop_6_" + i).style.color = "lightgrey";
+					document.getElementById("divDrag_6_" + i).style.display = "block";
+				}
+				
+				for (i = 1; i <= 6; i++) {
+					document.getElementById("divDrag_7_" + i).innerHTML = rArrSlide7DragListLetter[i-1];
+					document.getElementById("divDrag_7_" + i).style.color = "#000000";
+					document.getElementById("divDrop_7_" + i).style.color = "lightgrey";
+					document.getElementById("divDrag_7_" + i).style.display = "block";
+				}
+				
+				for (i = 1; i <= 5; i++) {
+					document.getElementById("divDrag_8_" + i).innerHTML = rArrSlide8DragListLetter[i-1];
+					document.getElementById("divDrag_8_" + i).style.color = "#000000";
+					document.getElementById("divDrop_8_" + i).style.color = "lightgrey";
+					document.getElementById("divDrag_8_" + i).style.display = "block";
+				}
+				
+				document.getElementById("divDragAndDropAreaDisable").style.display = "none";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				
+				// Reset completion message
+				var completionMessage = document.getElementById("divCorrectTextPanel").querySelector('div:first-child');
+				completionMessage.innerHTML = "loos";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:#ffffff; border:0px solid green;">
+								<div id="divCorrectTextPanel" name="divCorrectTextPanel" style="position:relative; top:15px; border:0px solid red; display:block;">
+									<div style="position:relative; top:-5px; font-size:150%; display:inline-block;">
+										Loos
+									</div>
+									<div style="width:5px; display:inline-block;"></div>
+									<div style="display:inline-block;">
+										<img width="auto" height="50" src="../../images/tick.png" />
+									</div>														
+								</div>
+								<div id="div_1" name="div_1" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div class="clsMainTitleTablet" style="position:relative; top:0px; font-size:125%; font-weight:normal;">Ortographia ha'u nian</div>
+									<table width="90%" height="100%" align="center" cellspacing="0" cellpadding="0" border="0">
+										<tr height="10"><td colspan="4"></td>
+										<tr>
+											<td width="25%" align="center" valign="top">
+												<div style="border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToSlide(1);"><img width="40" height="auto" src="images/1.png" /><div style="position:relative; font-size:100%; font-weight:normal;">tais</div></div>
+											</td>
+											<td width="25%" align="center" valign="top">
+												<div style="border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToSlide(2);"><img width="31" height="auto" src="images/2.png" /><div style="position:relative; font-size:100%; font-weight:normal;">lilin</div></div>
+											</td>											
+											<td width="25%" align="center" valign="top">
+												<div style="border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToSlide(3);"><img width="87" height="auto" src="images/3.png" /><div style="position:relative; font-size:100%; font-weight:normal;">rai</div></div>
+											</td>
+											<td width="25%" align="center" valign="top">
+												<div style="border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToSlide(4);"><img width="23" height="auto" src="images/4.png" /><div style="position:relative; font-size:100%; font-weight:normal;">surik</div></div>
+											</td>											
+										</tr>
+										<tr height="50"><td colspan="4"></td>
+										<tr>
+											<td width="25%" align="center" valign="top">
+												<div style="border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToSlide(5);"><img width="40" height="auto" src="images/5.png" /><div style="position:relative; font-size:100%; font-weight:normal;">soru</div></div>
+											</td>
+											<td width="25%" align="center" valign="top">
+												<div style="border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToSlide(6);"><img width="35" height="auto" src="images/6.png" /><div style="position:relative; font-size:100%; font-weight:normal;">uma</div></div>
+											</td>											
+											<td width="25%" align="center" valign="top">
+												<div style="border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToSlide(7);"><img width="225" height="auto" src="images/7.png" /><div style="position:relative; font-size:100%; font-weight:normal;">lafaek</div></div>
+											</td>
+											<td width="25%" align="center" valign="top">
+												<div style="border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToSlide(8);"><img width="33" height="auto" src="images/8.png" /><div style="position:relative; font-size:100%; font-weight:normal;">dansa</div></div>
+											</td>											
+										</tr>
+									</table>
+								</div>
+								
+								<div id="div_2" name="div_2" style="position:absolute; width:100%; height:auto; left:0px; top:-100px; border:0px solid #333333; display:none;">
+									<div id="divDragAreaSlide_1" name="divDragAreaSlide_1" style="position:absolute; width:100%; height:565px; border:0px solid red;">
+										<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="middle">
+													<div style="position:relative; top:0px;"><img width="100" height="auto" src="images/1.png" /></div>
+												</td>
+											</tr>									
+										</table>
+										<div id="divDragAndDroPanel_1" name="divDragAndDroPanel_1" style="position:absolute; width:100%; height:500px; left:0px; top:-50px; border:0px solid red; display:block;">
+											<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+															<div id="divDrag_1_1" name="divDrag_1" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:95px; top:200px; color:#000000; cursor:pointer; display:block;">t</div>
+															<div id="divDrag_1_2" name="divDrag_1" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:150px; top:250px; color:#000000; cursor:pointer; display:block;">a</div>
+															<div id="divDrag_1_3" name="divDrag_1" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:565px; top:250px;  color:#000000; cursor:pointer; display:block;">i</div>
+															<div id="divDrag_1_4" name="divDrag_1" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:60px; top:275px; color:#000000;  cursor:pointer; display:block;">s</div>
+
+															<div id="divDropPanel" name="divDropPanel" style="position:absolute; width:100%; height:135px; left:0px; bottom:-40px; text-align:center; border:0px solid blue;">
+																<div id="divDrop_1_1" name="divDrop_1" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">t</div>
+																<div id="divDrop_1_2" name="divDrop_1" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">a</div>
+																<div id="divDrop_1_3" name="divDrop_1" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">i</div>
+																<div id="divDrop_1_4" name="divDrop_1" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">s</div>
+															</div>
+														</div>
+													</td>
+												</tr>									
+											</table>										
+										</div>
+									</div>
+								</div>
+
+								<div id="div_3" name="div_3" style="position:absolute; width:100%; height:auto; left:0px; top:-50px; border:0px solid #333333; display:none;">
+									<div id="divDragAreaSlide_2" name="divDragAreaSlide_2" style="position:absolute; width:100%; height:565px; border:0px solid red;">
+										<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="middle">
+													<div style="position:relative; top:-50px;"><img width="75" height="auto" src="images/2.png" /></div>
+												</td>
+											</tr>									
+										</table>
+										<div id="divDragAndDroPanel_2" name="divDragAndDroPanel_2" style="position:absolute; width:100%; height:500px; left:0px; top:-160px; border:0px solid red; display:block;">
+											<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+															<div id="divDrag_2_1" name="divDrag_2" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:50px; top:300px; color:#000000; cursor:pointer; display:block;">l</div>
+															<div id="divDrag_2_2" name="divDrag_2" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:100px; top:350px;  color:#000000; cursor:pointer; display:block;">i</div>
+															<div id="divDrag_2_3" name="divDrag_2" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:500px; top:310px; color:#000000; cursor:pointer; display:block;">l</div>
+															<div id="divDrag_2_4" name="divDrag_2" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:100px; top:290px; color:#000000; cursor:pointer; display:block;">i</div>
+															<div id="divDrag_2_5" name="divDrag_2" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:455px; top:260px; color:#000000; cursor:pointer; display:block;">n</div>
+
+															<div id="divDropPanel" name="divDropPanel" style="position:absolute; width:100%; height:135px; left:0px; bottom:-100px; text-align:center; border:0px solid blue;">
+																<div id="divDrop_2_1" name="divDrop_2" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">l</div>
+																<div id="divDrop_2_2" name="divDrop_2" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">i</div>
+																<div id="divDrop_2_3" name="divDrop_2" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">l</div>
+																<div id="divDrop_2_4" name="divDrop_2" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">i</div>
+																<div id="divDrop_2_5" name="divDrop_2" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">n</div>
+															</div>
+														</div>
+													</td>
+												</tr>									
+											</table>										
+										</div>
+									</div>
+								</div>
+
+								<div id="div_4" name="div_4" style="position:absolute; width:100%; height:auto; left:0px; top:65px; border:0px solid #333333; display:none;">
+									<div id="divDragAreaSlide_3" name="divDragAreaSlide_3" style="position:absolute; width:100%; height:565px; border:0px solid red;">
+										<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="middle">
+													<div style="position:relative; top:-175px;"><img width="225" height="auto" src="images/3.png" /></div>
+												</td>
+											</tr>									
+										</table>
+										<div id="divDragAndDroPanel_3" name="divDragAndDroPanel_3" style="position:absolute; width:100%; height:500px; left:0px; top:0px; border:0px solid red; display:block;">
+											<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+															<div id="divDrag_3_1" name="divDrag_3" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:125px; top:0px; color:#000000; cursor:pointer; display:block;">r</div>
+															<div id="divDrag_3_2" name="divDrag_3" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:530px; top:120px; color:#000000; cursor:pointer; display:block;">a</div>
+															<div id="divDrag_3_3" name="divDrag_3" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:100px; top:100px; color:#000000; cursor:pointer; display:block;">i</div>
+															
+															<div id="divDropPanel" name="divDropPanel" style="position:absolute; width:100%; height:135px; left:0px; bottom:175px; text-align:center; border:0px solid blue;">
+																<div id="divDrop_3_1" name="divDrop_3" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">r</div>
+																<div id="divDrop_3_2" name="divDrop_3" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">a</div>
+																<div id="divDrop_3_3" name="divDrop_3" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">i</div>
+															</div>
+														</div>
+													</td>
+												</tr>									
+											</table>										
+										</div>
+									</div>
+								</div>
+								
+								<div id="div_5" name="div_5" style="position:absolute; width:100%; height:auto; left:0px; top:65px; border:0px solid #333333; display:none;">
+									<div id="divDragAreaSlide_4" name="divDragAreaSlide_4" style="position:absolute; width:100%; height:565px; border:0px solid red;">
+										<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="middle">
+													<div style="position:relative; top:-150px;"><img width="50" height="auto" src="images/4.png" /></div>
+												</td>
+											</tr>									
+										</table>
+										<div id="divDragAndDroPanel_4" name="divDragAndDroPanel_4" style="position:absolute; width:100%; height:500px; left:0px; top:0px; border:0px solid red; display:block;">
+											<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+															<div id="divDrag_4_1" name="divDrag_4" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:125px; top:0px; color:#000000; cursor:pointer; display:block;">s</div>
+															<div id="divDrag_4_2" name="divDrag_4" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:200px; top:80px; color:#000000; cursor:pointer; display:block;">u</div>
+															<div id="divDrag_4_3" name="divDrag_4" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:500px; top:100px; color:#000000; cursor:pointer; display:block;">r</div>
+															<div id="divDrag_4_4" name="divDrag_4" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:498px; top:10px; color:#000000; cursor:pointer; display:block;">i</div>
+															<div id="divDrag_4_5" name="divDrag_4" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:100px; top:100px; color:#000000; cursor:pointer; display:block;">k</div>
+
+															<div id="divDropPanel" name="divDropPanel" style="position:absolute; width:100%; height:135px; left:0px; bottom:175px; text-align:center; border:0px solid blue;">
+																<div id="divDrop_4_1" name="divDrop_4" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">s</div>
+																<div id="divDrop_4_2" name="divDrop_4" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">u</div>
+																<div id="divDrop_4_3" name="divDrop_4" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">r</div>
+																<div id="divDrop_4_4" name="divDrop_4" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">i</div>
+																<div id="divDrop_4_5" name="divDrop_4" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">k</div>
+															</div>
+														</div>
+													</td>
+												</tr>									
+											</table>										
+										</div>
+									</div>
+								</div>								
+								
+								<div id="div_6" name="div_6" style="position:absolute; width:100%; height:auto; left:0px; top:65px; border:0px solid #333333; display:none;">
+									<div id="divDragAreaSlide_5" name="divDragAreaSlide_5" style="position:absolute; width:100%; height:555px; border:0px solid red;">
+										<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="middle">
+													<div style="position:relative; top:-160px;"><img width="100" height="auto" src="images/5.png" /></div>
+												</td>
+											</tr>									
+										</table>
+										<div id="divDragAndDroPanel_5" name="divDragAndDroPanel_5" style="position:absolute; width:100%; height:500px; left:0px; top:0px; border:0px solid red; display:block;">
+											<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+															<div id="divDrag_5_1" name="divDrag_5" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:125px; top:0px; color:#000000; cursor:pointer; display:block;">s</div>
+															<div id="divDrag_5_2" name="divDrag_5" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:200px; top:130px; color:#000000; cursor:pointer; display:block;">o</div>
+															<div id="divDrag_5_3" name="divDrag_5" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:500px; top:50px; color:#000000; cursor:pointer; display:block;">r</div>
+															<div id="divDrag_5_4" name="divDrag_5" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:500px; top:150px; color:#000000; cursor:pointer; display:block;">u</div>
+															
+															<div id="divDropPanel" name="divDropPanel" style="position:absolute; width:100%; height:135px; left:0px; bottom:175px; text-align:center; border:0px solid blue;">
+																<div id="divDrop_5_1" name="divDrop_5" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">s</div>
+																<div id="divDrop_5_2" name="divDrop_5" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">o</div>
+																<div id="divDrop_5_3" name="divDrop_5" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">r</div>
+																<div id="divDrop_5_4" name="divDrop_5" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">u</div>
+															</div>
+														</div>
+													</td>
+												</tr>									
+											</table>										
+										</div>
+									</div>
+								</div>
+
+								<div id="div_7" name="div_7" style="position:absolute; width:100%; height:auto; left:0px; top:65px; border:0px solid #333333; display:none;">
+									<div id="divDragAreaSlide_6" name="divDragAreaSlide_6" style="position:absolute; width:100%; height:565px; border:0px solid red;">
+										<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="middle">
+													<div style="position:relative; top:-165px;"><img width="100" height="auto" src="images/6.png" /></div>
+												</td>
+											</tr>									
+										</table>
+										<div id="divDragAndDroPanel_6" name="divDragAndDroPanel_6" style="position:absolute; width:100%; height:500px; left:0px; top:0px; border:0px solid red; display:block;">
+											<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+															<div id="divDrag_6_1" name="divDrag_6" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:120px; top:0px; color:#000000; cursor:pointer; display:block;">u</div>
+															<div id="divDrag_6_2" name="divDrag_6" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:510px; top:40px; color:#000000; cursor:pointer; display:block;">m</div>
+															<div id="divDrag_6_3" name="divDrag_6" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:90px; top:95px; color:#000000; cursor:pointer; display:block;">a</div>
+
+															<div id="divDropPanel" name="divDropPanel" style="position:absolute; width:100%; height:135px; left:0px; bottom:175px; text-align:center; border:0px solid blue;">
+																<div id="divDrop_6_1" name="divDrop_6" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">u</div>
+																<div id="divDrop_6_2" name="divDrop_6" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">m</div>
+																<div id="divDrop_6_3" name="divDrop_6" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">a</div>
+															</div>
+														</div>
+													</td>
+												</tr>									
+											</table>										
+										</div>
+									</div>
+								</div>
+
+								<div id="div_8" name="div_8" style="position:absolute; width:100%; height:auto; left:0px; top:65px; border:0px solid #333333; display:none;">
+									<div id="divDragAreaSlide_7" name="divDragAreaSlide_7" style="position:absolute; width:100%; height:565px; border:0px solid red;">
+										<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="middle">
+													<div style="position:relative; top:-140px;"><img width="300" height="auto" src="images/7.png" /></div>
+												</td>
+											</tr>									
+										</table>
+										<div id="divDragAndDroPanel_7" name="divDragAndDroPanel_7" style="position:absolute; width:100%; height:500px; left:0px; top:0px; border:0px solid red; display:block;">
+											<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+															<div id="divDrag_7_1" name="divDrag_7" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:75px; top:0px; color:#000000; cursor:pointer; display:block;">l</div>
+															<div id="divDrag_7_2" name="divDrag_7" class="clsDrag clsDragAndDropFontSize"style="position:absolute; left:150px; top:40px; color:#000000; cursor:pointer; display:block;">a</div>
+															<div id="divDrag_7_3" name="divDrag_7" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:225px; top:0px; color:#000000; cursor:pointer; display:block;">f</div>
+															<div id="divDrag_7_4" name="divDrag_7" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:435px; top:115px; color:#000000; cursor:pointer; display:block;">a</div>
+															<div id="divDrag_7_5" name="divDrag_7" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:470px; top:0px; color:#000000; cursor:pointer; display:block;">e</div>
+															<div id="divDrag_7_6" name="divDrag_7" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:535px; top:70px; color:#000000; cursor:pointer; display:block;">k</div>
+
+															<div id="divDropPanel" name="divDropPanel" style="position:absolute; width:100%; height:135px; left:0px; bottom:175px; text-align:center; border:0px solid blue;">
+																<div id="divDrop_7_1" name="divDrop_7" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">l</div>
+																<div id="divDrop_7_2" name="divDrop_7" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">a</div>
+																<div id="divDrop_7_3" name="divDrop_7" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">f</div>
+																<div id="divDrop_7_4" name="divDrop_7" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">a</div>
+																<div id="divDrop_7_5" name="divDrop_7" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">e</div>
+																<div id="divDrop_7_6" name="divDrop_7" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">k</div>
+															</div>
+														</div>
+													</td>
+												</tr>									
+											</table>										
+										</div>
+									</div>
+								</div>
+
+								<div id="div_9" name="div_9" style="position:absolute; width:100%; height:auto; left:0px; top:65px; border:0px solid #333333; display:none;">
+									<div id="divDragAreaSlide_8" name="divDragAreaSlide_8" style="position:absolute; width:100%; height:565px; border:0px solid red;">
+										<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="middle">
+													<div style="position:relative; top:-165px;"><img width="125" height="auto" src="images/8.png" /></div>
+												</td>
+											</tr>									
+										</table>
+										<div id="divDragAndDroPanel_8" name="divDragAndDroPanel_8" style="position:absolute; width:100%; height:500px; left:0px; top:0px; border:0px solid red; display:block;">
+											<table width="95%" height="500" align="center" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td>
+														<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+															<div id="divDrag_8_1" name="divDrag_8" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:90px; top:0px; color:#000000; cursor:pointer; display:block;">d</div>
+															<div id="divDrag_8_2" name="divDrag_8" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:230px; top:100px; color:#000000; cursor:pointer; display:block;">a</div>
+															<div id="divDrag_8_3" name="divDrag_8" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:545px; top:20px; color:#000000; cursor:pointer; display:block;">n</div>
+															<div id="divDrag_8_4" name="divDrag_8" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:490px; top:125px; color:#000000; cursor:pointer; display:block;">s</div>
+															<div id="divDrag_8_5" name="divDrag_8" class="clsDrag clsDragAndDropFontSize" style="position:absolute; left:130px; top:125px; color:#000000; cursor:pointer; display:block;">a</div>
+															
+															<div id="divDropPanel" name="divDropPanel" style="position:absolute; width:100%; height:135px; left:0px; bottom:175px; text-align:center; border:0px solid blue;">
+																<div id="divDrop_8_1" name="divDrop_8" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">d</div>
+																<div id="divDrop_8_2" name="divDrop_8" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">a</div>
+																<div id="divDrop_8_3" name="divDrop_8" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">n</div>
+																<div id="divDrop_8_4" name="divDrop_8" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">s</div>
+																<div id="divDrop_8_5" name="divDrop_8" class="clsDrop clsDragAndDropFontSize" style="position:relative; bottom:45px; color:lightgrey; display:inline-block;">a</div>
+															</div>
+														</div>
+													</td>
+												</tr>									
+											</table>										
+										</div>
+									</div>
+								</div>								
+
+								<div id="divDragAndDropAreaDisable" name="divDragAndDropAreaDisable" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;"></div>
+								<!--Slides End-->
+								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:-10px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="35" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="35" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="35" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:10px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton()
+		</script>
+		<script src="../../activity-tracker.js"></script>
+	</body>
+</html>

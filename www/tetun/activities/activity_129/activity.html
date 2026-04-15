@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+		</script>		
+	</head>
+
+	<body bgcolor="#ffffff">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div id="divCorrectTextPanel" name="divCorrectTextPanel" style="position:relative; top:10px; border:0px solid red; display:block;">
+									<div style="position:relative; top:-5px; font-size:175%; display:inline-block;">
+										Loos
+									</div>
+									<div style="width:5px; display:inline-block;"></div>
+									<div style="display:inline-block;">
+										<img width="auto" height="40" src="../../images/tick.png" />
+									</div>														
+								</div>
+								<div style="position:absolute; width:305px; height:110px; left:25px; top:15px; background:transparent; border:0px solid green;">
+									<div style="position:relative; z-index:9999;">
+										<div style="position:absolute; width:40px; height:40px; left:0px; top:0px; border:0px solid #333333;">
+											<div id="divSmallImage_1" name="divSmallImage" style="cursor:pointer;" ontouchstart="javascript:doSmallImageTouchStart(this);">
+												<img width="100%" height="100%" src="images/image_small_1.png" style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid red;" />
+											</div>
+											<div id="divTickMark_1" name="divTickMark" style="position:absolute; left:10px; top:20px;">
+												<img width="auto" height="35" src="images/tick.png" style="position:relative; width:auto; height:35px; left:-5px; top:20px; border:0px solid red;" />
+											</div>										
+										</div>
+										<div style="position:absolute; width:43px; height:43px; left:75px; top:0px; border:0px solid #333333;">
+											<div id="divSmallImage_2" name="divSmallImage" style="cursor:pointer;" ontouchstart="javascript:doSmallImageTouchStart(this);">
+												<img width="100%" height="100%" src="images/image_small_2.png" style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid red;" />
+											</div>
+											<div id="divTickMark_2" name="divTickMark" style="position:absolute; left:10px; top:20px;">
+												<img width="auto" height="35" src="images/tick.png" style="position:relative; width:auto; height:35px; left:-5px; top:20px; border:0px solid red;" />
+											</div>										
+										</div>
+										<div style="position:absolute; width:75px; height:50px; left:150px; top:0px; border:0px solid #333333;">
+											<div id="divSmallImage_3" name="divSmallImage" style="cursor:pointer;" ontouchstart="javascript:doSmallImageTouchStart(this);">
+												<img width="100%" height="100%" src="images/image_small_3.png" style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid red;" />
+											</div>
+											<div id="divTickMark_3" name="divTickMark" style="position:absolute; left:25px; top:20px;">
+												<img width="auto" height="35" src="images/tick.png" style="position:relative; width:auto; height:35px; left:-5px; top:20px; border:0px solid red;" />
+											</div>										
+										</div>
+
+										<div style="position:absolute; width:100%; height:auto; top:-10px; left:350px; border:0px solid #333333;">
+											<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td align="center" valign="middle">
+														<div style="font-size:165%;">Hakerek forma</div>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<div id="divBigImagePanel_1" style="position:absolute; width:625px; height:160px; left:10px; top:85px; background:transparent; border:0px solid green; display:block;">
+										<div id="divBigImageMain_1" name="divBigImageMain" style="position:absolute; width:195px; height:140px; left:210px; top:10px; border:0px solid #333333; display:block;">
+											<div id="divBigImage_1" name="divBigImage" style="position:relative; width:100%; height:100%;">
+												<img width="100%" height="100%" src="images/image_big_1.png" style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid red;" />
+											</div>										
+										</div>
+										<div id="divLine_1_1" name="divLine" style="position:absolute; width:195px; height:10px; left:210px; top:5px; background:#000000; z-index:998; display:block;"></div>
+										<div id="divDot_1_1" name="divDot" style="position:absolute; width:20px; height:20px; left:200px; top:0px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_1_1_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:200px; top:0px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+										
+										<div id="divLine_1_2" name="divLine" style="position:absolute; width:10px; height:145px; left:400px; top:5px; background:#000000; z-index:998; display:block;"></div>
+										<div id="divDot_1_2" name="divDot" style="position:absolute; width:20px; height:20px; left:395px; top:0px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_1_2_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:395px; top:0px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+										
+										<div id="divLine_1_3" name="divLine" style="position:absolute; width:200px; height:10px; left:210px; top:145px; background:#000000; z-index:998; display:block;"></div>
+										<div id="divDot_1_3" name="divDot" style="position:absolute; width:20px; height:20px; left:395px; top:139px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_1_3_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:395px; top:139px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+										
+										<div id="divLine_1_4" name="divLine" style="position:absolute; width:10px; height:150px; left:205px; top:5px; background:#000000; z-index:998; display:block;"></div>
+										<div id="divDot_1_4" name="divDot" style="position:absolute; width:20px; height:20px; left:200px; top:139px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_1_4_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:200px; top:139px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+									</div>
+									
+									<div id="divBigImagePanel_2" style="position:absolute; width:625px; height:160px; left:10px; top:85px; background:transparent; border:0px solid green; display:none;">
+										<div id="divBigImageMain_2" name="divBigImageMain" style="position:absolute; width:195px; height:140px; left:210px; top:10px; border:0px solid #333333; display:block;">
+											<div id="divBigImage_2" name="divBigImage" style="position:relative; width:100%; height:100%;">
+												<img width="100%" height="100%" src="images/image_big_2.png" style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid red;" />
+											</div>										
+										</div>
+										<div id="divBigImage_2_Gif" name="divBigImage" style="position:relative; width:200px; height:auto; left:0px; top:0px; border:0px solid red; display:none;">
+											<img width="200" height="auto" src="images/image_big_2.gif" style="position:relative; width:39%; height:auto; left:-5px; top:60px; border:0px solid red;" />
+										</div>										
+										<div id="divLine_2_1" name="divLine" style="position:absolute; width:10px; height:167px; left:258px; top:-4px; background:#000000; rotate:35deg; border-radius:2px; z-index:998; display:block;" ></div>
+										<div id="divDot_2_1" name="divDot" style="position:absolute; width:20px; height:20px; left:299px; top:5px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_2_1_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:299px; top:5px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+										
+										<div id="divLine_2_2" name="divLine" style="position:absolute; width:192px; height:10px; left:213px; top:140px; background:#000000; border-radius:3px; z-index:998; display:block;" ></div>
+										<div id="divDot_2_2" name="divDot" style="position:absolute; width:20px; height:20px; left:210px; top:133px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_2_2_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:210px; top:133px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+										
+										<div id="divLine_2_3" name="divLine" style="position:absolute; width:10px; height:167px; left:348px; top:-4px; background:#000000; rotate:-35deg; border-radius:2px; z-index:998; display:block;" ></div>
+										<div id="divDot_2_3" name="divDot" style="position:absolute; width:20px; height:20px; left:388px; top:133px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_2_3_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:388px; top:133px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+									</div>
+									
+									<div id="divBigImagePanel_3" style="position:absolute; width:625px; height:160px; left:10px; top:85px; background:transparent; border:0px solid green; display:none;">
+										<div id="divBigImageMain_3" name="divBigImageMain" style="position:absolute; width:275px; height:140px; left:160px; top:10px; border:0px solid #333333; display:block;">
+											<div id="divBigImage_3" name="divBigImage" style="position:relative; width:100%; height:100%;">
+												<img width="100%" height="100%" src="images/image_big_3.png" style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid red;" />
+											</div>										
+										</div>
+										
+										<div id="divLine_3_1" name="divLine" style="position:absolute; width:275px; height:10px; left:160px; top:0px; background:#000000; z-index:998; display:none;"></div>
+										<div id="divDot_3_1" name="divDot" style="position:absolute; width:20px; height:20px; left:155px; top:-5px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_3_1_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:155px; top:-5px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+										
+										<div id="divLine_3_2" name="divLine" style="position:absolute; width:10px; height:150px; left:430px; top:0px; background:#000000; z-index:998; display:block;"></div>
+										<div id="divDot_3_2" name="divDot" style="position:absolute; width:20px; height:20px; left:425px; top:-5px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_3_2_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:425px; top:-5px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+										
+										<div id="divLine_3_3" name="divLine" style="position:absolute; width:280px; height:10px; left:160px; top:140px; background:#000000; z-index:998; display:block;"></div>
+										<div id="divDot_3_3" name="divDot" style="position:absolute; width:20px; height:20px; left:425px; top:135px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_3_3_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:425px; top:135px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+										
+										<div id="divLine_3_4" name="divLine" style="position:absolute; width:10px; height:150px; left:160px; top:0px; background:#000000; z-index:998; display:block;"></div>										
+										<div id="divDot_3_4" name="divDot" style="position:absolute; width:20px; height:20px; left:155px; top:135px; border-radius:50%; background:red; cursor:pointer; z-index:999;"></div>
+										<div id="divDot_3_4_Drag" name="divDotDrag" style="position:absolute; width:20px; height:20px; left:155px; top:135px; border-radius:50%; background:red; cursor:pointer; z-index:1000;" ontouchstart="javascript:doDotTouchStart(this);"></div>
+									</div>
+									<div id="divDragAndDropAreaDisable" name="divDragAndDropAreaDisable" style="position:absolute; width:625px; height:160px; left:0px; top:85px; border:0px solid red; display:block;"></div>
+								</div>
+
+								<!--Slides End-->
+								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:-10px; border:0px solid #333333; display:none;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>
+									<!--<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">-->
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:document.location.href='activity.html';">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divcanvas_1" name="divcanvas_1" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid blue;">
+								<canvas id="canvas" width="600" height="175" style="position:absolute; width:625px; height:160px; left:15px; top:100px; background:transparent; border:0px solid orange;"></canvas>
+							</div>
+
+							<div id="divDisablePanel" name="divDisablePanel" style="position:absolute; width:625px; height:160px; left:15px; top:100px; background:transparent; border:0px solid orange; z-index:2000; display:none;"></div>
+
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:10px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			var rDot_1_Down = false;
+			var rDot_2_Down = false;
+			var rDot_3_Down = false;
+			var rDot_4_Down = false;
+			
+			var rTopLine_1_Shown = false;
+			var rTopLine_2_Shown = false;
+			var rTopLine_3_Shown = false;
+			var rTopLine_4_Shown = false;
+			
+			var rClickedShapeSmall="divSmallImage_1";
+			//var rClickedShape = "";
+			function doDotTouchStart(rObj) {
+				rDot_1_Down = false;
+				rDot_2_Down = false;
+				rDot_3_Down = false;
+				rDot_4_Down = false;
+				switch (rObj.id) {
+					case "divDot_1_1_Drag":
+						rDot_1_Down = true;
+						break;
+					case "divDot_1_2_Drag":
+						rDot_2_Down = true;
+						break;
+					case "divDot_1_3_Drag":
+						rDot_3_Down = true;
+						break;
+					case "divDot_1_4_Drag":
+						rDot_4_Down = true;
+						break;
+
+					case "divDot_2_1_Drag":
+						rDot_1_Down = true;
+						break;
+					case "divDot_2_2_Drag":
+						rDot_2_Down = true;
+						break;
+					case "divDot_2_3_Drag":
+						rDot_3_Down = true;
+						break;
+
+					case "divDot_3_1_Drag":
+						rDot_1_Down = true;
+						break;
+					case "divDot_3_2_Drag":
+						rDot_2_Down = true;
+						break;
+					case "divDot_3_3_Drag":
+						rDot_3_Down = true;
+						break;
+					case "divDot_3_4_Drag":
+						rDot_4_Down = true;
+						break;						
+					default:
+						break;
+						
+				}
+
+				var rId = rObj.id.split("_")[1];
+
+				for (var i=0; i<document.getElementsByName("divTickMark").length; i++) {
+					document.getElementsByName("divBigImageMain")[i].style.display = "none";
+					document.getElementsByName("divTickMark")[i].style.display = "none";
+				}
+				document.getElementById("divBigImageMain_" + rId).style.display = "block";
+				document.getElementById("divTickMark_" + rId).style.display = "block";
+				
+				rClickedShape = rObj.id;
+			}
+			
+			function doSmallImageTouchStart(rObj) {
+				rClickedShapeSmall = rObj.id;
+				if (rClickedShapeSmall=="divSmallImage_1" || rClickedShapeSmall=="divSmallImage_2" || rClickedShapeSmall=="divSmallImage_3") {
+					doResetActivity();
+				}
+			}			
+			
+			var canvas = document.getElementById("divcanvas_1").getElementsByTagName("canvas")[0];
+
+			canvas.width = 600;
+			canvas.height = 175;	
+
+			var ctx = canvas.getContext('2d');
+			
+			var touch = {
+				isPressed: false,
+				down: null,
+				current: null,
+				up: null,
+				setDown: function(event, element) {
+					this.isPressed = true;
+					this.down = this.getPosition(event, element)
+				},
+				setUp: function(event, element) {
+					this.isPressed = false;
+					this.up = this.getPosition(event, element)
+				},
+				setCurrent: function(event, element) {
+					this.current = this.getPosition(event, element)
+				},
+				getPosition: function(event, element) {
+					var position = {
+						x: event.touches[0].pageX - element.offsetLeft,
+						y: event.touches[0].pageY - element.offsetTop
+					}
+					return position;
+				}
+			}			
+
+			var lines = [];
+
+			function draw() {
+				if (rDot_1_Down || rDot_2_Down || rDot_3_Down || rDot_4_Down) {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					lines.forEach(function(line) {
+						drawLine(ctx, line);
+					})
+				}
+			}
+			
+			function drawLine(ctx, line) {
+				var {
+					start,
+					end,
+					lineWidth = 10,
+					lineCap = 'round', 
+					strokeStyle = '#000000',
+				} = line;
+
+				if(!start || !end) {
+					throw new Error('Start or end of line not defined.');
+				}
+			  
+				ctx.beginPath();
+				
+				if (rDot_1_Down) {
+					ctx.moveTo(start.x-15, start.y);
+					ctx.lineTo(end.x-15, end.y);
+				} else {
+				if (rDot_2_Down) {
+					ctx.moveTo(start.x-15, start.y);
+					ctx.lineTo(end.x-15, end.y);
+				} else {
+				if (rDot_3_Down) {
+					ctx.moveTo(start.x-15, start.y);
+					ctx.lineTo(end.x-15, end.y);
+				} else {
+				if (rDot_4_Down) {
+					ctx.moveTo(start.x-15, start.y);
+					ctx.lineTo(end.x-15, end.y);				
+				} } } }
+
+				ctx.lineWidth = lineWidth;
+				ctx.lineCap = lineCap;
+				ctx.strokeStyle = strokeStyle;
+				ctx.stroke();
+			}	
+
+			var rDot1AndDot2OverLap = false;
+			var rDot2AndDot3OverLap = false;
+			var rDot3AndDot4OverLap = false;
+			var rDot4AndDot1OverLap = false;			
+			
+			function handleTouchStart(e) {
+				rDot1AndDot2OverLap = false;
+				rDot2AndDot3OverLap = false;
+				rDot3AndDot4OverLap = false;
+				rDot4AndDot1OverLap = false;			
+				lines = [];
+				touch.setDown(e, canvas);
+				const line = {
+					start: touch.down,
+					end: touch.down,
+				}
+				lines.push(line);
+				draw();
+			}
+			
+			function handleTouchMove(e) {
+				if(touch.isPressed) {
+					touch.setCurrent(e, canvas);
+					var line = {
+						start: touch.down,
+						end: touch.current
+					}
+					lines.pop();
+					lines.push(line);
+					//console.log(line.start.y + " And " + line.end.y); 
+					if (rDot_1_Down || rDot_2_Down || rDot_3_Down || rDot_4_Down) {
+						draw();
+					}
+					
+					if (rClickedShapeSmall=="divSmallImage_1") {
+						if (rDot_1_Down) {
+							document.getElementById("divDot_1_1_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_1_1_Drag").style.top = line.end.y - 10 + "px";
+						}
+					
+						if (rDot_2_Down) {
+							document.getElementById("divDot_1_2_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_1_2_Drag").style.top = line.end.y - 10 + "px";
+						}
+
+						if (rDot_3_Down) {
+							document.getElementById("divDot_1_3_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_1_3_Drag").style.top = line.end.y - 10 + "px";
+						}
+						
+						if (rDot_4_Down) {
+							document.getElementById("divDot_1_4_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_1_4_Drag").style.top = line.end.y - 10 + "px";
+						}
+					} else {
+					if (rClickedShapeSmall=="divSmallImage_2") {
+						if (rDot_1_Down) {
+							document.getElementById("divDot_2_1_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_2_1_Drag").style.top = line.end.y - 16 + "px";
+						}
+					
+						if (rDot_2_Down) {
+							document.getElementById("divDot_2_2_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_2_2_Drag").style.top = line.end.y - 10 + "px";
+						}
+
+						if (rDot_3_Down) {
+							document.getElementById("divDot_2_3_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_2_3_Drag").style.top = line.end.y - 10 + "px";
+						}
+					} else {					
+					if (rClickedShapeSmall=="divSmallImage_3") {
+						if (rDot_1_Down) {
+							document.getElementById("divDot_3_1_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_3_1_Drag").style.top = line.end.y - 10 + "px";
+						}
+					
+						if (rDot_2_Down) {
+							document.getElementById("divDot_3_2_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_3_2_Drag").style.top = line.end.y - 10 + "px";
+						}
+
+						if (rDot_3_Down) {
+							document.getElementById("divDot_3_3_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_3_3_Drag").style.top = line.end.y - 10 + "px";
+						}
+						
+						if (rDot_4_Down) {
+							document.getElementById("divDot_3_4_Drag").style.left = line.end.x - 30 + "px";
+							document.getElementById("divDot_3_4_Drag").style.top = line.end.y - 10 + "px";
+						}					
+					} } }
+				}
+			}
+			function handleTouchEnd(e) {
+				if (rClickedShapeSmall=="divSmallImage_1") {
+					if (doOverlapCheck(document.getElementById("divDot_1_1_Drag"), document.getElementById("divDot_1_2_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot1AndDot2OverLap = true;
+					} else {
+					if (doOverlapCheck(document.getElementById("divDot_1_2_Drag"), document.getElementById("divDot_1_3_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;
+						rDot2AndDot3OverLap = true;
+					} else {
+					if (doOverlapCheck(document.getElementById("divDot_1_3_Drag"), document.getElementById("divDot_1_4_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot3AndDot4OverLap = true;
+					} else {
+					if (doOverlapCheck(document.getElementById("divDot_1_4_Drag"), document.getElementById("divDot_1_1_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot4AndDot1OverLap = true;
+					} } } }
+				} else {
+				if (rClickedShapeSmall=="divSmallImage_2") {
+					if (doOverlapCheck(document.getElementById("divDot_2_1_Drag"), document.getElementById("divDot_2_2_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot1AndDot2OverLap = true;
+					} else {
+					if (doOverlapCheck(document.getElementById("divDot_2_2_Drag"), document.getElementById("divDot_2_3_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;
+						rDot2AndDot3OverLap = true;
+					} else {
+					if (doOverlapCheck(document.getElementById("divDot_2_3_Drag"), document.getElementById("divDot_2_1_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot3AndDot4OverLap = true;
+					} } }
+				} else {				
+				if (rClickedShapeSmall=="divSmallImage_3") {
+					if (doOverlapCheck(document.getElementById("divDot_3_1_Drag"), document.getElementById("divDot_3_2_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot1AndDot2OverLap = true;
+					}
+					if (doOverlapCheck(document.getElementById("divDot_3_2_Drag"), document.getElementById("divDot_3_3_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;
+						rDot2AndDot3OverLap = true;
+					}
+					if (doOverlapCheck(document.getElementById("divDot_3_3_Drag"), document.getElementById("divDot_3_4_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot3AndDot4OverLap = true;
+					}
+					if (doOverlapCheck(document.getElementById("divDot_3_4_Drag"), document.getElementById("divDot_3_1_Drag"))) {
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot4AndDot1OverLap = true;
+					}
+				} } }
+				touch.isPressed = false;
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+				for (var i=1; i<=3; i++) {
+					try {
+						for (var j=1; j<=4; j++) {
+							if (document.getElementById("divDot_" + i + "_" + j + "_Drag")!=null || document.getElementById("divDot_" + i + "_" + j + "_Drag")!=undefined || document.getElementById("divDot_" + i + "_" + j + "_Drag")!="") {
+								document.getElementById("divDot_" + i + "_" + j + "_Drag").style.left = document.getElementById("divDot_" + i + "_" + j).style.left;
+								document.getElementById("divDot_" + i + "_" + j + "_Drag").style.top = document.getElementById("divDot_" + i + "_" + j).style.top;
+							}
+						}
+					} catch {
+					}
+				}
+				
+				if (rClickedShapeSmall=="divSmallImage_1") {
+					if (rDot1AndDot2OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_1_Shown = true;
+						rDot1AndDot2OverLap = false;
+						
+						document.getElementById("divLine_1_1").style.display = "block";
+					}
+					
+					if (rDot2AndDot3OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_2_Shown = true;
+						rDot2AndDot3OverLap = false;
+						
+						document.getElementById("divLine_1_2").style.display = "block";
+					}
+					
+					if (rDot3AndDot4OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_3_Shown = true;
+						rDot3AndDot4OverLap = false;
+						
+						document.getElementById("divLine_1_3").style.display = "block";
+					}
+
+					if (rDot4AndDot1OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;
+						rTopLine_4_Shown = true;
+						rDot4AndDot1OverLap = false;
+						
+						document.getElementById("divLine_1_4").style.display = "block";
+					}
+				} else {
+				if (rClickedShapeSmall=="divSmallImage_2") {
+					if (rDot1AndDot2OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_1_Shown = true;
+						rDot1AndDot2OverLap = false;
+						
+						document.getElementById("divLine_2_1").style.display = "block";
+					}
+					
+					if (rDot2AndDot3OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_2_Shown = true;
+						rDot2AndDot3OverLap = false;
+						
+						document.getElementById("divLine_2_2").style.display = "block";
+					}
+					
+					if (rDot3AndDot4OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_3_Shown = true;
+						rDot3AndDot4OverLap = false;
+						
+						document.getElementById("divLine_2_3").style.display = "block";
+					}
+				} else {				
+				if (rClickedShapeSmall=="divSmallImage_3") {
+					if (rDot1AndDot2OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_1_Shown = true;
+						rDot1AndDot2OverLap = false;
+						
+						document.getElementById("divLine_3_1").style.display = "block";
+					}
+					
+					if (rDot2AndDot3OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_2_Shown = true;
+						rDot2AndDot3OverLap = false;
+						
+						document.getElementById("divLine_3_2").style.display = "block";
+					}
+					
+					if (rDot3AndDot4OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;				
+						rTopLine_3_Shown = true;
+						rDot3AndDot4OverLap = false;
+						
+						document.getElementById("divLine_3_3").style.display = "block";
+					}
+
+					if (rDot4AndDot1OverLap) {
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;
+						rTopLine_4_Shown = true;
+						rDot4AndDot1OverLap = false;
+						
+						document.getElementById("divLine_3_4").style.display = "block";
+					}
+				} } }
+
+				if (rClickedShapeSmall=="divSmallImage_1") {
+					if (rTopLine_1_Shown && rTopLine_2_Shown && rTopLine_3_Shown && rTopLine_4_Shown) {
+						document.getElementById("divBigImage_1").getElementsByTagName("img")[0].src = "images/image_big_1.gif?ID=" + Math.random();
+						
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot4AndDot1OverLap = false;
+					
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;
+						
+						rTopLine_1_Shown = false;
+						rTopLine_2_Shown = false;
+						rTopLine_3_Shown = false;
+						rTopLine_4_Shown = false;						
+						document.getElementById("divDragAndDropAreaDisable").style.display = "block";
+						document.getElementById("divCorrectTextPanel").style.display = "block";
+						document.getElementById("divDisablePanel").style.display = "block";
+					}
+				} else {
+				if (rClickedShapeSmall=="divSmallImage_2") {
+					if (rTopLine_1_Shown && rTopLine_2_Shown && rTopLine_3_Shown) {
+						document.getElementById("divBigImage_2_Gif").getElementsByTagName("img")[0].src = "images/image_big_2.gif?ID=" + Math.random();
+						document.getElementById("divBigImage_2_Gif").style.display = "block";
+						
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot4AndDot1OverLap = false;
+					
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;
+						
+						rTopLine_1_Shown = false;
+						rTopLine_2_Shown = false;
+						rTopLine_3_Shown = false;
+						rTopLine_4_Shown = false;						
+						document.getElementById("divDragAndDropAreaDisable").style.display = "block";
+						document.getElementById("divCorrectTextPanel").style.display = "block";
+						document.getElementById("divDisablePanel").style.display = "block";
+					}
+				} else {				
+				if (rClickedShapeSmall=="divSmallImage_3") {
+					if (rTopLine_1_Shown && rTopLine_2_Shown && rTopLine_3_Shown && rTopLine_4_Shown) {
+						document.getElementById("divBigImage_3").getElementsByTagName("img")[0].src = "images/image_big_3.gif?ID=" + Math.random();
+						
+						rDot1AndDot2OverLap = false;
+						rDot2AndDot3OverLap = false;
+						rDot3AndDot4OverLap = false;
+						rDot4AndDot1OverLap = false;					
+						rDot4AndDot1OverLap = false;
+					
+						rDot_1_Down = false;
+						rDot_2_Down = false;
+						rDot_3_Down = false;
+						rDot_4_Down = false;
+						
+						rTopLine_1_Shown = false;
+						rTopLine_2_Shown = false;
+						rTopLine_3_Shown = false;
+						rTopLine_4_Shown = false;						
+						document.getElementById("divDragAndDropAreaDisable").style.display = "block";
+						document.getElementById("divCorrectTextPanel").style.display = "block";
+						document.getElementById("divDisablePanel").style.display = "block";
+					}
+				} } }
+				//touch.setUp(e, canvas);
+			}
+
+			function doResetActivity() {
+				rDot1AndDot2OverLap = false;
+				rDot2AndDot3OverLap = false;
+				rDot3AndDot4OverLap = false;
+				rDot4AndDot1OverLap = false;					
+				rDot4AndDot1OverLap = false;
+			
+				rDot_1_Down = false;
+				rDot_2_Down = false;
+				rDot_3_Down = false;
+				rDot_4_Down = false;
+				
+				rTopLine_1_Shown = false;
+				rTopLine_2_Shown = false;
+				rTopLine_3_Shown = false;
+				rTopLine_4_Shown = false;
+						
+				var rSmallTickMark  = document.getElementsByName("divTickMark").length;
+				var rLineLen  = document.getElementsByName("divLine").length;
+				var rDotLen  = document.getElementsByName("divDot").length;
+				var rDotDragLen  = document.getElementsByName("divDotDrag").length;
+				
+				for (var i=0; i<rSmallTickMark; i++) {
+					document.getElementsByName("divTickMark")[i].style.display = "none";
+				}
+				
+				for (var i=0; i<rLineLen; i++) {
+					document.getElementsByName("divLine")[i].style.display = "none";
+					document.getElementsByName("divDot")[i].style.display = "none";
+					document.getElementsByName("divDotDrag")[i].style.display = "none";
+				}
+				
+				document.getElementById("divBigImagePanel_1").style.display = "block";
+				document.getElementById("divBigImagePanel_2").style.display = "none";
+				document.getElementById("divBigImagePanel_3").style.display = "none";
+				
+				document.getElementById("divBigImage_1").getElementsByTagName("img")[0].src = "images/image_big_1.png";
+				document.getElementById("divBigImage_2").getElementsByTagName("img")[0].src = "images/image_big_2.png";
+				document.getElementById("divBigImage_2_Gif").style.display = "none";
+				document.getElementById("divBigImage_3").getElementsByTagName("img")[0].src = "images/image_big_3.png";
+				
+				document.getElementById("divDragAndDropAreaDisable").style.display = "none";
+				
+				for (var i=0; i<document.getElementsByName("divSmallImage").length; i++) {
+					document.getElementsByName("divSmallImage")[i].style.display = "block";
+					document.getElementsByName("divBigImageMain")[i].style.display = "none";
+					document.getElementsByName("divTickMark")[i].style.display = "none";
+				}
+
+				if (rClickedShapeSmall=="divSmallImage_1") {
+					document.getElementsByName("divSmallImage")[0].style.display = "block";
+					document.getElementsByName("divBigImageMain")[0].style.display = "block";
+					document.getElementsByName("divTickMark")[0].style.display = "block";
+					document.getElementById("divBigImagePanel_1").style.display = "block";
+					
+					document.getElementById("divDot_1_1").style.display = "block";
+					document.getElementById("divDot_1_1_Drag").style.display = "block";
+					document.getElementById("divDot_1_2").style.display = "block";
+					document.getElementById("divDot_1_2_Drag").style.display = "block";
+					document.getElementById("divDot_1_3").style.display = "block";
+					document.getElementById("divDot_1_3_Drag").style.display = "block";
+					document.getElementById("divDot_1_4").style.display = "block";
+					document.getElementById("divDot_1_4_Drag").style.display = "block";					
+				} else {
+				if (rClickedShapeSmall=="divSmallImage_2") {
+					document.getElementsByName("divSmallImage")[1].style.display = "block";
+					document.getElementsByName("divBigImageMain")[1].style.display = "block";
+					document.getElementsByName("divTickMark")[1].style.display = "block";
+					document.getElementById("divBigImagePanel_2").style.display = "block";
+					
+					document.getElementById("divDot_2_1").style.display = "block";
+					document.getElementById("divDot_2_1_Drag").style.display = "block";
+					document.getElementById("divDot_2_2").style.display = "block";
+					document.getElementById("divDot_2_2_Drag").style.display = "block";
+					document.getElementById("divDot_2_3").style.display = "block";
+					document.getElementById("divDot_2_3_Drag").style.display = "block";				
+				} else {
+				if (rClickedShapeSmall=="divSmallImage_3") {
+					document.getElementsByName("divSmallImage")[2].style.display = "block";
+					document.getElementsByName("divBigImageMain")[2].style.display = "block";
+					document.getElementsByName("divTickMark")[2].style.display = "block";
+					document.getElementById("divBigImagePanel_3").style.display = "block";
+					
+					document.getElementById("divDot_3_1").style.display = "block";
+					document.getElementById("divDot_3_1_Drag").style.display = "block";
+					document.getElementById("divDot_3_2").style.display = "block";
+					document.getElementById("divDot_3_2_Drag").style.display = "block";
+					document.getElementById("divDot_3_3").style.display = "block";
+					document.getElementById("divDot_3_3_Drag").style.display = "block";
+					document.getElementById("divDot_3_4").style.display = "block";
+					document.getElementById("divDot_3_4_Drag").style.display = "block";					
+				} } }
+
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divDisablePanel").style.display = "none";
+			}			
+			
+			document.addEventListener('touchstart', handleTouchStart);
+			document.addEventListener('touchmove', handleTouchMove);
+			document.addEventListener('touchend', handleTouchEnd);
+
+			function doOverlapCheck(a, b) {
+				var rect1 = a.getBoundingClientRect();
+				var rect2 = b.getBoundingClientRect();
+				var isInHoriztonalBounds = rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
+				var isInVerticalBounds = rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
+				var isOverlapping = isInHoriztonalBounds && isInVerticalBounds;
+				return isOverlapping;
+			}			
+		</script>
+
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton()
+		</script>
+	</body>
+</html>

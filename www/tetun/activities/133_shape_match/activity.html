@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Timor Home App</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../css/jqueryui-style.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
+
+    <script language="javascript">
+      function doInit() {
+        document.getElementById("divBtnPanel").style.display = "none";
+        document.getElementById("divRightMarkPanel").style.display = "none";
+        document.getElementById("divTimerPanel").style.display = "none";
+        document.getElementById("divDemoPanel").style.display = "block";
+
+        for (var i = 1; i <= 6; i++) {
+          var rTempDragParent = document.getElementById("divDrag_" + i);
+          rTempDragParent.getElementsByTagName("img")[0].src =
+            "images/image_drag_" + i + ".png";
+
+          var rTempDropParent = document.getElementById("divDrop_" + i);
+          rTempDropParent.getElementsByTagName("img")[0].src =
+            "images/image_drop_" + i + ".png";
+
+          rTempDragParent.style.display = "block";
+          rTempDropParent.style.display = "block";
+        }
+
+        document.getElementById("divDrag_1").style.display = "none";
+        clearInterval(rObjectMovingTimer);
+        rObjectMovingTimer = 0;
+        rObjectMovingTimer = setInterval(doMoveObject, 1);
+      }
+
+      function doGetActivity() {
+        rTimerStart = true;
+        document.getElementById("divActTimer").innerHTML = "0";
+        document.getElementById("divTimerPanel").style.display = "none";
+
+        document.getElementById("divDemoPanel").style.display = "none";
+        document.getElementById("divBtnPanel").style.display = "none";
+        document.getElementById("divRightMarkPanel").style.display = "none";
+
+        for (var i = 1; i <= 6; i++) {
+          var rTempDragParent = document.getElementById("divDrag_" + i);
+          rTempDragParent.getElementsByTagName("img")[0].src =
+            "images/image_drag_" + i + ".png";
+
+          var rTempDropParent = document.getElementById("divDrop_" + i);
+          rTempDropParent.getElementsByTagName("img")[0].src =
+            "images/image_drop_" + i + ".png";
+
+          rTempDragParent.style.display = "block";
+          rTempDropParent.style.display = "block";
+        }
+      }
+
+      function doCheckAllDropCorrect() {
+        var rCorrect = true;
+
+        for (var i = 1; i <= 6; i++) {
+          var rTempDragParent = document.getElementById("divDrag_" + i);
+          var rTempDropParent = document.getElementById("divDrop_" + i);
+          if (
+            rTempDragParent.getElementsByTagName("img")[0].src !=
+            rTempDropParent.getElementsByTagName("img")[0].src
+          ) {
+            rCorrect = false;
+          }
+        }
+
+        if (rCorrect) {
+          document.getElementById("divDemoPanel").style.display = "none";
+          document.getElementById("divRightMarkPanel").style.display = "block";
+          document.getElementById("divBtnPanel").style.display = "block";
+          document.getElementById("divTimerPanel").style.display = "block";
+
+          clearInterval(rCountingTimer);
+          rCountingTimer = 0;
+        }
+      }
+    </script>
+  </head>
+
+  <body bgcolor="#000000">
+    <div
+      id="divWrapper"
+      name="divWrapper"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        border: 0px solid red;
+      "
+    >
+      <table
+        width="100%"
+        height="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tr>
+          <td width="100%" height="100%" align="center" valign="middle">
+            <div
+              id="divContainer"
+              name="divContainer"
+              style="
+                position: relative;
+                width: 730px;
+                height: 310px;
+                background-color: #ffffff;
+                border: 0px solid blue;
+              "
+            >
+              <div
+                style="
+                  position: relative;
+                  width: 100%;
+                  height: 500px;
+                  left: 0px;
+                  top: 0px;
+                  background: transparent;
+                  border: 0px solid green;
+                "
+              >
+                <div
+                  id="divMainPanel"
+                  name="divMainPanel"
+                  style="
+                    position: absolute;
+                    width: 91%;
+                    height: 275px;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: block;
+                  "
+                >
+                  <div
+                    id="divTimerPanel"
+                    name="divTimerPanel"
+                    style="
+                      position: absolute;
+                      width: 100%;
+                      height: 62%;
+                      left: 0px;
+                      top: 0px;
+                      border: 0px solid #333333;
+                      display: block;
+                    "
+                  >
+                    <div
+                      id="divActTimer"
+                      name="divActTimer"
+                      style="
+                        position: absolute;
+                        left: 20px;
+                        top: 0px;
+                        font-size: 30px;
+                        border: 0px solid green;
+                        display: inline-block;
+                        border: 0px solid red;
+                      "
+                    >
+                      0
+                    </div>
+                  </div>
+                  <div
+                    id="divDragPanel"
+                    name="divDragPanel"
+                    style="
+                      position: absolute;
+                      width: 46%;
+                      height: auto;
+                      left: 1%;
+                      top: 30px;
+                      border: 0px solid red;
+                    "
+                  >
+                    <div
+                      id="divDrag_1"
+                      name="divDrag"
+                      class="clsBoxDrag"
+                      style="
+                        position: absolute;
+                        width: 67px;
+                        height: auto;
+                        left: 23px;
+                        top: 22px;
+                        border: 0px solid green;
+                        cursor: pointer;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drag_1.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrag_2"
+                      name="divDrag"
+                      class="clsBoxDrag"
+                      style="
+                        position: absolute;
+                        width: 62px;
+                        height: auto;
+                        left: 144px;
+                        top: 10px;
+                        border: 0px solid green;
+                        cursor: pointer;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drag_2.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrag_3"
+                      name="divDrag"
+                      class="clsBoxDrag"
+                      style="
+                        position: absolute;
+                        width: 55px;
+                        height: auto;
+                        left: 259px;
+                        top: 10px;
+                        border: 0px solid green;
+                        cursor: pointer;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drag_3.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrag_4"
+                      name="divDrag"
+                      class="clsBoxDrag"
+                      style="
+                        position: absolute;
+                        width: 93px;
+                        height: auto;
+                        left: 11px;
+                        top: 121px;
+                        border: 0px solid green;
+                        cursor: pointer;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drag_4.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrag_5"
+                      name="divDrag"
+                      class="clsBoxDrag"
+                      style="
+                        position: absolute;
+                        width: 92px;
+                        height: auto;
+                        left: 132px;
+                        top: 130px;
+                        border: 0px solid green;
+                        cursor: pointer;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drag_5.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrag_6"
+                      name="divDrag"
+                      class="clsBoxDrag"
+                      style="
+                        position: absolute;
+                        width: 68px;
+                        height: auto;
+                        left: 252px;
+                        top: 142px;
+                        border: 0px solid green;
+                        cursor: pointer;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drag_6.png"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    id="divDropPanel"
+                    name="divDropPanel"
+                    style="
+                      position: absolute;
+                      width: 46%;
+                      height: 224px;
+                      top: 30px;
+                      background-color: #cccccc;
+                      right: 0%;
+                      border: 0px solid blue;
+                    "
+                  >
+                    <div
+                      id="divRightMarkPanel"
+                      name="divRightMarkPanel"
+                      style="position: absolute; left: 125px; top: 98px"
+                    >
+                      <div style="display: inline-block">
+                        <img
+                          width="auto"
+                          height="45"
+                          src="../../images/tick.png"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      id="divDrop_6"
+                      name="divDrop"
+                      class="clsBoxDrop"
+                      style="
+                        position: absolute;
+                        width: 68px;
+                        height: auto;
+                        left: 228px;
+                        top: 142px;
+                        border: 0px solid green;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drop_6.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrop_4"
+                      name="divDrop"
+                      class="clsBoxDrop"
+                      style="
+                        position: absolute;
+                        width: 93px;
+                        height: auto;
+                        left: 109px;
+                        top: 11px;
+                        border: 0px solid green;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drop_4.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrop_3"
+                      name="divDrop"
+                      class="clsBoxDrop"
+                      style="
+                        position: absolute;
+                        width: 55px;
+                        height: auto;
+                        left: 234px;
+                        top: 10px;
+                        border: 0px solid green;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drop_3.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrop_2"
+                      name="divDrop"
+                      class="clsBoxDrop"
+                      style="
+                        position: absolute;
+                        width: 62px;
+                        height: auto;
+                        left: 17px;
+                        top: 112px;
+                        border: 0px solid green;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drop_2.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrop_5"
+                      name="divDrop"
+                      class="clsBoxDrop"
+                      style="
+                        position: absolute;
+                        width: 92px;
+                        height: auto;
+                        left: 109px;
+                        top: 130px;
+                        border: 0px solid green;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drop_5.png"
+                      />
+                    </div>
+                    <div
+                      id="divDrop_1"
+                      name="divDrop"
+                      class="clsBoxDrop"
+                      style="
+                        position: absolute;
+                        width: 67px;
+                        height: auto;
+                        left: 14px;
+                        top: 22px;
+                        border: 0px solid green;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drop_1.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="divDemoPanel"
+                  name="divDemoPanel"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: -10px;
+                    top: 50px;
+                    border: 0px solid #333333;
+                    display: block;
+                  "
+                >
+                  <div
+                    id="divDemoDragPanel"
+                    name="divDemoDragPanel"
+                    style="
+                      position: absolute;
+                      width: 50%;
+                      height: 100%;
+                      left: 0px;
+                      top: 0px;
+                      border: 0px solid red;
+                    "
+                  >
+                    <div
+                      id="divDemoDrag_1"
+                      name="divDemoDrag"
+                      style="
+                        position: absolute;
+                        width: 66px;
+                        height: auto;
+                        left: 40px;
+                        top: 3px;
+                        border: 0px solid green;
+                        cursor: pointer;
+                      "
+                    >
+                      <img
+                        width="100%"
+                        height="auto"
+                        src="images/image_drag_1.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  id="divPicDisable"
+                  name="divPicDisable"
+                  style="
+                    position: absolute;
+                    width: 660px;
+                    height: 250px;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid blue;
+                    display: none;
+                    z-index: 9999;
+                  "
+                ></div>
+              </div>
+
+              <div
+                id="divBtnPanel"
+                name="divBtnPanel"
+                style="
+                  position: absolute;
+                  width: 100%;
+                  height: auto;
+                  left: 0px;
+                  top: 255px;
+                  border: 0px solid #333333;
+                  display: none;
+                "
+              >
+                <div
+                  id="divBtnReplay"
+                  name="divBtnReplay"
+                  style="
+                    position: relative;
+                    border: 0px solid #666666;
+                    cursor: pointer;
+                    display: inline-block;
+                  "
+                  onclick="javascript: doGetActivity();"
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="center" valign="top">
+                        <div style="display: block">
+                          <img
+                            width="auto"
+                            height="40"
+                            src="../../images/replay.png"
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+
+              <div
+                id="divMacroBtnNavPanel"
+                name="divMacroBtnNavPanel"
+                style="
+                  position: absolute;
+                  width: 65px;
+                  height: 100%;
+                  right: 0px;
+                  top: 0px;
+                  border: 0px solid red;
+                "
+              >
+                <div
+                  id="divPosterImage"
+                  name="divPosterImage"
+                  class="clsMacroPosterImage"
+                  style="cursor: pointer"
+                >
+                  <img
+                    id="imgPoster"
+                    name="imgPoster"
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+                <div
+                  id="divBtnBackArrow"
+                  name="divBtnBackArrow"
+                  class="clsMacroBack"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'P');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/back_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnNextArrow"
+                  name="divBtnNextArrow"
+                  class="clsMacroNext"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'N');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/next_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnHome"
+                  name="divBtnHome"
+                  class="clsMacroHome"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'H');"
+                >
+                  <img width="100%" height="100%" src="../../images/home.png" />
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script language="javascript">
+      var rTimerStart = true;
+
+      $(".clsBoxDrag").draggable({
+        axis: "x, y",
+        containment: "#divMainPanel",
+        revert: true,
+        drag: function (event, ui) {
+          for (var i = 1; i <= 6; i++) {
+            document.getElementById("divDrag_" + i).style.zIndex = "auto";
+          }
+          document.getElementById(this.id).style.zIndex = 9998;
+
+          if (rTimerStart) {
+            document.getElementById("divActTimer").innerHTML = "0";
+            document.getElementById("divTimerPanel").style.display = "block";
+            clearInterval(rCountingTimer);
+            rCountingTimer = 0;
+            rCountingTimer = setInterval(doCount, 1000);
+            rTimerStart = false;
+          }
+        },
+      });
+
+      $(".clsBoxDrop").droppable({
+        drop: function (event, ui) {
+          var rDragName = "";
+          var rDropName = "";
+          rDragName = ui.draggable.attr("id");
+          rDropName = this.id;
+          if (rDropName != "") {
+            if (
+              Number(rDragName.split("_")[1]) == Number(rDropName.split("_")[1])
+            ) {
+              document
+                .getElementById(rDropName)
+                .getElementsByTagName("img")[0].src = document
+                .getElementById(rDragName)
+                .getElementsByTagName("img")[0].src;
+              document.getElementById(rDragName).style.display = "none";
+            }
+          }
+          doCheckAllDropCorrect();
+        },
+      });
+    </script>
+
+    <script language="javascript">
+      var rObjectMovingTimer = 0;
+      var rMoveElem = document.getElementById("divDemoDrag_1");
+      var rElmLeft = 50;
+      var rElmTop = 50;
+
+      var rCountingTimer = 0;
+
+      function doMoveObject() {
+        if (rElmLeft == 383) {
+          clearInterval(rObjectMovingTimer);
+          rObjectMovingTimer = 0;
+          window.setTimeout(function () {
+            rMoveElem.style.left = "50px";
+            doGetActivity();
+          }, 500);
+        } else {
+          rElmLeft++;
+          rMoveElem.style.left = rElmLeft + "px";
+        }
+      }
+
+      function doCount() {
+        document.getElementById("divActTimer").innerHTML =
+          Number(document.getElementById("divActTimer").innerHTML) + 1;
+      }
+
+      doInit();
+      doResetMainNavButton();
+    </script>
+    <script src="../../activity-tracker.js"></script>
+  </body>
+</html>

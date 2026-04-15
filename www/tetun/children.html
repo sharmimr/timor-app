@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hili labarik</title>
+
+    <link rel="stylesheet" href="css/children.css" />
+    <style>
+      .child-card {
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 12px;
+        background: #f3f3f3;
+        transition: transform 0.2s;
+      }
+
+      .child-card:hover {
+        transform: scale(1.05);
+      }
+
+      .avatar {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 8px;
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .child-id {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .logoutBtn {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #f2cb28;
+        font-weight: bold;
+        font-size: 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .logoutBtn:hover {
+        background-color: #f9f599;
+      }
+      .loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .monkey {
+        font-size: 60px;
+        animation: jump 0.6s ease-in-out infinite;
+      }
+
+      /* Jump animation */
+      @keyframes jump {
+        0% {
+          transform: translateY(0);
+        }
+        30% {
+          transform: translateY(-40px);
+        }
+        50% {
+          transform: translateY(0);
+        }
+        70% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background -->
+    <div class="bg"></div>
+
+    <!-- Screen -->
+    <div class="screen">
+      <div class="panel">
+        <h2>Hili labarik</h2>
+
+        <div id="childrenContainer" class="children-container"></div>
+        <div><button onclick="logout()" class="logoutBtn">Sai</button></div>
+        <p id="errorMsg" class="error"></p>
+      </div>
+    </div>
+    <div id="loaderOverlay" class="loader-overlay hidden">
+      <div class="monkey">🐒</div>
+    </div>
+
+    <script>
+      const container = document.getElementById("childrenContainer");
+      const errorMsg = document.getElementById("errorMsg");
+
+      const raw = localStorage.getItem("child_ids");
+      let children = [];
+
+      try {
+        children = raw ? JSON.parse(raw) : [];
+        console.log(children, "YESY");
+      } catch (e) {
+        console.error("Invalid children", e);
+      }
+
+      if (!Array.isArray(children) || children.length === 0) {
+        errorMsg.textContent = "No children found for this account.";
+      } else {
+        renderChildren(children);
+      }
+
+      function renderChildren(children) {
+        console.log(children, "CHILDREB");
+        container.innerHTML = "";
+
+        children.map((child, index) => {
+          const card = document.createElement("div");
+          card.className = "child-card";
+          const localAvatars = [
+            "images/avatars/avatar1.jpeg",
+            "images/avatars/avatar2.jpeg",
+          ];
+
+          // const avatarUrl = `https://api.dicebear.com/7.x/bottts/svg?seed=${child.id}`;
+          const randomAvatar =
+            localAvatars[Math.floor(Math.random() * localAvatars.length)];
+          card.innerHTML = `
+            <div class="avatar">
+              <img src="${randomAvatar}" alt="Child Avatar" />
+            </div>
+            <div class="child-id">${child.first_name}</div>
+          `;
+          const loader = document.getElementById("loaderOverlay");
+
+          card.addEventListener("click", async () => {
+            loader.classList.remove("hidden");
+            const sid = child.id;
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+              console.error("Token missing");
+              loader.classList.add("hidden");
+              return;
+            }
+
+            // store in session immediately
+            sessionStorage.setItem("active_child_id", sid);
+            console.log(sid, "SID");
+
+            // Send sid to database
+            try {
+              console.log(sid, ":SID IN TEST");
+              const response = await fetch(
+                "https://phpvib.mooo.com/track-activity.php",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                  },
+                  body: JSON.stringify({
+                    updateTarget: "sid",
+                    sid: sid,
+                  }),
+                },
+              );
+
+              const result = await response.json();
+              console.log(result, "RESP");
+              console.log("SID update result:", result);
+            } catch (error) {
+              console.error("Error updating sid:", error);
+              loader.classList.add("hidden");
+              return;
+            }
+
+            window.location.replace("index.html");
+          });
+
+          container.appendChild(card);
+        });
+      }
+
+      function logout() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("child_ids");
+        sessionStorage.removeItem("active_child_id");
+        window.location.replace("../index.html");
+      }
+    </script>
+  </body>
+</html>

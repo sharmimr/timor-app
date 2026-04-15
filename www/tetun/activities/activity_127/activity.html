@@ -1,0 +1,2531 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Timor Home App</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../css/jqueryui-style.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+
+    <style>
+      img {
+        display: block;
+      }
+      .clsSlideImgTop {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 10px;
+        border: 0px solid red;
+      }
+      .clsSubTitle_2_Bottom {
+        position: absolute;
+        width: 80%;
+        top: 202px;
+        left: 10%;
+        font-size: 140%;
+        line-height: 1.3;
+        border: 0px solid blue;
+      }
+      .clsTableWidth {
+        height: 50px;
+      }
+      .clsImageHight {
+        width: 170px;
+      }
+      .clsImageHight_1 {
+        width: 75px;
+      }
+      .clsLabelTablet_1 {
+        position: relative;
+        top: -12px;
+        font-size: 17px;
+        color: #000000;
+        border: 0px solid red;
+      }
+      .clsImageHight_two {
+        height: 160px;
+      }
+      .clsTableImg {
+        height: 70px;
+      }
+      .clsThisTableHeight_1 {
+        heigth: 150px;
+      }
+      .clsThisTableHeight_2 {
+        heigth: 40px;
+      }
+      .clsTabelWidth {
+        width: 300px;
+      }
+      .clsLabelTablet_2 {
+        position: relative;
+        top: -5px;
+        font-size: 15px;
+        color: #000000;
+        border: 0px solid red;
+      }
+      .clsTableImg_2 {
+        height: 55px;
+      }
+      .clsBgRight {
+        width: 220px;
+        height: 235px;
+      }
+      .clsTextTable {
+        height: 10px;
+      }
+    </style>
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
+
+    <script language="javascript">
+      var rArrDivList = [
+        "div_1",
+        "div_2",
+        "div_3",
+        "div_4",
+        "div_5",
+        "div_6",
+        "div_7",
+        "div_8",
+        "div_9",
+        "div_10",
+        "div_11",
+        "div_12",
+        "div_13",
+        "div_14",
+        "div_15",
+        "div_16",
+        "div_17",
+        "div_18",
+        "div_19",
+        "div_20",
+        "div_21",
+        "div_22",
+        "div_23",
+        "div_24",
+        "div_25",
+        "div_26",
+        "div_27",
+      ];
+      var rListIndex = 0;
+
+      function doNavigateAct(rAction) {
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+        if (rAction.toUpperCase() == "N") {
+          rListIndex++;
+        } else {
+          rListIndex--;
+        }
+
+        if (rListIndex <= 0) {
+          rListIndex = 0;
+        }
+
+        if (rListIndex >= rArrDivList.length - 1) {
+          rListIndex = rArrDivList.length - 1;
+        }
+
+        if (rListIndex <= 0) {
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        } else {
+          if (rListIndex >= rArrDivList.length - 1) {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display = "none";
+          } else {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display =
+              "inline-block";
+          }
+        }
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+      }
+
+      function doResetActivity() {
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+
+        rListIndex = 0;
+
+        if (rListIndex <= 0) {
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        } else {
+          if (rListIndex >= rArrDivList.length - 1) {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display = "none";
+          } else {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display =
+              "inline-block";
+          }
+        }
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+      }
+    </script>
+  </head>
+
+  <body bgcolor="#000000">
+    <div
+      id="divWrapper"
+      name="divWrapper"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        border: 0px solid red;
+      "
+    >
+      <table
+        width="100%"
+        height="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tr>
+          <td width="100%" height="100%" align="center" valign="middle">
+            <div
+              id="divContainer"
+              name="divContainer"
+              style="
+                position: relative;
+                width: 730px;
+                height: 310px;
+                background-color: #ffffff;
+                border: 0px solid blue;
+              "
+            >
+              <div
+                style="
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  left: 0px;
+                  top: 0px;
+                  background: transparent;
+                  border: 0px solid green;
+                "
+              >
+                <!--Slides-->
+                <div id="div_1" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1">Ita-nia sentimentu</div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="82">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/2.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="22">
+                        <td class="clsLabelTablet_1" align="center"></td>
+                        <td class="clsLabelTablet_1" align="center"></td>
+                        <td class="clsLabelTablet_1" align="center"></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" height="3"></td>
+                      </tr>
+                      <tr width="100%" height="82">
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/4.png" />
+                        </td>
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/5.png" />
+                        </td>
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/6.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="22">
+                        <td class="clsLabelTablet_1" align="center"></td>
+                        <td class="clsLabelTablet_1" align="center"></td>
+                        <td class="clsLabelTablet_1" align="center"></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_2" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">Sira sente oinsá?</div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_3" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">Sira sente oinsá?</div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">
+                          Kontente
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_4" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">Sira sente oinsá?</div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">
+                          Kontente
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">Triste</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_5" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">Oinsá ita-boot bele hatene?</div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">
+                          Kontente
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">Triste</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_6" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">Oinsá ita-boot bele hatene?</div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/3.png" />
+                        </td>
+                        <div
+                          style="
+                            position: absolute;
+                            left: 54px;
+                            top: 105px;
+                            z-index: 12;
+                            border: 0px solid #ff0000;
+                          "
+                        >
+                          <img
+                            width="auto"
+                            height="40"
+                            src="images/arrow_1.png"
+                          />
+                        </div>
+                        <div
+                          style="
+                            position: absolute;
+                            left: 365px;
+                            top: 105px;
+                            z-index: 12;
+                            border: 0px solid #ff0000;
+                          "
+                        >
+                          <img
+                            width="auto"
+                            height="40"
+                            src="images/arrow_1.png"
+                          />
+                        </div>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">
+                          Kontente
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">Triste</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_7" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">Oinsá ita-boot bele hatene?</div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/3.png" />
+                        </td>
+                        <div
+                          style="
+                            position: absolute;
+                            left: 37px;
+                            top: 77px;
+                            z-index: 12;
+                            border: 0px solid #ff0000;
+                          "
+                        >
+                          <img
+                            width="auto"
+                            height="40"
+                            src="images/arrow_1.png"
+                          />
+                        </div>
+                        <div
+                          style="
+                            position: absolute;
+                            left: 477px;
+                            top: 112px;
+                            z-index: 12;
+                            border: 0px solid #ff0000;
+                          "
+                        >
+                          <img
+                            width="auto"
+                            height="40"
+                            src="images/arrow_2.png"
+                          />
+                        </div>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">
+                          Kontente
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">Triste</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_8" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">
+                    Saida maka halo ita-boot kontente?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td width="50%" class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td
+                          width="50%"
+                          class="clsTableWidth"
+                          align="center"
+                        ></td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 390px; bottom: 135px"
+                  >
+                    <div
+                      class="clsImgCenter clsLabelTablet_1"
+                      style="font-size: 25px"
+                    >
+                      Diskute
+                    </div>
+                  </div>
+                </div>
+                <div id="div_9" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">
+                    Saida maka halo ita-boot kontente?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td width="50%" class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td
+                          width="50%"
+                          class="clsTableWidth"
+                          align="center"
+                        ></td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 310px; bottom: 165px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="60" src="images/7.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Hahán
+                    </div>
+                  </div>
+                </div>
+                <div id="div_10" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">
+                    Saida maka halo ita-boot kontente?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td width="50%" class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td
+                          width="50%"
+                          class="clsTableWidth"
+                          align="center"
+                        ></td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 310px; bottom: 165px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="60" src="images/7.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Hahán
+                    </div>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 490px; bottom: 165px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="70" src="images/8.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Brinkedu sira
+                    </div>
+                  </div>
+                </div>
+                <div id="div_11" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">
+                    Saida maka halo ita-boot kontente?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td width="50%" class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td
+                          width="50%"
+                          class="clsTableWidth"
+                          align="center"
+                        ></td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 310px; bottom: 165px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="60" src="images/7.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Hahán
+                    </div>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 490px; bottom: 165px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="70" src="images/8.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Brinkedu sira
+                    </div>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 310px; bottom: 45px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="80" src="images/9.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Kolega
+                    </div>
+                  </div>
+                </div>
+                <div id="div_12" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">
+                    Saida maka halo ita-boot kontente?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td width="50%" class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/1.png" />
+                        </td>
+                        <td
+                          width="50%"
+                          class="clsTableWidth"
+                          align="center"
+                        ></td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 310px; bottom: 165px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="60" src="images/7.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Hahán
+                    </div>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 490px; bottom: 165px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="70" src="images/8.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Brinkedu sira
+                    </div>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 310px; bottom: 45px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="80" src="images/9.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Kolega
+                    </div>
+                  </div>
+                  <div
+                    class="clsBoxSize"
+                    style="position: absolute; left: 500px; bottom: 45px"
+                  >
+                    <div class="clsImgCenter">
+                      <img width="auto" height="80" src="images/10.png" />
+                    </div>
+                    <div class="clsImgCenter clsLabelTablet_1" style="top: 0px">
+                      Família
+                    </div>
+                  </div>
+                </div>
+                <div id="div_13" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_2">
+                    Saida maka halo ita-boot triste?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="90%">
+                        <td width="50%" class="clsTableWidth" align="center">
+                          <img class="clsImageHight_two" src="images/3.png" />
+                        </td>
+                        <td
+                          width="50%"
+                          class="clsTableWidth"
+                          align="center"
+                        ></td>
+                      </tr>
+                      <tr width="100%" height="10%">
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_1" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      left: 320px;
+                      top: 105px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div class="clsLabelTablet_1">Sujestaun ba diskusaun</div>
+                    <div
+                      style="
+                        position: absolute;
+                        width: 300px;
+                        left: 0px;
+                        top: 0px;
+                        text-align: left;
+                        border: 0px solid #ff0000;
+                      "
+                    >
+                      <ul>
+                        <li>Bainhira buat ruma la'o la loos</li>
+                        <li>Bainhira ha'u moras ka kanek</li>
+                        <li>Bainhira ema ruma halo aat</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div id="div_14" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1">Sentimentu sira seluk</div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="82">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/2.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="22">
+                        <td class="clsLabelTablet_1" align="center">
+                          Kontente
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">Kalma</td>
+                        <td class="clsLabelTablet_1" align="center">Triste</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" height="3"></td>
+                      </tr>
+                      <tr width="100%" height="82">
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/4.png" />
+                        </td>
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/5.png" />
+                        </td>
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/6.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="22">
+                        <td class="clsLabelTablet_1" align="center">
+                          Haksolok
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">
+                          Hanoin barak
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">Hirus</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_15" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/3.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_16" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">Triste</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/3.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_17" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/1.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_18" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">
+                          Kontente
+                        </td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/1.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_19" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/5.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_20" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">
+                          Hanoin barak
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/5.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_21" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/2.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_22" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">Kalma</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/2.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_23" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/6.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_24" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">Hirus</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/6.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_25" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/4.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_26" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 30px">
+                    Ida ne'ebé maka hanesan?
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 220px;
+                      height: 210px;
+                      left: 60px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <div style="position: absolute; left: 0px; top: 0px">
+                      <img class="clsBgRight" src="images/bg-left.png" />
+                    </div>
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="position: absolute; width: 100%; height: 100%"
+                    >
+                      <tr width:220px; height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/1.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width:220px; height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/2.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/4.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">
+                          Haksolok
+                        </td>
+                      </tr>
+                      <tr width="100%" height="50">
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/6.png" />
+                        </td>
+                        <td width="110" align="center">
+                          <img class="clsTableImg_2" src="images/5.png" />
+                        </td>
+                      </tr>
+                      <tr class="" width="100%" height="15">
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                        <td class="clsLabelTablet_2" align="center">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 350px;
+                      height: 220px;
+                      left: 280px;
+                      top: 50px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="8%">
+                        <td class="clsLabelTablet_1" align="center">
+                          <img class="clsImageHight" src="images/4.png" />
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div id="div_27" name="divMyselfLang" class="clsSlide">
+                  <div class="clsSubTitle_1" style="font-size: 28px">
+                    Mai ita finje hatudu sentimentu ho ita nia oin.
+                  </div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 610px;
+                      height: 210px;
+                      left: 60px;
+                      top: 55px;
+                      border: 0px solid #ff0000;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="auto"
+                      cellpadding="0"
+                      cellspacing="0"
+                      border="0"
+                      style="
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        left: 0px;
+                        top: 0px;
+                      "
+                    >
+                      <tr width="100%" height="82">
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/1.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/2.png" />
+                        </td>
+                        <td class="clsTableWidth" align="center">
+                          <img class="clsImageHight_1" src="images/3.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="22">
+                        <td class="clsLabelTablet_1" align="center">
+                          Kontente
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">Kalma</td>
+                        <td class="clsLabelTablet_1" align="center">Triste</td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" height="3"></td>
+                      </tr>
+                      <tr width="100%" height="82">
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/4.png" />
+                        </td>
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/5.png" />
+                        </td>
+                        <td align="center">
+                          <img class="clsImageHight_1" src="images/6.png" />
+                        </td>
+                      </tr>
+                      <tr width="100%" height="22">
+                        <td class="clsLabelTablet_1" align="center">
+                          Haksolok
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">
+                          Hanoin barak
+                        </td>
+                        <td class="clsLabelTablet_1" align="center">Hirus</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <!--Slides End-->
+                <!--Buttons Begin-->
+                <div
+                  id="divBtnPanel"
+                  name="divBtnPanel"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    bottom: 0px;
+                    border: 0px solid #333333;
+                    display: block;
+                  "
+                >
+                  <div
+                    id="divBtnBack"
+                    name="divBtnBack"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doNavigateAct('P');"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              class="clsMicroBack"
+                              src="../../images/back_arrow.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      width: 10px;
+                      display: inline-block;
+                    "
+                  ></div>
+                  <div
+                    id="divBtnReplay"
+                    name="divBtnReplay"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doResetActivity();"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              class="clsMicroReplay"
+                              src="../../images/replay.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      width: 10px;
+                      display: inline-block;
+                    "
+                  ></div>
+                  <div
+                    id="divBtnNext"
+                    name="divBtnNext"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doNavigateAct('N');"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              class="clsMicroNext"
+                              src="../../images/next_arrow.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="divMacroBtnNavPanel"
+                name="divMacroBtnNavPanel"
+                style="
+                  position: absolute;
+                  width: 65px;
+                  height: 100%;
+                  right: 0px;
+                  top: 0px;
+                  border: 0px solid red;
+                "
+              >
+                <div
+                  id="divPosterImage"
+                  name="divPosterImage"
+                  class="clsMacroPosterImage"
+                  style="cursor: pointer"
+                >
+                  <img
+                    id="imgPoster"
+                    name="imgPoster"
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+                <div
+                  id="divBtnBackArrow"
+                  name="divBtnBackArrow"
+                  class="clsMacroBack"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'P');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/back_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnNextArrow"
+                  name="divBtnNextArrow"
+                  class="clsMacroNext"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'N');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/next_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnHome"
+                  name="divBtnHome"
+                  class="clsMacroHome"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'H');"
+                >
+                  <img width="100%" height="100%" src="../../images/home.png" />
+                </div>
+              </div>
+              <!--Buttons End-->
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script language="javascript">
+      doResetActivity();
+      doResetMainNavButton();
+    </script>
+    <script src="../../activity-tracker.js"></script>
+  </body>
+</html>

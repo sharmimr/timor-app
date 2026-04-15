@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Login</title>
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      /* CENTER FORM ELEMENTS */
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .field-group {
+        width: 80%;
+        margin-bottom: 15px;
+        position: relative;
+        display: flex;
+      }
+
+      .field-group-btn {
+        width: 50%;
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      .field-group input {
+        width: 100%;
+        padding: 12px 40px 12px 12px;
+        box-sizing: border-box;
+        font-size: 16px;
+      }
+
+      /* SHOW PASSWORD ICON */
+      .toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 14px;
+        color: #2596be;
+        user-select: none;
+      }
+
+      /* BUTTONS */
+      button {
+        width: 35%;
+        padding: 12px;
+        background-color: #2596be;
+        color: #fff;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      .skip-btn {
+        margin-top: 10px;
+      }
+
+      .error {
+        color: red;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow: auto;
+      }
+
+      .login-container {
+        min-height: 100vh;
+        padding-top: 300px;
+      }
+    </style>
+    <script>
+      window.addEventListener("keyboardDidShow", function () {
+        document.body.style.paddingBottom = "250px";
+      });
+
+      window.addEventListener("keyboardDidHide", function () {
+        document.body.style.paddingBottom = "0px";
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="bg"></div>
+
+    <div class="screen">
+      <div class="login-box">
+        <form id="loginForm" class="login-form">
+          <h2>Tama Conta</h2>
+
+          <div class="field-group">
+            <input
+              type="text"
+              id="username"
+              placeholder="Naran utilizadór"
+              style="margin-right: 15px"
+            />
+            <input
+              type="password"
+              id="password"
+              autocomplete="off"
+              placeholder="Liafuan xave"
+            />
+            <span class="toggle-password" id="togglePassword">👁</span>
+
+            <p class="error" id="errorMsg"></p>
+          </div>
+
+          <div class="field-group-btn">
+            <button type="submit" style="margin-right: 15px">Tama</button>
+            <button type="button" class="skip-btn" id="skipLoginBtn">
+              Hakat liu tama
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const skipBtn = document.getElementById("skipLoginBtn");
+      skipBtn.addEventListener("click", () => {
+        clearErrors();
+        window.location.replace("tetun/index.html");
+      });
+
+      // Auto redirect if logged in
+      const token = localStorage.getItem("token");
+      if (token) {
+        window.location.replace("tetun/children.html");
+      }
+
+      const form = document.getElementById("loginForm");
+      const username = document.getElementById("username");
+      const password = document.getElementById("password");
+      const errorMsg = document.getElementById("errorMsg");
+
+      function showError(message, field = null) {
+        errorMsg.textContent = message;
+        if (field) field.classList.add("error-input");
+      }
+
+      function clearErrors() {
+        errorMsg.textContent = "";
+        username.classList.remove("error-input");
+        password.classList.remove("error-input");
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        clearErrors();
+
+        if (!username.value.trim() && !password.value.trim()) {
+          showError("Please enter username and password");
+          return;
+        }
+
+        if (!username.value.trim()) {
+          showError("Username cannot be empty", username);
+          return;
+        }
+
+        if (!password.value.trim()) {
+          showError("Password cannot be empty", password);
+          return;
+        }
+        console.log("TEST");
+        login();
+      });
+
+      function login() {
+        console.log("IN LOGIN");
+        fetch("https://phpvib.mooo.com/login.php", {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: username.value,
+            password: password.value,
+          }),
+        }).then(async (response) => {
+          const text = await response.text();
+          try {
+            const data = JSON.parse(text);
+            if (data.status === "ok" && data.token) {
+              localStorage.setItem("token", data.token);
+              localStorage.setItem("child_ids", JSON.stringify(data.child));
+              localStorage.setItem("username", data.username);
+              sessionStorage.setItem("first_page_loaded", "true");
+              window.location.replace("tetun/children.html");
+            } else {
+              errorMsg.textContent = data.message;
+            }
+          } catch (e) {
+            errorMsg.textContent = "Invalid server response";
+          }
+        });
+      }
+
+      // 👁 SHOW / HIDE PASSWORD
+      const togglePassword = document.getElementById("togglePassword");
+      togglePassword.addEventListener("click", () => {
+        const isPassword = password.type === "password";
+        password.type = isPassword ? "text" : "password";
+        togglePassword.textContent = isPassword ? "🙈" : "👁";
+      });
+    </script>
+
+    <script src="tetun/activity-tracker.js"></script>
+  </body>
+</html>

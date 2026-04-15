@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Timor Home App</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../css/jqueryui-style.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+
+    <style></style>
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
+
+    <script language="javascript">
+      var drawings = {}; // stores drawing per number
+      var rArrDivList = ["div_1"];
+      var rListIndex = 0;
+      var rArrImageList = [
+        "1.png",
+        "2.png",
+        "3.png",
+        "4.png",
+        "5.png",
+        "6.png",
+        "7.png",
+        "8.png",
+        "9.png",
+        "10.png",
+      ];
+      var rImageListIndex = 0;
+
+      function getMousePos(e) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top,
+        };
+      }
+
+      getMousePos();
+
+      function doNavigateAct(rAction) {
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+        if (rAction.toUpperCase() == "N") {
+          rListIndex++;
+        } else {
+          rListIndex--;
+        }
+
+        if (rListIndex <= 0) {
+          rListIndex = 0;
+        }
+
+        if (rListIndex >= rArrDivList.length - 1) {
+          rListIndex = rArrDivList.length - 1;
+        }
+
+        if (rListIndex <= 0) {
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        } else {
+          if (rListIndex >= rArrDivList.length - 1) {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display = "none";
+          } else {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display =
+              "inline-block";
+          }
+        }
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+      }
+
+      function doNavigateImage(rAction) {
+        const currentNumber = rImageListIndex + 1;
+
+        // save current drawing
+        drawings[currentNumber] = {
+          clickX: [...clickX],
+          clickY: [...clickY],
+          clickDrag: [...clickDrag],
+        };
+        if (rAction.toUpperCase() == "N") {
+          rImageListIndex++;
+          const newNumber = rImageListIndex + 1;
+
+          // reset current arrays
+          clickX = [];
+          clickY = [];
+          clickDrag = [];
+
+          // load saved drawing if exists
+          if (drawings[newNumber]) {
+            clickX = [...drawings[newNumber].clickX];
+            clickY = [...drawings[newNumber].clickY];
+            clickDrag = [...drawings[newNumber].clickDrag];
+          }
+
+          // redraw canvas
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          for (let i = 0; i < clickX.length; i++) {
+            context.beginPath();
+            if (clickDrag[i] && i) {
+              context.moveTo(clickX[i - 1], clickY[i - 1]);
+            } else {
+              context.moveTo(clickX[i] - 1, clickY[i]);
+            }
+            context.lineTo(clickX[i], clickY[i]);
+            context.stroke();
+            context.closePath();
+          }
+        } else {
+          rImageListIndex--;
+          const newNumber = rImageListIndex + 1;
+
+          // reset current arrays
+          clickX = [];
+          clickY = [];
+          clickDrag = [];
+
+          // load saved drawing if exists
+          if (drawings[newNumber]) {
+            clickX = [...drawings[newNumber].clickX];
+            clickY = [...drawings[newNumber].clickY];
+            clickDrag = [...drawings[newNumber].clickDrag];
+          }
+
+          // redraw canvas
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          for (let i = 0; i < clickX.length; i++) {
+            context.beginPath();
+            if (clickDrag[i] && i) {
+              context.moveTo(clickX[i - 1], clickY[i - 1]);
+            } else {
+              context.moveTo(clickX[i] - 1, clickY[i]);
+            }
+            context.lineTo(clickX[i], clickY[i]);
+            context.stroke();
+            context.closePath();
+          }
+        }
+
+        if (rImageListIndex <= 0) {
+          rImageListIndex = 0;
+        }
+
+        if (rImageListIndex >= rArrImageList.length - 1) {
+          rImageListIndex = rArrImageList.length - 1;
+        }
+
+        if (rImageListIndex <= 0) {
+          document.getElementById("divBtnWBBack").style.display = "none";
+          document.getElementById("divBtnWBNext").style.display =
+            "inline-block";
+        } else {
+          if (rImageListIndex >= rArrImageList.length - 1) {
+            document.getElementById("divBtnWBBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnWBNext").style.display = "none";
+            if (tick) {
+              tick.style.display = "inline-block";
+            }
+          } else {
+            document.getElementById("divBtnWBBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnWBNext").style.display =
+              "inline-block";
+            if (tick) {
+              tick.style.display = "none";
+            }
+          }
+        }
+
+        document
+          .getElementById("divNumberImage")
+          .getElementsByTagName("img")[0].src =
+          "images/number/" + (rImageListIndex + 1) + ".png";
+      }
+
+      function doResetActivity() {
+        doResetBoard();
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+
+        rListIndex = 0;
+        rImageListIndex = 0;
+
+        if (rListIndex <= 0) {
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        } else {
+          if (rListIndex >= rArrDivList.length - 1) {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display = "none";
+          } else {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display =
+              "inline-block";
+          }
+        }
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+
+        if (rImageListIndex <= 0) {
+          rImageListIndex = 0;
+        }
+
+        if (rImageListIndex >= rArrImageList.length - 1) {
+          rImageListIndex = rArrImageList.length - 1;
+        }
+
+        if (rImageListIndex <= 0) {
+          document.getElementById("divBtnWBBack").style.display = "none";
+          document.getElementById("divBtnWBNext").style.display =
+            "inline-block";
+        } else {
+          if (rImageListIndex >= rArrImageList.length - 1) {
+            document.getElementById("divBtnWBBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnWBNext").style.display = "none";
+          } else {
+            document.getElementById("divBtnWBBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnWBNext").style.display =
+              "inline-block";
+          }
+        }
+
+        document
+          .getElementById("divNumberImage")
+          .getElementsByTagName("img")[0].src =
+          "images/number/" + (rImageListIndex + 1) + ".png";
+      }
+    </script>
+  </head>
+
+  <body bgcolor="#000000">
+    <div
+      id="divWrapper"
+      name="divWrapper"
+      style="
+        position: absolute;
+        width: 730px;
+        height: 310px;
+        left: 0px;
+        top: 0px;
+        border: 0px solid red;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0px;
+          top: 0px;
+          border: 0px solid #333333;
+        "
+      >
+        <img
+          width="100%"
+          height="100%"
+          src="images/board_without_eraser.png"
+          style="
+            position: relative;
+            width: 730px;
+            height: 310px;
+            left: 0px;
+            top: 0px;
+            border: 0px solid red;
+          "
+        />
+      </div>
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          height: auto;
+          top: 10px;
+          border: 0px solid #333333;
+        "
+      >
+        <table
+          width="100%"
+          height="100%"
+          cellspacing="5"
+          cellpadding="5"
+          border="0"
+        >
+          <tr>
+            <td align="center" valign="middle">
+              <div style="font-size: 150%">Dezeñu númeru 1 to'o 10</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--Slides-->
+      <div
+        id="div_1"
+        name="div_1"
+        style="
+          position: absolute;
+          width: 615px;
+          height: 225px;
+          left: 75px;
+          top: 35px;
+          border: 0px solid red;
+          display: none;
+        "
+      >
+        <div
+          id="divNumberImage"
+          style="position: absolute; width: 100%; height: 100%"
+        >
+          <table
+            width="100%"
+            height="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tr>
+              <td align="left" valign="top">
+                <img width="120" height="auto" src="images/number/1.png" />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <canvas
+          id="myCanvas"
+          width="615"
+          height="225"
+          style="position: absolute; left: 0px; top: 0px; border: 0px solid red"
+        >
+          Sorry, your browser does not support HTML5 canvas technology.
+        </canvas>
+      </div>
+
+      <div
+        id="divColorPanel"
+        name="divColorPanel"
+        style="
+          position: absolute;
+          width: 45px;
+          height: 310px;
+          left: 0px;
+          top: 0px;
+          border: 0px solid orange;
+        "
+      >
+        <div
+          id="divColor_1"
+          name="divColor"
+          style="
+            position: absolute;
+            width: 32px;
+            height: 25px;
+            left: 7px;
+            top: 43px;
+            border: 2px solid transparent;
+            cursor: pointer;
+          "
+          onclick="javascript: doSelectColor(this, '#E8AC36');"
+        ></div>
+        <div
+          id="divColor_2"
+          name="divColor"
+          style="
+            position: absolute;
+            width: 32px;
+            height: 24px;
+            left: 7px;
+            top: 74px;
+            border: 2px solid transparent;
+            cursor: pointer;
+          "
+          onclick="javascript: doSelectColor(this, '#689F38');"
+        ></div>
+        <div
+          id="divColor_3"
+          name="divColor"
+          style="
+            position: absolute;
+            width: 32px;
+            height: 20px;
+            left: 7px;
+            top: 105px;
+            border: 2px solid transparent;
+            cursor: pointer;
+          "
+          onclick="javascript: doSelectColor(this, '#E86829');"
+        ></div>
+        <div
+          id="divColor_4"
+          name="divColor"
+          style="
+            position: absolute;
+            width: 32px;
+            height: 25px;
+            left: 7px;
+            top: 130px;
+            border: 2px solid transparent;
+            cursor: pointer;
+          "
+          onclick="javascript: doSelectColor(this, '#704C38');"
+        ></div>
+        <div
+          id="divColor_5"
+          name="divColor"
+          style="
+            position: absolute;
+            width: 32px;
+            height: 20px;
+            left: 7px;
+            top: 160px;
+            border: 2px solid transparent;
+            cursor: pointer;
+          "
+          onclick="javascript: doSelectColor(this, '#A45575');"
+        ></div>
+        <div
+          id="divColor_6"
+          name="divColor"
+          style="
+            position: absolute;
+            width: 32px;
+            height: 20px;
+            left: 7px;
+            top: 185px;
+            border: 2px solid transparent;
+            cursor: pointer;
+          "
+          onclick="javascript: doSelectColor(this, '#D7423C');"
+        ></div>
+        <div
+          id="divColor_7"
+          name="divColor"
+          style="
+            position: absolute;
+            width: 32px;
+            height: 25px;
+            left: 7px;
+            top: 210px;
+            border: 2px solid transparent;
+            cursor: pointer;
+          "
+          onclick="javascript: doSelectColor(this, '#EFB3CD');"
+        ></div>
+        <div
+          id="divColor_8"
+          name="divColor"
+          style="
+            position: absolute;
+            width: 32px;
+            height: 25px;
+            left: 7px;
+            top: 240px;
+            border: 2px solid transparent;
+            cursor: pointer;
+          "
+          onclick="javascript: doSelectColor(this, '#4D6FB5');"
+        ></div>
+      </div>
+
+      <div
+        id="divEraserButton"
+        name="divEraserButton"
+        style="
+          position: absolute;
+          width: 20px;
+          height: auto;
+          bottom: 35px;
+          right: 150px;
+          border: 0px solid red;
+          cursor: pointer;
+        "
+      >
+        <img width="auto" height="100" src="images/eraser.png" />
+      </div>
+      <!--Slides End-->
+      <!--Buttons Begin-->
+      <div
+        id="divBtnPanel"
+        name="divBtnPanel"
+        style="
+          position: absolute;
+          width: 100%;
+          height: auto;
+          left: 0px;
+          bottom: -15px;
+          border: 0px solid #333333;
+          display: none;
+        "
+      >
+        <div
+          id="divBtnBack"
+          name="divBtnBack"
+          style="
+            position: relative;
+            border: 0px solid #666666;
+            cursor: pointer;
+            display: inline-block;
+          "
+          onclick="javascript: doNavigateAct('P');"
+        >
+          <table
+            width="100%"
+            height="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tr>
+              <td align="center" valign="top">
+                <div style="display: block">
+                  <img class="clsMicroBack" src="../../images/back_arrow.png" />
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div
+          style="position: relative; width: 10px; display: inline-block"
+        ></div>
+        <div
+          id="divBtnReplay"
+          name="divBtnReplay"
+          style="
+            position: relative;
+            border: 0px solid #666666;
+            cursor: pointer;
+            display: inline-block;
+          "
+          onclick="javascript: doResetActivity();"
+        >
+          <table
+            width="100%"
+            height="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tr>
+              <td align="center" valign="top">
+                <div style="display: block">
+                  <img class="clsMicroReplay" src="../../images/replay.png" />
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div
+          style="position: relative; width: 10px; display: inline-block"
+        ></div>
+        <div
+          id="divBtnNext"
+          name="divBtnNext"
+          style="
+            position: relative;
+            border: 0px solid #666666;
+            cursor: pointer;
+            display: inline-block;
+          "
+          onclick="javascript: doNavigateAct('N');"
+        >
+          <table
+            width="100%"
+            height="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tr>
+              <td align="center" valign="top">
+                <div style="display: block">
+                  <img class="clsMicroNext" src="../../images/next_arrow.png" />
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <!--</div>-->
+      <div
+        id="divBtnWBPNPanel"
+        name="divBtnWBPNPanel"
+        style="
+          position: absolute;
+          width: 100%;
+          height: auto;
+          left: 0px;
+          bottom: -15px;
+          text-align: center;
+          border: 0px solid #333333;
+          display: block;
+        "
+      >
+        <div
+          id="divBtnWBBack"
+          name="divBtnWBBack"
+          style="
+            position: relative;
+            border: 0px solid #666666;
+            cursor: pointer;
+            display: none;
+          "
+          onclick="javascript: doNavigateImage('P');"
+        >
+          <table
+            width="100%"
+            height="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tr>
+              <td align="center" valign="top">
+                <div style="display: block">
+                  <img
+                    width="auto"
+                    height="35"
+                    src="../../images/back_arrow.png"
+                  />
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div
+          style="position: relative; width: 0px; display: inline-block"
+        ></div>
+        <div
+          id="divBtnWBNext"
+          name="divBtnWBNext"
+          style="
+            position: relative;
+            border: 0px solid #666666;
+            cursor: pointer;
+            display: none;
+          "
+          onclick="javascript: doNavigateImage('N');"
+        >
+          <table
+            width="100%"
+            height="100%"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+          >
+            <tr>
+              <td align="center" valign="top">
+                <div style="display: block">
+                  <img
+                    width="auto"
+                    height="35"
+                    src="../../images/next_arrow.png"
+                  />
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div
+        id="divMacroBtnNavPanel"
+        name="divMacroBtnNavPanel"
+        style="
+          position: absolute;
+          width: 65px;
+          height: 100%;
+          right: 0px;
+          top: 0px;
+          border: 0px solid red;
+        "
+      >
+        <div
+          id="divPosterImage"
+          name="divPosterImage"
+          class="clsMacroPosterImage"
+          style="cursor: pointer"
+        >
+          <img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+        </div>
+        <div
+          id="divBtnBackArrow"
+          name="divBtnBackArrow"
+          class="clsMacroBack"
+          style="cursor: pointer"
+          onclick="javascript: doRedirectToURL(this, 'P');"
+        >
+          <img width="100%" height="100%" src="../../images/back_arrow.png" />
+        </div>
+        <div
+          id="divBtnNextArrow"
+          name="divBtnNextArrow"
+          class="clsMacroNext"
+          style="cursor: pointer"
+        >
+          <img width="100%" height="100%" src="../../images/next_arrow.png" />
+        </div>
+        <div
+          id="tick"
+          name="tick"
+          class="clsMacroTick"
+          style="cursor: pointer; z-index: 9999; top: 175px"
+        >
+          <img
+            width="100%"
+            height="100%"
+            src="../../images/tick.png"
+            style="width: auto; height: 45px"
+          />
+        </div>
+        <div
+          id="divBtnHome"
+          name="divBtnHome"
+          class="clsMacroHome"
+          style="cursor: pointer"
+          onclick="javascript: doRedirectToURL(this, 'H');"
+        >
+          <img width="100%" height="100%" src="../../images/home.png" />
+        </div>
+      </div>
+      <!--Buttons End-->
+      <!--</div>
+					</td>
+				</tr>
+			</table>-->
+    </div>
+
+    <script src="../../activity-tracker.js"></script>
+    <script language="javascript">
+      var drawings = {}; // stores drawing per number
+      var clickX = [];
+      var clickY = [];
+      var clickDrag = [];
+      var canvas = document.getElementById("myCanvas");
+      var context = document.getElementById("myCanvas").getContext("2d");
+      var rSelectedColor = "#000000";
+      context.strokeStyle = rSelectedColor;
+      context.lineJoin = "round";
+      context.lineCap = "round"; // ADD THIS
+      context.lineWidth = 12;
+
+      function getCanvasPos(e) {
+        const rect = canvas.getBoundingClientRect();
+
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+
+        return {
+          x: (e.clientX - rect.left) * scaleX,
+          y: (e.clientY - rect.top) * scaleY,
+        };
+      }
+
+      function doResetBoard() {
+        // 👉 ADD HERE (top of doResetBoard)
+
+        const numberPaths = {
+          1: [
+            { x: 120, y: 40 },
+            { x: 120, y: 80 },
+            { x: 120, y: 120 },
+            { x: 120, y: 160 },
+            { x: 120, y: 200 },
+          ],
+          2: [
+            { x: 80, y: 60 },
+            { x: 120, y: 40 },
+            { x: 160, y: 60 },
+            { x: 140, y: 100 },
+            { x: 100, y: 140 },
+            { x: 80, y: 180 },
+            { x: 160, y: 180 },
+          ],
+          3: [
+            { x: 90, y: 60 },
+            { x: 140, y: 40 },
+            { x: 160, y: 80 },
+            { x: 120, y: 110 },
+            { x: 160, y: 140 },
+            { x: 140, y: 180 },
+            { x: 90, y: 160 },
+          ],
+          4: [
+            { x: 150, y: 40 },
+            { x: 90, y: 120 },
+            { x: 170, y: 120 },
+            { x: 170, y: 40 },
+            { x: 170, y: 200 },
+          ],
+          5: [
+            { x: 160, y: 40 },
+            { x: 100, y: 40 },
+            { x: 100, y: 100 },
+            { x: 140, y: 100 },
+            { x: 160, y: 140 },
+            { x: 140, y: 180 },
+            { x: 100, y: 160 },
+          ],
+          6: [
+            { x: 150, y: 60 },
+            { x: 110, y: 40 },
+            { x: 90, y: 100 },
+            { x: 120, y: 140 },
+            { x: 150, y: 120 },
+            { x: 120, y: 100 },
+          ],
+          7: [
+            { x: 90, y: 40 },
+            { x: 170, y: 40 },
+            { x: 120, y: 200 },
+          ],
+          8: [
+            { x: 120, y: 60 },
+            { x: 90, y: 90 },
+            { x: 120, y: 120 },
+            { x: 150, y: 90 },
+            { x: 120, y: 60 },
+            { x: 120, y: 120 },
+            { x: 90, y: 160 },
+            { x: 120, y: 190 },
+            { x: 150, y: 160 },
+            { x: 120, y: 120 },
+          ],
+          9: [
+            { x: 120, y: 60 },
+            { x: 150, y: 100 },
+            { x: 120, y: 140 },
+            { x: 90, y: 100 },
+            { x: 120, y: 60 },
+            { x: 120, y: 180 },
+          ],
+          10: [
+            { x: 80, y: 40 },
+            { x: 80, y: 200 },
+            { x: 150, y: 60 },
+            { x: 120, y: 40 },
+            { x: 90, y: 80 },
+            { x: 90, y: 140 },
+            { x: 120, y: 180 },
+            { x: 150, y: 140 },
+            { x: 150, y: 80 },
+            { x: 120, y: 40 },
+          ],
+        };
+
+        // helper function
+        function isNearPath(x, y, pathPoints) {
+          const threshold = 70;
+
+          for (let i = 0; i < pathPoints.length - 1; i++) {
+            const p1 = pathPoints[i];
+            const p2 = pathPoints[i + 1];
+
+            const dx = p2.x - p1.x;
+            const dy = p2.y - p1.y;
+
+            const lengthSq = dx * dx + dy * dy;
+            if (lengthSq === 0) continue;
+
+            let t = ((x - p1.x) * dx + (y - p1.y) * dy) / lengthSq;
+            t = Math.max(0, Math.min(1, t));
+
+            const projX = p1.x + t * dx;
+            const projY = p1.y + t * dy;
+
+            const dist = Math.sqrt((x - projX) ** 2 + (y - projY) ** 2);
+
+            if (dist < threshold) return true;
+          }
+
+          return false;
+        }
+        var paint;
+
+        /**
+         * Add information where the user clicked at.
+         * @param {number} x
+         * @param {number} y
+         * @return {boolean} dragging
+         */
+        function addClick(x, y, dragging) {
+          clickX.push(x);
+          clickY.push(y);
+          clickDrag.push(dragging);
+        }
+
+        function isNearPath(x, y, pathPoints) {
+          const threshold = 80; // px tolerance
+          return pathPoints.some((p) => {
+            const dx = x - p.x;
+            const dy = y - p.y;
+            return Math.sqrt(dx * dx + dy * dy) < threshold;
+          });
+        }
+
+        /**
+         * Redraw the complete canvas.
+         */
+        function redraw() {
+          // Clears the canvas
+          context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+          context.strokeStyle = rSelectedColor;
+          context.lineWidth = 10;
+          for (var i = 0; i < clickX.length; i += 1) {
+            if (!clickDrag[i] && i == 0) {
+              context.beginPath();
+              context.moveTo(clickX[i], clickY[i]);
+              context.stroke();
+            } else if (!clickDrag[i] && i > 0) {
+              context.closePath();
+
+              context.beginPath();
+              context.moveTo(clickX[i], clickY[i]);
+              context.stroke();
+            } else {
+              context.lineTo(clickX[i], clickY[i]);
+              context.stroke();
+            }
+          }
+        }
+
+        /**
+         * Draw the newly added point.
+         * @return {void}
+         */
+        function drawNew() {
+          context.strokeStyle = rSelectedColor;
+          context.lineWidth = 10;
+          var i = clickX.length - 1;
+          if (!clickDrag[i]) {
+            if (clickX.length == 0) {
+              context.beginPath();
+              context.moveTo(clickX[i], clickY[i]);
+              context.stroke();
+            } else {
+              context.closePath();
+
+              context.beginPath();
+              context.moveTo(clickX[i], clickY[i]);
+              context.stroke();
+            }
+          } else {
+            context.lineTo(clickX[i], clickY[i]);
+            context.stroke();
+          }
+        }
+
+        function mouseDownEventHandler(e) {
+          paint = true;
+
+          const pos = getCanvasPos(e);
+
+          addClick(pos.x, pos.y, false);
+          drawNew();
+        }
+
+        function touchstartEventHandler(e) {
+          paint = true;
+          if (paint) {
+            addClick(
+              e.touches[0].pageX - canvas.offsetLeft,
+              e.touches[0].pageY - canvas.offsetTop,
+              false,
+            );
+            drawNew();
+          }
+        }
+
+        function mouseUpEventHandler(e) {
+          context.closePath();
+          paint = false;
+        }
+
+        function mouseMoveEventHandler(e) {
+          if (!paint) return;
+
+          const pos = getCanvasPos(e);
+
+          addClick(pos.x, pos.y, true);
+          drawNew();
+        }
+
+        function touchMoveEventHandler(e) {
+          const x = e.touches[0].pageX - canvas.offsetLeft;
+          const y = e.touches[0].pageY - canvas.offsetTop;
+
+          const currentNumber = rImageListIndex + 1;
+          const currentPath = numberPaths[currentNumber];
+
+          if (paint) {
+            addClick(x, y, true);
+            drawNew();
+          }
+        }
+
+        function setUpHandler(isMouseandNotTouch, detectEvent) {
+          removeRaceHandlers();
+          if (isMouseandNotTouch) {
+            canvas.addEventListener("mouseup", mouseUpEventHandler);
+            canvas.addEventListener("mousemove", mouseMoveEventHandler);
+            canvas.addEventListener("mousedown", mouseDownEventHandler);
+            mouseDownEventHandler(detectEvent);
+          } else {
+            canvas.addEventListener("touchstart", touchstartEventHandler);
+            canvas.addEventListener("touchmove", touchMoveEventHandler);
+            canvas.addEventListener("touchend", mouseUpEventHandler);
+            touchstartEventHandler(detectEvent);
+          }
+        }
+
+        function mouseWins(e) {
+          setUpHandler(true, e);
+        }
+
+        function touchWins(e) {
+          setUpHandler(false, e);
+        }
+
+        function removeRaceHandlers() {
+          canvas.removeEventListener("mousedown", mouseWins);
+          canvas.removeEventListener("touchstart", touchWins);
+        }
+
+        canvas.addEventListener("mousedown", mouseWins);
+        canvas.addEventListener("touchstart", touchWins);
+      }
+
+      function doSelectColor(rObj, rColor) {
+        for (var i = 1; i <= 8; i++) {
+          document.getElementById("divColor_" + i).style.cursor = "pointer";
+          document.getElementById("divColor_" + i).style.border = "none";
+        }
+        if (rObj.style.cursor == "pointer") {
+          rSelectedColor = rColor;
+          rObj.style.cursor = "default";
+          rObj.style.border = "2px solid #00ff00";
+        }
+      }
+
+      document
+        .getElementById("divEraserButton")
+        .addEventListener("click", () => {
+          //doResetActivity();
+          context.clearRect(0, 0, myCanvas.width, myCanvas.height);
+          shapes = [];
+          //rSelectedColor = "#000000";
+          setTimeout(function () {
+            myCanvas.width = myCanvas.width;
+            rLineWidth = 10;
+            doResetBoard();
+          }, 100);
+        });
+    </script>
+
+    <script language="javascript">
+      let statusSent = false;
+      function sendStatus(status) {
+        if (statusSent) return;
+        statusSent = true;
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("No auth token found in localStorage!");
+          return;
+        }
+        fetch("https://phpvib.mooo.com/track-activity.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ status }),
+          keepalive: true,
+        })
+          .then((r) => r.json())
+          .then((d) => console.log(`✅ STATUS UPDATED (${status})`, d))
+          .catch((e) => console.error("❌ STATUS ERROR", e));
+      }
+      doResetActivity();
+      doResetMainNavButton();
+
+      document.getElementById("tick").addEventListener("click", function () {
+        const panel = document.getElementById("divBtnWBBack");
+
+        // move tick into bottom panel
+        if (panel) {
+          panel.appendChild(this);
+          this.style.top = "-170px";
+        }
+
+        console.log("Tick clicked");
+        sendStatus("completed");
+      });
+    </script>
+    <script src="../../activity-tracker.js"></script>
+  </body>
+</html>

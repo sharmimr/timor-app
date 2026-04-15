@@ -1,0 +1,1477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Timor Home App</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../css/jqueryui-style.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+
+    <style>
+      .clsSubTitle_White {
+        position: relative;
+        width: 100%;
+        font-size: 250%;
+        top: 0px;
+        color: #ffffff;
+        text-shadow: -2px 2px 4px #000000;
+      }
+      .clsPageText_White {
+        position: absolute;
+        font-size: 200%;
+        color: #ffffff;
+        text-shadow: -2px 2px 4px #000000;
+      }
+      .clsPageTextSmall_White {
+        position: absolute;
+        font-size: 160%;
+        color: #ffffff;
+        text-shadow: -2px 2px 4px #000000;
+      }
+      #divCompletionMsg {
+        background-color: #b8f1f7;
+        text-align: center;
+        color: green;
+        position: absolute;
+        top: -250px;
+        left: 200px;
+        opacity: 0.7;
+      }
+      #tickImg {
+        transition: transform 0.3s ease;
+      }
+
+      .zoomTick {
+        transform: scale(1.5);
+      }
+    </style>
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
+
+    <script language="javascript">
+      var rArrDivList = [
+        "div_1",
+        "div_2",
+        "div_3",
+        "div_4",
+        "div_5",
+        "div_6",
+        "div_7",
+        "div_8",
+        "div_9",
+        "div_10",
+        "div_11",
+        "div_12",
+      ];
+      var rListIndex = 0;
+
+      function doNavigateAct(rAction) {
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+        if (rAction.toUpperCase() == "N") {
+          rListIndex++;
+        } else {
+          rListIndex--;
+        }
+
+        if (rListIndex <= 0) {
+          rListIndex = 0;
+        }
+
+        if (rListIndex >= rArrDivList.length - 1) {
+          rListIndex = rArrDivList.length - 1;
+        }
+
+        if (rListIndex <= 0) {
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+          document.getElementById("divCompletionMsg").style.display = "none";
+        } else {
+          if (rListIndex >= rArrDivList.length - 1) {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display = "none";
+
+            // 👇 SHOW COMPLETION MESSAGE
+            document.getElementById("divCompletionMsg").style.display = "block";
+          } else {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display =
+              "inline-block";
+            document.getElementById("divCompletionMsg").style.display = "none";
+          }
+        }
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+      }
+
+      function doResetActivity() {
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+
+        rListIndex = 0;
+
+        var rSlideNum = -1;
+        var rSlideNumURL = rDocumentURL;
+        var rSlideNumURLSpl = rSlideNumURL.split("&");
+        var rSlideNumSplit =
+          rSlideNumURLSpl[rSlideNumURLSpl.length - 1].split("=");
+        rSlideNum = Number(rSlideNumSplit[1]);
+
+        if (rSlideNum.toString() != "NaN") {
+          rListIndex = rSlideNum;
+        }
+
+        rListIndex = 0;
+        if (rListIndex >= 4 && rListIndex <= 6) {
+          rListIndex = 2;
+        } else {
+          if (rListIndex >= 7 && rListIndex <= 12) {
+            rListIndex = 3;
+          } else {
+            if (rListIndex >= 13 && rListIndex <= 17) {
+              rListIndex = 4;
+            } else {
+              if (rListIndex >= 18 && rListIndex <= 21) {
+                rListIndex = 5;
+              } else {
+                if (rListIndex >= 22 && rListIndex <= 24) {
+                  rListIndex = 6;
+                } else {
+                  if (rListIndex >= 25 && rListIndex <= 26) {
+                    rListIndex = 7;
+                  } else {
+                    if (rListIndex >= 27 && rListIndex <= 31) {
+                      rListIndex = 8;
+                    } else {
+                      if (rListIndex >= 32 && rListIndex <= 34) {
+                        rListIndex = 9;
+                      } else {
+                        if (rListIndex >= 35 && rListIndex <= 37) {
+                          rListIndex = 10;
+                        } else {
+                          if (rListIndex >= 38) {
+                            rListIndex = 11;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        if (rListIndex <= 0) {
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        } else {
+          if (rListIndex >= rArrDivList.length - 1) {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display = "none";
+          } else {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display =
+              "inline-block";
+          }
+        }
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+        if (rListIndex >= rArrDivList.length - 1) {
+          document.getElementById("divCompletionMsg").style.display = "block";
+        } else {
+          document.getElementById("divCompletionMsg").style.display = "none";
+        }
+      }
+
+      function doNavigate(rNum) {
+        switch (rNum) {
+          case 1:
+            document.location.href =
+              "activity.html?MainActivityList=" +
+              rStrMainActivityList +
+              "&SlineNum=0";
+            break;
+          case 2:
+            document.location.href =
+              "activity_1.html?MainActivityList=" +
+              rStrMainActivityList +
+              "&SlineNum=0";
+            break;
+          case 3:
+            document.location.href =
+              "activity_2.html?MainActivityList=" +
+              rStrMainActivityList +
+              "&SlineNum=0";
+            break;
+          case 4:
+            document.location.href =
+              "activity_3.html?MainActivityList=" +
+              rStrMainActivityList +
+              "&SlineNum=0";
+            break;
+          default:
+            break;
+        }
+      }
+    </script>
+  </head>
+
+  <body bgcolor="#000000">
+    <div
+      id="divWrapper"
+      name="divWrapper"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        border: 0px solid red;
+      "
+    >
+      <table
+        width="100%"
+        height="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tr>
+          <td width="100%" height="100%" align="center" valign="middle">
+            <div
+              id="divContainer"
+              name="divContainer"
+              style="
+                position: relative;
+                width: 730px;
+                height: 310px;
+                background-color: #ffffff;
+                border: 0px solid blue;
+              "
+            >
+              <div
+                style="
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  left: 0px;
+                  top: 0px;
+                  background: transparent;
+                  border: 0px solid green;
+                "
+              >
+                <div
+                  style="
+                    position: relative;
+                    width: 100%;
+                    height: auto;
+                    border: 0px solid #333333;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="5"
+                    cellpadding="5"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="middle">
+                        <div style="font-size: 300%"></div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <!--Slides-->
+                <div
+                  id="div_1"
+                  name="div_1"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div style="position: relative; top: -50px">
+                            <img
+                              width="730"
+                              height="auto"
+                              src="images/1_a.gif"
+                            />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 110px;
+                              top: 5px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="300"
+                              src="images/1_b.gif"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle">
+                        <div
+                          class="clsMainTitleWhite"
+                          style="
+                            position: absolute;
+                            width: 100%;
+                            text-align: center;
+                            top: 100px;
+                            color: #ffffff;
+                            text-shadow: -2px 2px 4px #000000;
+                          "
+                        >
+                          Lafaek ki’ik
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_2"
+                  name="div_2"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -50px;
+                            "
+                          >
+                            <img width="730" height="auto" src="images/2.png" />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 112px;
+                              top: 24px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="52"
+                              src="images/2_a.gif"
+                            />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 291px;
+                              top: 162px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="62"
+                              src="images/2_b.gif"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">Kolan ki’ik</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_3"
+                  name="div_3"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -30px;
+                            "
+                          >
+                            <img width="730" height="auto" src="images/3.png" />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 256px;
+                              top: 130px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="151"
+                              src="images/3_a.gif"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">La’o iha rai-manas​</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_4"
+                  name="div_4"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -50px;
+                            "
+                          >
+                            <img width="730" height="auto" src="images/4.png" />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 264px;
+                              top: 95px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="128"
+                              src="images/4_a.gif"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">
+                          Labarik-mane laran-di’ak ida
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_5"
+                  name="div_5"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -50px;
+                            "
+                          >
+                            <img width="730" height="auto" src="images/5.png" />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 201px;
+                              top: 12px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img width="auto" height="250" src="images/5.gif" />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">Promesa ida</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_6"
+                  name="div_6"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -50px;
+                            "
+                          >
+                            <img width="730" height="auto" src="images/6.png" />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 383px;
+                              top: 130px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img width="auto" height="29" src="images/6.gif" />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">Viajen ida bá tasi</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_7"
+                  name="div_7"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: absolute;
+                              left: 0px;
+                              top: 0px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img width="auto" height="310" src="images/7.gif" />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">
+                          Lafaek ida-ne'ebé kole
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_8"
+                  name="div_8"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -50px;
+                            "
+                          >
+                            <img width="730" height="auto" src="images/8.png" />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 132px;
+                              top: 117px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img width="auto" height="147" src="images/8.gif" />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">Timor nia moris​</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_9"
+                  name="div_9"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -50px;
+                            "
+                          >
+                            <img width="730" height="auto" src="images/9.png" />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 202px;
+                              top: 11px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="282"
+                              src="images/9_a.gif"
+                            />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              width: 300px;
+                              height: 133px;
+                              overflow: hidden;
+                              left: 202px;
+                              top: 7px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="282"
+                              src="images/9_b.gif"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">Timor nia moris​</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_10"
+                  name="div_10"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -20px;
+                            "
+                          >
+                            <img
+                              width="730"
+                              height="auto"
+                              src="images/10.png"
+                            />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 317px;
+                              top: 222px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="93"
+                              src="images/10_a.gif"
+                            />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 326px;
+                              top: 34px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="131"
+                              src="images/10_b.gif"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">Timor nia moris​</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_11"
+                  name="div_11"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div
+                            style="
+                              position: relative;
+                              overflow: hidden;
+                              top: -50px;
+                            "
+                          >
+                            <img
+                              width="730"
+                              height="auto"
+                              src="images/11.png"
+                            />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 245px;
+                              top: 93px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="191"
+                              src="images/11.gif"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="top">
+                        <div class="clsSubTitle_White">Timor nia moris​</div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <div
+                  id="div_12"
+                  name="div_12"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid #333333;
+                    display: none;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="left" valign="top">
+                        <div
+                          style="
+                            position: absolute;
+                            width: 730px;
+                            height: 310px;
+                            overflow: hidden;
+                            cursor: default;
+                            display: block;
+                          "
+                        >
+                          <div style="position: relative; top: -50px">
+                            <img
+                              width="730"
+                              height="auto"
+                              src="images/1_a.gif"
+                            />
+                          </div>
+                          <div
+                            style="
+                              position: absolute;
+                              left: 110px;
+                              top: 5px;
+                              border: 0px solid #333333;
+                            "
+                          >
+                            <img
+                              width="auto"
+                              height="300"
+                              src="images/1_b.gif"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="center" valign="middle">
+                        <div
+                          class="clsMainTitleWhite"
+                          style="
+                            position: absolute;
+                            width: 100%;
+                            text-align: center;
+                            top: 100px;
+                            color: #ffffff;
+                            text-shadow: -2px 2px 4px #000000;
+                          "
+                        >
+                          Lafaek ki’ik
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <div
+                  id="divNumTopPanel"
+                  name="divNumTopPanel"
+                  style="
+                    position: absolute;
+                    width: auto;
+                    height: auto;
+                    left: 10px;
+                    bottom: 0px;
+                    border: 0px solid red;
+                    cursor: pointer;
+                    display: inline-block;
+                    z-index: 10000;
+                  "
+                >
+                  <table
+                    width="100%"
+                    height="100%"
+                    cellspacing="0"
+                    cellpadding="0"
+                    border="0"
+                  >
+                    <tr>
+                      <td align="center" valign="top">
+                        <div
+                          style="cursor: pointer; display: block"
+                          onclick="javascript: doNavigate(1);"
+                        >
+                          <img
+                            width="auto"
+                            height="25"
+                            src="images/number_1.png"
+                          />
+                        </div>
+                      </td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td>
+                      <td align="center" valign="top">
+                        <div
+                          style="cursor: pointer; display: block"
+                          onclick="javascript: doNavigate(2);"
+                        >
+                          <img
+                            width="auto"
+                            height="25"
+                            src="images/number_2.png"
+                          />
+                        </div>
+                      </td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td>
+                      <td align="center" valign="top">
+                        <div
+                          style="cursor: pointer; display: block"
+                          onclick="javascript: doNavigate(3);"
+                        >
+                          <img
+                            width="auto"
+                            height="25"
+                            src="images/number_3.png"
+                          />
+                        </div>
+                      </td>
+                      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td>
+                      <td align="center" valign="top">
+                        <div
+                          style="cursor: pointer; display: block"
+                          onclick="javascript: doNavigate(4);"
+                        >
+                          <img
+                            width="auto"
+                            height="25"
+                            src="images/number_4.png"
+                          />
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+                <!--Slides End-->
+                <!--Buttons Begin-->
+                <div
+                  id="divBtnPanel"
+                  name="divBtnPanel"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 285px;
+                    border: 0px solid #333333;
+                    display: block;
+                  "
+                >
+                  <div
+                    id="divBtnBack"
+                    name="divBtnBack"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doNavigateAct('P');"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              height="25"
+                              width="auto"
+                              src="../../images/back_arrow.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      width: 10px;
+                      display: inline-block;
+                    "
+                  ></div>
+                  <div
+                    id="divBtnReplay"
+                    name="divBtnReplay"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="
+                      javascript: document.location.href =
+                        '../activity_51_crocodile_story/activity.html';
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              height="25"
+                              width="auto"
+                              src="../../images/replay.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      width: 10px;
+                      display: inline-block;
+                    "
+                  ></div>
+                  <div
+                    id="divBtnNext"
+                    name="divBtnNext"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doNavigateAct('N');"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              height="25"
+                              width="auto"
+                              src="../../images/next_arrow.png"
+                              onclick="
+                                document.getElementById(
+                                  'divCompletionMsg',
+                                ).style.display = 'block'
+                              "
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div id="divCompletionMsg" style="margin-top: 5px">
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              width="auto"
+                              height="55"
+                              src="../../images/tick.png"
+                              onclick="enlargeTick()"
+                              id="tickImg"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                    <span
+                      style="
+                        font-size: 16px;
+                        font-weight: bold;
+                        margin-left: 5px;
+                      "
+                    >
+                      bele ko'alia kona-ba istória ida
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="divMacroBtnNavPanel"
+                name="divMacroBtnNavPanel"
+                style="
+                  position: absolute;
+                  width: 65px;
+                  height: 100%;
+                  right: 0px;
+                  top: 0px;
+                  border: 0px solid red;
+                "
+              >
+                <div
+                  id="divPosterImage"
+                  name="divPosterImage"
+                  class="clsMacroPosterImage"
+                  style="cursor: pointer"
+                >
+                  <img
+                    id="imgPoster"
+                    name="imgPoster"
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+                <div
+                  id="divBtnBackArrow"
+                  name="divBtnBackArrow"
+                  class="clsMacroBack"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'P');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/back_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnNextArrow"
+                  name="divBtnNextArrow"
+                  class="clsMacroNext"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'N');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/next_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnHome"
+                  name="divBtnHome"
+                  class="clsMacroHome"
+                  style="top: 210px; cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'H');"
+                >
+                  <img width="100%" height="100%" src="../../images/home.png" />
+                </div>
+              </div>
+              <!--Buttons End-->
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script language="javascript">
+      doResetActivity();
+      doResetMainNavButton();
+      // function enlargeTick() {
+      //   const img = document.getElementById("tickImg");
+      //   img.style.transform = "scale(1.5)";
+      //   img.style.transition = "0.3s ease";
+      // }
+      function enlargeTick() {
+        const img = document.getElementById("tickImg");
+        img.classList.toggle("zoomTick");
+      }
+    </script>
+  </body>
+</html>

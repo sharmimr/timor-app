@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rArrDivList = ["div_1"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				doResetBoard();
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:730px; height:310px; left:0px; top:0px; border:0px solid red;">
+			<!--<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">-->
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333;">
+									<img width="100%" height="100%" src="images/board_without_eraser.png"  style="position:relative; width:730px; height:310px; left:0px; top:0px; border:0px solid red;" />
+								</div>							
+								<div style="position:relative; width:100%; height:auto; top:10px; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="font-size:150%;">Ha'u nia dezina</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<!--Slides-->
+								<div id="div_1" name="div_1" style="position:absolute; width:615px; height:225px; left:50px; top:55px; border:0px solid red; display:none;">
+									<canvas id="myCanvas" width="615" height="225" style="position:absolute; left:0px; top:0px; border:0px solid red;">
+										Sorry, your browser does not support HTML5 canvas technology.
+									</canvas>
+								</div>
+
+								<div id="divColorPanel" name="divColorPanel" style="position:absolute; width:45px; height:310px; left:0px; top:0px; border:0px solid orange;">
+									<div id="divColor_1" name="divColor" style="position:absolute; width:32px; height:25px; left:7px; top:43px; border:2px solid transparent; cursor:pointer;" onclick="javascript:doSelectColor(this, '#E8AC36')"></div>
+									<div id="divColor_2" name="divColor" style="position:absolute; width:32px; height:24px; left:7px; top:74px; border:2px solid transparent; cursor:pointer;" onclick="javascript:doSelectColor(this, '#689F38')"></div>
+									<div id="divColor_3" name="divColor" style="position:absolute; width:32px; height:20px; left:7px; top:105px; border:2px solid transparent; cursor:pointer;" onclick="javascript:doSelectColor(this, '#E86829')"></div>
+									<div id="divColor_4" name="divColor" style="position:absolute; width:32px; height:25px; left:7px; top:130px; border:2px solid transparent; cursor:pointer;" onclick="javascript:doSelectColor(this, '#704C38')"></div>
+									<div id="divColor_5" name="divColor" style="position:absolute; width:32px; height:20px; left:7px; top:160px; border:2px solid transparent; cursor:pointer;" onclick="javascript:doSelectColor(this, '#A45575')"></div>
+									<div id="divColor_6" name="divColor" style="position:absolute; width:32px; height:20px; left:7px; top:185px; border:2px solid transparent; cursor:pointer;" onclick="javascript:doSelectColor(this, '#D7423C')"></div>
+									<div id="divColor_7" name="divColor" style="position:absolute; width:32px; height:25px; left:7px; top:210px; border:2px solid transparent; cursor:pointer;" onclick="javascript:doSelectColor(this, '#EFB3CD')"></div>
+									<div id="divColor_8" name="divColor" style="position:absolute; width:32px; height:25px; left:7px; top:240px; border:2px solid transparent; cursor:pointer;" onclick="javascript:doSelectColor(this, '#4D6FB5')"></div>
+								</div>
+
+								<div id="divEraserButton" name="divEraserButton" style="position:absolute; width:20px; height:auto; bottom:35px; right:150px; border:0px solid red; cursor:pointer;">
+									<img width="auto" height="100" src="images/eraser.png" />
+								</div>								
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:-15px; border:0px solid #333333; display:none;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							<!--</div>-->
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->							
+						<!--</div>
+					</td>
+				</tr>
+			</table>-->
+		</div>
+		
+		<script language="javascript">
+			var canvas = document.getElementById('myCanvas');
+			var context = document.getElementById('myCanvas').getContext("2d");
+			var rSelectedColor = "#000000";
+			context.strokeStyle = rSelectedColor;
+			context.lineJoin = "round";
+			context.lineWidth = 10;			
+			
+			function doResetBoard() {
+				var clickX = [];
+				var clickY = [];
+				var clickDrag = [];
+				var paint;
+
+				/**
+				 * Add information where the user clicked at.
+				 * @param {number} x
+				 * @param {number} y
+				 * @return {boolean} dragging
+				 */
+				function addClick(x, y, dragging) {
+					clickX.push(x-50);
+					clickY.push(y-50);
+					clickDrag.push(dragging);
+				}
+
+				/**
+				 * Redraw the complete canvas.
+				 */
+				function redraw() {
+					// Clears the canvas
+					context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+					context.strokeStyle = rSelectedColor;
+					context.lineWidth = 10;
+					for (var i = 0; i < clickX.length; i += 1) {
+						if (!clickDrag[i] && i == 0) {
+							context.beginPath();
+							context.moveTo(clickX[i], clickY[i]);
+							context.stroke();
+						} else if (!clickDrag[i] && i > 0) {
+							context.closePath();
+
+							context.beginPath();
+							context.moveTo(clickX[i], clickY[i]);
+							context.stroke();
+						} else {
+							context.lineTo(clickX[i], clickY[i]);
+							context.stroke();
+						}
+					}
+				}
+
+				/**
+				 * Draw the newly added point.
+				 * @return {void}
+				 */
+				function drawNew() {
+					context.strokeStyle = rSelectedColor;
+					context.lineWidth = 10;
+					var i = clickX.length - 1
+					if (!clickDrag[i]) {
+						if (clickX.length == 0) {
+							context.beginPath();
+							context.moveTo(clickX[i], clickY[i]);
+							context.stroke();
+						} else {
+							context.closePath();
+
+							context.beginPath();
+							context.moveTo(clickX[i], clickY[i]);
+							context.stroke();
+						}
+					} else {
+						context.lineTo(clickX[i], clickY[i]);
+						context.stroke();
+					}
+				}
+
+				function mouseDownEventHandler(e) {
+					paint = true;
+					var x = e.pageX - canvas.offsetLeft;
+					var y = e.pageY - canvas.offsetTop;
+					if (paint) {
+						addClick(x, y, false);
+						drawNew();
+					}
+				}
+
+				function touchstartEventHandler(e) {
+					paint = true;
+					if (paint) {
+						addClick(e.touches[0].pageX - canvas.offsetLeft, e.touches[0].pageY - canvas.offsetTop, false);
+						drawNew();
+					}
+				}
+
+				function mouseUpEventHandler(e) {
+					context.closePath();
+					paint = false;
+				}
+
+				function mouseMoveEventHandler(e) {
+					var x = e.pageX - canvas.offsetLeft;
+					var y = e.pageY - canvas.offsetTop;
+					if (paint) {
+						addClick(x, y, true);
+						drawNew();
+					}
+				}
+
+				function touchMoveEventHandler(e) {
+					if (paint) {
+						addClick(e.touches[0].pageX - canvas.offsetLeft, e.touches[0].pageY - canvas.offsetTop, true);
+						drawNew();
+					}
+				}
+
+				function setUpHandler(isMouseandNotTouch, detectEvent) {
+					removeRaceHandlers();
+					if (isMouseandNotTouch) {
+						canvas.addEventListener('mouseup', mouseUpEventHandler);
+						canvas.addEventListener('mousemove', mouseMoveEventHandler);
+						canvas.addEventListener('mousedown', mouseDownEventHandler);
+						mouseDownEventHandler(detectEvent);
+					} else {
+						canvas.addEventListener('touchstart', touchstartEventHandler);
+						canvas.addEventListener('touchmove', touchMoveEventHandler);
+						canvas.addEventListener('touchend', mouseUpEventHandler);
+						touchstartEventHandler(detectEvent);
+					}
+				}
+
+				function mouseWins(e) {
+					setUpHandler(true, e);
+				}
+
+				function touchWins(e) {
+					setUpHandler(false, e);
+				}
+
+				function removeRaceHandlers() {
+					canvas.removeEventListener('mousedown', mouseWins);
+					canvas.removeEventListener('touchstart', touchWins);
+				}
+
+				canvas.addEventListener('mousedown', mouseWins);
+				canvas.addEventListener('touchstart', touchWins);
+			}
+			
+			function doSelectColor(rObj, rColor) {
+				for (var i=1; i<=8; i++) {
+					document.getElementById("divColor_"+i).style.cursor = "pointer";
+					document.getElementById("divColor_"+i).style.border = "none";
+				}
+				if (rObj.style.cursor=="pointer") {
+					rSelectedColor = rColor;
+					rObj.style.cursor = "default";
+					rObj.style.border = "2px solid #00ff00";
+				}
+			}
+			
+			document.getElementById('divEraserButton')
+					.addEventListener('click', () => {
+						//doResetActivity();
+						context.clearRect(0, 0, myCanvas.width, myCanvas.height);
+						shapes = [];
+						//rSelectedColor = "#000000";
+						setTimeout(function () {
+							myCanvas.width = myCanvas.width;
+							rLineWidth = 10;
+							doResetBoard();
+						}, 100);
+			});		
+		</script>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

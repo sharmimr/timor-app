@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Teacher App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.png" />
+		<link rel="apple-touch-icon" href="image/logo.png" />
+		-->
+
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+		<script src="js/jquery-3.6.0.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		
+		<script language="javascript">
+			var rStrMainActivityList = "theme_explore_level_4_inclusion_photo.html~activities/explore_inclusion_photo/activity_photo/activity.html";
+
+			function doNavigateToActivity(rObj, rActURL) {
+				if (rObj.style.cursor=="pointer") {
+					var rId = rObj.id.split("_")[1];
+					document.location.href = rActURL + "?MainActivityList=" + rStrMainActivityList + "&ID=" + rId;
+				}
+			}
+		</script>
+		
+		<script type="text/javascript">
+			function doNvigate(rObj) {
+				var rId = rObj.id.split("_")[1];
+				document.location.href = "activities/explore_inclusion_photo/activity_photo/activity.html?ID=" + rId;
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+								<!--
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+									<img width="100%" height="100%" src="images/theme/transport/level_3/transport_l_3_bg.png" />
+								</div>
+								-->								
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+									<table align="left" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td>
+												<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid blue;">
+													<img width="100%" height="100%" src="images/theme/explore/level_4/wooden_board.png" />
+													<div style="position:absolute; width:449px; height:210px; left:136px; top:35px; background:#ffffff; border:0px solid red;"></div>
+													<div style="position:absolute; width:450px; height:140px; left:135px; top:100px; border:0px solid green; overflow:hidden; overflow-y:auto;">
+														<table width="100%" height="auto" align="center" cellspacing="5" cellpadding="0" border="0">
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_1" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_inclusion_photo/activity_photo/activity.html');">
+																		<img width="75" height="auto" src="images/explore_inclusion_photo_activity_thumbnail_images/1.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_2" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_inclusion_photo/activity_photo/activity.html');">
+																		<img width="75" height="auto" src="images/explore_inclusion_photo_activity_thumbnail_images/2.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_3" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_inclusion_photo/activity_photo/activity.html');">
+																		<img width="75" height="auto" src="images/explore_inclusion_photo_activity_thumbnail_images/3.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_4" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_inclusion_photo/activity_photo/activity.html');">
+																		<img width="75" height="auto" src="images/explore_inclusion_photo_activity_thumbnail_images/4.png" />
+																	</div>											
+																</td>																
+															</tr>
+														</table>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div id="divHeadTitleText" name="divHeadTitleText" class="clsPageThumbnailHead">Inkluzaun foto sira</div>
+								<!--
+								<div id="divHeadTitleText" name="divHeadTitleText" style="position:absolute; width:100%; height:auto; top:100px; font-size:250%; font-weight:bold; color:#88552A; border:0px solid red;">Foto kultura rai sira</div>
+								-->
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;" onclick="javascript:document.location.href = 'theme_explore_level_3_inclusion.html'">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" src="images/activity_macro_static_images/inclusion.png" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" style="position:absolute; width:auto; height:65px; left:0px; top:80px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:document.location.href='theme_explore_level_3_inclusion.html';">
+									<img width="100%" height="100%" src="images/back_arrow.png" />
+								</div>
+								<div id="divBtnHome" name="divBtnHome" style="position:absolute; width:auto; height:105px; left:0px; top:200px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:document.location.href='index.html';">
+									<img width="100%" height="100%" src="images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script src="activity-tracker.js"></script>
+</body>
+</html>

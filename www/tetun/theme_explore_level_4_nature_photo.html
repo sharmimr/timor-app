@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Teacher App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.png" />
+		<link rel="apple-touch-icon" href="image/logo.png" />
+		-->
+
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+		<script src="js/jquery-3.6.0.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		
+		<script language="javascript">
+			var rStrMainActivityList = "theme_explore_level_3_nature.html~activities/explore_nature_photo/activity_photo/activity.html";
+
+			function doNavigateToActivity(rObj, rActURL) {
+				if (rObj.style.cursor=="pointer") {
+					var rId = rObj.id.split("_")[1];
+					document.location.href = rActURL + "?MainActivityList=" + rStrMainActivityList + "&ID=" + rId;
+				}
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:720px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+								<!--
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+									<img width="100%" height="100%" src="images/theme/transport/level_3/transport_l_3_bg.png" />
+								</div>
+								-->								
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+									<table align="left" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td>
+												<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid blue;">
+													<img width="100%" height="100%" src="images/theme/explore/level_4/wooden_board.png" />
+													<div style="position:absolute; width:449px; height:210px; left:136px; top:35px; background:#ffffff; border:0px solid red;"></div>
+													<div style="position:absolute; width:450px; height:140px; left:135px; top:100px; border:0px solid green; overflow:hidden; overflow-y:auto;">
+														<table width="100%" height="auto" align="center" cellspacing="5" cellpadding="0" border="0">
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_1" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/1.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_2" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/2.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_3" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/3.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_4" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/4.png" />
+																	</div>											
+																</td>																
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_5" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/5.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_6" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/6.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_7" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/7.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_8" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/8.png" />
+																	</div>											
+																</td>																
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_9" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/9.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_10" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/10.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_11" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/11.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_12" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/12.png" />
+																	</div>											
+																</td>																
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_13" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/13.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_14" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/14.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_15" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/15.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_16" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/16.png" />
+																	</div>											
+																</td>																
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_17" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/17.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_18" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/18.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_19" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/19.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_20" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/20.png" />
+																	</div>											
+																</td>																
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_21" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/21.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_22" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/22.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_23" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/23.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_24" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/24.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_25" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/25.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_26" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/26.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_27" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/27.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_28" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/28.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_29" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/29.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_30" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/30.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_31" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/31.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_32" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/32.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_33" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/33.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_34" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/34.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_35" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/35.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_36" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/36.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_37" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/37.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_38" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/38.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_39" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/39.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_40" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/40.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_41" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/41.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_42" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/42.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_43" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/43.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_44" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/44.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_45" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/45.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_46" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/46.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_47" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/47.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_48" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/48.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_49" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/49.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_50" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/50.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_51" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/51.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_52" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/52.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_53" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/53.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_54" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/54.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_55" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/55.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_56" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/56.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_57" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/57.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_58" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/58.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_59" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/59.png" />
+																	</div>											
+																</td>
+																<td width="25%" align="center" valign="top">
+																	<div id="divImage_60" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/60.png" />
+																	</div>											
+																</td>
+															</tr>
+															<tr height="10"><td colspan="4"></td></tr>
+															<tr>
+																<td width="100%" align="center" valign="top" colspan="4">
+																	<div id="divImage_61" name="divImage" style="color:#88552A; font-size:20px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateToActivity(this, 'activities/explore_nature_photo/activity_photo/activity.html');">
+																		<img width="100" height="auto" src="images/explore_nature_photo_activity_thumbnail_images/61.png" />
+																	</div>											
+																</td>
+															</tr>															
+														</table>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div id="divHeadTitleText" name="divHeadTitleText" class="clsPageThumbnailHead">Ilas natureza nians</div>
+								<!--
+								<div id="divHeadTitleText" name="divHeadTitleText" style="position:absolute; width:100%; height:auto; top:100px; font-size:250%; font-weight:bold; color:#88552A; border:0px solid red;">Foto kultura rai sira</div>
+								-->
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;" onclick="javascript:document.location.href = 'theme_explore_level_3_nature.html'">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" src="images/activity_macro_static_images/nature.png" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" style="position:absolute; width:auto; height:65px; left:0px; top:80px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:document.location.href='theme_explore_level_3_nature.html';">
+									<img width="100%" height="100%" src="images/back_arrow.png" />
+								</div>
+								<div id="divBtnHome" name="divBtnHome" style="position:absolute; width:auto; height:105px; left:0px; top:200px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:document.location.href='index.html';">
+									<img width="100%" height="100%" src="images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script src="activity-tracker.js"></script>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+		<script src="js/jquery-3.6.0.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>		
+		
+		<script language="javascript">
+			var rToday = new Date();
+			var rMonth = rToday.getMonth();
+			var rArrList = ["Janeiru", "Fevereiru", "Marsu", "Abril", "Maiu", "Juñu", "Jullu", "Agustu", "Setembru", "Outubru", "Novembru", "Dezembru"];
+			var rArrListColor = ["#346C47", "#4F334C", "#62211D", "#610F26", "#916631", "#1C8888", "#AF4F36", "#34552A", "#8A681E", "#586B1C", "#46545D", "#942E39"];
+			var rSelectedDay = "";
+			var rSelectedMonth = "Janeiro";
+			var rSelectedDayNumber = -1;
+			var rSelectedMonthNumber = -1;			
+			rSelectedDay = doGetParameterByName('Day');
+			rSelectedDayNumber = doGetParameterByName('DayNumber');
+			
+			function doUpdateBottomCenterButtonClick(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					var rTempInt = Number(rObj.id.split("_")[1]);
+
+					if (rMonth==(rTempInt-1)) {
+						document.getElementById("vidAni").currentTime = 0;
+						document.getElementById("vidAni").play();
+						document.getElementById("divVidAni").style.display = "block";
+					}
+					
+					var rExistingText = document.getElementById("divTextAndImageCombination").innerHTML;
+					rExistingText = "";
+					var rNewText = rArrList[rTempInt-1];
+					var rNewTextColor = rArrListColor[rTempInt-1];
+					rSelectedMonth = rNewText;
+					rSelectedMonthNumber = rTempInt - 1;
+					document.getElementById("divTextAndImageCombination").innerHTML = rExistingText + ' ' + '<span style="color:' + rNewTextColor + ';">' + rNewText + '</span>';
+					document.getElementById("divBtnPanel").style.display = "none";
+					document.getElementById("divTextAndImageOnlyOne").innerHTML = document.getElementById("divTextAndImageOnlyOne").innerHTML;
+					
+					window.setTimeout(
+						function() {
+							document.getElementById("divTextAndImageOnlyOne").innerHTML = document.getElementById("divTextAndImageOnlyOne").innerHTML + '<div style="height:10px; border:0px solid red;"></div>' + rNewText;
+							document.getElementById("divBtnBackArrow").style.display = "inline-block";
+							document.getElementById("divBtnNextArrow").style.display = "inline-block";
+						}, 2000
+					)
+				}
+			}
+			
+			var rMonthPreNextNum = 0;
+			function doChangeBottomMonthBtnPanel(rNavDir, rObj) {
+				var rInnerHTML = "";
+
+				if (Number(rNavDir)==1) {
+					rMonthPreNextNum--;
+				} else {
+				if (Number(rNavDir)==2) {
+					rMonthPreNextNum++;
+				} }
+				switch (rMonthPreNextNum) {
+					case 0:
+						rInnerHTML += '<div style="position:relative; width:100%; height:100%; border:0px solid blue;">';
+							rInnerHTML += '<div id="divBtnMonthPrevious" name="divBtnMonthPrevious" style="position:absolute; left:5px; top:10px; display:none; cursor:pointer;" onclick="javascript:doChangeBottomMonthBtnPanel(1, this);">';
+								rInnerHTML += '<img width="auto" height="35" src="images/back_arrow.png" />';
+							rInnerHTML += '</div>';										
+							rInnerHTML += '<div id="divBtnJan_1" name="divBtnMonth" style="position:absolute; left:50px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/1_jan.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnFeb_2" name="divBtnMonth" style="position:absolute; left:160px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/2_feb.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnMar_3" name="divBtnMonth" style="position:absolute; left:270px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/3_mar.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnApr_4" name="divBtnMonth" style="position:absolute; left:380px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/4_apr.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnMay_5" name="divBtnMonth" style="position:absolute; left:490px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/5_may.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnMonthNext" name="divBtnMonthNext" style="position:absolute; top:10px; left:585px; display:inline-block; cursor:pointer;" onclick="javascript:doChangeBottomMonthBtnPanel(2, this);">';
+								rInnerHTML += '<img width="auto" height="35" src="images/next_arrow.png" />';
+							rInnerHTML += '</div>';												
+						rInnerHTML += '</div>';					
+						break;
+					case 1:
+						rInnerHTML += '<div style="position:relative; width:100%; height:100%; border:0px solid blue;">';
+							rInnerHTML += '<div id="divBtnMonthPrevious" name="divBtnMonthPrevious" style="position:absolute; left:5px; top:10px; display:inline-block; cursor:pointer;" onclick="javascript:doChangeBottomMonthBtnPanel(1, this);">';
+								rInnerHTML += '<img width="auto" height="35" src="images/back_arrow.png" />';
+							rInnerHTML += '</div>';										
+							rInnerHTML += '<div id="divBtnMay_5" name="divBtnMonth" style="position:absolute; left:50px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/5_may.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnJune_6" name="divBtnMonth" style="position:absolute; left:160px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/6_june.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnJuly_7" name="divBtnMonth" style="position:absolute; left:270px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/7_july.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnAug_8" name="divBtnMonth" style="position:absolute; left:380px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/8_aug.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnSep_9" name="divBtnMonth" style="position:absolute; left:490px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/9_sep.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnMonthNext" name="divBtnMonthNext" style="position:absolute; top:10px; left:585px; display:inline-block; cursor:pointer;" onclick="javascript:doChangeBottomMonthBtnPanel(2, this);">';
+								rInnerHTML += '<img width="auto" height="35" src="images/next_arrow.png" />';
+							rInnerHTML += '</div>';												
+						rInnerHTML += '</div>';					
+						break;
+					case 2:
+						rInnerHTML += '<div style="position:relative; width:100%; height:100%; border:0px solid blue;">';
+							rInnerHTML += '<div id="divBtnMonthPrevious" name="divBtnMonthPrevious" style="position:absolute; left:5px; top:10px; display:inline-block; cursor:pointer;" onclick="javascript:doChangeBottomMonthBtnPanel(1, this);">';
+								rInnerHTML += '<img width="auto" height="35" src="images/back_arrow.png" />';
+							rInnerHTML += '</div>';										
+							rInnerHTML += '<div id="divBtnSep_9" name="divBtnMonth" style="position:absolute; left:50px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/9_sep.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnOct_10" name="divBtnMonth" style="position:absolute; left:160px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/10_oct.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnNov_11" name="divBtnMonth" style="position:absolute; left:270px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/11_nov.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnDec_12" name="divBtnMonth" style="position:absolute; left:380px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/12_dec.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnJan_1" name="divBtnMonth" style="position:absolute; left:490px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">';
+								rInnerHTML += '<img width="auto" height="45" src="images/month/1_jan.png" />';
+							rInnerHTML += '</div>';
+							rInnerHTML += '<div style="position:relative; width:5px; display:inline-block;"></div>';
+							rInnerHTML += '<div id="divBtnMonthNext" name="divBtnMonthNext" style="position:absolute; top:10px; left:585px; display:none; cursor:pointer;" onclick="javascript:doChangeBottomMonthBtnPanel(2, this);">';
+								rInnerHTML += '<img width="auto" height="35" src="images/next_arrow.png" />';
+							rInnerHTML += '</div>';												
+						rInnerHTML += '</div>';					
+						break;						
+					default:
+						break;
+				}
+				document.getElementById("divBtnPanel").innerHTML = rInnerHTML;
+			}
+			
+			function doNavigateToURL(rObj, rAction) {
+				var rNavURL = "";
+				if (rObj.style.cursor=="pointer") {
+					switch (rAction.toUpperCase()) {
+						case "H":
+							rNavURL = "index.html";
+							break;
+						case "P":
+							rNavURL = "today_session_day.html";
+							break;
+						case "N":
+							rNavURL = "today_session_weather.html?DayNumber=" + rSelectedDayNumber + "&MonthNumber=" + rSelectedMonthNumber + "&Day=" + rSelectedDay + "&Month=" + rSelectedMonth;
+							break;						
+						default:
+							break;
+					}					
+					document.location.href = rNavURL;
+				}
+			}			
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:725px; height:310px; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+									<img width="100%" height="100%" src="images/today_session_bg.png" />
+								</div>
+								<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+									<video id="vidAni" name="vidAni" playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/month/wave_tree_whale.mp4" style="position:absolute; width:520px; height:295px; left:100px; top:10px; border-radius:25px;">
+								</div>								
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td width="100%" height="100%" align="center" valign="middle">
+												<div id="divTextAndImageCombination" name="divTextAndImageCombination" style="position:relative; top:50px; font-size:40px; color:#ffffff; display:inline-block;">Fulan</div>
+											</td>
+										<tr>
+									</table>
+								</div>
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:650px; height:50px; left:40px; bottom:5px; border:0px solid red; display:none;">
+									<div style="position:relative; width:100%; height:100%; border:0px solid blue;">
+										<div id="divBtnMonthPrevious" name="divBtnMonthPrevious" style="position:absolute; left:5px; top:10px; display:inline-block; cursor:pointer;" onclick="javascript:doGoPreviousMonthSet(this);">
+											<img width="auto" height="35" src="images/back_arrow.png" />
+										</div>											
+										<div id="divBtnJan_1" name="divBtnMonth" style="position:absolute; left:50px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+											<img width="auto" height="45" src="images/month/1_jan.png" />
+										</div>
+										<div style="position:relative; width:5px; display:inline-block;"></div>
+										<div id="divBtnFeb_2" name="divBtnMonth" style="position:absolute; left:160px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+											<img width="auto" height="45" src="images/month/2_feb.png" />
+										</div>
+										<div style="position:relative; width:5px; display:inline-block;"></div>
+										<div id="divBtnMar_3" name="divBtnMonth" style="position:absolute; left:270px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+											<img width="auto" height="45" src="images/month/3_mar.png" />
+										</div>
+										<div style="position:relative; width:5px; display:inline-block;"></div>
+										<div id="divBtnApr_4" name="divBtnMonth" style="position:absolute; left:380px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+											<img width="auto" height="45" src="images/month/4_apr.png" />
+										</div>
+										<div style="position:relative; width:5px; display:inline-block;"></div>
+										<div id="divBtnApr_5" name="divBtnMonth" style="position:absolute; left:490px; top:0px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+											<img width="auto" height="45" src="images/month/5_may.png" />
+										</div>
+										<div style="position:relative; width:5px; display:inline-block;"></div>
+										<div id="divBtnMonthNext" name="divBtnMonthNext" style="position:absolute; top:10px; left:585px; display:inline-block; cursor:pointer;" onclick="javascript:doGoNextMonthSet(this);">
+											<img width="auto" height="35" src="images/next_arrow.png" />
+										</div>
+									</div>
+								</div>
+								<div style="position:absolute; width:95%; left:10px; top:10px; border:0px solid red; display:tabel-cell;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td width="100%" height="100%" align="left" valign="top">
+												<div id="divTextAndImageOnlyOne" name="divTextAndImageOnlyOne" style="position:relative; text-align:center; font-size:20px; color:#ffffff; border:0px solid blue; display:inline-block;">
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+									<div id="divBtnBackArrow" name="divBtnBackArrow" style="position:absolute; width:auto; height:65px; left:0px; top:80px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:doNavigateToURL(this, 'P');">
+										<img width="100%" height="100%" src="images/back_arrow.png" />
+									</div>
+									<div id="divBtnNextArrow" name="divBtnNextArrow" style="position:absolute; width:auto; height:65px; left:0px; top:140px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:doNavigateToURL(this, 'N');">
+										<img width="100%" height="100%" src="images/next_arrow.png" />
+									</div>					
+									<div id="divBtnHome" name="divBtnHome" style="position:absolute; width:auto; height:105px; left:0px; top:200px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:doNavigateToURL(this, 'H');">
+										<img width="100%" height="100%" src="images/home.png" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			window.setTimeout(
+				function() {
+					document.getElementById("divBtnPanel").style.display = "block";
+				}, 2000
+			)
+		</script>
+		
+		<script language="javascript">
+			document.getElementById("divTextAndImageOnlyOne").innerHTML = rSelectedDay;
+		</script>
+		
+		<script language="javascript">
+			doChangeBottomMonthBtnPanel(null, null);
+		</script>		
+		<script src="activity-tracker.js"></script>
+</body>
+</html>

@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSubTitle_White {
+			    position: relative;
+			    width: 100%;
+			    font-size:250%;
+			    top: 0px;
+			    color: #ffffff; 
+			    text-shadow: -2px 2px 4px #000000;
+			}
+			.clsPageText_block{
+			    position:absolute; 
+			    font-size:200%;
+			    color: #ffffff; 
+			  	text-shadow: -2px 2px 4px #000000;
+			}
+			.clsPageTextSmall_White {
+			    position:absolute; 
+				width: 100%; 
+				text-align: center; 
+				top: 223px; 
+			    font-size:160%;
+			    color: #ffffff; 
+			    text-shadow: -2px 2px 4px #000000;
+			}
+			.clsCenterSlideImg {
+			    position: relative;
+			    width: 100%;
+			    height: 232px;
+			    left: 0px;
+			    top: 40px;
+				display: flex;
+				justify-content:center;
+				align-items: center;
+			    border: 0px solid red;
+			}
+			.clsPopup {
+			    position: absolute;
+			    width: 100%;
+			    height: 100px;
+			    top: 30px;
+			}
+			.clsLabelTextMobile_1 {
+				position: absolute;
+				width: 87%; 
+				left: 3%;
+				bottom:-285px;
+				text-align: left; 
+			    font-size: 21px; 
+			    color:#ffffff;
+			    line-height: 1.2;
+			   	text-shadow: -2px 2px 4px #000000;
+			    border: 0px solid red;
+			}
+
+			@keyframes flickerAnimation {
+			  0%   { opacity:1; }
+			  50%  { opacity:0; }
+			  100% { opacity:1; }
+			}
+			@-o-keyframes flickerAnimation{
+			  0%   { opacity:1; }
+			  50%  { opacity:0; }
+			  100% { opacity:1; }
+			}
+			@-moz-keyframes flickerAnimation{
+			  0%   { opacity:1; }
+			  50%  { opacity:0; }
+			  100% { opacity:1; }
+			}
+			@-webkit-keyframes flickerAnimation{
+			  0%   { opacity:1; }
+			  50%  { opacity:0; }
+			  100% { opacity:1; }
+			}
+			.animate_flicker_1 {
+			   -webkit-animation: flickerAnimation 1s infinite;
+			   -moz-animation: flickerAnimation 1s infinite;
+			   -o-animation: flickerAnimation 1s infinite;
+			    animation: flickerAnimation 1s infinite;
+			}
+
+			@keyframes flickerAnimation_2 {
+			  100%   { opacity:1; }
+			  100%  { opacity:0; }
+			  0% { opacity:1; }
+			}
+			@-o-keyframes flickerAnimation_2{
+			  100%   { opacity:1; }
+			  100%  { opacity:0; }
+			  0% { opacity:1; }
+			}
+			@-moz-keyframes flickerAnimation_2{
+			  100%   { opacity:1; }
+			  100%  { opacity:0; }
+			  0% { opacity:1; }
+			}
+			@-webkit-keyframes flickerAnimation_2{
+			  100%   { opacity:1; }
+			  100%  { opacity:0; }
+			  0% { opacity:1; }
+			}
+			.animate_flicker_2 {
+			   -webkit-animation: flickerAnimation_2 1s infinite;
+			   -moz-animation: flickerAnimation_2 1s infinite;
+			   -o-animation: flickerAnimation_2 1s infinite;
+			    animation: flickerAnimation_2 1s infinite;
+			}
+
+			@keyframes flickerAnimation_3 {
+			  0%   { opacity:1; }
+			  50%  { opacity:0; }
+			  100% { opacity:1; }
+			}
+			@-o-keyframes flickerAnimation_3{
+			  0%   { opacity:1; }
+			  50%  { opacity:0; }
+			  100% { opacity:1; }
+			}
+			@-moz-keyframes flickerAnimation_3{
+			  0%   { opacity:1; }
+			  50%  { opacity:0; }
+			  100% { opacity:1; }
+			}
+			@-webkit-keyframes flickerAnimation_3{
+			  0%   { opacity:1; }
+			  50%  { opacity:0; }
+			  100% { opacity:1; }
+			}
+			.animate_flicker_3 {
+			   -webkit-animation: flickerAnimation_3 2s infinite;
+			   -moz-animation: flickerAnimation_3 2s infinite;
+			   -o-animation: flickerAnimation_3 2s infinite;
+			    animation: flickerAnimation_3 2s infinite;
+			}
+
+			@keyframes flickerAnimation_4 {
+			  100%   { opacity:1; }
+			  100%  { opacity:0; }
+			  0% { opacity:1; }
+			}
+			@-o-keyframes flickerAnimation_4{
+			  100%   { opacity:1; }
+			  100%  { opacity:0; }
+			  0% { opacity:1; }
+			}
+			@-moz-keyframes flickerAnimation_4{
+			  100%   { opacity:1; }
+			  100%  { opacity:0; }
+			  0% { opacity:1; }
+			}
+			@-webkit-keyframes flickerAnimation_4{
+			  100%   { opacity:1; }
+			  100%  { opacity:0; }
+			  0% { opacity:1; }
+			}
+			.animate_flicker_4 {
+			   -webkit-animation: flickerAnimation_4 2s infinite;
+			   -moz-animation: flickerAnimation_4 2s infinite;
+			   -o-animation: flickerAnimation_4 2s infinite;
+			    animation: flickerAnimation_4 2s infinite;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19", "div_20", "div_21", "div_22", "div_23", "div_24", "div_25", "div_26", "div_27", "div_28", "div_29", "div_30", "div_31"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+
+				document.getElementById("bgAudio_1").pause();
+				document.getElementById("bgAudio_1").currentTime = 0;
+
+				document.getElementById("bgAudio_2").pause();
+				document.getElementById("bgAudio_2").currentTime = 0;
+
+				document.getElementById("bgAudio_3").pause();
+				document.getElementById("bgAudio_3").currentTime = 0;
+
+				document.getElementById("bgAudio_4").pause();
+				document.getElementById("bgAudio_4").currentTime = 0;
+
+				document.getElementById("bgAudio_5").pause();
+				document.getElementById("bgAudio_5").currentTime = 0;
+
+				document.getElementById("bgAudio_6").pause();
+				document.getElementById("bgAudio_6").currentTime = 0;
+
+				document.getElementById("vidAni_1").pause();
+				document.getElementById("vidAni_1").currentTime = 0;
+
+				document.getElementById("vidAni_2").pause();
+				document.getElementById("vidAni_2").currentTime = 0;
+
+				document.getElementById("vidAni_3").pause();
+				document.getElementById("vidAni_3").currentTime = 0;
+
+
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+
+				if (rListIndex==6) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==8) {
+					document.getElementById("bgAudio_2").currentTime = 0;
+					document.getElementById("bgAudio_2").play();
+				}
+				if (rListIndex==19) {
+					document.getElementById("bgAudio_3").currentTime = 0;
+					document.getElementById("bgAudio_3").play();
+				}
+				if (rListIndex==20) {
+					document.getElementById("bgAudio_4").currentTime = 0;
+					document.getElementById("bgAudio_4").play();
+				}
+				if (rListIndex==20) {
+					document.getElementById("bgAudio_5").currentTime = 0;
+					document.getElementById("bgAudio_5").play();
+				}
+				if (rListIndex==21) {
+					document.getElementById("bgAudio_6").currentTime = 0;
+					document.getElementById("bgAudio_6").play();
+				}
+				/*video    vidAni */ 
+
+				if (rListIndex==16) {
+					document.getElementById("vidAni_1").currentTime = 0;
+					document.getElementById("vidAni_1").play();
+				}
+				if (rListIndex==17) {
+					document.getElementById("vidAni_2").currentTime = 0;
+					document.getElementById("vidAni_2").play();
+				}
+				if (rListIndex==18) {
+					document.getElementById("vidAni_3").currentTime = 0;
+					document.getElementById("vidAni_3").play();
+				}
+			}
+
+			function doResetActivity() {
+
+				document.getElementById("bgAudio_1").pause();
+				document.getElementById("bgAudio_1").currentTime = 0;
+
+				document.getElementById("bgAudio_2").pause();
+				document.getElementById("bgAudio_2").currentTime = 0;
+
+				document.getElementById("bgAudio_3").pause();
+				document.getElementById("bgAudio_3").currentTime = 0;
+
+				document.getElementById("bgAudio_4").pause();
+				document.getElementById("bgAudio_4").currentTime = 0;
+				
+				document.getElementById("bgAudio_5").pause();
+				document.getElementById("bgAudio_5").currentTime = 0;
+
+				document.getElementById("bgAudio_6").pause();
+				document.getElementById("bgAudio_6").currentTime = 0;
+				/*vidio*/
+
+				document.getElementById("vidAni_1").pause();
+				document.getElementById("vidAni_1").currentTime = 0;
+
+				document.getElementById("vidAni_2").pause();
+				document.getElementById("vidAni_2").currentTime = 0;
+
+				document.getElementById("vidAni_3").pause();
+				document.getElementById("vidAni_3").currentTime = 0;
+
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				var rSlideNum = -1
+				var rSlideNumURL = rDocumentURL;
+				var rSlideNumURLSpl = rSlideNumURL.split("&");
+				var rSlideNumSplit = rSlideNumURLSpl[rSlideNumURLSpl.length-1].split("=");
+				rSlideNum = Number(rSlideNumSplit[1]);
+				
+				if (rSlideNum.toString()!="NaN") {
+					rListIndex = rSlideNum;
+				}
+
+				if (rListIndex>=4 && rListIndex<=6) {
+					rListIndex = 2;
+				} else {
+				if (rListIndex>=7 && rListIndex<=12) {
+					rListIndex = 3;
+				} else {
+				if (rListIndex>=13 && rListIndex<=17) {
+					rListIndex = 4;
+				} else {
+				if (rListIndex>=18 && rListIndex<=21) {
+					rListIndex = 5;
+				} else {
+				if (rListIndex>=22 && rListIndex<=24) {
+					rListIndex = 6;	
+				} else {
+				if (rListIndex>=25 && rListIndex<=26) {
+					rListIndex = 7;
+				} else {
+				if (rListIndex>=27 && rListIndex<=31) {
+					rListIndex = 8;
+				} else {
+				if (rListIndex>=32 && rListIndex<=34) {
+					rListIndex = 9;
+				} else {
+				if (rListIndex>=35 && rListIndex<=37) {
+					rListIndex = 10;
+				} else {
+				if (rListIndex>=38) {
+					rListIndex = 11;					
+				} } } } } } } } } }
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+			
+			function doNavigate(rNum) {
+				switch (rNum) {
+					case 1:
+						document.location.href = "../activity_51_crocodile_story/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=" + rListIndex;
+						break;				
+					case 2:
+						document.location.href = "../activity_68_crocodile_story/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=" + rListIndex;
+						break;
+					case 3:
+						document.location.href = "../activity_69_crocodile_story/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=" + rListIndex;
+						break;
+					case 4:
+						document.location.href = "../lafaek_istoria_crocodile/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=" + rListIndex;
+						break;						
+					default:
+						break;
+				}
+			}			
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="middle">
+												<div style="font-size:300%;"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<!--Slides-->
+								<div id="div_1" name="div_1" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/1.gif" width="auto" height="310"/></div>
+			                    					<div style="position:absolute; width: auto; left:400px; top:80px;"><img width="auto" height="230" src="images/1_a.gif" /></div>
+													<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/1.png" width="auto" height="310"/></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Mano, Mano! Mamá dehan Natál besik ona! </div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_2" name="div_2" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/1.gif" width="auto" height="310"/></div>
+			                    					<div style="position:absolute; width: auto; left:400px; top:80px;"><img width="auto" height="230" src="images/1_a.gif" /></div>
+													<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/1.png" width="auto" height="310"/></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Maibé saida maka Natál? Tanbasá mak ita selebra ida-neʼe?</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_3" name="div_3" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/3.png" width="auto" height="310"/></div>
+			                    					<div class="animate_flicker_1" style="position:absolute; width: auto; right:0px; top:0px;"><img width="auto" height="180" src="images/3_a.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Oh, Lia! Natál maka tempu espesiál liu iha tinan ida nia laran! Ne'e bainhira ita selebra kosok-oan Jesús nia moris. </div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_4" name="div_4" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/4.gif" width="auto" height="310"/></div>
+													<div class="animate_flicker_1" style="position: absolute; width: auto; height: 100px; left: 374px; top:0px;"><img src="images/4_a.png" width="auto" height=""/></div>
+													<div style="position: absolute; width: auto; left: 0px; top:44px;"><img src="images/4_b.gif" width="auto" height="124"/></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Nia moris iha tempu uluk liubá iha rai ida naran Belém.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_5" name="div_5" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/4.gif" width="auto" height="310"/></div>
+													<div class="animate_flicker_1" style="position: absolute; width: auto; height: 100px; left: 374px; top:0px;"><img src="images/4_a.png" width="auto" height=""/></div>
+													<div style="position: absolute; width: auto; left: 0px; top:44px;"><img src="images/4_b.gif" width="auto" height="124"/></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Kosok-oan Jesús? Nia hanesan ita ka lae?</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_6" name="div_6" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/3.png" width="auto" height="310"/></div>
+			                    					<div class="animate_flicker_1" style="position:absolute; width: auto; right:0px; top:0px;"><img width="auto" height="180" src="images/3_a.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1" style="font-size: 19px;">Sim, maibé Nia mós espesiál tebes. Nia Maromak nia oan ne’ebé haruka mai hodi hanorin ema hotu-hotu kona-ba domin, laran-di’ak no dame. </div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_7" name="div_7" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/3.png" width="auto" height="310"/></div>
+			                    					<div class="animate_flicker_1" style="position:absolute; width: auto; right:0px; top:0px;"><img width="auto" height="180" src="images/3_b.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Bainhira nia moris, fitun nabilan ida mosuiha lalehan, no anju sira hananu knananuk furak sira!</div>
+												<!--audio-->
+			                    				<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; display: none;">
+			                    					<audio controls loop id="bgAudio_1" name="bgAudio_1" src="media/audio/angel_bg.mp3">
+			                    				</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_8" name="div_8" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/3.png" width="auto" height="310"/></div>
+			                    					<div class="animate_flicker_1" style="position:absolute; width: auto; right:0px; top:0px;"><img width="auto" height="180" src="images/3_b.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Wow! Ne’e furak tebes! </br>Nia halo festa boot bainhira nia moris ka lae?</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_9" name="div_9" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/9.gif" width="auto" height="310"/></div>
+													<div class="animate_flicker_1" style="position: absolute; width: auto; height: 100px; left: 374px; top:0px;"><img src="images/4_a.png" width="auto" height=""/></div>
+													<div style="position: absolute; width: auto; left: 0px; top:44px;"><img src="images/4_b.gif" width="auto" height="124"/></div>
+													<div style="position: absolute; width: auto; left: 111px; top:50px;"><img src="images/9_a.gif" width="auto" height="95"/></div>
+													<div style="position: absolute; width: auto; left: 234px; top:169px;"><img src="images/9_b.gif" width="auto" height="84"/></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Lae. Nia moris iha luhan simples ida hamutuk ho animál sira hanesan karau no bibi.</div>
+                    							<audio id="bgAudio_2" name="bgAudio_2" src="media/audio/cow_baby.mp3">
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_10" name="div_10" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_1.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_1.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Tanba ne'e mak ita fó prezente ba malu iha Natál—atu fahe domin, hanesan sira halo!</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_11" name="div_11" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Oh, ha'u gosta loos prezente sira! Maibé saida maka ita halo iha Timor-Leste ba Natál?</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_12" name="div_12" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ita sei halo buat furak  barak! Primeiru, prepara presépiu hanesan fatin ne'ebé Jesús moris bá.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_13" name="div_13" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Iha presépiu ne’e ami dekora ho lampu  kór oioin no mós tau estátua ho figura sira ne’ebé halo husi materiál lokal.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_14" name="div_14" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/14.gif" width="auto" height="310"/></div>
+													<div style="position: absolute; left: 128px; top:0px;"><img src="images/14_a.gif" width="auto" height="180"/></div>
+													<div style="position: absolute; right: 0px; top:0px;"><img src="images/14_b.gif" width="auto" height="125"/></div>
+													<div class="animate_flicker_3" style="position: absolute; left: 0px; top:0px;"><img src="images/14_c.png" width="auto" height="310"/></div>
+													<div class="animate_flicker_4" style="position: absolute; left: 0px; top:0px;"><img src="images/14_d.png" width="auto" height="310"/></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1" style="font-size: 19px;">Tuirmai, apá ho amá sei sosa ita-nia ropa foun. Hafoin iha kalan,  ita sei ba igreja ho ita-nia família hodi tuir misa no agradese ba Maromak ba kosok-oan Jesús.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_15" name="div_15" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/14.gif" width="auto" height="310"/></div>
+													<div style="position: absolute; left: 128px; top:0px;"><img src="images/14_a.gif" width="auto" height="180"/></div>
+													<div style="position: absolute; right: 0px; top:0px;"><img src="images/14_b.gif" width="auto" height="125"/></div>
+													<div class="animate_flicker_3" style="position: absolute; left: 0px; top:0px;"><img src="images/14_c.png" width="auto" height="310"/></div>
+													<div class="animate_flicker_4" style="position: absolute; left: 0px; top:0px;"><img src="images/14_d.png" width="auto" height="310"/></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Iha Igreja mós dekora ho lampu naroman kór oioin, figura sira nomos fitun boot ida!</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_16" name="div_16" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/14.gif" width="auto" height="310"/></div>
+													<div style="position: absolute; left: 128px; top:0px;"><img src="images/14_a.gif" width="auto" height="180"/></div>
+													<div style="position: absolute; right: 0px; top:0px;"><img src="images/14_b.gif" width="auto" height="125"/></div>
+													<div class="animate_flicker_3" style="position: absolute; left: 0px; top:0px;"><img src="images/14_c.png" width="auto" height="310"/></div>
+													<div class="animate_flicker_4" style="position: absolute; left: 0px; top:0px;"><img src="images/14_d.png" width="auto" height="310"/></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ha'u gosta fitun ne'e! Nabilan tebes!</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_17" name="div_17" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+													<video id="vidAni_1" name="vidAni_1" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/animation.mp4" onended="javascript:doEndVideo(this);">
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ha'u mós! Hafoin, fila husi igreja, ita sei han kalan hamutuk ho ita-nia família no belun sira.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_18" name="div_18" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+													<video id="vidAni_2" name="vidAni_2" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/animation.mp4" onended="javascript:doEndVideo(this);">
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Mamá halo hahán ne'ebé gostu hanesan katupa, naan manu, ikan no hahán midar sira.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_19" name="div_19" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+													<video id="vidAni_3" name="vidAni_3" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/animation.mp4" onended="javascript:doEndVideo(this);">
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ita mós toka múzika Natál nian. </div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_20" name="div_20" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/14.gif" width="auto" height="310"/></div>
+													<div style="position: absolute; left: 128px; top:0px;"><img src="images/14_a.gif" width="auto" height="180"/></div>
+													<div style="position: absolute; right: 0px; top:0px;"><img src="images/14_b.gif" width="auto" height="125"/></div>
+													<div class="animate_flicker_3" style="position: absolute; left: 0px; top:0px;"><img src="images/14_c.png" width="auto" height="310"/></div>
+													<div class="animate_flicker_4" style="position: absolute; left: 0px; top:0px;"><img src="images/14_d.png" width="auto" height="310"/></div>
+													<audio controls loop id="bgAudio_3" name="bgAudio_3" src="media/audio/bg.mp3">
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ya! Ha'u gosta loos múzika Natál nian! Ita mós bele haree fogete sira ka?</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_21" name="div_21" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div style="position:absolute; width: auto; left:0px; top:0px;"><img width="auto" height="105" src="images/21.gif" /></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+													<audio controls loop id="bgAudio_4" name="bgAudio_4" src="media/audio/firework.mp3">
+													<audio controls loop id="bgAudio_5" name="bgAudio_5" src="media/audio/bg.mp3">
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Sim! Iha kalan, lalehan nabilan ho fogete, no ema hotu haksolok! Ita mós vizita ita-nia viziñu sira atu kumprimenta malu no  han hahán ne’ebé sira oferese nu’udar sinál domin.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_22" name="div_22" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+													<audio controls loop id="bgAudio_6" name="bgAudio_6" src="media/audio/bg.mp3">
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ne'e rame loos! Maibé Mano, tanbasá mak Natál ne’e importante tebes?</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_23" name="div_23" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+													<div style="position:absolute; width: auto; left:134px; top:130px;"><img width="auto" height="50" src="images/23_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:457px; top:109px;"><img width="auto" height="134" src="images/23_a.gif" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Natál fó hanoin mai ita atu hatudu laran-di'ak, hadomi malu, no fahe buat ne'ebé ita iha.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_24" name="div_24" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+													<div style="position:absolute; width: auto; left:134px; top:130px;"><img width="auto" height="50" src="images/23_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:457px; top:109px;"><img width="auto" height="134" src="images/23_b.gif" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ne’e maka tempu atu haksolok no agradese ba ita-nia família, belun sira, no buat di'ak hotu iha ita-nia moris.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_25" name="div_25" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/25_bg.gif" width="auto" height="310"/></div>
+			                    					<div style="position:absolute; width: auto; right:10px; top:0px;"><img width="auto" height="310" src="images/25.gif" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Kosok-oan Jesús hanorin ita katak domin maka prezente di'ak liu hotu.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_26" name="div_26" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ha'u gosta tebes! Entaun Natál maka kona-ba Kosok-oan Jesús, domin, no hamutuk?</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_27" name="div_27" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Loos duni, Lia! No ida-ne'e mós kona-ba esperansa no ksolok.</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_28" name="div_28" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Tanba ne'e maka ita dehan “Ksolok Natál!" ba ema hotu-hotu—ne'e dalan ida atu habelar ksolok!</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_29" name="div_29" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ksolok Natál, Mano! Ha’u hakarak Natál lalais ona! Mai ita selebra ida-ne’e nu’udar selebrasaun ne'ebé di’ak liu.!</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_30" name="div_30" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/30.png" width="auto" height="310"/></div>
+													<div style="position: absolute; left: 187px; top:174px;"><img src="images/30_1.gif" width="auto" height="137"/></div>
+													<div style="position: absolute; left: 380px; top: 30px; font-size: 200%;  color: black;">Istória Natál nian</div>
+													<div style="position: absolute; width: 300px; height: 3px; left: 380px; top: 75px; background-color: #e97132;"></div>
+				                    				<div style="position: absolute; width: 44%; left: 380px; top:85px; font-size:140%; color:#000000; text-align: left;line-height: 1.2;">Ksolok Natál, Lia! Ne’e sei furak tebes tanba ita sei selebra ho domin, hanesan kosok-oan </br>Jesús hanorin mai ita.</div>
+				                    			</div>
+											</td>
+										</tr>											
+									</table>
+								</div>
+								<div id="div_31" name="div_31" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:absolute; width: 730px; height: 310px; overflow: hidden; cursor:default; display:block;">
+                   									<div class="clsSlideImg"><img src="images/10.gif" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_1" style="position: absolute; left: 0px; top:0px;"><img src="images/10_g.png" width="auto" height="310"/></div>
+                   									<div class="animate_flicker_2" style="position: absolute; left: 0px; top:0px;"><img src="images/10_h.png" width="auto" height="310"/></div>
+													<div style="position:absolute; width: auto; left:587px; top:146px;"><img width="auto" height="56" src="images/10_a_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:455px; top:130px;"><img width="auto" height="110" src="images/10_b_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:132px; top:183px;"><img width="auto" height="127" src="images/10_c_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:258px; top:234px;"><img width="auto" height="37" src="images/10_d_1.gif" /></div>
+													<div style="position:absolute; width: auto; left:336px; top:227px;"><img width="auto" height="56" src="images/10_e_2.png" /></div>
+													<div style="position:absolute; width: auto; left:399px; top:212px;"><img width="auto" height="64" src="images/10_f_2.png" /></div>
+												</div>
+												<div class="clsPageText_block" style="position:absolute; width: 100%; text-align: center; top: 0px;">Istória Natál nian</div>
+												<div class="clsLabelTextMobile_1">Ksolok Natál!</div>
+											</td>
+										</tr>											
+									</table>
+								</div>			
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; top:285px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img height="25" width="auto" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:document.location.href = '../activity_51_crocodile_story/activity.html';">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img height="25" width="auto" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img height="25" width="auto" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="top:210px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->						
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

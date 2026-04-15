@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsPic {
+				width: 300px;
+				height: auto;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			function shuffle(array) {
+				var i = array.length,
+					j = 0,
+					temp;
+
+				while (i--) {
+
+					j = Math.floor(Math.random() * (i+1));
+
+					// swap randomly chosen element with current element
+					temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
+
+				}
+
+				return array;
+			}
+			
+			var rRndNums = shuffle([1,2,3,4,5,6,7,8]);
+			var rArrIndex = 0;
+			var rCorrectCount = 0;
+		
+			function doShowColorHint(rObj) {
+				document.getElementById("divQuestionMark").style.display = "none";
+				document.getElementById("divTextHint").getElementsByTagName("img")[0].src = "images/text_image_" + rRndNums[rArrIndex] + ".png";
+				document.getElementById("divTextHint").style.display = "block";
+			}
+		
+			function doResetActivity() {
+				rRndNums = shuffle([1,2,3,4,5,6,7,8]);
+				rArrIndex = 0;
+				rCorrectCount = 0;
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divTextHint").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "none";
+				var rLen = document.getElementsByName("divRightSideColorImage").length;
+				for (var i=0; i<rLen; i++) {
+					document.getElementsByName("divRightSideColorImage")[i].style.display = "none";
+				}
+				document.getElementById("divReplayBtnPanel").style.display = "block";
+				document.getElementById("divQuestionMark").style.display = "block";
+			}
+			
+			function doCheckCorrect(rObj) {
+				var rTempSpl = rObj.id.split("_");
+				var rTempElm = null;
+				if (rTempSpl[1]==rRndNums[rArrIndex]) {
+					rTempElm = document.getElementById("divRightSideColorImage_" + rRndNums[rArrIndex]);
+					rTempElm.style.display = "block";
+					document.getElementById("divTextHint").style.display = "none";
+					document.getElementById("divQuestionMark").style.display = "block";
+					rArrIndex++;
+					rCorrectCount++;
+				}
+				
+				if (rCorrectCount>=8) {
+					document.getElementById("divPicDisable").style.display = "block";
+					document.getElementById("divReplayBtnPanel").style.display = "block";
+					document.getElementById("divQuestionMark").style.display = "none";
+					document.getElementById("divCorrectTextPanel").style.display = "block";
+				}
+			}
+		</script>		
+	</head>
+
+	<body bgcolor="#ffffff" style="zoom:57%">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:1280px; height:720px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:absolute; width:100%; height:auto; left:0px; top:5px; border:0px solid #333333;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #666666;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div id="divCorrectTextPanel" name="divCorrectTextPanel" style="position:relative; top:5px; display:none;">
+														<div style="position:relative; top:0px; font-size:400%; display:inline-block;">
+															Loos
+														</div>
+														<div style="width:5px; display:inline-block;"></div>
+														<div style="display:inline-block;">
+															<img width="auto" height="75" src="../../images/tick.png" />
+														</div>														
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>
+								<div style="position:absolute; width:100%; height:450px; left:0px; top:25px; text-align:center; border:0px solid blue;">
+									<div id="divLeftPanelMain" name="divLeftPanelMain" style="position:absolute; width:350px; height:100%; left:0px; top:0px; border:0px solid red; z-index:9999;">
+										<table width="100%" height="100%" align="center">
+											<tr>
+												<td width="50%" align="center" valign="top">
+													<div id="divLeftSideColorImage_1" name="divLeftSideColorImage" style="cursor:pointer;" onclick="javascript:doCheckCorrect(this);">
+														<img width="auto" height="100" src="images/left_image_1.png" />
+													</div>
+												</td>
+												<td width="50%" align="center" valign="top">
+													<div id="divLeftSideColorImage_5" name="divLeftSideColorImage" style="cursor:pointer;" onclick="javascript:doCheckCorrect(this);">
+														<img width="auto" height="100" src="images/left_image_5.png" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td width="50%" align="center" valign="top">
+													<div id="divLeftSideColorImage_2" name="divLeftSideColorImage" style="cursor:pointer;" onclick="javascript:doCheckCorrect(this);">
+														<img width="auto" height="100" src="images/left_image_2.png" />
+													</div>
+												</td>
+												<td width="50%" align="center" valign="top">
+													<div id="divLeftSideColorImage_6" name="divLeftSideColorImage" style="cursor:pointer;" onclick="javascript:doCheckCorrect(this);">
+														<img width="auto" height="100" src="images/left_image_6.png" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td width="50%" align="center" valign="top">
+													<div id="divLeftSideColorImage_3" name="divLeftSideColorImage" style="cursor:pointer;" onclick="javascript:doCheckCorrect(this);">
+														<img width="auto" height="100" src="images/left_image_3.png" />
+													</div>
+												</td>
+												<td width="50%" align="center" valign="top">
+													<div id="divLeftSideColorImage_7" name="divLeftSideColorImage" style="cursor:pointer;" onclick="javascript:doCheckCorrect(this);">
+														<img width="auto" height="100" src="images/left_image_7.png" />
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td width="50%" align="center" valign="top">
+													<div id="divLeftSideColorImage_4" name="divLeftSideColorImage" style="cursor:pointer;" onclick="javascript:doCheckCorrect(this);">
+														<img width="auto" height="100" src="images/left_image_4.png" />
+													</div>
+												</td>
+												<td width="50%" align="center" valign="top">
+													<div id="divLeftSideColorImage_8" name="divLeftSideColorImage" style="cursor:pointer;" onclick="javascript:doCheckCorrect(this);">
+														<img width="auto" height="100" src="images/left_image_8.png" />
+													</div>
+												</td>
+											</tr>											
+										</table>
+									</div>
+									
+									<div id="divCenterPanelMain" name="divCenterPanelMain" style="position:absolute; width:350px; height:100%; left:425px; top:0px; border:0px solid green; z-index:9999;">
+										<div style="position:absolute; right:10px; top:5px;">
+											<div id="divQuestionMark" name="divQuestionMark" style="cursor:pointer; display:none;" onclick="javascript:doShowColorHint(this);">
+												<img width="auto" height="120" src="../../images/question_mark_small.gif" />
+											</div>
+											<div id="divTextHint" name="divTextHint" style="display:block;">
+												<img width="auto" height="100" src="images/text_image_1.png" />
+											</div>											
+										</div>									
+										<div style="position:absolute; left:75px; top:100px;">
+											<img width="auto" height="320" src="images/human_being.png" />
+										</div>									
+									</div>
+									<div id="divRightPanelMain" name="divRightPanelMain" style="position:absolute; width:350px; height:100%; left:700px; top:0px; border:0px solid green;">
+										<div id="divRightSideColorImageBg" name="divRightSideColorImageBg" style="position:absolute; left:75px; top:5px;">
+											<img width="auto" height="420" src="images/right_image_bg.png" />
+										</div>
+										<div id="divRightSideColorImage_1" name="divRightSideColorImage" style="position:absolute; left:75px; top:5px; display:none;">
+											<img width="auto" height="420" src="images/right_image_1.png" />
+										</div>
+										<div id="divRightSideColorImage_2" name="divRightSideColorImage" style="position:absolute; left:75px; top:5px; display:none;">
+											<img width="auto" height="420" src="images/right_image_2.png" />
+										</div>
+										<div id="divRightSideColorImage_3" name="divRightSideColorImage" style="position:absolute; left:75px; top:5px; display:none;">
+											<img width="auto" height="420" src="images/right_image_3.png" />
+										</div>
+										<div id="divRightSideColorImage_4" name="divRightSideColorImage" style="position:absolute; left:75px; top:5px; display:none;">
+											<img width="auto" height="420" src="images/right_image_4.png" />
+										</div>
+										<div id="divRightSideColorImage_5" name="divRightSideColorImage" style="position:absolute; left:75px; top:5px; display:none;">
+											<img width="auto" height="420" src="images/right_image_5.png" />
+										</div>
+										<div id="divRightSideColorImage_6" name="divRightSideColorImage" style="position:absolute; left:75px; top:5px; display:none;">
+											<img width="auto" height="420" src="images/right_image_6.png" />
+										</div>
+										<div id="divRightSideColorImage_7" name="divRightSideColorImage" style="position:absolute; left:75px; top:5px; display:none;">
+											<img width="auto" height="420" src="images/right_image_7.png" />
+										</div>
+										<div id="divRightSideColorImage_8" name="divRightSideColorImage" style="position:absolute; left:75px; top:5px; display:none;">
+											<img width="auto" height="420" src="images/right_image_8.png" />
+										</div>										
+									</div>									
+								</div>
+								<div id="divPicDisable" name="divPicDisable" style="position:absolute; width:100%; height:450px; left:0px; top:0px; border:0px solid red; display:none; z-index:9999;"></div>
+								<div id="divReplayBtnPanel" name="divReplayBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; top:410px; border:0px solid #333333; cursor:default; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #666666;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="position:relative; top:50px; border:0px solid red; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+														<img width="auto" height="75" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>								
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:45px; top:10px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="auto" height="75" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="position:relative; top:190px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="auto" height="75" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="position:relative; top:190px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="auto" height="75" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="position:relative; top:240px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="auto" height="135" src="../../images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>

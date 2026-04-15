@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSlideImgTop {
+				position: absolute; 
+				width: 100%; 
+				text-align: center; 
+				top: 10px;
+				border: 0px solid red;
+			}
+			.clsSubTitle_2_Bottom {
+			    position: absolute;
+			    width: 80%;
+			    top: 202px;
+			    left: 10%;
+			    font-size:140%;
+			    line-height: 1.3; 
+			    border:0px solid blue;
+			}
+			#divBtnVidReplay {
+
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11"];
+			var rListIndex = 0;
+			
+			var rImgHiLightBlinkInterval = 0;
+			var rImgHiLightBlinkCount = 0;			
+			
+			function doNavigateAct(rAction) {
+				
+				document.getElementById("vidAni_1").pause();
+				document.getElementById("vidAni_1").currentTime = 0;
+				document.getElementById("vidAni_2").pause();
+				document.getElementById("vidAni_2").currentTime = 0;
+				document.getElementById("vidAni_3").pause();
+				document.getElementById("vidAni_3").currentTime = 0;
+
+				document.getElementById("vidAni_4").pause();
+				document.getElementById("vidAni_4").currentTime = 0;
+				document.getElementById("vidAni_5").pause();
+				document.getElementById("vidAni_5").currentTime = 0;
+				document.getElementById("vidAni_6").pause();
+				document.getElementById("vidAni_6").currentTime = 0;
+				document.getElementById("vidAni_7").pause();
+				document.getElementById("vidAni_7").currentTime = 0;
+				document.getElementById("vidAni_8").pause();
+				document.getElementById("vidAni_8").currentTime = 0;
+				document.getElementById("vidAni_9").pause();
+				document.getElementById("vidAni_9").currentTime = 0;
+
+
+
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				
+				if (rListIndex==1) {
+					document.getElementById("vidAni_1").currentTime = 0;
+					document.getElementById("vidAni_1").play();
+				}
+				if (rListIndex==2) {
+					document.getElementById("vidAni_2").currentTime = 0;
+					document.getElementById("vidAni_2").play();
+				}
+				if (rListIndex==3) {
+					document.getElementById("vidAni_3").currentTime = 0;
+					document.getElementById("vidAni_3").play();
+				}
+
+				if (rListIndex==4) {
+					document.getElementById("vidAni_4").currentTime = 0;
+					document.getElementById("vidAni_4").play();
+				}
+				if (rListIndex==5) {
+					document.getElementById("vidAni_5").currentTime = 0;
+					document.getElementById("vidAni_5").play();
+				}
+				if (rListIndex==6) {
+					document.getElementById("vidAni_6").currentTime = 0;
+					document.getElementById("vidAni_6").play();
+				}
+				if (rListIndex==7) {
+					document.getElementById("vidAni_7").currentTime = 0;
+					document.getElementById("vidAni_7").play();
+				}
+				if (rListIndex==8) {
+					document.getElementById("vidAni_8").currentTime = 0;
+					document.getElementById("vidAni_8").play();
+				}
+				if (rListIndex==9) {
+					document.getElementById("vidAni_9").currentTime = 0;
+					document.getElementById("vidAni_9").play();
+				}
+			}
+
+			function doResetActivity() {
+			
+				document.getElementById("vidAni_1").pause();
+				document.getElementById("vidAni_1").currentTime = 0;
+				document.getElementById("vidAni_2").pause();
+				document.getElementById("vidAni_2").currentTime = 0;
+				document.getElementById("vidAni_3").pause();
+				document.getElementById("vidAni_3").currentTime = 0;
+
+				document.getElementById("vidAni_4").pause();
+				document.getElementById("vidAni_4").currentTime = 0;
+				document.getElementById("vidAni_5").pause();
+				document.getElementById("vidAni_5").currentTime = 0;
+				document.getElementById("vidAni_6").pause();
+				document.getElementById("vidAni_6").currentTime = 0;
+				document.getElementById("vidAni_7").pause();
+				document.getElementById("vidAni_7").currentTime = 0;
+				document.getElementById("vidAni_8").pause();
+				document.getElementById("vidAni_8").currentTime = 0;
+				document.getElementById("vidAni_9").pause();
+				document.getElementById("vidAni_9").currentTime = 0;
+				
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+			
+			function doReplayVideo_1(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_1").style.display = "none";
+					document.getElementById("vidAni_1").currentTime = 0;
+					document.getElementById("vidAni_1").play();
+				}
+			}
+			function doReplayVideo_2(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_2").style.display = "none";
+					document.getElementById("vidAni_2").currentTime = 0;
+					document.getElementById("vidAni_2").play();
+				}
+			}
+			function doReplayVideo_3(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_3").style.display = "none";
+					document.getElementById("vidAni_3").currentTime = 0;
+					document.getElementById("vidAni_3").play();
+				}
+			}
+			function doReplayVideo_4(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_4").style.display = "none";
+					document.getElementById("vidAni_4").currentTime = 0;
+					document.getElementById("vidAni_4").play();
+				}
+			}
+			function doReplayVideo_5(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_5").style.display = "none";
+					document.getElementById("vidAni_5").currentTime = 0;
+					document.getElementById("vidAni_5").play();
+				}
+			}
+			function doReplayVideo_6(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_6").style.display = "none";
+					document.getElementById("vidAni_6").currentTime = 0;
+					document.getElementById("vidAni_6").play();
+				}
+			}
+			function doReplayVideo_7(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_7").style.display = "none";
+					document.getElementById("vidAni_7").currentTime = 0;
+					document.getElementById("vidAni_7").play();
+				}
+			}
+			function doReplayVideo_8(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_8").style.display = "none";
+					document.getElementById("vidAni_8").currentTime = 0;
+					document.getElementById("vidAni_8").play();
+				}
+			}
+			function doReplayVideo_9(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divBtnVidReplayMain_9").style.display = "none";
+					document.getElementById("vidAni_9").currentTime = 0;
+					document.getElementById("vidAni_9").play();
+				}
+			}
+
+
+			function doEndVideo_1(rObj) {
+				document.getElementById("divBtnVidReplayMain_1").style.display = "block";
+			}
+			function doEndVideo_2(rObj) {
+				document.getElementById("divBtnVidReplayMain_2").style.display = "block";
+			}
+			function doEndVideo_3(rObj) {
+				document.getElementById("divBtnVidReplayMain_3").style.display = "block";
+			}
+			function doEndVideo_4(rObj) {
+				document.getElementById("divBtnVidReplayMain_4").style.display = "block";
+			}
+			function doEndVideo_5(rObj) {
+				document.getElementById("divBtnVidReplayMain_5").style.display = "block";
+			}
+			function doEndVideo_6(rObj) {
+				document.getElementById("divBtnVidReplayMain_6").style.display = "block";
+			}
+			function doEndVideo_7(rObj) {
+				document.getElementById("divBtnVidReplayMain_7").style.display = "block";
+			}
+			function doEndVideo_8(rObj) {
+				document.getElementById("divBtnVidReplayMain_8").style.display = "block";
+			}
+			function doEndVideo_9(rObj) {
+				document.getElementById("divBtnVidReplayMain_9").style.display = "block";
+			}
+
+
+
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+
+								<div id="div_1" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div><img width="auto" height="310" src="images/1.png" /></div>	
+									<div class="clsMainTitleWhite" style="position: absolute; width: 100%; top: 50px; text-align: center;">Hakerek</div>
+								</div>
+								<div id="div_2" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+										<video id="vidAni_1" name="vidAni_1" style="position: absolute; width: 153px; height: auto; left: 279px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/a.mp4" onended="javascript:doEndVideo_1(this);">
+									</div>
+									<div id="divBtnVidReplayMain_1" name="divBtnVidReplayMain_1" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_1(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>										
+									</div>								
+								</div>
+								<div id="div_3" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+										<video id="vidAni_2" name="vidAni_2" style="position: absolute; width: 110px; height: auto; left: 305px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/h.mp4" onended="javascript:doEndVideo_2(this);">
+									</div>
+									<div id="divBtnVidReplayMain_2" name="divBtnVidReplayMain_2" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_2(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>										
+									</div>									
+								</div>
+								<div id="div_4" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+										<video id="vidAni_3" name="vidAni_3" style="position: absolute; width: 110px; height: auto; left: 305px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/i.mp4" onended="javascript:doEndVideo_3(this);">
+									</div>
+									<div id="divBtnVidReplayMain_3" name="divBtnVidReplayMain_3" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_3(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>										
+									</div>
+								</div>
+								<div id="div_5" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; text-align: center; border:1px solid green; display:block;">
+										<video id="vidAni_4" name="vidAni_4" style="position: absolute; width: 143px; height: auto; left: 285px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/n.mp4" onended="javascript:doEndVideo_4(this);">
+									</div>
+									<div id="divBtnVidReplayMain_4" name="divBtnVidReplayMain_4" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_4(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>											
+									</div>										
+								</div>								
+								<div id="div_6" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; text-align: center; border:1px solid green; display:block;">
+										<video id="vidAni_5" name="vidAni_5" style="position: absolute; width: 138px; height: auto; left: 295px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/e.mp4" onended="javascript:doEndVideo_5(this);">
+									</div>
+									<div id="divBtnVidReplayMain_5" name="divBtnVidReplayMain_5" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_5(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>										
+									</div>		
+								</div>
+								<div id="div_7" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; text-align: center; border:1px solid green; display:block;">
+										<video id="vidAni_6" name="vidAni_6" style="position: absolute; width: 122px; height: auto; left: 298px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/k.mp4" onended="javascript:doEndVideo_6(this);">
+									</div>
+									<div id="divBtnVidReplayMain_6" name="divBtnVidReplayMain_6" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_6(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>										
+									</div>		
+								</div>
+								<div id="div_8" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; text-align: center; border:1px solid green; display:block;">
+										<video id="vidAni_7" name="vidAni_7" style="position: absolute; width: 123px; height: auto; left: 302px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/t.mp4" onended="javascript:doEndVideo_7(this);">
+									</div>
+									<div id="divBtnVidReplayMain_7" name="divBtnVidReplayMain_7" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_7(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>											
+									</div>		
+								</div>
+								<div id="div_9" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; text-align: center; border:1px solid green; display:block;">
+										<video id="vidAni_8" name="vidAni_8" style="position: absolute; width: 140px; height: auto; left: 295px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/u.mp4" onended="javascript:doEndVideo_8(this);">
+									</div>
+									<div id="divBtnVidReplayMain_8" name="divBtnVidReplayMain_8" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_8(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>										
+									</div>		
+								</div>
+								<div id="div_10" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divVidAni" name="divVidAni" style="position:absolute; text-align: center; border:1px solid green; display:block;">
+										<video id="vidAni_9" name="vidAni_9" style="position: absolute; width: 170px; height: auto; left: 279px; top: 17px;" autoplay playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/m.mp4" onended="javascript:doEndVideo_9(this);">
+									</div>
+									<div id="divBtnVidReplayMain_9" name="divBtnVidReplayMain_9" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+										<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:50px; height:50px; left:53%; top:120px; margin-left:-50px; border:0px solid green; cursor:pointer; display:block;" onclick="javascript:doReplayVideo_9(this);">
+											<img width="auto" height="100%" src="../../images/replay.png" />
+										</div>										
+									</div>		
+								</div>	
+								<div id="div_11" name="divMyselfLang" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div><img width="auto" height="310" src="images/1.png" /></div>	
+									<div class="clsMainTitleWhite" style="position: absolute; width: 100%; top: 50px; text-align: center;">Hakerek</div>
+								</div>
+								<!--Slide End-->
+								
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			function doHideAllButton() {
+				document.getElementById("divBtnVidPlay").style.display = "none";
+				document.getElementById("divBtnVidPause").style.display = "none";
+				document.getElementById("divBtnVidReplay").style.display = "none";			
+			}
+			function doPlayVideo() {
+				doHideAllButton();
+				document.getElementById("divBtnVidPause").style.display = "block";
+				document.getElementById("vidAni").play();
+			}
+			function doPauseVideo() {
+				doHideAllButton();
+				document.getElementById("divBtnVidPlay").style.display = "block";
+				document.getElementById("vidAni").pause();
+			}
+			function doReplayVideo() {
+				doHideAllButton();
+				document.getElementById("divBtnVidPause").style.display = "block";
+				document.getElementById("vidAni").currentTime = 0;
+				document.getElementById("vidAni").play();
+			}
+			function doEndVideo() {
+				doHideAllButton();
+				document.getElementById("divBtnVidReplay").style.display = "block";
+			}
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div id="divVidAni" name="divVidAni" style="position:absolute;width: 730px; height:310px; overflow: hidden; left:0px; top:0px; border:0px solid red; display:block;">
+									<video id="vidAni" name="vidAni" style="position: absolute; width: 100%; height:auto; left: 0px;top:-60px;" autoplay playsinline contorls src="media/video/video_1.mp4" onended="javascript:doEndVideo(this);">
+								</div>
+								<div id="divBtnVidControls" name="divBtnVidControls" style="position:absolute; width:100%; height:100%; left:0px; top:100px; border:0px solid green; display:block;">
+									<div id="divBtnVidPlay" name="divBtnVidPlay" style="position:absolute; width:200px; height:200px; left:50%; top:0px; margin-left:-100px; border:0px solid green; cursor:pointer; display:none;" onclick="javascript:doPlayVideo();">
+										<i class="fa fa-play" style="font-size:350%; color:#ffffff;" aria-hidden="true"></i>
+									</div>
+									<div id="divBtnVidPause" name="divBtnVidPause" style="position:absolute; width:200px; height:200px; left:50%; top:0px; margin-left:-100px; border:0px solid green; cursor:pointer; display:none;" onclick="javascript:doPauseVideo();">
+										<i class="fa fa-pause" style="font-size:350%; color:#ffffff;" aria-hidden="true"></i>
+									</div>
+									<div id="divBtnVidReplay" name="divBtnVidReplay" style="position:absolute; width:200px; height:200px; left:50%; top:0px; margin-left:-100px; border:0px solid green; cursor:pointer; display:none;" onclick="javascript:doReplayVideo();">
+										<i class="fa fa-reply" style="font-size:350%; color:#ffffff;" aria-hidden="true"></i>
+									</div>									
+								</div>								
+
+								<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+									<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+										<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+									</div>							
+									<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+										<img width="100%" height="100%" src="../../images/back_arrow.png" />
+									</div>
+									<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+										<img width="100%" height="100%" src="../../images/next_arrow.png" />
+									</div>					
+									<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+										<img width="100%" height="100%" src="../../images/home.png" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			doHideAllButton();
+			document.getElementById("divBtnVidPause").style.display = "block";			
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

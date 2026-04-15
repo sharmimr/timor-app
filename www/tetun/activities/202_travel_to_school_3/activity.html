@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Home</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSlideImgTop {
+				position: absolute; 
+				width: 100%; 
+				text-align: center; 
+				top: 10px;
+				border: 0px solid red;
+			}
+			.clsSubTitle_2_Bottom {
+			    position: absolute;
+			    width: 80%;
+			    bottom: 52px;
+			    left: 10%;
+			    font-size:140%;
+			    line-height: 1.3; 
+			    border:0px solid blue;
+			}
+			.clsSubTitle_2_Top {
+			    position: absolute;
+			    width: 80%;
+			    top: 20px;
+			    left: 10%;
+			    font-size:140%;
+			    line-height: 1.3; 
+			    border:0px solid blue;
+			}
+			.clsSubTitle_Mobile {
+				position:absolute; 
+				width: 90%;
+				left: 5%; 
+				text-align: center; 
+				line-height: 1.3; 
+				font-size:160%; 
+				color: #000000;
+				border: 0px solid red;
+			}
+/*-------------------------------------------*/
+
+			.clsLabelMobileTextCenter {
+			    font-size:140%;
+			    color:#000000;
+				line-height: 1.3;
+			}
+
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doNavigate(rNum) {
+				switch (rNum) {
+					case 1:
+						document.location.href = "../202_travel_to_school_1/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=0";
+						break;				
+					case 2:
+						document.location.href = "../202_travel_to_school_2/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=0";
+						break;
+					case 3:
+						document.location.href = "../202_travel_to_school_3/activity.html?MainActivityList=" + rStrMainActivityList + "&SlineNum=0";
+						break;
+					default:
+						break;
+				}
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--Slides-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide"> 
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/01.png" /></div>
+									</div>
+									<div style="position: absolute; left: 278px; top:132px;"><img width="auto" height="152" src="images/01.gif" /></div>
+                    				<div style="position: absolute; top: 70px; left: 12%; font-size: 200%; font-weight: bold; color: white; text-shadow: -2px 2px 4px #000000;">
+										Da la eskola soko
+									</div>
+								</div>
+								<div id="div_2" name="divMyselfLang" class="clsSlide">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/02.png" /></div>
+									</div>
+									<div style="position: absolute; left: 274px; top:0px;"><img width="auto" height="310" src="images/02.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="top: 25px; color: white; text-shadow: -2px 2px 4px #000000;">
+										Arana nour hela koro pe eskola
+									</div>
+								</div>
+								<div id="div_3" name="divMyselfLang" class="clsSlide">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/03.png" /></div>
+									</div>
+									<div style="position: absolute; left: 88px; top:41px;"><img width="auto" height="183" src="images/03.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 60%; left: 30%; top: 50px; color: white; text-shadow: -2px 2px 4px #000000;">
+										Ai-er anananor tenke ble sedu odi la eskola.
+									</div>
+								</div>
+								<div id="div_4" name="divMyselfLang" class="clsSlide">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/03.png" /></div>
+									</div>
+									<div style="position: absolute; left: 88px; top:41px;"><img width="auto" height="183" src="images/03.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 60%; left: 30%; top: 50px; color: white; text-shadow: -2px 2px 4px #000000;">
+										 Da soko pleu ro rata eskola sempre tarde.
+									</div>
+								</div>
+								<div id="div_5" name="divMyselfLang" class="clsSlide">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/05.png" /></div>
+									</div>
+									<div style="position: absolute; left: 347px; top:113px;"><img width="auto" height="109" src="images/05.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="top: 15px; color: white; text-shadow: -2px 2px 4px #000000;">
+										Anana seri la los mikrolet par lebo rata Biu eskola, mas le da ro sinti meteia pita da klao
+									</div>
+								</div>
+								<div id="div_6" name="divMyselfLang" class="clsSlide" style="display: block">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/01.png" /></div>
+									</div>
+									<div style="position: absolute; left: 278px; top:132px;"><img width="auto" height="152" src="images/01.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="top: 65px; color: white; text-shadow: -2px 2px 4px #000000;">
+										Anana seri sae bisikleta la eskola.
+									</div>
+								</div>
+								<div id="div_7" name="divMyselfLang" class="clsSlide">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/01.png" /></div>
+									</div>
+									<div style="position: absolute; left: 278px; top:132px;"><img width="auto" height="152" src="images/01.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="top: 65px; color: white; text-shadow: -2px 2px 4px #000000;">
+										Los bisikleta mos meteia dar da.
+									</div>
+								</div>
+								<div id="div_8" name="divMyselfLang" class="clsSlide" style="display: block">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/08.png" /></div>
+									</div>
+									<div style="position: absolute; left: 102px; top:87px;"><img width="auto" height="98" src="images/08.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 96%; left: 2%; top: 10px; color: block;">
+										Dia anana iso ka ru ke sorte bloi seri sae taksi I seri los anguna.
+									</div>
+								</div>
+								<div id="div_9" name="divMyselfLang" class="clsSlide">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/08.png" /></div>
+									</div>
+									<div style="position: absolute; left: 102px; top:87px;"><img width="auto" height="98" src="images/08.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 96%; left: 2%; top: 10px; color: block;">
+										Meges seri sae taksi seri anguna ro sente meteia dara da.
+									</div>
+								</div>
+								<div id="div_10" name="divMyselfLang" class="clsSlide">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/10.png" /></div>
+									</div>
+									<div style="position: absolute; left: 242px; top:40px;"><img width="auto" height="268" src="images/10.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 96%; left: 2%; top: 10px; color: white; text-shadow: -2px 2px 4px #000000;">
+										Anana seri mane ke sae kuda la eskola sorte ae desi.
+									</div>
+								</div>
+								<div id="div_11" name="divMyselfLang" class="clsSlide" style="display: block">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/10.png" /></div>
+									</div>
+									<div style="position: absolute; left: 242px; top:40px;"><img width="auto" height="268" src="images/10.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 96%; left: 2%; top: 10px; color: white; text-shadow: -2px 2px 4px #000000;">
+										Pita le kuda teten ro te sinte meteia.
+									</div>
+								</div>
+								<div id="div_12" name="divMyselfLang" class="clsSlide">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333;">
+										<div style="position: absolute; left: 0px; top: 0px;"><img width="auto" height="310" src="images/12.png" /></div>
+									</div>
+									<div style="position: absolute; left: 120px; top:90px;"><img width="auto" height="174" src="images/12.gif" /></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 80%; left: 10%; top: 10px; color: white; text-shadow: -2px 2px 4px #000000;">
+										
+									</div>
+								</div>
+								<div id="div_13" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImg"><img src="images/13.gif" width="auto" height="310"/></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 96%; left: 2%; top: 10px; color: white; text-shadow: -2px 2px 4px #000000;">
+										Tempu ura, aipil ura ae, rae, rae dokoa los sabaite,anana iso te sinte meteia pita eskolan tailu.
+									</div>
+								</div>
+
+								<div id="divNumTopPanel" name="divNumTopPanel" style="position:absolute; width:auto; height:auto; left:10px; bottom:10px; border:0px solid red; cursor:pointer; display:inline-block; z-index:10000;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="top">
+												<div style="cursor:pointer; display:block;" onclick="javascript:doNavigate(1);">
+													<img width="auto" height="25" src="images/number_1.png" />
+												</div>
+											</td>
+											<td>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+											</td>
+											<td align="center" valign="top">
+												<div style="cursor:pointer; display:block;" onclick="javascript:doNavigate(2);">
+													<img width="auto" height="25" src="images/number_2.png" />
+												</div>
+											</td>
+											<td>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+											</td>
+											<td align="center" valign="top">
+												<div style="cursor:pointer; display:block;" onclick="javascript:doNavigate(3);">
+													<img width="auto" height="25" src="images/number_3.png" />
+												</div>
+											</td>
+										</tr>
+									</table>									
+								</div>
+
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>

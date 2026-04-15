@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+		<script src="js/jquery-3.6.0.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		
+		<script language="javascript">
+			var rArrActList = [
+				{
+					Period:"1", Week:"4", Day:"2", Date:"02-03", ActList:[{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/activity_142/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"4", Day:"3", Date:"02-04", ActList:[{Activity:"activities/103_fingers_count_to_five/activity.html", Group:"A"},{Activity:"activities/120_numbers_one_to_five/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"4", Day:"4", Date:"02-05", ActList:[{Activity:"activities/activity_71/tetun.html", Group:"A"},{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/activity_33_3/activity.html", Group:"B"},{Activity:"activities/activity_33_5/activity.html", Group:"B"},{Activity:"activities/activity_175/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"4", Day:"5", Date:"02-06", ActList:[{Activity:"activities/activity_143/activity.html", Group:"A,B"},{Activity:"activities/activity_59/activity.html", Group:"A,B"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"5", Day:"1", Date:"02-09", ActList:[{Activity:"activities/121_puzzle_one_to_five/activity.html", Group:"A"},{Activity:"activities/activity_149/activity.html", Group:"A,B"},{Activity:"activities/activity_143/activity.html", Group:"A,B"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"5", Day:"2", Date:"02-10", ActList:[{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/activity_142/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"5", Day:"3", Date:"02-11", ActList:[{Activity:"activities/103_fingers_count_to_five/activity.html", Group:"A"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"5", Day:"4", Date:"02-12", ActList:[{Activity:"activities/activity_71/tetun.html", Group:"A"},{Activity:"activities/activity_146/activity.html", Group:"A"},{Activity:"activities/myself_language/activity_x/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"5", Day:"5", Date:"02-13", ActList:[{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/myself_language/consolidated_week5/activity.html", Group:"A,B"},{Activity:"activities/activity_59/activity.html", Group:"A,B"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"},{Activity:"activities/activity_142/activity.html", Group:"B"},{Activity:"activities/myself_language/activity_z/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"6", Day:"1", Date:"02-16", ActList:[{Activity:"activities/myself_language/activity_c/activity.html", Group:"A"},{Activity:"activities/activity_149/activity.html", Group:"A,B"},{Activity:"activities/myself_language/activity_o/activity.html", Group:"A"},{Activity:"activities/myself_language/activity_m/activity.html", Group:"A"},{Activity:"activities/myself_language/activity_e/activity.html", Group:"A"},{Activity:"activities/121_puzzle_one_to_five/activity.html", Group:"A"},{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"6", Day:"2", Date:"02-17", ActList:[{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/activity_142/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"6", Day:"3", Date:"02-18", ActList:[{Activity:"activities/activity_54/activity.html", Group:"A"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"6", Day:"4", Date:"02-19", ActList:[{Activity:"activities/activity_146/activity.html", Group:"A"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"},{Activity:"activities/activity_86/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"6", Day:"5", Date:"02-20", ActList:[{Activity:"activities/activity_54/activity.html", Group:"A"},{Activity:"activities/myself_language/consolidated_week1/activity.html", Group:"A,B"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"},{Activity:"activities/activity_143/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"7", Day:"1", Date:"02-23", ActList:[{Activity:"activities/121_puzzle_one_to_five/activity.html", Group:"A"},{Activity:"activities/activity_149/activity.html", Group:"A,B"},{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"7", Day:"2", Date:"02-24", ActList:[{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/activity_142/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"7", Day:"3", Date:"02-25", ActList:[{Activity:"activities/activity_34a/activity.html", Group:"A"},{Activity:"activities/activity_35a/activity.html", Group:"A"}]
+				},	
+				{
+					Period:"1", Week:"7", Day:"4", Date:"02-26", ActList:[{Activity:"activities/activity_37a/activity.html", Group:"A"},{Activity:"activities/103_fingers_count_to_five/activity.html", Group:"B"}]
+				},	
+				{
+					Period:"1", Week:"7", Day:"5", Date:"02-27", ActList:[{Activity:"activities/120_numbers_one_to_five/activity.html", Group:"A"},{Activity:"activities/activity_143/activity.html", Group:"A,B"},{Activity:"activities/myself_language/consolidated_week2/activity.html", Group:"A,B"},{Activity:"activities/activity_54/activity.html", Group:"A"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"8", Day:"1", Date:"03-02", ActList:[{Activity:"activities/activity_34b/activity.html", Group:"A"},{Activity:"activities/activity_149/activity.html", Group:"A"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"8", Day:"3", Date:"03-04", ActList:[{Activity:"activities/activity_34a/activity.html", Group:"A,B"},{Activity:"activities/myself_language/activity_x/activity.html", Group:"A"},{Activity:"activities/activity_48/activity.html", Group:"A"},{Activity:"activities/activity_35b/activity.html", Group:"B"},{Activity:"activities/activities/activity_149/activity.html",Group:"B"}]
+				},
+				{
+					Period:"1", Week:"8", Day:"4", Date:"03-05", ActList:[{Activity:"activities/activity_174/activity.html", Group:"A"},{Activity:"activities/activity_67/activity.html", Group:"A"},{Activity:"activities/activity_42_i_am_special/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"8", Day:"5", Date:"03-06", ActList:[{Activity:"activities/myself_language/consolidated_week3/activity.html", Group:"A,B"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"},{Activity:"activities/activity_143/activity.html", Group:"B"},{Activity:"activities/activity_48/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"9", Day:"1", Date:"03-09", ActList:[{Activity:"activities/activity_149/activity.html", Group:"A,B"},{Activity:"activities/activity_86/activity.html", Group:"A"},{Activity:"activities/activity_157/activity.html", Group:"A"},{Activity:"activities/120_numbers_one_to_five/activity.html", Group:"A"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"9", Day:"2", Date:"03-10", ActList:[{Activity:"activities/activity_141/activity.html", Group:"A"},{Activity:"activities/activity_71/tetun.html", Group:"A"},{Activity:"activities/activity_75/activity.html", Group:"A"},{Activity:"activities/activity_35a/activity.html", Group:"A"},{Activity:"activities/activity_48/activity.html", Group:"A"},{Activity:"activities/activity_142/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"9", Day:"3", Date:"03-11", ActList:[{Activity:"activities/103_fingers_count_to_five/activity.html", Group:"A"},{Activity:"activities/activity_48/activity.html", Group:"A"},{Activity:"activities/123_4_butterfly_puzzle_words/activity.html", Group:"A"},{Activity:"activities/activity_42_i_am_special/activity.html", Group:"A,B"},{Activity:"activities/activity_53/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"9", Day:"4", Date:"03-12", ActList:[{Activity:"activities/activity_174/activity.html", Group:"A"},{Activity:"activities/activity_67/activity.html", Group:"A"},{Activity:"activities/activity_72/tetun.html", Group:"A"},{Activity:"activities/activity_42_i_am_special/activity.html", Group:"B"},{Activity:"activities/activity_149/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"9", Day:"5", Date:"03-13", ActList:[{Activity:"activities/133_shape_match/activity.html", Group:"A"},{Activity:"activities/activity_57/activity.html", Group:"A"},{Activity:"activities/activity_83/activity.html", Group:"A"},{Activity:"activities/132_numbers_one_to_20/activity.html", Group:"B"},{Activity:"activities/activity_143/activity.html", Group:"B"},{Activity:"activities/myself_language/consolidated_week2/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"10", Day:"1", Date:"03-16", ActList:[{Activity:"activities/activity_155/activity.html", Group:"A"},{Activity:"activities/activity_149/activity.html", Group:"A,B"},{Activity:"activities/activity_86/activity.html", Group:"A"},{Activity:"activities/103_fingers_count_to_five/activity.html", Group:"A"},{Activity:"activities/101_5_pig_puzzle/activity.html", Group:"A"},{Activity:"activities/120_numbers_one_to_five/activity.html", Group:"A"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"10", Day:"2", Date:"03-17", ActList:[{Activity:"activities/activity_141/activity.html", Group:"A"},{Activity:"activities/activity_82/activity.html", Group:"A"},{Activity:"activities/activity_167/activity.html", Group:"A"},{Activity:"activities/activity_142/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"10", Day:"3", Date:"03-18", ActList:[{Activity:"activities/activity_154/activity.html", Group:"A"},{Activity:"activities/activity_34b/activity.html", Group:"A,B"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"B"},{Activity:"activities/activity_35b/activity.html", Group:"B"}]
+				},
+				{
+					Period:"1", Week:"10", Day:"4", Date:"03-19", ActList:[{Activity:"activities/myself_language/activity_m/activity.html", Group:"A"},{Activity:"activities/104_dog_spell_puzzle/activity.html", Group:"A"},{Activity:"activities/myself_language/activity_z/activity.html", Group:"A,B"},{Activity:"activities/myself_language/consolidated_week5/activity.html", Group:"A,B"},{Activity:"activities/activity_48/activity.html", Group:"B"},{Activity:"activities/activity_143/activity.html", Group:"B"}]
+				},
+				{
+					Period:"2", Week:"1", Day:"1", Date:"04-27", ActList:[{Activity:"activities/myself_language/activity_b/activity.html", Group:"A,B"},{Activity:"activities/activity_149/activity.html", Group:"A,B"},{Activity:"activities/120_numbers_one_to_five/activity.html", Group:"A"},{Activity:"activities/131_numbers_one_to_10/activity.html", Group:"A,B"}]
+				},
+				{
+					Period:"2", Week:"1", Day:"2", Date:"04-28", ActList:[{Activity:"activities/activity_143/activity.html", Group:"A"},{Activity:"activities/myself_language/activity_i/activity.html", Group:"B"},{Activity:"activities/myself_language/activity_b/activity.html", Group:"B"}]
+				},
+		
+			];
+			
+			var rArrList = ["Loro-naroman", "Bobar", "Kalohan taka rai", "Udan", "Kalohan", "Udan anin"];
+			
+			var rSelectedDay = "";
+			var rSelectedMonth = "";
+			var rSelectedDayNumber = "";
+			var rSelectedMonthNumber = "";
+			
+			rSelectedDay = doGetParameterByName('Day');
+			rSelectedMonth = doGetParameterByName('Month');
+			rSelectedDayNumber = doGetParameterByName('DayNumber');
+			rSelectedMonthNumber = doGetParameterByName('MonthNumber');			
+
+			var rToday = new Date();
+			var rDay = rToday.getDay();
+			var rMonth = rToday.getMonth();
+			var rDate = rToday.getDate();
+			var rFullYear = rToday.getFullYear();
+			
+			var rCurrentDay = rDay.toString();
+			var rCurrentMonth = (rMonth + 1).toString();
+			var rCurrentDate = rDate.toString();
+			var rCurrentFullYear = rFullYear.toString();
+
+			function doGetParameterByName(name, url = window.location.href) {
+				name = name.replace(/[\[\]]/g, '\\$&');
+				var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+					results = regex.exec(url);
+				if (!results) return null;
+				if (!results[2]) return '';
+				return decodeURIComponent(results[2].replace(/\+/g, ' '));
+			}			
+			
+			function doUpdateBottomCenterButtonClick(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divThermoMeter").style.display = "none";
+					var rTempInt = Number(rObj.id.split("_")[1]);
+					var rExistingText = document.getElementById("divTextAndImageCombination").innerHTML;
+					rExistingText = "";
+					var rNewText = rArrList[rTempInt-1];
+					document.getElementById("divTextAndImageCombination").innerHTML = rExistingText + ' ' + '<span style="color:#E26316;">' + rNewText + '</span>';
+					document.getElementById("divBtnPanel").style.display = "none";
+					document.getElementById("divTextAndImageOnlyOne").innerHTML = document.getElementById("divTextAndImageOnlyOne").innerHTML;
+
+					document.getElementById("vidAni").setAttribute("src", "media/video/weather/weather_" + rTempInt + ".mp4");
+					document.getElementById("vidAni").currentTime = 0;
+					document.getElementById("vidAni").play();
+					document.getElementById("divVidAni").style.display = "block";
+
+					window.setTimeout(
+						function() {
+							var rTempImgSrc = rObj.getElementsByTagName("img")[0].src;
+							document.getElementById("divTextAndImageOnlyOne").innerHTML = document.getElementById("divTextAndImageOnlyOne").innerHTML + '<div style="height:10px; border:0px solid red;"></div>' + '<div><img width="75" height="auto" src="' + rTempImgSrc + '" />';
+							document.getElementById("divBtnBackArrow").style.display = "inline-block";
+							document.getElementById("divBtnNextArrow").style.display = "inline-block";
+						}, 2000
+					)					
+				}
+			}
+			
+			function doNavigateToURL(rObj, rAction) {
+				var rNavURL = "";
+				if (rObj.style.cursor=="pointer") {
+					switch (rAction.toUpperCase()) {
+						case "H":
+							rNavURL = "index.html";
+							break;
+						case "P":
+							rNavURL = "today_session_month.html?DayNumber=" + rSelectedDayNumber + "&MonthNumber=" + rSelectedMonthNumber + "&Day=" + rSelectedDay + "&Month=" + rSelectedMonth;
+							break;
+						case "N":
+							if (document.getElementById("ddGroupSelect").value=="") {
+								alert("Please select the Group.");
+							} else {
+								if (rCurrentMonth.length==1) rCurrentMonth = "0" + rCurrentMonth;
+								if (rCurrentDate.length==1) rCurrentDate = "0" + rCurrentDate;
+								
+								//rCurrentDate = rCurrentDate + "-" + rCurrentMonth + "-" + rCurrentFullYear;
+								//rCurrentDate = rCurrentDate + "-" + rCurrentMonth;
+								//rCurrentDate = document.getElementById("ddDateSelection").value;
+								rCurrentDate = rCurrentMonth + "-" + rCurrentDate;
+								var rActvityList = "";
+								for (var i=0; i<rArrActList.length; i++) {
+									if (rCurrentDate.trim()==rArrActList[i].Date.trim()) {
+									
+										for (var j=0; j<rArrActList[i].ActList.length; j++) {
+											var rCurrentActivityTemp = "";
+											
+											rCurrentActivityTemp = rArrActList[i].ActList[j].Activity;
+											if (rActvityList=="") {
+												if (rCurrentActivityTemp!="") {
+													rActvityList = rCurrentActivityTemp;
+												}
+											} else {
+												if (rCurrentActivityTemp!="") {
+													rActvityList = rActvityList + "~" + rCurrentActivityTemp;
+												}
+											}
+										}
+										break;
+									}
+								}
+								
+								var rFirstActURL = "";
+								if (rActvityList=="") {
+								} else {
+									var rTempSPL = rActvityList.split("~");
+									rFirstActURL = rTempSPL[0];
+								}
+								
+								
+							
+								rSelectedDay = doGetParameterByName('Day');
+								rSelectedMonth = doGetParameterByName('Month');
+								rSelectedDayNumber = doGetParameterByName('DayNumber');
+								rSelectedMonthNumber = doGetParameterByName('MonthNumber');			
+								if (rObj.style.cursor=="pointer") {
+									if (rFirstActURL=="") {
+										//alert("No activities for selected month and day");
+									} else {
+										rNavURL = rFirstActURL + "?MainActivityList=" + rActvityList;
+									}
+								}						
+								break;
+							}
+						default:
+							break;
+					}
+					//if (rAction.toUpperCase()!="N" && rNavURL!="") {
+					if (rNavURL!="") {
+						document.location.href = rNavURL;
+					}
+				}
+			}			
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:725px; height:310px; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+								<div id="divTodaySessionBg" name="divTodaySessionBg" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+									<img id="imgTodaySessionBg" name="imgTodaySessionBg" width="100%" height="100%" src="images/today_session_bg.png" />
+								</div>
+								<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:none;">
+									<video id="vidAni" name="vidAni" playsinline poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" src="media/video/weather/weather_1.mp4" style="position:absolute; width:520px; height:295px; left:100px; top:10px; border-radius:25px;">
+								</div>
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td width="100%" height="100%" align="center" valign="middle">
+												<div id="divTextAndImageCombination" name="divTextAndImageCombination" style="position:relative; top:0px; font-size:40px; color:#ffffff; display:inline-block;">Klima</div>
+											</td>
+										<tr>
+									</table>
+								</div>
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:475px; height:75px; left:125px; bottom:5px; text-align:center; border:0px solid red; display:none;">
+									<div style="position:relative; width:100%; left:0px; text-align:center; border:0px solid blue;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="100%" height="100%" align="center" valign="bottom">
+													<div id="divBtnSunset_1" name="divBtnSunset_1" style="position:relative; top:15px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+														<img width="auto" height="45" src="images/weather/sunset.png" />
+													</div>
+													<div style="width:10px; display:inline-block;"></div>
+													<div id="divBtnWind_2" name="divBtnWind_2" style="position:relative; top:13px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+														<img width="auto" height="30" src="images/weather/wind.png" />
+													</div>
+													<div style="width:20px; display:inline-block;"></div>
+													<div id="divBtnOvercast_3" name="divBtnOvercast_3" style="position:relative; top:10px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+														<img width="auto" height="30" src="images/weather/overcast.png" />
+													</div>
+													<div style="width:20px; display:inline-block;"></div>
+													<div id="divBtnRain_4" name="divBtnRain_4" style="position:relative; top:10px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+														<img width="auto" height="35" src="images/weather/rain.png" />
+													</div>
+													<div style="width:20px; display:inline-block;"></div>
+													<div id="divBtnCloud_5" name="divBtnCloud_5" style="position:relative; top:13px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+														<img width="auto" height="30" src="images/weather/cloud.png" />
+													</div>
+													<div style="width:20px; display:inline-block;"></div>
+													<div id="divBtnStorm_6" name="divBtnStorm_6" style="position:relative; top:13px; display:inline-block; cursor:pointer;" onclick="javascript:doUpdateBottomCenterButtonClick(this);">
+														<img width="auto" height="35" src="images/weather/storm.png" />
+													</div>												
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div style="position:absolute; width:95%; left:10px; top:10px; border:0px solid red; display:inline-block;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td width="100%" height="100%" align="left" valign="top">
+												<div id="divTextAndImageOnlyOne" name="divTextAndImageOnlyOne" style="position:relative; text-align:center; font-size:20px; color:#ffffff; border:0px solid blue; display:inline-block;">
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div id="divThermoMeter" name="divThermoMeter" style="position:absolute; width:auto; height:175px; left:135px; top:70px; border:0px solid blue; display:block;">
+									<img width="100%" height="100%" src="images/today_session_thermo_meter.png" />
+									<div id="divThermoMeterArrowMain" name="divThermoMeterArrowMain" style="position:absolute; width:60px; height:145px; left:20px; top:12px; border:0px solid red;">
+										<div id="divThermoMeterArrow" name="divThermoMeterArrow" style="position:absolute; width:60%; height:35px; left:15px; bottom:0px; border:0px solid green; cursor:pointer;">
+											<img width="100%" height="100%" src="images/today_session_thermo_meter_arrow.png" />
+										</div>
+									</div>
+								</div>
+								<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+									<div id="divBtnBackArrow" name="divBtnBackArrow" style="position:absolute; width:auto; height:65px; left:0px; top:80px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:doNavigateToURL(this, 'P');">
+										<img width="100%" height="100%" src="images/back_arrow.png" />
+									</div>
+									<div id="divBtnNextArrow" name="divBtnNextArrow" style="position:absolute; width:auto; height:65px; left:0px; top:140px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:doNavigateToURL(this, 'N');">
+										<img width="100%" height="100%" src="images/next_arrow.png" />
+									</div>					
+									<div id="divBtnHome" name="divBtnHome" style="position:absolute; width:auto; height:105px; left:0px; top:200px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:doNavigateToURL(this, 'H');">
+										<img width="100%" height="100%" src="images/home.png" />
+									</div>
+								</div>
+								<div id="divGroupSelect" name="divGroupSelect" style="position:absolute; top:10px; right:10px; display:inline-block;">
+									<select id="ddGroupSelect" name="ddGroupSelect" style="padding:3px; font-size:16px; outline:none; border-color:#ffffff; color:#ffffff; background:#080F08; border-radius:5px; cursor:pointer;" onchange="javascript:doGruopSelect(this);">
+										<option value="">Grupu</option>
+										<option value="A">A</option>
+										<option value="B">B</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<script language="javascript">
+			window.setTimeout(
+				function() {
+					document.getElementById("divBtnPanel").style.display = "block";
+				}, 2000
+			)
+		</script>
+		
+		<script language="javascript">
+			document.getElementById("divTextAndImageOnlyOne").innerHTML = rSelectedDay + '<div style="height:10px; border:0px solid red;"></div>' + rSelectedMonth;
+		</script>
+		
+		<script language="javascript">
+			$('#divThermoMeterArrow').draggable({axis: "y", containment: 'parent'});
+		</script>		
+	</body>
+</html>

@@ -1,0 +1,2064 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Timor Home App</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+    <link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../css/jqueryui-style.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/main.css" />
+
+    <style></style>
+
+    <script src="../../js/jquery-3.6.0.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="../../js/main.js"></script>
+
+    <script language="javascript">
+      var rArrDivList = ["div_1"];
+      var rListIndex = 0;
+
+      function doNavigateAct(rAction) {
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+        if (rAction.toUpperCase() == "N") {
+          rListIndex++;
+        } else {
+          rListIndex--;
+        }
+
+        if (rListIndex <= 0) {
+          rListIndex = 0;
+        }
+
+        if (rListIndex >= rArrDivList.length - 1) {
+          rListIndex = rArrDivList.length - 1;
+        }
+
+        if (rListIndex <= 0) {
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        } else {
+          if (rListIndex >= rArrDivList.length - 1) {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display = "none";
+          } else {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display =
+              "inline-block";
+          }
+        }
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+      }
+
+      function doResetActivity() {
+        rSliderChangeId = 1;
+        for (var i = 0; i < rArrDivList.length; i++) {
+          document.getElementById(rArrDivList[i]).style.display = "none";
+        }
+
+        rListIndex = 0;
+
+        if (rListIndex <= 0) {
+          document.getElementById("divBtnReplay").style.display = "none";
+          document.getElementById("divBtnBack").style.display = "none";
+          document.getElementById("divBtnNext").style.display = "inline-block";
+        } else {
+          if (rListIndex >= rArrDivList.length - 1) {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display = "none";
+          } else {
+            document.getElementById("divBtnReplay").style.display =
+              "inline-block";
+            document.getElementById("divBtnBack").style.display =
+              "inline-block";
+            document.getElementById("divBtnNext").style.display =
+              "inline-block";
+          }
+        }
+
+        document.getElementById("imgTopSilder").src = "images/top_slider_1.png";
+        document.getElementById("divFirstSlide").style.display = "block";
+        document.getElementById("divSecondSlide").style.display = "none";
+
+        document.getElementById("divBtnReplay").style.display = "none";
+        document.getElementById("divBtnBack").style.display = "none";
+        document.getElementById("divBtnNext").style.display = "inline-block";
+
+        document.getElementById("divBtnSliderPrevious").style.display = "none";
+        document.getElementById("divBtnSliderNext").style.display = "block";
+
+        document.getElementById(rArrDivList[rListIndex]).style.display =
+          "block";
+      }
+
+      var rArrStickMeat_1_1 = [];
+      var rArrStickMeat_1_2 = [];
+      var rArrStickMeat_1_3 = [];
+      var rArrStickMeat_1_4 = [];
+      var rArrStickMeat_1_5 = [];
+      var rArrStickMeat_1_6 = [];
+      var rArrStickMeat_1_7 = [];
+      var rArrStickMeat_1_8 = [];
+      var rArrStickMeat_1_9 = [];
+      var rArrStickMeat_1_10 = [];
+      var rArrStickMeat_1_11 = [];
+      var rArrStickMeat_1_12 = [];
+      var rArrStickMeat_1_13 = [];
+      var rArrStickMeat_1_14 = [];
+      var rArrStickMeat_1_15 = [];
+      var rArrStickMeat_1_16 = [];
+      var rArrStickMeat_1_17 = [];
+      var rArrStickMeat_1_18 = [];
+      var rArrStickMeat_1_19 = [];
+      var rArrStickMeat_1_20 = [];
+
+      var rStickOpenMeatNumber = 0;
+      var rArrOpenStickWithMeat = [];
+      var rDisplayPartNum = 1;
+      var rStick1MeatNumCount = 0;
+      var rStick2MeatNumCount = 0;
+      var rStick3MeatNumCount = 0;
+      var rStick4MeatNumCount = 0;
+      function doNextAndShowSecondSlidePart1() {
+        document.getElementById("divAudMain").pause();
+        rArrStickMeat_1_1 = [4, 0, 0, 0];
+        rArrStickMeat_1_2 = [0, 4, 0, 0];
+        rArrStickMeat_1_3 = [0, 0, 4, 0];
+        rArrStickMeat_1_4 = [0, 0, 0, 4];
+        rArrStickMeat_1_5 = [3, 4, 1, 4];
+        rArrStickMeat_1_6 = [3, 3, 0, 2];
+        rArrStickMeat_1_7 = [2, 3, 3, 4];
+        rArrStickMeat_1_8 = [2, 2, 0, 4];
+        rArrStickMeat_1_9 = [2, 2, 3, 1];
+        rArrStickMeat_1_10 = [3, 4, 3, 2];
+        rDisplayPartNum = 1;
+        document.getElementById("divPart1CorrectPannelMain").style.display =
+          "none";
+        document.getElementById("divPart2CorrectPannelMain").style.display =
+          "none";
+        document.getElementById(
+          "divSecondSlideCorrectPanelMain",
+        ).style.display = "none";
+
+        document.getElementById("divDisable").style.display = "none";
+        rStickOpenMeatNumber = Math.floor(Math.random() * 10) + 1;
+        document.getElementById("imgTopSilder").src = "images/top_slider_1.png";
+        document.getElementById("divFirstSlide").style.display = "none";
+        document.getElementById("divSecondSlide").style.display = "block";
+
+        document.getElementById("divBtnReplay").style.display = "inline-block";
+        document.getElementById("divBtnBack").style.display = "none";
+        document.getElementById("divBtnNext").style.display = "none";
+
+        document.getElementById("divBtnSliderPrevious").style.display = "none";
+        document.getElementById("divBtnSliderNext").style.display = "block";
+
+        document.getElementById(
+          "divSecondSlideCorrectPanelMain",
+        ).style.display = "none";
+
+        switch (rStickOpenMeatNumber) {
+          case 1:
+            rArrOpenStickWithMeat = rArrStickMeat_1_1;
+            break;
+          case 2:
+            rArrOpenStickWithMeat = rArrStickMeat_1_2;
+            break;
+          case 3:
+            rArrOpenStickWithMeat = rArrStickMeat_1_3;
+            break;
+          case 4:
+            rArrOpenStickWithMeat = rArrStickMeat_1_4;
+            break;
+          case 5:
+            rArrOpenStickWithMeat = rArrStickMeat_1_5;
+            break;
+          case 6:
+            rArrOpenStickWithMeat = rArrStickMeat_1_6;
+            break;
+          case 7:
+            rArrOpenStickWithMeat = rArrStickMeat_1_7;
+            break;
+          case 8:
+            rArrOpenStickWithMeat = rArrStickMeat_1_8;
+            break;
+          case 9:
+            rArrOpenStickWithMeat = rArrStickMeat_1_9;
+            break;
+          case 10:
+            rArrOpenStickWithMeat = rArrStickMeat_1_10;
+            break;
+          case 11:
+            rArrOpenStickWithMeat = rArrStickMeat_1_11;
+            break;
+          case 12:
+            rArrOpenStickWithMeat = rArrStickMeat_1_12;
+            break;
+          case 13:
+            rArrOpenStickWithMeat = rArrStickMeat_1_13;
+            break;
+          case 14:
+            rArrOpenStickWithMeat = rArrStickMeat_1_14;
+            break;
+          case 15:
+            rArrOpenStickWithMeat = rArrStickMeat_1_15;
+            break;
+          case 16:
+            rArrOpenStickWithMeat = rArrStickMeat_1_16;
+            break;
+          case 17:
+            rArrOpenStickWithMeat = rArrStickMeat_1_17;
+            break;
+          case 18:
+            rArrOpenStickWithMeat = rArrStickMeat_1_18;
+            break;
+          case 19:
+            rArrOpenStickWithMeat = rArrStickMeat_1_19;
+            break;
+          case 20:
+            rArrOpenStickWithMeat = rArrStickMeat_1_20;
+            break;
+          default:
+            break;
+        }
+
+        for (i = 1; i <= 4; i++) {
+          document.getElementById("divMeat_1_" + i).style.display = "none";
+        }
+
+        for (i = 1; i <= 4; i++) {
+          document.getElementById("divMeat_2_" + i).style.display = "none";
+        }
+
+        for (i = 1; i <= 4; i++) {
+          document.getElementById("divMeat_3_" + i).style.display = "none";
+        }
+
+        for (i = 1; i <= 4; i++) {
+          document.getElementById("divMeat_4_" + i).style.display = "none";
+        }
+
+        rStick1MeatNumCount = 0;
+        rStick2MeatNumCount = 0;
+        rStick3MeatNumCount = 0;
+        rStick4MeatNumCount = 0;
+
+        rStick1MeatNumCount = Number(rArrOpenStickWithMeat[0]);
+        rStick2MeatNumCount = Number(rArrOpenStickWithMeat[1]);
+        rStick3MeatNumCount = Number(rArrOpenStickWithMeat[2]);
+        rStick4MeatNumCount = Number(rArrOpenStickWithMeat[3]);
+
+        doSetDefaultMeatPosition();
+      }
+
+      function doNextAndShowSecondSlidePart2() {
+        document.getElementById("divAudMain").pause();
+        rArrStickMeat_1_1 = [4, 0, 0, 0];
+        rArrStickMeat_1_2 = [0, 4, 0, 0];
+        rArrStickMeat_1_3 = [0, 0, 4, 0];
+        rArrStickMeat_1_4 = [0, 0, 0, 4];
+        rArrStickMeat_1_5 = [3, 4, 1, 4];
+        rArrStickMeat_1_6 = [3, 3, 0, 2];
+        rArrStickMeat_1_7 = [2, 3, 3, 4];
+        rArrStickMeat_1_8 = [2, 2, 0, 4];
+        rArrStickMeat_1_9 = [2, 2, 3, 1];
+        rArrStickMeat_1_10 = [3, 4, 3, 2];
+        rArrStickMeat_1_11 = [4, 4, 1, 1];
+        rArrStickMeat_1_12 = [1, 4, 1, 4];
+        rArrStickMeat_1_13 = [1, 4, 4, 1];
+        rArrStickMeat_1_14 = [4, 1, 4, 1];
+        rArrStickMeat_1_15 = [1, 4, 1, 4];
+        rArrStickMeat_1_16 = [2, 0, 3, 2];
+        rArrStickMeat_1_17 = [2, 3, 2, 0];
+        rArrStickMeat_1_18 = [2, 2, 0, 3];
+        rArrStickMeat_1_19 = [2, 2, 3, 0];
+        rArrStickMeat_1_20 = [1, 4, 4, 1];
+        rDisplayPartNum = 2;
+        document.getElementById("divPart1CorrectPannelMain").style.display =
+          "none";
+        document.getElementById("divPart2CorrectPannelMain").style.display =
+          "block";
+        document.getElementById(
+          "divSecondSlideCorrectPanelMain",
+        ).style.display = "block";
+        document.getElementById("divPart2TickMark_1").style.display = "none";
+        document.getElementById("divPart2TickMark_2").style.display = "none";
+
+        document.getElementById("divDisable").style.display = "none";
+        rStickOpenMeatNumber = Math.floor(Math.random() * 20) + 1;
+        document.getElementById("imgTopSilder").src = "images/top_slider_2.png";
+        document.getElementById("divFirstSlide").style.display = "none";
+        document.getElementById("divSecondSlide").style.display = "block";
+
+        document.getElementById("divBtnReplay").style.display = "inline-block";
+        document.getElementById("divBtnBack").style.display = "none";
+        document.getElementById("divBtnNext").style.display = "none";
+
+        document.getElementById("divBtnSliderPrevious").style.display = "block";
+        document.getElementById("divBtnSliderNext").style.display = "none";
+
+        switch (rStickOpenMeatNumber) {
+          case 1:
+            rArrOpenStickWithMeat = rArrStickMeat_1_1;
+            break;
+          case 2:
+            rArrOpenStickWithMeat = rArrStickMeat_1_2;
+            break;
+          case 3:
+            rArrOpenStickWithMeat = rArrStickMeat_1_3;
+            break;
+          case 4:
+            rArrOpenStickWithMeat = rArrStickMeat_1_4;
+            break;
+          case 5:
+            rArrOpenStickWithMeat = rArrStickMeat_1_5;
+            break;
+          case 6:
+            rArrOpenStickWithMeat = rArrStickMeat_1_6;
+            break;
+          case 7:
+            rArrOpenStickWithMeat = rArrStickMeat_1_7;
+            break;
+          case 8:
+            rArrOpenStickWithMeat = rArrStickMeat_1_8;
+            break;
+          case 9:
+            rArrOpenStickWithMeat = rArrStickMeat_1_9;
+            break;
+          case 10:
+            rArrOpenStickWithMeat = rArrStickMeat_1_10;
+            break;
+          case 11:
+            rArrOpenStickWithMeat = rArrStickMeat_1_11;
+            break;
+          case 22:
+            rArrOpenStickWithMeat = rArrStickMeat_1_12;
+            break;
+          case 13:
+            rArrOpenStickWithMeat = rArrStickMeat_1_13;
+            break;
+          case 14:
+            rArrOpenStickWithMeat = rArrStickMeat_1_14;
+            break;
+          case 15:
+            rArrOpenStickWithMeat = rArrStickMeat_1_15;
+            break;
+          case 16:
+            rArrOpenStickWithMeat = rArrStickMeat_1_16;
+            break;
+          case 17:
+            rArrOpenStickWithMeat = rArrStickMeat_1_17;
+            break;
+          case 18:
+            rArrOpenStickWithMeat = rArrStickMeat_1_18;
+            break;
+          case 19:
+            rArrOpenStickWithMeat = rArrStickMeat_1_19;
+            break;
+          case 20:
+            rArrOpenStickWithMeat = rArrStickMeat_1_20;
+            break;
+          default:
+            break;
+        }
+
+        for (i = 1; i <= 4; i++) {
+          document.getElementById("divMeat_1_" + i).style.display = "none";
+        }
+
+        for (i = 1; i <= 4; i++) {
+          document.getElementById("divMeat_2_" + i).style.display = "none";
+        }
+
+        for (i = 1; i <= 4; i++) {
+          document.getElementById("divMeat_3_" + i).style.display = "none";
+        }
+
+        for (i = 1; i <= 4; i++) {
+          document.getElementById("divMeat_4_" + i).style.display = "none";
+        }
+
+        rStick1MeatNumCount = 0;
+        rStick2MeatNumCount = 0;
+        rStick3MeatNumCount = 0;
+        rStick4MeatNumCount = 0;
+
+        rStick1MeatNumCount = Number(rArrOpenStickWithMeat[0]);
+        rStick2MeatNumCount = Number(rArrOpenStickWithMeat[1]);
+        rStick3MeatNumCount = Number(rArrOpenStickWithMeat[2]);
+        rStick4MeatNumCount = Number(rArrOpenStickWithMeat[3]);
+
+        doSetDefaultMeatPosition();
+      }
+
+      function doSetDefaultMeatPosition() {
+        for (i = 1; i <= rStick1MeatNumCount; i++) {
+          switch (i) {
+            case 1:
+              document.getElementById("divMeat_1_" + i).style.left = "-20px";
+              document.getElementById("divMeat_1_" + i).style.top = "385px";
+              document.getElementById("divMeat_1_" + i).style.display = "block";
+              break;
+            case 2:
+              document.getElementById("divMeat_1_" + i).style.left = "-20px";
+              document.getElementById("divMeat_1_" + i).style.top = "265px";
+              document.getElementById("divMeat_1_" + i).style.display = "block";
+              break;
+            case 3:
+              document.getElementById("divMeat_1_" + i).style.left = "-25px";
+              document.getElementById("divMeat_1_" + i).style.top = "150px";
+              document.getElementById("divMeat_1_" + i).style.display = "block";
+              break;
+            case 4:
+              document.getElementById("divMeat_1_" + i).style.left = "-30px";
+              document.getElementById("divMeat_1_" + i).style.top = "35px";
+              document.getElementById("divMeat_1_" + i).style.display = "block";
+              break;
+            default:
+              break;
+          }
+        }
+
+        for (i = 1; i <= rStick2MeatNumCount; i++) {
+          switch (i) {
+            case 1:
+              document.getElementById("divMeat_2_" + i).style.left = "-20px";
+              document.getElementById("divMeat_2_" + i).style.top = "385px";
+              document.getElementById("divMeat_2_" + i).style.display = "block";
+              break;
+            case 2:
+              document.getElementById("divMeat_2_" + i).style.left = "-20px";
+              document.getElementById("divMeat_2_" + i).style.top = "265px";
+              document.getElementById("divMeat_2_" + i).style.display = "block";
+              break;
+            case 3:
+              document.getElementById("divMeat_2_" + i).style.left = "-25px";
+              document.getElementById("divMeat_2_" + i).style.top = "150px";
+              document.getElementById("divMeat_2_" + i).style.display = "block";
+              break;
+            case 4:
+              document.getElementById("divMeat_2_" + i).style.left = "-30px";
+              document.getElementById("divMeat_2_" + i).style.top = "35px";
+              document.getElementById("divMeat_2_" + i).style.display = "block";
+              break;
+            default:
+              break;
+          }
+        }
+
+        for (i = 1; i <= rStick3MeatNumCount; i++) {
+          switch (i) {
+            case 1:
+              document.getElementById("divMeat_3_" + i).style.left = "-20px";
+              document.getElementById("divMeat_3_" + i).style.top = "385px";
+              document.getElementById("divMeat_3_" + i).style.display = "block";
+              break;
+            case 2:
+              document.getElementById("divMeat_3_" + i).style.left = "-20px";
+              document.getElementById("divMeat_3_" + i).style.top = "265px";
+              document.getElementById("divMeat_3_" + i).style.display = "block";
+              break;
+            case 3:
+              document.getElementById("divMeat_3_" + i).style.left = "-25px";
+              document.getElementById("divMeat_3_" + i).style.top = "150px";
+              document.getElementById("divMeat_3_" + i).style.display = "block";
+              break;
+            case 4:
+              document.getElementById("divMeat_3_" + i).style.left = "-30px";
+              document.getElementById("divMeat_3_" + i).style.top = "35px";
+              document.getElementById("divMeat_3_" + i).style.display = "block";
+              break;
+            default:
+              break;
+          }
+        }
+
+        for (i = 1; i <= rStick4MeatNumCount; i++) {
+          switch (i) {
+            case 1:
+              document.getElementById("divMeat_4_" + i).style.left = "-20px";
+              document.getElementById("divMeat_4_" + i).style.top = "385px";
+              document.getElementById("divMeat_4_" + i).style.display = "block";
+              break;
+            case 2:
+              document.getElementById("divMeat_4_" + i).style.left = "-20px";
+              document.getElementById("divMeat_4_" + i).style.top = "265px";
+              document.getElementById("divMeat_4_" + i).style.display = "block";
+              break;
+            case 3:
+              document.getElementById("divMeat_4_" + i).style.left = "-25px";
+              document.getElementById("divMeat_4_" + i).style.top = "150px";
+              document.getElementById("divMeat_4_" + i).style.display = "block";
+              break;
+            case 4:
+              document.getElementById("divMeat_4_" + i).style.left = "-30px";
+              document.getElementById("divMeat_4_" + i).style.top = "35px";
+              document.getElementById("divMeat_4_" + i).style.display = "block";
+              break;
+            default:
+              break;
+          }
+        }
+      }
+
+      var rSelectedMeatStickPanel = "";
+      var rDropMeatStickPanel = "";
+      var rMeatSelected = false;
+      var rSelectedAndDropMeat = "";
+      var rSelectMeatPanelCount = 0;
+      var rDropMeatPanelCount = 0;
+      var rMeatDefaultPosition = [
+        "-20px~385px",
+        "-20px~265px",
+        "-25px~150px",
+        "-30px~35px",
+      ];
+      var rMeatDefaultPosition2 = [
+        "-20px~385px",
+        "-20px~265px",
+        "-25px~150px",
+        "-30px~35px",
+      ];
+      var rMeatDefaultPosition3 = [
+        "-20px~385px",
+        "-20px~265px",
+        "-25px~150px",
+        "-30px~35px",
+      ];
+      var rMeatDefaultPosition4 = [
+        "-20px~385px",
+        "-20px~265px",
+        "-25px~150px",
+        "-30px~35px",
+      ];
+      var rCurrentSelectObjects = [];
+      var rCurrentDropObjects = [];
+      function doMeatClick(rObj) {
+        rSelectedMeatStickPanel = rObj.parentNode.id;
+        rSelectedAndDropMeat = rObj.id;
+        rMeatSelected = true;
+      }
+
+      function doStickClick(rObj) {
+        rCurrentSelectObjects = [];
+        rCurrentDropObjects = [];
+        rDropMeatStickPanel = rObj.parentNode.id;
+        if (rMeatSelected == true) {
+          if (rSelectedMeatStickPanel == "divStickAndMeatPanel_1") {
+            document.getElementById(rSelectedAndDropMeat).style.display =
+              "none";
+            var rTempCount = document
+              .getElementById("divStickAndMeatPanel_1")
+              .getElementsByTagName("div").length;
+            for (i = 1; i <= rTempCount - 1; i++) {
+              if (
+                document
+                  .getElementById("divStickAndMeatPanel_1")
+                  .getElementsByTagName("div")[i].style.display == "block"
+              ) {
+                rCurrentSelectObjects.push(
+                  document
+                    .getElementById("divStickAndMeatPanel_1")
+                    .getElementsByTagName("div")[i].id,
+                );
+              }
+            }
+
+            for (i = 0; i < rCurrentSelectObjects.length; i++) {
+              var rSPLTemp = rMeatDefaultPosition[i].split("~");
+              document.getElementById(rCurrentSelectObjects[i]).style.left =
+                rSPLTemp[0];
+              document.getElementById(rCurrentSelectObjects[i]).style.top =
+                rSPLTemp[1];
+            }
+          }
+
+          if (rSelectedMeatStickPanel == "divStickAndMeatPanel_2") {
+            document.getElementById(rSelectedAndDropMeat).style.display =
+              "none";
+            var rTempCount = document
+              .getElementById("divStickAndMeatPanel_2")
+              .getElementsByTagName("div").length;
+            for (i = 1; i <= rTempCount - 1; i++) {
+              if (
+                document
+                  .getElementById("divStickAndMeatPanel_2")
+                  .getElementsByTagName("div")[i].style.display == "block"
+              ) {
+                rCurrentSelectObjects.push(
+                  document
+                    .getElementById("divStickAndMeatPanel_2")
+                    .getElementsByTagName("div")[i].id,
+                );
+              }
+            }
+
+            for (i = 0; i < rCurrentSelectObjects.length; i++) {
+              var rSPLTemp = rMeatDefaultPosition[i].split("~");
+              document.getElementById(rCurrentSelectObjects[i]).style.left =
+                rSPLTemp[0];
+              document.getElementById(rCurrentSelectObjects[i]).style.top =
+                rSPLTemp[1];
+            }
+          }
+
+          if (rSelectedMeatStickPanel == "divStickAndMeatPanel_3") {
+            document.getElementById(rSelectedAndDropMeat).style.display =
+              "none";
+            var rTempCount = document
+              .getElementById("divStickAndMeatPanel_3")
+              .getElementsByTagName("div").length;
+            for (i = 1; i <= rTempCount - 1; i++) {
+              if (
+                document
+                  .getElementById("divStickAndMeatPanel_3")
+                  .getElementsByTagName("div")[i].style.display == "block"
+              ) {
+                rCurrentSelectObjects.push(
+                  document
+                    .getElementById("divStickAndMeatPanel_3")
+                    .getElementsByTagName("div")[i].id,
+                );
+              }
+            }
+
+            for (i = 0; i < rCurrentSelectObjects.length; i++) {
+              var rSPLTemp = rMeatDefaultPosition[i].split("~");
+              document.getElementById(rCurrentSelectObjects[i]).style.left =
+                rSPLTemp[0];
+              document.getElementById(rCurrentSelectObjects[i]).style.top =
+                rSPLTemp[1];
+            }
+          }
+
+          if (rSelectedMeatStickPanel == "divStickAndMeatPanel_4") {
+            document.getElementById(rSelectedAndDropMeat).style.display =
+              "none";
+            var rTempCount = document
+              .getElementById("divStickAndMeatPanel_4")
+              .getElementsByTagName("div").length;
+            for (i = 1; i <= rTempCount - 1; i++) {
+              if (
+                document
+                  .getElementById("divStickAndMeatPanel_4")
+                  .getElementsByTagName("div")[i].style.display == "block"
+              ) {
+                rCurrentSelectObjects.push(
+                  document
+                    .getElementById("divStickAndMeatPanel_4")
+                    .getElementsByTagName("div")[i].id,
+                );
+              }
+            }
+
+            for (i = 0; i < rCurrentSelectObjects.length; i++) {
+              var rSPLTemp = rMeatDefaultPosition[i].split("~");
+              document.getElementById(rCurrentSelectObjects[i]).style.left =
+                rSPLTemp[0];
+              document.getElementById(rCurrentSelectObjects[i]).style.top =
+                rSPLTemp[1];
+            }
+          }
+
+          if (rDropMeatStickPanel == "divStickAndMeatPanel_1") {
+            for (i = 1; i <= 4; i++) {
+              if (
+                document.getElementById("divMeat_1_" + i).style.display ==
+                "block"
+              ) {
+              } else {
+                if (i == 1) {
+                  document.getElementById("divMeat_1_" + i).style.left =
+                    "-20px";
+                  document.getElementById("divMeat_1_" + i).style.top = "385px";
+                  document.getElementById("divMeat_1_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 2) {
+                  document.getElementById("divMeat_1_" + i).style.left =
+                    "-20px";
+                  document.getElementById("divMeat_1_" + i).style.top = "265px";
+                  document.getElementById("divMeat_1_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 3) {
+                  document.getElementById("divMeat_1_" + i).style.left =
+                    "-25px";
+                  document.getElementById("divMeat_1_" + i).style.top = "150px";
+                  document.getElementById("divMeat_1_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 4) {
+                  document.getElementById("divMeat_1_" + i).style.left =
+                    "-30px";
+                  document.getElementById("divMeat_1_" + i).style.top = "35px";
+                  document.getElementById("divMeat_1_" + i).style.display =
+                    "block";
+                  break;
+                }
+              }
+            }
+          }
+
+          if (rDropMeatStickPanel == "divStickAndMeatPanel_2") {
+            for (i = 1; i <= 4; i++) {
+              if (
+                document.getElementById("divMeat_2_" + i).style.display ==
+                "block"
+              ) {
+              } else {
+                if (i == 1) {
+                  document.getElementById("divMeat_2_" + i).style.left =
+                    "-20px";
+                  document.getElementById("divMeat_2_" + i).style.top = "385px";
+                  document.getElementById("divMeat_2_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 2) {
+                  document.getElementById("divMeat_2_" + i).style.left =
+                    "-20px";
+                  document.getElementById("divMeat_2_" + i).style.top = "265px";
+                  document.getElementById("divMeat_2_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 3) {
+                  document.getElementById("divMeat_2_" + i).style.left =
+                    "-25px";
+                  document.getElementById("divMeat_2_" + i).style.top = "150px";
+                  document.getElementById("divMeat_2_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 4) {
+                  document.getElementById("divMeat_2_" + i).style.left =
+                    "-30px";
+                  document.getElementById("divMeat_2_" + i).style.top = "35px";
+                  document.getElementById("divMeat_2_" + i).style.display =
+                    "block";
+                  break;
+                }
+              }
+            }
+          }
+
+          if (rDropMeatStickPanel == "divStickAndMeatPanel_3") {
+            for (i = 1; i <= 4; i++) {
+              if (
+                document.getElementById("divMeat_3_" + i).style.display ==
+                "block"
+              ) {
+              } else {
+                if (i == 1) {
+                  document.getElementById("divMeat_3_" + i).style.left =
+                    "-20px";
+                  document.getElementById("divMeat_3_" + i).style.top = "385px";
+                  document.getElementById("divMeat_3_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 2) {
+                  document.getElementById("divMeat_3_" + i).style.left =
+                    "-20px";
+                  document.getElementById("divMeat_3_" + i).style.top = "265px";
+                  document.getElementById("divMeat_3_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 3) {
+                  document.getElementById("divMeat_3_" + i).style.left =
+                    "-25px";
+                  document.getElementById("divMeat_3_" + i).style.top = "150px";
+                  document.getElementById("divMeat_3_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 4) {
+                  document.getElementById("divMeat_3_" + i).style.left =
+                    "-30px";
+                  document.getElementById("divMeat_3_" + i).style.top = "35px";
+                  document.getElementById("divMeat_3_" + i).style.display =
+                    "block";
+                  break;
+                }
+              }
+            }
+          }
+
+          if (rDropMeatStickPanel == "divStickAndMeatPanel_4") {
+            for (i = 1; i <= 4; i++) {
+              if (
+                document.getElementById("divMeat_4_" + i).style.display ==
+                "block"
+              ) {
+              } else {
+                if (i == 1) {
+                  document.getElementById("divMeat_4_" + i).style.left =
+                    "-20px";
+                  document.getElementById("divMeat_4_" + i).style.top = "385px";
+                  document.getElementById("divMeat_4_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 2) {
+                  document.getElementById("divMeat_4_" + i).style.left =
+                    "-20px";
+                  document.getElementById("divMeat_4_" + i).style.top = "265px";
+                  document.getElementById("divMeat_4_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 3) {
+                  document.getElementById("divMeat_4_" + i).style.left =
+                    "-25px";
+                  document.getElementById("divMeat_4_" + i).style.top = "150px";
+                  document.getElementById("divMeat_4_" + i).style.display =
+                    "block";
+                  break;
+                }
+
+                if (i == 4) {
+                  document.getElementById("divMeat_4_" + i).style.left =
+                    "-30px";
+                  document.getElementById("divMeat_4_" + i).style.top = "35px";
+                  document.getElementById("divMeat_4_" + i).style.display =
+                    "block";
+                  break;
+                }
+              }
+            }
+          }
+        }
+        rMeatSelected = false;
+        doCheckCorrectPart1();
+      }
+
+      var rStick1MeatVisiblecount = 0;
+      var rStick2MeatVisiblecount = 0;
+      var rStick3MeatVisiblecount = 0;
+      var rStick4MeatVisiblecount = 0;
+      function doCheckCorrectPart1() {
+        rStick1MeatVisiblecount = 0;
+        rStick2MeatVisiblecount = 0;
+        rStick3MeatVisiblecount = 0;
+        rStick4MeatVisiblecount = 0;
+        if (rDisplayPartNum == 1) {
+          for (i = 1; i <= 4; i++) {
+            if (
+              document.getElementById("divMeat_1_" + i).style.display == "block"
+            ) {
+              rStick1MeatVisiblecount++;
+            }
+          }
+
+          for (i = 1; i <= 4; i++) {
+            if (
+              document.getElementById("divMeat_2_" + i).style.display == "block"
+            ) {
+              rStick2MeatVisiblecount++;
+            }
+          }
+
+          for (i = 1; i <= 4; i++) {
+            if (
+              document.getElementById("divMeat_3_" + i).style.display == "block"
+            ) {
+              rStick3MeatVisiblecount++;
+            }
+          }
+
+          for (i = 1; i <= 4; i++) {
+            if (
+              document.getElementById("divMeat_4_" + i).style.display == "block"
+            ) {
+              rStick4MeatVisiblecount++;
+            }
+          }
+
+          if (
+            (rStick1MeatVisiblecount == 1 &&
+              rStick2MeatVisiblecount == 1 &&
+              rStick3MeatVisiblecount == 1 &&
+              rStick4MeatVisiblecount == 1) ||
+            (rStick1MeatVisiblecount == 2 &&
+              rStick2MeatVisiblecount == 2 &&
+              rStick3MeatVisiblecount == 2 &&
+              rStick4MeatVisiblecount == 2) ||
+            (rStick1MeatVisiblecount == 3 &&
+              rStick2MeatVisiblecount == 3 &&
+              rStick3MeatVisiblecount == 3 &&
+              rStick4MeatVisiblecount == 3) ||
+            (rStick1MeatVisiblecount == 4 &&
+              rStick2MeatVisiblecount == 4 &&
+              rStick3MeatVisiblecount == 4 &&
+              rStick4MeatVisiblecount == 4)
+          ) {
+            document.getElementById("divPart2CorrectPannelMain").style.display =
+              "none";
+            document.getElementById("divPart1CorrectPannelMain").style.display =
+              "block";
+            document.getElementById(
+              "divSecondSlideCorrectPanelMain",
+            ).style.display = "block";
+            document.getElementById("divDisable").style.display = "block";
+          }
+        }
+      }
+
+      function doCheckCorrectPart2() {
+        rStick1MeatVisiblecount = 0;
+        rStick2MeatVisiblecount = 0;
+        rStick3MeatVisiblecount = 0;
+        rStick4MeatVisiblecount = 0;
+        for (i = 1; i <= 4; i++) {
+          if (
+            document.getElementById("divMeat_1_" + i).style.display == "block"
+          ) {
+            rStick1MeatVisiblecount++;
+          }
+        }
+
+        for (i = 1; i <= 4; i++) {
+          if (
+            document.getElementById("divMeat_2_" + i).style.display == "block"
+          ) {
+            rStick2MeatVisiblecount++;
+          }
+        }
+
+        for (i = 1; i <= 4; i++) {
+          if (
+            document.getElementById("divMeat_3_" + i).style.display == "block"
+          ) {
+            rStick3MeatVisiblecount++;
+          }
+        }
+
+        for (i = 1; i <= 4; i++) {
+          if (
+            document.getElementById("divMeat_4_" + i).style.display == "block"
+          ) {
+            rStick4MeatVisiblecount++;
+          }
+        }
+        var rTempCorrect = false;
+        if (rDisplayPartNum == 2) {
+          document.getElementById("divPart2TickMark_1").style.display = "none";
+          document.getElementById("divPart2TickMark_2").style.display = "none";
+          if (
+            (rStick1MeatVisiblecount == 1 &&
+              rStick2MeatVisiblecount == 1 &&
+              rStick3MeatVisiblecount == 1 &&
+              rStick4MeatVisiblecount == 1) ||
+            (rStick1MeatVisiblecount == 2 &&
+              rStick2MeatVisiblecount == 2 &&
+              rStick3MeatVisiblecount == 2 &&
+              rStick4MeatVisiblecount == 2) ||
+            (rStick1MeatVisiblecount == 3 &&
+              rStick2MeatVisiblecount == 3 &&
+              rStick3MeatVisiblecount == 3 &&
+              rStick4MeatVisiblecount == 3) ||
+            (rStick1MeatVisiblecount == 4 &&
+              rStick2MeatVisiblecount == 4 &&
+              rStick3MeatVisiblecount == 4 &&
+              rStick4MeatVisiblecount == 4)
+          ) {
+            document.getElementById("divPart2TickMark_1").style.display =
+              "inline-block";
+            document.getElementById("divPart2TickMark_2").style.display =
+              "none";
+            document.getElementById("divPart1CorrectPannelMain").style.display =
+              "none";
+            document.getElementById("divPart2CorrectPannelMain").style.display =
+              "block";
+            document.getElementById("divDisable").style.display = "block";
+          } else {
+            if (
+              (rStick1MeatVisiblecount == 1 &&
+                rStick2MeatVisiblecount == 1 &&
+                rStick3MeatVisiblecount == 1 &&
+                rStick4MeatVisiblecount >= 0) ||
+              (rStick1MeatVisiblecount == 2 &&
+                rStick2MeatVisiblecount == 2 &&
+                rStick3MeatVisiblecount == 2 &&
+                rStick4MeatVisiblecount >= 0) ||
+              (rStick1MeatVisiblecount == 3 &&
+                rStick2MeatVisiblecount == 3 &&
+                rStick3MeatVisiblecount == 3 &&
+                rStick4MeatVisiblecount >= 0) ||
+              (rStick1MeatVisiblecount == 4 &&
+                rStick2MeatVisiblecount == 4 &&
+                rStick3MeatVisiblecount == 4 &&
+                rStick4MeatVisiblecount >= 0)
+            ) {
+              rTempCorrect = true;
+            }
+            if (
+              (rStick1MeatVisiblecount == 1 &&
+                rStick2MeatVisiblecount == 1 &&
+                rStick3MeatVisiblecount >= 0 &&
+                rStick4MeatVisiblecount == 1) ||
+              (rStick1MeatVisiblecount == 2 &&
+                rStick2MeatVisiblecount == 2 &&
+                rStick3MeatVisiblecount >= 0 &&
+                rStick4MeatVisiblecount == 2) ||
+              (rStick1MeatVisiblecount == 3 &&
+                rStick2MeatVisiblecount == 3 &&
+                rStick3MeatVisiblecount >= 0 &&
+                rStick4MeatVisiblecount == 3) ||
+              (rStick1MeatVisiblecount == 4 &&
+                rStick2MeatVisiblecount == 4 &&
+                rStick3MeatVisiblecount >= 0 &&
+                rStick4MeatVisiblecount == 4)
+            ) {
+              rTempCorrect = true;
+            }
+            if (
+              (rStick1MeatVisiblecount == 1 &&
+                rStick2MeatVisiblecount >= 0 &&
+                rStick3MeatVisiblecount == 1 &&
+                rStick4MeatVisiblecount == 1) ||
+              (rStick1MeatVisiblecount == 2 &&
+                rStick2MeatVisiblecount >= 0 &&
+                rStick3MeatVisiblecount == 2 &&
+                rStick4MeatVisiblecount == 2) ||
+              (rStick1MeatVisiblecount == 3 &&
+                rStick2MeatVisiblecount >= 0 &&
+                rStick3MeatVisiblecount == 3 &&
+                rStick4MeatVisiblecount == 3) ||
+              (rStick1MeatVisiblecount == 4 &&
+                rStick2MeatVisiblecount >= 0 &&
+                rStick3MeatVisiblecount == 4 &&
+                rStick4MeatVisiblecount == 4)
+            ) {
+              rTempCorrect = true;
+            }
+            if (
+              (rStick1MeatVisiblecount >= 0 &&
+                rStick2MeatVisiblecount == 1 &&
+                rStick3MeatVisiblecount == 1 &&
+                rStick4MeatVisiblecount == 1) ||
+              (rStick1MeatVisiblecount >= 0 &&
+                rStick2MeatVisiblecount == 2 &&
+                rStick3MeatVisiblecount == 2 &&
+                rStick4MeatVisiblecount == 2) ||
+              (rStick1MeatVisiblecount >= 0 &&
+                rStick2MeatVisiblecount == 3 &&
+                rStick3MeatVisiblecount == 3 &&
+                rStick4MeatVisiblecount == 3) ||
+              (rStick1MeatVisiblecount >= 0 &&
+                rStick2MeatVisiblecount == 4 &&
+                rStick3MeatVisiblecount == 4 &&
+                rStick4MeatVisiblecount == 4)
+            ) {
+              rTempCorrect = true;
+            }
+            if (rTempCorrect == true) {
+              document.getElementById("divPart2TickMark_1").style.display =
+                "none";
+              document.getElementById("divPart2TickMark_2").style.display =
+                "inline-block";
+              document.getElementById(
+                "divPart1CorrectPannelMain",
+              ).style.display = "none";
+              document.getElementById(
+                "divPart2CorrectPannelMain",
+              ).style.display = "block";
+              document.getElementById("divDisable").style.display = "block";
+            }
+          }
+        }
+      }
+
+      function doPlaySSound() {
+        document.getElementById("divAudMain").play();
+      }
+
+      function doReloadActivity() {
+        if (rDisplayPartNum == 1) {
+          doNextAndShowSecondSlidePart1();
+        } else {
+          if (rDisplayPartNum == 2) {
+            doNextAndShowSecondSlidePart2();
+          }
+        }
+      }
+
+      function doPreviousAndShowFirstSlide() {}
+    </script>
+  </head>
+
+  <body bgcolor="#000000">
+    <div
+      id="divWrapper"
+      name="divWrapper"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        border: 0px solid red;
+      "
+    >
+      <table
+        width="100%"
+        height="100%"
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+      >
+        <tr>
+          <td width="100%" height="100%" align="center" valign="middle">
+            <div
+              id="divContainer"
+              name="divContainer"
+              style="
+                position: relative;
+                width: 730px;
+                height: 310px;
+                background-color: #ffffff;
+                border: 0px solid blue;
+              "
+            >
+              <div
+                style="
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  left: 0px;
+                  top: 0px;
+                  background-color: #ffffff;
+                  border: 0px solid green;
+                "
+              >
+                <div
+                  id="div_1"
+                  name="div_1"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0px;
+                    top: 0px;
+                    border: 0px solid red;
+                    display: none;
+                  "
+                >
+                  <div
+                    id="divFirstSlide"
+                    name="divFirstSlide"
+                    style="
+                      position: absolute;
+                      width: 100%;
+                      height: 100%;
+                      left: -35px;
+                      top: 0px;
+                      color: black;
+                    "
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td
+                          width="100%"
+                          height="100%"
+                          align="center"
+                          valign="middle"
+                        >
+                          <div
+                            id="divMainImage"
+                            name="divMainImage"
+                            onclick="javascript: doPlaySSound();"
+                          >
+                            <img
+                              width="775"
+                              height="auto"
+                              src="images/img_main.gif"
+                              style="color: black"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    id="divSecondSlide"
+                    name="divSecondSlide"
+                    style="
+                      position: absolute;
+                      width: 1225px;
+                      height: 530px;
+                      left: 250px;
+                      top: 25px;
+                      border: 0px solid pink;
+                      zoom: 45%;
+                    "
+                  >
+                    <div
+                      id="divSliderPanel"
+                      name="divSliderPanel"
+                      style="
+                        position: absolute;
+                        width: auto;
+                        height: auto;
+                        left: 10px;
+                        top: 10px;
+                        border: 0px solid red;
+                      "
+                    >
+                      <img
+                        id="imgTopSilder"
+                        name="imgTopSilder"
+                        width="150"
+                        height="auto"
+                        src="images/top_slider_1.png"
+                      />
+                      <table
+                        width="100%"
+                        height="100%"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                      >
+                        <tr>
+                          <td
+                            width="100%"
+                            height="100%"
+                            align="center"
+                            valign="middle"
+                          >
+                            <div
+                              id="divBtnSliderPrevious"
+                              name="divBtnSliderPrevious"
+                              style="
+                                position: relative;
+                                cursor: pointer;
+                                display: none;
+                              "
+                              onclick="
+                                javascript: doNextAndShowSecondSlidePart1();
+                              "
+                            >
+                              <img
+                                width="50"
+                                height="auto"
+                                src="../../images/back_arrow.png"
+                              />
+                            </div>
+                            <div
+                              id="divBtnSliderNext"
+                              name="divBtnSliderNext"
+                              style="
+                                position: relative;
+                                cursor: pointer;
+                                display: none;
+                              "
+                              onclick="
+                                javascript: doNextAndShowSecondSlidePart2();
+                              "
+                            >
+                              <img
+                                width="50"
+                                height="auto"
+                                src="../../images/next_arrow.png"
+                              />
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div
+                      id="divStickAndMeatPanelMain"
+                      name="divStickAndMeatPanelMain"
+                      style="
+                        position: absolute;
+                        width: 1065px;
+                        height: 475px;
+                        left: 125px;
+                        top: 75px;
+                        border: 0px solid red;
+                      "
+                    >
+                      <div
+                        id="divStickAndMeatPanel_1"
+                        name="divStickAndMeatPanel_1"
+                        style="
+                          position: absolute;
+                          width: auto;
+                          height: auto;
+                          left: 50px;
+                        "
+                      >
+                        <div
+                          id="divStick_1"
+                          name="divStick_1"
+                          style="cursor: pointer"
+                          onclick="javascript: doStickClick(this);"
+                        >
+                          <img
+                            width="auto"
+                            height="475"
+                            src="images/stick.png"
+                          />
+                        </div>
+                        <div
+                          id="divMeat_1_1"
+                          name="divMeat_1_1"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -30px;
+                            top: 35px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_1_2"
+                          name="divMeat_1_2"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -25px;
+                            top: 150px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_1_3"
+                          name="divMeat_1_3"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -20px;
+                            top: 265px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_1_4"
+                          name="divMeat_1_4"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -20px;
+                            top: 385px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                      </div>
+
+                      <div
+                        id="divStickAndMeatPanel_2"
+                        name="divStickAndMeatPanel_2"
+                        style="
+                          position: absolute;
+                          width: auto;
+                          height: auto;
+                          left: 275px;
+                        "
+                      >
+                        <div
+                          id="divStick_2"
+                          name="divStick_2"
+                          style="cursor: pointer"
+                          onclick="javascript: doStickClick(this);"
+                        >
+                          <img
+                            width="auto"
+                            height="475"
+                            src="images/stick.png"
+                          />
+                        </div>
+                        <div
+                          id="divMeat_2_1"
+                          name="divMeat_2_1"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -30px;
+                            top: 35px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_2_2"
+                          name="divMeat_2_2"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -25px;
+                            top: 150px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_2_3"
+                          name="divMeat_2_3"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -20px;
+                            top: 265px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_2_4"
+                          name="divMeat_2_4"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -20px;
+                            top: 385px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                      </div>
+
+                      <div
+                        id="divStickAndMeatPanel_3"
+                        name="divStickAndMeatPanel_3"
+                        style="
+                          position: absolute;
+                          width: auto;
+                          height: auto;
+                          left: 500px;
+                        "
+                      >
+                        <div
+                          id="divStick_3"
+                          name="divStick_3"
+                          style="cursor: pointer"
+                          onclick="javascript: doStickClick(this);"
+                        >
+                          <img
+                            width="auto"
+                            height="475"
+                            src="images/stick.png"
+                          />
+                        </div>
+                        <div
+                          id="divMeat_3_1"
+                          name="divMeat_3_1"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -30px;
+                            top: 35px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_3_2"
+                          name="divMeat_3_2"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -25px;
+                            top: 150px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_3_3"
+                          name="divMeat_3_3"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -20px;
+                            top: 265px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_3_4"
+                          name="divMeat_3_4"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -20px;
+                            top: 385px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                      </div>
+
+                      <div
+                        id="divStickAndMeatPanel_4"
+                        name="divStickAndMeatPanel_4"
+                        style="
+                          position: absolute;
+                          width: auto;
+                          height: auto;
+                          left: 725px;
+                        "
+                      >
+                        <div
+                          id="divStick_4"
+                          name="divStick_4"
+                          style="cursor: pointer"
+                          onclick="javascript: doStickClick(this);"
+                        >
+                          <img
+                            width="auto"
+                            height="475"
+                            src="images/stick.png"
+                          />
+                        </div>
+                        <div
+                          id="divMeat_4_1"
+                          name="divMeat_4_1"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -30px;
+                            top: 35px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_4_2"
+                          name="divMeat_4_2"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -25px;
+                            top: 150px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_4_3"
+                          name="divMeat_4_3"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -20px;
+                            top: 265px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                        <div
+                          id="divMeat_4_4"
+                          name="divMeat_4_4"
+                          style="
+                            position: absolute;
+                            width: auto;
+                            height: auto;
+                            left: -20px;
+                            top: 385px;
+                            cursor: pointer;
+                          "
+                          onclick="javascript: doMeatClick(this);"
+                        >
+                          <img width="75" height="auto" src="images/meat.png" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      id="divSecondSlideCorrectPanelMain"
+                      name="divSecondSlideCorrectPanelMain"
+                      style="
+                        position: absolute;
+                        width: auto;
+                        height: auto;
+                        left: 950px;
+                        top: 75px;
+                        border: 0px solid #333333;
+                      "
+                    >
+                      <div
+                        id="divPart1CorrectPannelMain"
+                        name="divPart1CorrectPannelMain"
+                        style="
+                          position: relative;
+                          width: 100%;
+                          height: auto;
+                          left: 0px;
+                          top: 0px;
+                          border: 0px solid #666666;
+                          display: none;
+                        "
+                      >
+                        <table
+                          width="100%"
+                          height="100%"
+                          cellspacing="0"
+                          cellpadding="0"
+                          border="0"
+                        >
+                          <tr>
+                            <td align="center" valign="top">
+                              <div
+                                id="divCorrectTextPanel_1"
+                                name="divCorrectTextPanel_1"
+                                style="display: block"
+                              >
+                                <div
+                                  style="
+                                    position: relative;
+                                    top: -5px;
+                                    font-size: 300%;
+                                    display: inline-block;
+                                  "
+                                >
+                                  justu
+                                </div>
+                                <div
+                                  style="width: 5px; display: inline-block"
+                                ></div>
+                                <div style="display: inline-block">
+                                  <img
+                                    width="auto"
+                                    height="50"
+                                    src="../../images/tick.png"
+                                  />
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+
+                      <div
+                        id="divPart2CorrectPannelMain"
+                        name="divPart2CorrectPannelMain"
+                        style="
+                          position: relative;
+                          width: 100%;
+                          height: auto;
+                          left: 0px;
+                          top: 50px;
+                          border: 0px solid #666666;
+                          display: none;
+                        "
+                      >
+                        <table
+                          width="100%"
+                          height="100%"
+                          cellspacing="0"
+                          cellpadding="0"
+                          border="0"
+                        >
+                          <tr>
+                            <td align="left" valign="top">
+                              <div
+                                id="divCorrectTextPanel_2"
+                                name="divCorrectTextPanel_2"
+                                style="display: block"
+                              >
+                                <div
+                                  style="
+                                    position: relative;
+                                    top: -5px;
+                                    font-size: 300%;
+                                    display: inline-block;
+                                  "
+                                >
+                                  justu
+                                </div>
+                                <div
+                                  style="width: 5px; display: inline-block"
+                                ></div>
+                                <div
+                                  id="divPart2TickMark_1"
+                                  name="divPart2TickMark_1"
+                                  style="display: none"
+                                >
+                                  <img
+                                    width="auto"
+                                    height="50"
+                                    src="../../images/tick.png"
+                                  />
+                                </div>
+                                <div style="height: 25px"></div>
+                                <div
+                                  id="divQuestionMark"
+                                  name="divQuestionMark"
+                                  style="
+                                    position: relative;
+                                    left: 30px;
+                                    cursor: pointer;
+                                    display: block;
+                                  "
+                                  onclick="javascript: doCheckCorrectPart2();"
+                                >
+                                  <img
+                                    width="auto"
+                                    height="100"
+                                    src="../../images/question_mark.png"
+                                  />
+                                </div>
+                                <div style="height: 10px"></div>
+                                <div
+                                  style="
+                                    position: relative;
+                                    top: -5px;
+                                    font-size: 300%;
+                                    display: inline-block;
+                                  "
+                                >
+                                  kuaze
+                                </div>
+                                <div
+                                  id="divPart2TickMark_2"
+                                  name="divPart2TickMark_2"
+                                  style="
+                                    position: relative;
+                                    top: 35px;
+                                    display: none;
+                                  "
+                                >
+                                  <img
+                                    width="auto"
+                                    height="50"
+                                    src="../../images/tick.png"
+                                  />
+                                </div>
+                                <div style="height: 10px"></div>
+                                <div
+                                  style="
+                                    position: relative;
+                                    left: 0px;
+                                    top: -5px;
+                                    font-size: 300%;
+                                    display: inline-block;
+                                  "
+                                >
+                                  justu
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <div
+                      id="divDisable"
+                      name="divDisable"
+                      style="
+                        position: absolute;
+                        width: 1065px;
+                        height: 475px;
+                        left: 125px;
+                        top: 75px;
+                        border: 0px solid blue;
+                        display: none;
+                        z-index: 10000;
+                      "
+                    ></div>
+                  </div>
+                </div>
+
+                <!--Buttons Begin-->
+                <div
+                  id="divBtnPanel"
+                  name="divBtnPanel"
+                  style="
+                    position: absolute;
+                    width: 100%;
+                    height: auto;
+                    left: 0px;
+                    top: 610px;
+                    border: 0px solid #333333;
+                    display: block;
+                  "
+                >
+                  <div
+                    id="divBtnBack"
+                    name="divBtnBack"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doPreviousAndShowFirstSlide();"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              class="clsMicroBack"
+                              src="../../images/back_arrow.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      width: 10px;
+                      display: inline-block;
+                    "
+                  ></div>
+                  <div
+                    id="divBtnReplay"
+                    name="divBtnReplay"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doReloadActivity();"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              class="clsMicroReplay"
+                              src="../../images/replay.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div
+                    style="
+                      position: relative;
+                      width: 10px;
+                      display: inline-block;
+                    "
+                  ></div>
+                  <div
+                    id="divBtnNext"
+                    name="divBtnNext"
+                    style="
+                      position: relative;
+                      border: 0px solid #666666;
+                      cursor: pointer;
+                      display: inline-block;
+                    "
+                    onclick="javascript: doNextAndShowSecondSlidePart1();"
+                  >
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <img
+                              class="clsMicroNext"
+                              src="../../images/next_arrow.png"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                id="divMacroBtnNavPanel"
+                name="divMacroBtnNavPanel"
+                style="
+                  position: absolute;
+                  width: 65px;
+                  height: 100%;
+                  right: 10px;
+                  top: 10px;
+                  border: 0px solid red;
+                "
+              >
+                <div
+                  id="divPosterImage"
+                  name="divPosterImage"
+                  class="clsMacroPosterImage"
+                  style="cursor: pointer"
+                >
+                  <img
+                    id="imgPoster"
+                    name="imgPoster"
+                    width="100%"
+                    height="100%"
+                  />
+                </div>
+                <div
+                  id="divBtnBackArrow"
+                  name="divBtnBackArrow"
+                  class="clsMacroBack"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'P');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/back_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnNextArrow"
+                  name="divBtnNextArrow"
+                  class="clsMacroNext"
+                  style="cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'N');"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="../../images/next_arrow.png"
+                  />
+                </div>
+                <div
+                  id="divBtnHome"
+                  name="divBtnHome"
+                  class="clsMacroHome"
+                  style="position: relative; top: 540px; cursor: pointer"
+                  onclick="javascript: doRedirectToURL(this, 'H');"
+                >
+                  <img width="100%" height="100%" src="../../images/home.png" />
+                </div>
+              </div>
+              <!--Buttons End-->
+              <audio
+                id="divAudMain"
+                name="divAudMain"
+                autoplay
+                src="media/audio/fire.mp3"
+              ></audio>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script language="javascript"></script>
+
+    <script language="javascript">
+      doResetActivity();
+      doResetMainNavButton();
+    </script>
+    <script src="../../activity-tracker.js"></script>
+  </body>
+</html>

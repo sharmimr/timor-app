@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsImageCenter {
+				position: absolute; 
+				width: 100%; 
+				height: 40%; 
+				left: 0; 
+				top: 40px;
+			    display: flex; 
+			    justify-content: center; 
+			    align-items: center;
+			    border:0px solid #333333;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rCountNum = 3;
+			var rArrActList = [{DivList:["divActMainImage_1"], Answer:"ida"}, {DivList:["divActMainImage_2"], Answer:"rua"}, {DivList:["divActMainImage_3"], Answer:"tolu"}];
+			var rListIndex = 0;
+			var rDispType = "SEQ";
+			
+			function doResetAct() {
+				rArrActList = [{DivList:["divActMainImage_1"], Answer:"ida"}, {DivList:["divActMainImage_2"], Answer:"rua"}, {DivList:["divActMainImage_3"], Answer:"tolu"}];
+				rListIndex = 0;
+				rDispType = "SEQ";
+				
+				doSetUpActAndShow();
+			}
+		
+			function doGetNext(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					if (rDispType=="SEQ") {
+						rListIndex++;
+						if (rListIndex>=rCountNum) {
+							rDispType = "RND";
+							rArrActList = [{DivList:["divActMainImage_1"], Answer:"ida"}, {DivList:["divActMainImage_2"], Answer:"rua"}, {DivList:["divActMainImage_3"], Answer:"tolu"}];
+							rListIndex = Math.floor(Math.random() * rArrActList.length);
+						}
+					} else {
+					if (rDispType=="RND") {
+						rListIndex = Math.floor(Math.random() * rArrActList.length);
+					} }
+					doSetUpActAndShow();
+				}
+			}
+			
+			function doSetUpActAndShow() {
+				var rAnswer = "";
+
+				for (var i=1; i<=3; i++) {
+					document.getElementById("divActMainImage_" + i).style.display = "none";
+				}
+
+				for (var i=0; i<rArrActList[rListIndex].DivList.length; i++) {
+					document.getElementById(rArrActList[rListIndex].DivList[i]).style.display = "block";
+				}				
+				
+				rAnswer = rArrActList[rListIndex].Answer;
+				document.getElementById("divAnswer").innerHTML = rAnswer;				
+				
+				//document.getElementById("imgQuestionMark").src = "../../images/question_mark_small.gif?ID=" + Math.random();
+				document.getElementById("divQuestionMark").style.display = "block";
+				document.getElementById("divAnswerAndNextArrowSmall").style.display = "none";
+				
+				if (rDispType=="SEQ") {
+					if (rListIndex<=0) {
+						document.getElementById("divBottomBtnPanel").style.display = "none";
+					} else {
+						document.getElementById("divBottomBtnPanel").style.display = "block";
+					}
+				} else {
+					document.getElementById("divBottomBtnPanel").style.display = "block";
+				}
+			}
+			
+			function doShowAnswer(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					document.getElementById("divQuestionMark").style.display = "none";
+					document.getElementById("divAnswerAndNextArrowSmall").style.display = "block";				
+				}
+			}
+
+			function doReplay(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					doResetAct();
+				}
+			}
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="middle">
+												<div style="font-size:25px;"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								-->
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+									<div id="divActivityMain" name="divActivityMain" style="position:absolute; width:100%; height:auto; left:0; top:0px; border:0px solid blue; display:block;">
+										<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+											<div class="clsSubTitle_1">Hira</div>
+										</div>
+										<div style="position:relative; width:100%; height:auto; top:0px; border:0px solid #333333;">
+											<table width="100%" height="100%" align="center" cellspacing="5" cellpadding="5" border="0">
+												<tr>
+													<td align="left" valign="middle">
+														<div id="divActivitySub" name="divActivitySub" style="position:relative; width:710px; height:125px; left:0px; top:0px; border:0px solid red; display:block;">
+															<div id="divActMainImage_1" name="divActMainImage" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid green; display:none;">
+																<div class="clsImageCenter"><img src="images/1.png" width="auto" height="100"/></div>								
+															</div>
+															<div id="divActMainImage_2" name="divActMainImage" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid green; display:none;">
+																<div class="clsImageCenter"><img src="images/2.png" width="auto" height="100"/></div>										
+															</div>
+															<div id="divActMainImage_3" name="divActMainImage" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid green; display:none;">
+																<div class="clsImageCenter"><img src="images/3.png" width="auto" height="100"/></div>										
+															</div>
+															<div id="divQuestionMark" name="divQuestionMark" style="position:absolute; width:100%; height:auto; left:0px; top:80px; border:0px solid green; display:none;">
+																<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+																	<tr>
+																		<td align="center" valign="middle">
+																			<div style="position:relative; left:0px; top:0px; cursor:pointer; display:inline-block;" onclick="javascript:doShowAnswer(this);">
+																				<img id="imgQuestionMark" width="40" height="auto" src="../../images/question_mark_small.gif" />
+																			</div>
+																		</td>
+																	</tr>
+																</table>										
+															</div>
+															<div id="divAnswerAndNextArrowSmall" name="divAnswerAndNextArrowSmall" style="position:relative; width:100%; height:auto; left:0px; top:80px; border:0px solid green; display:none;">
+																<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+																	<tr>
+																		<td width="100%" align="center" valign="middle">
+																			<div id="divAnswer" name="divAnswer" class="clsPageText" style="position:relative; top:0px; display:inline-block;">
+																				tolu
+																			</div>
+																			<div style="position:relative; width:25px; display:inline-block;"></div>
+																			<div id="divNextArrowSmall" name="divNextArrowSmall" style="position:relative; width:70px; height:auto; left:0px; top:20px; cursor:pointer; display:inline-block;" onclick="javascript:doGetNext(this);">
+																				<img width="100%" height="auto" src="../../images/next_arrow.png" />
+																			</div>																		
+																		</td>
+																	</tr>
+																</table>
+															</div>														
+														</div>
+													</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div id="divBottomBtnPanel" name="divBottomBtnPanel" style="position:absolute; width:94%; height:auto; left:0px; bottom:60px; border:0px solid #333333; cursor:default; display:none;">
+									<div id="divBtnReplay" name="divBtnReplay" style="position:absolute; top:3px; border:0px solid #666666; cursor:default; display:inline-block;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="cursor:pointer; display:inline-block;" onclick="javascript:doReplay(this);">
+														<img width="auto" height="40" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>								
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			doResetAct();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

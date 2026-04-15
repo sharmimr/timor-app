@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsImageCenter {
+			    display: flex; 
+			    justify-content: center; 
+			    align-items: center;
+			    border:0px solid #333333;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+	
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="middle">
+												<div style="font-size:300%;"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								-->
+								<!--
+								<div id="div_1" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:100%; border:0px solid #333333;">
+										<div style="position:absolute; width:100%; height:100%; left:0px; top:0px;">
+											<img width="100%" height="100%" src="../../images/myself_language_title_main_images/main_bg.png" />
+										</div>
+										<div style="position:absolute; width:100%; height:90%; left:0px; top:0px; border:0px solid red;">
+											<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="font-size:100px; color:#000000;">Ki’ik no boot</div>
+														<div>
+															<img width="auto" height="160" src="images/1-a.png" />
+														</div>														
+													</tr>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								-->
+								<!--Slides-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_1">Ki’ik no boot</div>
+                   					<div style="position: absolute; width: 93%; text-align: center; top: 60px; border:0px solid #333333;"><img src="images/slide-1.png" width="auto" height="210"/></div>
+								</div>
+								<div id="div_2" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">Ki’ik no boot</div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 0; top: 60px; "><img src="images/2.png" width="auto" height="80"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 46%; top: 60px; "><img src="images/2.png" width="auto" height="155"/></div>
+                   					<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 0; top: 220px; ">ki’ik</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 46%; top: 220px;">boot</div>
+								</div>
+								<div id="div_3" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">Asu ki'ik no boot</div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 0; top: 60px; "><img src="images/3.png" width="auto" height="80"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 46%; top: 60px; "><img src="images/3.png" width="auto" height="155"/></div>
+                   					<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 0; top: 220px; ">ki’ik</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 46%; top: 220px;">boot</div>
+								</div>
+								<div id="div_4" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">Transporte ki’ik no boot</div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 0; top: 60px; "><img src="images/4-a.png" width="auto" height="80"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 46%; top: 60px; "><img src="images/4.png" width="auto" height="155"/></div>
+                   					<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 0; top: 220px; ">ki’ik</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 46%; top: 220px;">boot</div>
+								</div>
+								<div id="div_5" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">Tais ki'ik no boot</div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 0; top: 60px; "><img src="images/5.png" width="auto" height="45"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 46%; top: 60px; "><img src="images/5.png" width="auto" height="115"/></div>
+                   					<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 0; top: 200px; ">ki’ik</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 46%; top: 200px;">boot</div>
+								</div>
+								<div id="div_6" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu, ki’ik no boot</div>
+									<div class="clsImageCenter" style="position: absolute; width: 20%; height: 50%; left: 0; top: 60px; "><img src="images/5.png" width="auto" height="30"/></div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 26%; height: 50%; left: 20%; top: 60px; "><img src="images/5.png" width="auto" height="45"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 46%; top: 60px; "><img src="images/5.png" width="auto" height="115"/></div>                  					
+                   					<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 0; top: 200px; ">ki'ik liu</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 26%; height: 11%; left: 20%; top: 200px;">ki’ik</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 46%; top: 200px;">boot</div>
+								</div>
+								<div id="div_7" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu, ki’ik no boot</div>
+									<div class="clsImageCenter" style="position: absolute; width: 20%; height: 50%; left: 0; top: 60px; "><img src="images/5.png" width="auto" height="30"/></div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 26%; height: 50%; left: 20%; top: 60px; "><img src="images/5.png" width="auto" height="45"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 46%; top: 60px; "><img src="images/5.png" width="auto" height="115"/></div>                  					
+                   					<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 0; top: 200px; ">ki'ik liu</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 26%; height: 11%; left: 20%; top: 200px;">ki’ik</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 46%; top: 210px;"><img src="images/question-small.gif" width="auto" height="85"/></div>
+								</div>
+								<div id="div_8" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu, ki’ik no boot</div>
+									<div class="clsImageCenter" style="position: absolute; width: 20%; height: 50%; left: 0; top: 60px; "><img src="images/5.png" width="auto" height="30"/></div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 26%; height: 50%; left: 20%; top: 60px; "><img src="images/5.png" width="auto" height="45"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 46%; top: 60px; "><img src="images/5.png" width="auto" height="115"/></div>                  					
+                   					<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 0; top: 200px; ">ki'ik liu</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 26%; height: 11%; left: 20%; top: 200px;">ki’ik</div>
+									<div class="clsImageCenter clsPageTextSmall" style="position: absolute; width: 46%; height: 11%; left: 46%; top: 200px;">boot</div>
+								</div>
+								<div id="div_9" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu to’o boot liu</div>
+									<div style="position: absolute; width: 46%; height: 50%; left: 12%; top: 60px; "><img src="images/5.png" width="auto" height="30"/></div>
+                   					<div style="position: absolute; width: 46%; height: 50%; left: 12%; top: 110px; "><img src="images/5.png" width="auto" height="45"/></div>
+									<div style="position: absolute; width: 46%; height: 50%; left: 12%; top: 170px; "><img src="images/5.png" width="auto" height="75"/></div>
+									<div style="position: absolute; width: 46%; height: 50%; left: 47%; top: 95px; transform: rotate(-35deg);"><img src="images/5.png" width="auto" height="85"/></div>                   					
+                   					<div class="clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 2%; top: 57px; ">ki'ik liu</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 2%; top: 117px;">ki’ik</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 2%; top: 192px;">boot</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 64%; top: 192px;">boot liu</div>
+								</div>
+								<div id="div_10" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu to’o boot liu</div>
+									<div style="position: absolute; width: 46%; height: 50%; left: 44%; top: 60px; "><img src="images/1-a.png" width="auto" height="180"/></div>
+									<div style="position: absolute; width: 26%; height: 20%; left: 14%; top: 60px; "><img src="images/1-a.png" width="auto" height="45"/></div>
+									<div style="position: absolute; width: 26%; height: 20%; left: 9%; top: 110px; "><img src="images/1-a.png" width="auto" height="55"/></div>
+									<div style="position: absolute; width: 26%; height: 20%; left: 3%; top: 180px; "><img src="images/1-a.png" width="auto" height="85"/></div>
+									<div style="position: absolute; width: 26%; height: 11%; left: 23%; top: 43px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 26%; height: 11%; left: 18%; top: 103px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 26%; height: 11%; left: 15%; top: 190px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 26%; height: 11%; left: 72%; top: 173px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+								</div>
+								<div id="div_11" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu to’o boot liu</div>
+									<div style="position: absolute; width: 46%; height: 50%; left: 44%; top: 60px; "><img src="images/1-a.png" width="auto" height="180"/></div>
+									<div style="position: absolute; width: 26%; height: 20%; left: 14%; top: 60px; "><img src="images/1-a.png" width="auto" height="45"/></div>
+									<div style="position: absolute; width: 26%; height: 20%; left: 9%; top: 110px; "><img src="images/1-a.png" width="auto" height="55"/></div>
+									<div style="position: absolute; width: 26%; height: 20%; left: 3%; top: 180px; "><img src="images/1-a.png" width="auto" height="85"/></div>
+                   					<div class="clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 29%; top: 65px; ">ki'ik liu</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 22%; top: 119px;">ki’ik</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 19%; top: 199px;">boot</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 20%; height: 11%; left: 70%; top: 225px;">boot liu</div>
+								</div>
+								<div id="div_12" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu to’o boot liu</div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 48%; top: 60px; "><img src="images/1-a.png" width="auto" height="170"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 36%; height: 50%; left: 25%; top: 60px; "><img src="images/1-a.png" width="auto" height="110"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 33%; height: 50%; left: 7%; top: 60px; "><img src="images/1-a.png" width="auto" height="70"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 16%; height: 50%; left: 1%; top: 60px; "><img src="images/1-a.png" width="auto" height="45"/></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 1%; top: 164px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 17%; top: 173px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 37%; top: 190px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 77%; top: 183px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+								</div>
+								<div id="div_13" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu to’o boot liu</div>
+									<div class="clsImageCenter" style="position: absolute; width: 46%; height: 50%; left: 48%; top: 60px; "><img src="images/1-a.png" width="auto" height="170"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 36%; height: 50%; left: 25%; top: 60px; "><img src="images/1-a.png" width="auto" height="110"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 33%; height: 50%; left: 7%; top: 60px; "><img src="images/1-a.png" width="auto" height="70"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 16%; height: 50%; left: 1%; top: 60px; "><img src="images/1-a.png" width="auto" height="45"/></div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 16%; height: 11%; left: 1%; top: 164px;">ki'ik liu</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 16%; height: 11%; left: 17%; top: 173px;">ki’ik</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 16%; height: 11%; left: 37%; top: 190px;">boot</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 24%; height: 11%; left: 71%; top: 211px;">boot liu</div>
+								</div>
+								<div id="div_14" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu to’o boot liu</div>
+									<div class="clsImageCenter" style="position: absolute; width: 30%; height: 50%; left: 2%; top: 60px; "><img src="images/1-a.png" width="auto" height="160"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 22%; height: 50%; left: 33%; top: 31px; "><img src="images/1-a.png" width="auto" height="110"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 21%; height: 40%; left: 54%; top: 21px; "><img src="images/1-a.png" width="auto" height="70"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 21%; height: 35%; left: 70%; top: 11px; "><img src="images/1-a.png" width="auto" height="35"/></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 9%; top: 214px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 37%; top: 170px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 58%; top: 120px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 73%; top: 92px;"><img src="images/question-small.gif" width="auto" height="65"/></div>
+								</div>
+								<div id="div_15" name="divMyselfLang" class="clsSlide">
+									<div class="clsSubTitle_2">ki'ik liu to’o boot liu</div>
+									<div class="clsImageCenter" style="position: absolute; width: 30%; height: 50%; left: 2%; top: 60px; "><img src="images/1-a.png" width="auto" height="140"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 22%; height: 50%; left: 33%; top: 31px; "><img src="images/1-a.png" width="auto" height="110"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 21%; height: 40%; left: 54%; top: 21px; "><img src="images/1-a.png" width="auto" height="70"/></div>
+									<div class="clsImageCenter" style="position: absolute; width: 21%; height: 35%; left: 70%; top: 11px; "><img src="images/1-a.png" width="auto" height="35"/></div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 16%; height: 11%; left: 9%; top: 206px;">ki'ik liu</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 16%; height: 11%; left: 37%; top: 170px;">ki’ik</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 16%; height: 11%; left: 58%; top: 120px;">boot</div>
+									<div class="clsPageTextSmall" style="position: absolute; width: 16%; height: 11%; left: 73%; top: 92px;">boot liu</div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 9%; top: 235px;"><img style="width:39px; height: auto;" src="images/number-1.png" /></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 37%; top: 198px;"><img style="width:39px; height: auto;" src="images/number-2.png" /></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 58%; top: 149px;"><img style="width:39px; height: auto;" src="images/number-3.png" /></div>
+									<div style="position: absolute; width: 16%; height: 11%; left: 73%; top: 125px;"><img style="width:39px; height: auto;" src="images/number-4.png" /></div>
+								</div>	
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>							
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

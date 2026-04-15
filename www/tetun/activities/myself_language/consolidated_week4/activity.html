@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Teacher App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/main.css" />
+		
+		<style>
+			
+		</style>		
+
+		<script src="../../../js/jquery-3.6.0.js"></script>
+		<script src="../../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}			
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="middle">
+												<div style="font-size:300%;"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								-->
+								
+								<!--Slide Begin-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:100%; border:0px solid #333333;">
+										<div style="position:absolute; width:100%; height:100%; left:0px; top:0px;">
+											<img width="100%" height="100%" src="../../../images/myself_language_title_main_images/main_bg.png" />
+										</div>
+										<div style="position:absolute; width:100%; height:90%; left:0px; top:0px; border:0px solid red;">
+											<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div class="clsMainTitleWhite">Son semana nian</div>
+														<!--
+														<div>
+															<img width="auto" height="160" src="images/fghij.png" />
+														</div>
+														-->
+													</tr>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div id="div_2" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">lian</div>
+												</td>
+											</tr>
+										</table>
+									</div>								
+									<div style="position:absolute; width:100%; text-align: center; top:55px; cursor:default; display:block;">
+										<img width="auto" height="180" src="images/image_2.png" />
+									</div>								
+								</div>
+								<div id="div_3" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">animál</div>
+												</td>
+											</tr>
+										</table>
+									</div>	
+									<div style="position:absolute; width:100%;top:45px; cursor:default; display:block;">
+										<img width="auto" height="180" src="images/image_3.png" />
+									</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:140px; top:70px;">susuk</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:275px; top:215px;">teki</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:420px; top:215px;">rusa</div>
+								</div>
+								<div id="div_4" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">kór</div>
+												</td>
+											</tr>
+										</table>
+									</div>	
+									<div style="position:absolute; width:100%;top:45px; cursor:default; display:block;">
+										<img width="auto" height="180" src="images/image_4.png" />
+									</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:127px; top:65px;">metan</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:269px; top:215px;">pín</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:338px; top:66px;">roxu</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:523px; top:65px;">verde</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:411px; top:215px;">sinzentu</div>								
+								</div>
+								<div id="div_5" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">forma</div>
+												</td>
+											</tr>
+										</table>
+									</div>	
+									<div style="position:absolute; width:100%;top:45px; cursor:default; display:block;">
+										<img width="auto" height="180" src="images/image_5.png" />
+									</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:84px; top:65px;">kuadradu</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:243px; top:220px;">sírkulu</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:337px; top:48px;">fitun</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:528px; top:63px;">triángulu</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:424px; top:220px;">retángulu</div>
+								</div>
+								<div id="div_6" name="divMyselfLang" class="clsSlide">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div class="clsSubTitle">objetu</div>
+												</td>
+											</tr>
+										</table>
+									</div>	
+									<div style="position:absolute; width:100%;top:45px; cursor:default; display:block;">
+										<img width="auto" height="180" src="images/image_6.png" />
+									</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:100px; top:65px;">paun</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:228px; top:218px;">pilla</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:336px; top:59px;">roda</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:549px; top:55px;">tenda</div>
+									<div class="clsPageTextSmall" style="position:absolute; left:434px; top:218px;">sapatu</div>
+								</div>
+								<!--Slide End-->
+								
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

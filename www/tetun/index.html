@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Timor Home App</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="description" content="" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://jqueryui.com/resources/demos/style.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/font_awesome.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro&display=swap"
+    />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+  </head>
+
+  <body bgcolor="#000000">
+    <div
+      id="divWrapper"
+      name="divWrapper"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        border: 0px solid red;
+      "
+    >
+      <div
+        id="divContainer"
+        name="divContainer"
+        style="
+          position: absolute;
+          width: 725px;
+          height: 310px;
+          left: 50%;
+          margin-left: -365px;
+          top: 50%;
+          margin-top: -155px;
+          border: 0px solid blue;
+        "
+      >
+        <div
+          style="
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+            border: 0px solid green;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              left: 0px;
+              top: 0px;
+              border: 0px solid green;
+            "
+          >
+            <img width="100%" height="310" src="images/default_bg.gif" />
+          </div>
+          <div
+            style="
+              position: absolute;
+              left: 330px;
+              top: 110px;
+              border: 0px solid green;
+            "
+          >
+            <img width="100%" height="80" src="images/butterfly.gif" />
+          </div>
+          <div
+            style="
+              position: absolute;
+              left: 504px;
+              top: 212px;
+              border: 0px solid green;
+            "
+          >
+            <img width="100%" height="13" src="images/thumbi.gif" />
+          </div>
+          <div
+            id="divLink"
+            name="divLink"
+            style="
+              position: absolute;
+              width: 75px;
+              height: 35px;
+              left: 320px;
+              bottom: 28px;
+              color: #ffffff;
+              border: 0px solid red;
+              cursor: pointer;
+            "
+            onclick="
+              javascript: document.location.href = 'today_and_theme.html';
+            "
+          ></div>
+          <div
+            id="divBtnBackArrow"
+            name="divBtnBackArrow"
+            style="
+              position: absolute;
+              width: auto;
+              height: 65px;
+              right: 10px;
+              top: 25px;
+              border: 0px solid blue;
+              cursor: pointer;
+              display: block;
+            "
+            onclick="
+              javascript: document.location.href = sessionStorage.getItem(
+                'active_child_id',
+              )
+                ? 'children.html'
+                : '../index.html';
+            "
+          >
+            <img
+              width="100%"
+              height="100%"
+              src="images/back_arrow.png"
+              style="width: auto; height: 45px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const isFirstPageLoad = !sessionStorage.getItem("first_page_loaded");
+
+      if (isFirstPageLoad) {
+        console.log("✅ This is the FIRST HTML file loaded");
+        fetch("login.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            username: localStorage.getItem("username"),
+            // first_page: isFirstPageLoad   // 👈 THIS IS THE KEY
+          }),
+        });
+        sessionStorage.setItem("first_page_loaded", "true");
+      } else {
+        console.log("➡️ Not the first page");
+      }
+    </script>
+  </body>
+</html>

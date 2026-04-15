@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var arrLevelAct1 = {Act1:[1,3], Act2:[2,2], Act3:[3,1], Act4:[1,1], Act5:[2,1], Act6:[1,2]};
+			var arrLevelAct2 = {Act1:[1,5], Act2:[2,4], Act3:[3,3], Act4:[5,1], Act5:[4,2], Act6:[1,1], Act7:[1,2], Act8:[2,1], Act9:[2,2], Act10:[1,3], Act11:[3,1], Act12:[4,1], Act13:[1,4], Act14:[2,3], Act15:[3,2]};
+			var arrLevelAct3 = {Act1:[1,9], Act2:[2,8], Act3:[3,7], Act4:[4,6], Act5:[5,5], Act6:[9,1], Act7:[8,2], Act8:[7,3], Act9:[6,4], Act10:[1,1], Act11:[1,2], Act12:[2,1], Act13:[2,2], Act14:[1,3], Act15:[3,1], Act16:[4,1], Act17:[1,4], Act18:[2,3], Act19:[3,2], Act20:[1,5], Act21:[5,1], Act22:[2,4], Act23:[4,2], Act24:[3,3], Act25:[1,6], Act26:[6,1], Act27:[2,5], Act28:[5,2], Act29:[3,4], Act30:[4,3], Act31:[1,7], Act32:[7,1], Act33:[2,6], Act34:[6,2], Act35:[3,5], Act36:[5,3], Act37:[4,4], Act38:[1,8], Act39:[8,1], Act40:[2,7], Act41:[7,2], Act42:[3,6], Act43:[6,3], Act44:[4,5], Act45:[5,4]};
+			var arrCurrentLevelAct = [];
+			
+			var rBarLevelIndex = 1;
+			var arrCurrentLevelAct = arrLevelAct1;
+			
+			function doMoveLevelBar(rAction) {
+				if (rAction=="BACK") {
+					rBarLevelIndex = rBarLevelIndex - 1;
+
+				} else {
+					rBarLevelIndex = rBarLevelIndex + 1;
+					
+				}
+				document.getElementById("imgLevelBar").src = "images/image_level_bar_" + rBarLevelIndex + ".png";
+				
+				if (rBarLevelIndex==1) {
+					arrCurrentLevelAct = arrLevelAct1;
+				}
+				if (rBarLevelIndex==2) {
+					arrCurrentLevelAct = arrLevelAct2;
+				}
+				if (rBarLevelIndex==3) {
+					arrCurrentLevelAct = arrLevelAct3;
+				}
+				doResetAct();				
+			}
+			
+			var rRandNum = 0;
+			function doRandomNum(min, max) {
+			  return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			var rLeftImages = [];
+			var rRightImages = [];
+			
+			function doResetAct() {
+				rRandNum = 0;
+				document.getElementById("divBtnLevelBarBack").style.display = "inline-block";
+				document.getElementById("divBtnLevelBarNext").style.display = "inline-block";
+
+				if (rBarLevelIndex<=1) {
+					rBarLevelIndex = 1;
+					document.getElementById("divBtnLevelBarBack").style.display = "none";
+					document.getElementById("divBtnLevelBarNext").style.display = "inline-block";
+				}
+				
+				if (rBarLevelIndex>=3) {
+					rBarLevelIndex = 3;
+					document.getElementById("divBtnLevelBarBack").style.display = "inline-block";
+					document.getElementById("divBtnLevelBarNext").style.display = "none";						
+				}
+
+				if (rBarLevelIndex>1 && rBarLevelIndex<3) {
+					document.getElementById("divBtnLevelBarBack").style.display = "inline-block";
+					document.getElementById("divBtnLevelBarNext").style.display = "inline-block";			
+				}				
+					
+				if (rBarLevelIndex==1) {
+					document.getElementById("imgLevelBar").src = "images/image_level_bar_1.png";
+					arrCurrentLevelAct = arrLevelAct1;
+				}
+				if (rBarLevelIndex==2) {
+					document.getElementById("imgLevelBar").src = "images/image_level_bar_2.png";
+					arrCurrentLevelAct = arrLevelAct2;
+				}
+				if (rBarLevelIndex==3) {
+					document.getElementById("imgLevelBar").src = "images/image_level_bar_3.png";
+					arrCurrentLevelAct = arrLevelAct3;
+				}				
+				
+				if (rBarLevelIndex==1) {
+					rRandNum = doRandomNum(1, 6);
+					if (rRandNum==1) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act1;
+					}
+					if (rRandNum==2) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act2;
+					}
+					if (rRandNum==3) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act3;
+					}
+					if (rRandNum==4) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act4;
+					}
+					if (rRandNum==5) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act5;
+					}
+					if (rRandNum==6) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act6;
+					}					
+				}
+				
+				if (rBarLevelIndex==2) {
+					rRandNum = doRandomNum(1, 15);
+					if (rRandNum==1) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act1;
+					}
+					if (rRandNum==2) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act2;
+					}
+					if (rRandNum==3) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act3;
+					}
+					if (rRandNum==4) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act4;
+					}
+					if (rRandNum==5) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act5;
+					}
+					if (rRandNum==6) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act6;
+					}
+					if (rRandNum==7) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act7;
+					}
+					if (rRandNum==8) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act8;
+					}
+					if (rRandNum==9) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act9;
+					}
+					if (rRandNum==10) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act10;
+					}
+					if (rRandNum==11) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act11;
+					}
+					if (rRandNum==12) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act12;
+					}
+					if (rRandNum==13) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act13;
+					}
+					if (rRandNum==14) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act14;
+					}
+					if (rRandNum==15) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act15;
+					}					
+				}
+				
+				if (rBarLevelIndex==3) {
+					rRandNum = doRandomNum(1, 45);
+					if (rRandNum==1) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act1;
+					}
+					if (rRandNum==2) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act2;
+					}
+					if (rRandNum==3) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act3;
+					}
+					if (rRandNum==4) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act4;
+					}
+					if (rRandNum==5) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act5;
+					}
+					if (rRandNum==6) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act6;
+					}
+					if (rRandNum==7) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act7;
+					}
+					if (rRandNum==8) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act8;
+					}
+					if (rRandNum==9) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act9;
+					}
+					if (rRandNum==10) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act10;
+					}
+					if (rRandNum==11) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act11;
+					}
+					if (rRandNum==12) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act12;
+					}
+					if (rRandNum==13) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act13;
+					}
+					if (rRandNum==14) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act14;
+					}
+					if (rRandNum==15) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act15;
+					}
+					if (rRandNum==16) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act16;
+					}
+					if (rRandNum==17) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act17;
+					}
+					if (rRandNum==18) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act18;
+					}
+					if (rRandNum==19) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act19;
+					}
+					if (rRandNum==20) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act20;
+					}
+					if (rRandNum==21) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act21;
+					}
+					if (rRandNum==22) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act22;
+					}
+					if (rRandNum==23) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act23;
+					}
+					if (rRandNum==24) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act24;
+					}
+					if (rRandNum==25) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act25;
+					}
+					if (rRandNum==26) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act26;
+					}
+					if (rRandNum==27) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act27;
+					}
+					if (rRandNum==28) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act28;
+					}
+					if (rRandNum==29) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act29;
+					}
+					if (rRandNum==30) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act30;
+					}
+					if (rRandNum==31) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act31;
+					}
+					if (rRandNum==32) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act32;
+					}
+					if (rRandNum==33) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act33;
+					}
+					if (rRandNum==34) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act34;
+					}					
+					if (rRandNum==35) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act35;
+					}
+					if (rRandNum==36) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act36;
+					}
+					if (rRandNum==37) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act37;
+					}
+					if (rRandNum==38) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act38;
+					}
+					if (rRandNum==39) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act39;
+					}
+					if (rRandNum==40) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act40;
+					}
+					if (rRandNum==41) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act41;
+					}
+					if (rRandNum==42) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act42;
+					}
+					if (rRandNum==43) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act43;
+					}
+					if (rRandNum==44) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act44;
+					}
+					if (rRandNum==45) {
+						arrCurrentLevelAct = arrCurrentLevelAct.Act45;
+					}					
+				}
+				
+				rAnswerText = "";
+				rActionId = 0;				
+				
+				document.getElementById("divAnswerText").style.display = "none";
+				document.getElementById("divHaloTextImg").style.display = "none";
+				document.getElementById("divQuestionMark").style.display = "none";
+				document.getElementById("divNumAnswer").style.display = "none";
+				document.getElementById("divBtnPanel").style.display = "block";
+				
+				rLeftImages = arrCurrentLevelAct[0];
+				rRightImages = arrCurrentLevelAct[1];
+				
+				var rHTML = "";
+				rHTML+="<div id='divLeftImage' name='divLeftImage' style='display:inline-block;'>";
+				for (var i=0; i<rLeftImages; i++) {
+					rHTML+="<img width=65 height=auto src='images/image_1.png' />";
+					rHTML+="<div style='position:relative; width:10px; display:inline-block;'></div>";
+				}
+				rHTML+="</div>";
+				
+				rHTML+="<div id ='divGapLeft' name='divGapLeft' style='position:relative; width:25px; display:inline-block;'>";
+				rHTML+="</div>";
+				
+				rHTML+="<div id='divImgNo' name='divImgNo' style='position:relative; top:-20px; display:inline-block;'>";
+					rHTML+="<img width=125 height=auto src='images/img_no.png' />";
+				rHTML+="</div>";
+				
+				rHTML+="<div id ='divGapRight' name='divGapRight' style='position:relative; width:25px; display:inline-block;'>";
+				rHTML+="</div>";				
+				
+				
+				
+				rHTML+="<div id='divLeftImage' name='divLeftImage' style='display:inline-block;'>";
+				for (var i=0; i<rRightImages; i++) {
+					rHTML+="<img width=65 height=auto src='images/image_1.png' />";
+					rHTML+="<div style='position:relative; width:10px; display:inline-block;'></div>";
+				}
+				rHTML+="</div>";			
+				
+				document.getElementById("divPAImageAndTextPanel").innerHTML = rHTML;
+			}
+			
+			var rAnswerText = "";
+			var rActionId = 0;
+			function doSmallNextArrowStep() {
+				switch (rActionId) {
+					case 0:
+						rActionId = 1;
+						break;
+					case 1:
+						rActionId = 2;
+						break;
+					case 2:
+						rActionId = 3;
+						break;						
+					default:
+						break;
+				}
+				if (rActionId==1) {
+					rAnswerText = Number(rLeftImages) + " + " + Number(rRightImages);
+					document.getElementById("divAnswerText").innerHTML = rAnswerText;
+					document.getElementById("divAnswerText").style.display = "block";
+				}
+				
+				if (rActionId==2) {
+					rAnswerText = Number(rLeftImages) + " + " + Number(rRightImages) + " =";
+					document.getElementById("divAnswerText").innerHTML = rAnswerText;
+					document.getElementById("divAnswerText").style.display = "block";
+					document.getElementById("divHaloTextImg").style.display = "block";
+					document.getElementById("divQuestionMark").style.display = "block";
+					document.getElementById("divBtnPanel").style.display = "none";
+					doAlignImages();
+				}
+				
+				if (rActionId==3) {
+					doResetAct();
+				}				
+			}
+			
+			function doShowAnswer(rObj) {
+				document.getElementById("divAnswerText").innerHTML = document.getElementById("divAnswerText").innerHTML + " " + Number(rLeftImages + rRightImages);
+				document.getElementById("divQuestionMark").style.display = "none";
+				var rImgAnswerSrc = "images/image_num_" + Number(rLeftImages + rRightImages) + ".png";
+				document.getElementById("imgNumAnswer").src = rImgAnswerSrc;
+				document.getElementById("divNumAnswer").style.display = "block";
+				document.getElementById("divBtnPanel").style.display = "block";				
+			}
+			
+			function doAlignImages() {
+				var rHTML = "";
+				rHTML+="<div id='divLeftImage' name='divLeftImage' style='display:inline-block;'>";
+				for (var i=0; i<rLeftImages; i++) {
+					rHTML+="<img width=65 height=auto src='images/image_1.png' />";
+					rHTML+="<div style='position:relative; width:10px; display:inline-block;'></div>";
+				}
+				rHTML+="</div>";
+				rHTML+="<div id='divImgNoGapFill' name='divImgNoGapFill' style='width:125px; display:inline-block;'></div>";
+				rHTML+="<div id='divLeftImage' name='divLeftImage' style='display:inline-block;'>";
+				for (var i=0; i<rRightImages; i++) {
+					rHTML+="<img width=65 height=auto src='images/image_1.png' />";
+					rHTML+="<div style='position:relative; width:10px; display:inline-block;'></div>";
+				}
+				rHTML+="</div>";			
+				
+				document.getElementById("divImgNo").style.display = "none";
+				
+				//window
+				document.getElementById("divPAImageAndTextPanel").innerHTML = rHTML;
+				
+				window.setTimeout(function () {
+					document.getElementById("divImgNoGapFill").style.display = "none";
+				}, 2500);				
+			}
+/*			
+var id = null;
+function myMove() {
+//alert("Ok");
+  var elem = document.getElementById("divLeftImage");   
+  var pos = 0;
+  clearInterval(id);
+  id = setInterval(frame, 10);
+  function frame() {
+	//alert(pos);
+    if (pos == 10) {
+      clearInterval(id);
+    } else {
+      pos++; 
+      //elem.style.top = pos + 'px'; 
+      elem.style.left = pos + 'px'; 
+    }
+  }
+}
+*/
+		</script>
+
+		
+	</head>
+
+	<body bgcolor="#ffffff" style="zoom:57%">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:1280px; height:720px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%x; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:absolute; width:100%; height:auto; top:60px; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:relative; top:-35px; font-size:200%;">Ai-nanás iha hira?</div>
+											</td>
+										</tr>
+									</table>
+								</div>							
+								<div style="position:absolute; width:100%; height:110px; border:0px solid #333333;">
+									<table width="100%" height="50" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="top">
+												<div style="position:relative; left:5px; top:25px;"><img id="imgLevelBar" name="imgLevelBar" width="250" height="auto" src="images/image_level_bar_1.png" /></div>
+											</td>
+										</tr>
+									</table>
+									<div style="position:absolute; width:270px; height:50px; left:15px; top:75px; text-align:center;">
+										<table width="100%" height="100%" align="left" cellspacing="5" cellpadding="5" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div id="divBtnLevelBarBack" name="divBtnLevelBarBack" style="cursor:pointer; display:none;" onclick="javascript:doMoveLevelBar('BACK')">
+														<img width="auto" height="50" src="../../images/back_arrow.png" />
+													</div>										
+													<div id="divBtnLevelBarNext" name="divBtnLevelBarNext" style="cursor:pointer; display:none;" onclick="javascript:doMoveLevelBar('NEXT')">
+														<img width="auto" height="50" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>										
+										</table>
+									</div>
+								</div>
+								
+								<div id="divHaloTextImg" name="divHaloTextImg" style="position:absolute; width:100%; height:auto; top:75px; display:none;">
+									<table width="100%" height="100%" align="left" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="center" valign="top">
+												<img width="auto" height="50" src="images/img_halo.png" />
+											</td>
+										</tr>										
+									</table>								
+								</div>
+								
+								<div id="divQuestionMark" name="divQuestionMark" style="position:absolute; width:100%; height:auto; top:425px; border:0px solid green; cursor:pointer; display:none;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:relative; top:-100px; cursor:pointer; display:inline-block;" onclick="javascript:doShowAnswer(this);">
+													<img id="imgQuestionMark" width="auto" height="150" src="../../images/question_mark_small.gif" />
+												</div>
+											</td>
+										</tr>
+									</table>										
+								</div>
+
+								<div id="divNumAnswer" name="divNumAnswer" style="position:absolute; width:100%; height:auto; top:425px; border:0px solid green; cursor:pointer; display:none;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="center" valign="middle">
+												<div style="position:relative; top:-75px; cursor:default; display:block;">
+													<img id="imgNumAnswer" width="auto" height="100" src="images/image_num_1.png" />
+												</div>
+											</td>
+										</tr>
+									</table>										
+								</div>								
+								
+								<div id="divPAImageMainPanel" name="divPAImageMainPanel" style="position:absolute; width:100%; height:125px; left:0px; top:175px; border:0px solid red;">
+									<div id="divPAImageAndTextPanel" name="divPAImageAndTextPanel"></div>
+								</div>
+
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:175px; border:0px solid #333333; cursor:default; display:block;">
+									<div id="divNextArrowSmall" name="divNextArrowSmall" style="position:relative; top:3px; border:0px solid #666666; cursor:default; display:block;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="cursor:pointer; display:inline-block;" onclick="javascript:doSmallNextArrowStep();">
+														<img width="auto" height="50" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+								</div>
+								
+								<div style="position:absolute; width:auto; height:auto; right:150px; bottom:200px; font-size:300%; font-style:bold; border:0px solid red">
+									<div id="divAnswerText" name="divAnswerText" style="position:relative; top:0px; border:0px solid blue"></div>
+								</div>								
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:45px; top:10px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="auto" height="75" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="position:relative; top:190px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="auto" height="75" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="position:relative; top:190px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="auto" height="75" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="position:relative; top:240px; cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="auto" height="135" src="../../images/home.png" />
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		<script language="javascript">
+			doResetAct();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

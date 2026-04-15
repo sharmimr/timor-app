@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsImageCenter {
+			    display: flex; 
+			    justify-content: center; 
+			    align-items: center;
+			    border:0px solid #333333;
+			}
+			.clsColorBox {
+				width: auto;
+				height: 45px;
+				border:0px solid #ff0000;	
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rArrDivList = ["div_Title", "div_1", "div_2", "div_3", "div_4"];
+			var rListIndex = 0;
+			var rPickedColor = "default";
+			function doNavigateAct(rAction) {
+			
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				
+				doResetObjectPartsColor();
+				doResetColorPanel();				
+			}
+			
+			function doPickColor(rObj, rColor) {
+				if (rObj.style.cursor=="pointer") {
+					doResetColorPanel();
+					
+					rObj.style.border = "5px solid black";
+					rObj.style.cursor = "default";
+					rPickedColor = rColor;
+				}
+			}
+			
+			function doFillColor(rObj) {
+				if (rObj.style.cursor=="pointer") {
+					var rImgElm = rObj.getElementsByTagName("img")[0];
+					var rImageId = rImgElm.id;
+					var rTempSpl = rImageId.split("_");
+					var rImageNum = rTempSpl[0].substring(5, rTempSpl[0].length);
+					var rImageSrc = "images/" + rTempSpl[1] + "/" + rPickedColor + "/" + rImageNum + ".png";
+					rImgElm.src = rImageSrc;
+					
+					doResetColorPanel();
+				}
+			}			
+			
+			function doResetColorPanel() {
+				rPickedColor = "default";
+				document.getElementById("divActColorPanel").style.display = "none";
+				var rLen = document.getElementsByName("divActColor").length;
+				for (var i=0; i<rLen; i++) {
+					document.getElementsByName("divActColor")[i].style.border = "5px solid white";
+					document.getElementsByName("divActColor")[i].style.cursor = "pointer";
+				}
+				if (rListIndex>0) {
+					document.getElementById("divActColorPanel").style.display = "block";
+				}				
+			}
+			
+			function doResetObjectPartsColor() {
+				var rLen = document.getElementsByName("imgObjectPart").length;
+				var rImageId = "";
+				var rTempSpl = [];
+				var rImageSrc = "";
+				var rImageNum = "";
+				for (var i=0; i<rLen; i++) {
+					rImageId = document.getElementsByName("imgObjectPart")[i].id;
+					rTempSpl = rImageId.split("_");
+					rImageNum = rTempSpl[0].substring(5, rTempSpl[0].length);
+					rImageSrc = "images/" + rTempSpl[1] + "/" + rPickedColor + "/" + rImageNum + ".png";
+					document.getElementsByName("imgObjectPart")[i].src = rImageSrc;
+				}
+			}
+
+			function doResetActivity() {
+
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+
+				doResetObjectPartsColor();
+				doResetColorPanel();				
+			}
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px;  background-color:#ffffff; border:0px solid blue;">
+							<div id="divMainPanel" name="divMainPanel" style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!-- Title Begin -->
+								<div id="div_Title" name="div_Title" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div class="clsSubTitle_2">dezeña transporte</div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 60%; text-align: center; top: 60px; border:0px solid #333333;"><img src="images/van.png" width="auto" height="190"/></div>
+                   					<div class="clsImageCenter" style="position: absolute; width: 30%; left: 60%; text-align: center; top: 60px; border:0px solid #333333;"><img src="images/color_palate.png" width="auto" height="180"/></div>
+								</div>
+								<!-- Title End -->
+								<!-- Object and Color Panel Begin -->
+								<div id="divActObjectAndColorPanel" name="divActObjectAndColorPanel" style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<!-- Object Panel Begin -->
+											<td width="73%" align="left" valign="top">
+												<div id="divActObjectPanel" name="divActObjectPanel" style="position:relative; width:100%; height:86%; left:0px; top:0px; background:transparent; border:0px solid green;">
+	
+													<!-- Object 1 Begin -->
+													<div id="div_1" name="div_1" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+														<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+															<div style="position:relative; left:55px; top:10px; cursor:default; display:block; border:0px solid red;">
+																<div style="position:absolute; left:0px; top:0px; border:0px solid #ff0000;"><img width="436" height="240" src="images/object1/img_object1_main.png" /></div>
+																<div style="position:absolute; left:26px; top:2px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image1_object1" name="imgObjectPart"  width="317" height="20"/></div>
+																<div style="position:absolute; left:2px; top:22px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image2_object1" name="imgObjectPart"  width="423" height="144"/></div>
+																<div style="position:absolute; left:4px; top:166px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image3_object1" name="imgObjectPart"  width="425" height="35"/></div>
+																<div style="position:absolute; left:42px; top:23px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image4_object1" name="imgObjectPart"  width="351" height="77"/></div>
+																<div style="position:absolute; left:190px; top:22px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image5_object1" name="imgObjectPart"  width="84" height="144"/></div>
+															</div>
+														</div>
+													</div>
+													<!-- Object 2 Begin -->
+													<div id="div_2" name="div_2" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+														<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+															<div style="position:relative; left:70px; top:15px; cursor:default; display:block; border:0px solid red;">
+																<div style="position:absolute; left:0px; top:0px; border:0px solid #ff0000; "><img width="405" height="240" src="images/object2/img_object2_main.png" /></div>
+																<div style="position:absolute; left:182px; top:6px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image1_object2" name="imgObjectPart"  width="220" height="106"/></div>
+																<div style="position:absolute; left:5px; top:13px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image2_object2" name="imgObjectPart"  width="261" height="158"/></div>
+																<div style="position:absolute; left:104px; top:20px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image3_object2" name="imgObjectPart"  width="151" height="45"/></div>
+																<div style="position:absolute; left:210px; top:72px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image4_object2" name="imgObjectPart"  width="55" height="64"/></div>
+																<div style="position:absolute; left:223px; top:115px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image5_object2" name="imgObjectPart"  width="166" height="54"/></div>
+															</div>
+														</div>
+													</div>
+													<!-- Object 3 Begin -->
+													<div id="div_3" name="div_3" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+														<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+															<div style="position:relative; left:110px; top:5px; cursor:default; display:block; border:0px solid red;">
+																<div style="position:absolute; left:0px; top:0px; border:0px solid #ff0000; "><img width="337" height="240" src="images/object3/img_object3_main.png" /></div>
+																<div style="position:absolute; left:31px; top:3px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image1_object3" name="imgObjectPart"  width="254" height="177"/></div>
+																<div style="position:absolute; left:2px; top:108px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image2_object3" name="imgObjectPart"  width="164" height="114"/></div>
+																<div style="position:absolute; left:181px; top:22px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image3_object3" name="imgObjectPart"  width="151" height="73"/></div>
+																<div style="position:absolute; left:213px; top:90px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image4_object3" name="imgObjectPart"  width="45" height="39"/></div>
+																<div style="position:absolute; left:273px; top:105px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image5_object3" name="imgObjectPart"  width="36" height="132"/></div>
+															</div>
+														</div>
+													</div>
+													<!-- Object 4 Begin -->
+													<div id="div_4" name="div_4" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:block;">
+														<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+															<div style="position:relative; left:170px; top:5px; cursor:default; display:block; border:0px solid red;">
+																<div style="position:absolute; left:0px; top:0px; border:0px solid #ff0000; "><img width="243" height="240" src="images/object4/img_object4_main.png" /></div>
+																<div style="position:absolute; left:9px; top:85px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image1_object4" name="imgObjectPart"  width="139" height="109"/></div>
+																<div style="position:absolute; left:136px; top:106px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image2_object4" name="imgObjectPart"  width="84" height="77"/></div>
+																<div style="position:absolute; left:24px; top:73px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image3_object4" name="imgObjectPart"  width="90" height="30"/></div>
+																<div style="position:absolute; left:119px; top:59px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image4_object4" name="imgObjectPart"  width="75" height="45"/></div>
+																<div style="position:absolute; left:107px; top:22px; border:0px solid red; display: block; cursor:pointer;" onclick="javascript:doFillColor(this);"><img id="image5_object4" name="imgObjectPart"  width="59" height="26"/></div>
+															</div>
+														</div>
+													</div>
+													<!-- Object 4 End -->
+												</div>
+											</td>
+											<!-- Object Panel End -->
+											<!-- Color Panel Begin -->
+											<td width="20%" align="right" valign="top">
+												<div id="divActColorPanel" name="divActColorPanel" style="position:relative; width:100%; height:86%; left:0px; top:0px; background:transparent; border:0px solid green; display:none;">
+													<table width="100%" border="0">
+														<tr height="0"><td width="100%" colspan="2"></td></tr>
+														<tr>
+															<td width="50%" align="right" valign="top">
+																<div id="divActColorBrown" name="divActColor" style="border:2px solid white; cursor:pointer;" onclick="javascript:doPickColor(this, 'brown');">
+																	<img class="clsColorBox" src="images/colors/brown.png" />
+																</div>
+															</td>
+															<td width="50%" align="left" valign="top">
+																<div id="divActColorOrange" name="divActColor" style="border:2px solid white; cursor:pointer;" onclick="javascript:doPickColor(this, 'orange');">
+																	<img class="clsColorBox" src="images/colors/orange.png" />
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td width="50%" align="right" valign="top">
+																<div id="divActColorYellow" name="divActColor" style="border:2px solid white; cursor:pointer;" onclick="javascript:doPickColor(this, 'yellow');">
+																	<img class="clsColorBox" src="images/colors/yellow.png" />
+																</div>
+															</td>
+															<td width="50%" align="left" valign="top">
+																<div id="divActColorGreen" name="divActColor" style="border:2px solid white; cursor:pointer;" onclick="javascript:doPickColor(this, 'green');">
+																	<img class="clsColorBox" src="images/colors/green.png" />
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td width="50%" align="right" valign="top">
+																<div id="divActColorBlue" name="divActColor" style="border:2px solid white; cursor:pointer;" onclick="javascript:doPickColor(this, 'blue');">
+																	<img class="clsColorBox" src="images/colors/blue.png" />
+																</div>
+															</td>
+															<td width="50%" align="left" valign="top">
+																<div id="divActColorPurple" name="divActColor" style="border:2px solid white; cursor:pointer;" onclick="javascript:doPickColor(this, 'purple');">
+																	<img class="clsColorBox" src="images/colors/purple.png" />
+																</div>
+															</td>
+														</tr>
+														<tr>
+															<td width="50%" align="right" valign="top">
+																<div id="divActColorPink" name="divActColor" style="border:2px solid white; cursor:pointer;" onclick="javascript:doPickColor(this, 'pink');">
+																	<img class="clsColorBox" src="images/colors/pink.png" />
+																</div>
+															</td>
+															<td width="50%" align="left" valign="top">
+																<div id="divActColorGray" name="divActColor" style="border:2px solid white; cursor:pointer;" onclick="javascript:doPickColor(this, 'gray');">
+																	<img class="clsColorBox" src="images/colors/gray.png" />
+																</div>
+															</td>
+														</tr>
+													</table>
+												</div>
+											</td>
+											<td width="7%"></td>
+											<!-- Color Panel End -->										
+										</tr>
+									</table>
+								</div>
+								<!-- Object and Color Panel End -->
+						
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>							
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

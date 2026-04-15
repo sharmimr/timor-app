@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		<style>
+			.clsNextArrowIncontent {
+				position:relative; 
+				width:69px; 
+				height:auto; 
+				left:0px; 
+				top:10px; 
+				cursor:pointer; 
+				display:inline-block;
+			}
+			.clsActPicAndText {
+				position:absolute; 
+				width:100%; 
+				height:100%; 
+				left:0px; 
+				top:-95px; 
+				font-size:500%; 
+				color:#000000; 
+				display:inline-block;
+			}
+			.clsActPicAndTextSub {
+				position:relative; 
+				width:50px; 
+				height:50px; 
+				left:0px; 
+				top:0px; 
+				text-align:center; d
+				isplay:inline-block;"
+			}
+			.clsActPicAndText_Sub {
+				position:relative; 
+				width:50px; 
+				height:50px; 
+				top:40px; 
+				text-align:center; b
+				order:0px solid red; 
+				display:inline-block; 
+				z-index:1001;
+			}
+			.clsActPicAndText_Main {
+				position:relative; 
+				width:50px; 
+				height:50px; 
+				top:0px; 
+				text-align:center; 
+				cursor:pointer; 
+				border:0px solid red; 
+				display:inline-block; 
+				z-index:1001;
+			}
+
+		</style>
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+	
+		<script language="javascript">
+			var rArrActList = [["s", "a", "u"], ["a", "u", "s"], ["u", "a", "s"], ["u", "s", "a"], ["s", "u", "a"]];
+			
+			function doGetActivity(rObj) {
+				document.getElementById("div_Main_1").style.display = "none";
+				document.getElementById("divQuestionPanel").style.display = "block";
+				document.getElementById("divQuestionMark").style.display = "none";
+				document.getElementById("divCorrectTextPanel").style.display = "none";
+				document.getElementById("divAnswerPanel").style.display = "none";
+				//document.getElementById("divBtnBack").style.display = "none";
+				document.getElementById("divBtnReplay").style.display = "none";
+				//document.getElementById("divBtnNext").style.display = "none";
+				document.getElementById("divDragPanel").style.display = "none";
+				document.getElementById("divPicDisable").style.display = "none";
+					
+				for (var i=1; i<=3; i++) {
+					var rInnerHTML = "";
+					rInnerHTML += '<div id="divActPicAndText_' + i + '" name="divActPicAndText" style="position:absolute; width:100%; height:100%; left:0px; top:-55px; font-size:500%; color:#ff0000; display:inline-block;"></div>';
+					document.getElementById("divActPicAndTextSub_"+i).innerHTML = rInnerHTML;
+				}			
+				var rRndId = Math.floor(Math.random() * rArrActList.length);
+				for (var i=0; i<rArrActList[rRndId].length; i++) {
+					document.getElementById("divActPicAndText_" + (i+1)).innerHTML = rArrActList[rRndId][i];
+				}
+				
+				
+				if (rObj==null || rObj==undefined || rObj=="" || rObj.id=="divBtnReplay" || rObj.id=="divBtnBack") {
+					//document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnReplay").style.display = "none";
+					//document.getElementById("divBtnNext").style.display = "none";
+					document.getElementById("div_Main_1").style.display = "block";
+				} else {
+				if (rObj.id=="divBtnNext") {
+					//document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnReplay").style.display = "none";
+					//document.getElementById("divBtnNext").style.display = "none";
+					
+					document.getElementById("div_Main_1").style.display = "none";
+				} }
+			}
+
+			function doShowQuestionMarkAndDragPanel() {
+				document.getElementById("divQuestionPanel").style.display = "none";
+				document.getElementById("divQuestionMark").style.display = "block";
+				document.getElementById("divDragPanel").style.display = "block";
+			}
+			
+			function doCheckAllDropCorrect() {
+				var rArrDropImgList = [];
+				for (var i=1; i<=3; i++) {
+					rArrDropImgList.push(document.getElementById("divActPicAndTextMain_"+i).getElementsByTagName("div")[0].getElementsByTagName("div")[0].innerHTML);
+				}
+				
+				if (rArrDropImgList[0].toLowerCase()=="a" && rArrDropImgList[1].toLowerCase()=="s" && rArrDropImgList[2].toLowerCase()=="u") {
+					document.getElementById("divQuestionMark").style.display = "none";
+					document.getElementById("divCorrectTextPanel").style.display = "block";
+					document.getElementById("divAnswerPanel").style.display = "block";
+					//document.getElementById("divBtnBack").style.display = "inline-block";
+					//document.getElementById("divBtnNext").style.display = "none";
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divPicDisable").style.display = "block";
+				}
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--
+								<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+									<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+										<tr>
+											<td align="left" valign="middle">
+												<div style="font-size:300%;"></div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								-->
+								<!--
+								<div id="div_Main_1" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:100%; border:0px solid #333333;">
+										<div style="position:absolute; width:100%; height:100%; left:0px; top:0px;">
+											<img width="100%" height="100%" src="../../images/myself_language_title_main_images/main_bg.png" />
+										</div>
+										<div style="position:absolute; width:100%; height:90%; left:0px; top:0px; border:0px solid red;">
+											<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td width="100%" height="100%" align="center" valign="middle">
+														<div style="font-size:100px; color:#000000;">asu</div>
+														<div>
+															<img width="auto" height="160" src="images/dog.png" />
+														</div>														
+													</tr>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								-->
+								<div id="div_Main_1" name="divMyselfLang" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:absolute; width:100%; height:auto; left:0px; top:25px; border:0px solid #333333;">
+										<div style="position:relative; width:100%; height:auto; border:0px solid #666666;">
+											<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td align="center" valign="top">
+														<div id="divQuestionMark" name="divQuestionMark" style="position:absolute; left:420px; top:50px; display:none;">
+															<img width="auto" height="90" src="../../images/question_mark.png" />
+														</div>
+														<div id="divCorrectTextPanel" name="divCorrectTextPanel" style="display:none;">
+															<div style="position:relative; left: 70px;top:-5px; font-size:350%; display:inline-block;">
+																Loos
+															</div>
+															<div style="width:5px; display:inline-block;"></div>
+															<div style="position: relative; left: 60px; display:inline-block;">
+																<img width="auto" height="55" src="../../images/tick.png" />
+															</div>														
+														</div>
+													</td>
+												</tr>
+											</table>									
+										</div>
+									</div>
+									<div style="position:absolute; width:100%; height:310px; left:0px; top:0px; text-align:center; border:0px solid blue;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td width="45%" align="center" valign="middle">
+													<img width="150" height="auto" src="images/dog.png" />
+												</td>
+												<td width="5%">
+												</td>
+												<td width="50%" align="center" valign="middle">
+													<div style="position:relative; width:100%; height:310px; left:0px; top:0px; border:0px solid red;">
+														<div id="divQuestionPanel" name="divQuestionPanel" style="position:absolute;  width:100%; height:100%; left:-70px; top:0px; display:none;">
+															<div style="position:relative; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+																<table width="100%" height="100%" cellspacing="5" cellpadding="5" border="0">
+																	<tr>
+																		<td width="100%" align="left" valign="middle">
+																			<div id="divAnswer" name="divAnswer" style="position:relative; top:0px; font-size:456%; display:inline-block;">
+																				a&nbsp;s&nbsp;u
+																			</div>
+																			<div style="position:relative; width:25px; display:inline-block;"></div>
+																			<div id="divNextArrowSmall" name="divNextArrowSmall" class="clsNextArrowIncontent" onclick="javascript:doShowQuestionMarkAndDragPanel(this);">
+																				<img width="100%" height="auto" src="../../images/next_arrow.png" />
+																			</div>																		
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<div id="divAnswerPanel" name="divAnswerPanel" style="position:absolute; width:80%; height:50px; left:-70px; top:141px; text-align:center; border:0px solid blue; display:none;">
+															<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid #666666; display:inline-block;">
+																<div class="clsActPicAndText_Sub">
+																	<div class="clsActPicAndTextSub">
+																		<div class="clsActPicAndText">
+																			a
+																		</div>	
+																	</div>
+																</div>
+																<div style="position:relative; width:25px; display:inline-block;"></div>
+																<div class="clsActPicAndText_Sub">
+																	<div class="clsActPicAndTextSub">
+																		<div class="clsActPicAndText">
+																			s
+																		</div>	
+																	</div>
+																</div>															
+																<div style="position:relative; width:25px; display:inline-block;"></div>
+																<div class="clsActPicAndText_Sub">
+																	<div class="clsActPicAndTextSub">
+																		<div class="clsActPicAndText">
+																			u
+																		</div>	
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div id="divDragPanel" name="divDragPanel" style="position:absolute; width:80%; height:50px; left:-70px; bottom:57px; text-align:center; border:0px solid blue; display:none;">
+															<div id="divImgCol" name="divImgCol" style="position:absolute; width:100%; height:100%; left:0px; top:0px; text-align:center; border:0px solid #666666; display:inline-block;">
+																<div id="divActPicAndTextMain_1" name="divActPicAndTextMain" class="clsBox clsActPicAndText_Main">
+																	<div id="divActPicAndTextSub_1" name="divActPicAndTextSub" class="clsActPicAndTextSub">
+																		<div id="divActPicAndText_1" name="divActPicAndText" class="clsActPicAndText">
+																			a
+																		</div>	
+																	</div>
+																</div>
+																<div style="position:relative; width:25px; display:inline-block;"></div>
+																<div id="divActPicAndTextMain_2" name="divActPicAndTextMain" class="clsBox clsActPicAndText_Main">
+																	<div id="divActPicAndTextSub_2" name="divActPicAndTextSub" class="clsActPicAndTextSub">
+																		<div id="divActPicAndText_2" name="divActPicAndText" class="clsActPicAndText">
+																			s
+																		</div>	
+																	</div>
+																</div>															
+																<div style="position:relative; width:25px; display:inline-block;"></div>
+																<div id="divActPicAndTextMain_3" name="divActPicAndTextMain" class="clsBox clsActPicAndText_Main">
+																	<div id="divActPicAndTextSub_3" name="divActPicAndTextSub" class="clsActPicAndTextSub">
+																		<div id="divActPicAndText_3" name="divActPicAndText" class="clsActPicAndText">
+																			u
+																		</div>	
+																	</div>
+																</div>
+															</div>													
+														</div>
+													</div>
+												</td>											
+											</tr>
+										</table>
+									</div>
+								</div>
+								<div id="divPicDisable" name="divPicDisable" style="position:absolute; width:660px; height:250px; left:0px; top:0px; border:0px solid blue; display:block; z-index:9999;"></div>
+								
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<!--
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									-->
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doGetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<!--
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									-->									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			$(".clsBox").draggable({
+				axis: "x", containment: "#divImgCol", revert: true,
+				drag: function(event, ui) {
+					for (var i=1; i<=3; i++) {
+						document.getElementById("divActPicAndTextMain_"+i).style.zIndex = "auto";
+					}
+					document.getElementById(this.id).style.zIndex = 9998;
+				}
+			});
+			
+			$(".clsBox").droppable({
+				drop: function(event, ui) {
+					var rDragName = "";
+					var rDropName = "";
+					rDragName = ui.draggable.attr("id");
+					rDropName = this.id;
+					if (rDropName!="") {
+						var rOldDropInnerHTML = document.getElementById(rDropName).innerHTML;
+						document.getElementById(rDropName).innerHTML = document.getElementById(rDragName).innerHTML;
+						document.getElementById(rDragName).innerHTML = rOldDropInnerHTML;
+						document.getElementById(rDropName).style.zIndex = "1001";
+						document.getElementById(rDragName).style.zIndex = "1002";
+					}
+					doCheckAllDropCorrect();
+				}
+			});
+		</script>
+		
+		<script language="javascript">
+			doGetActivity(null);
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>

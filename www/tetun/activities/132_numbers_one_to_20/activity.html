@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsBox {
+				position: absolute;
+				width:55px;
+				height: 75px;
+				top:0px;
+				text-align:center;
+				display: inline-block;
+				border: 0px solid red;
+			}
+			.clsQuestionMarkDiv {
+				position: relative;
+				left: 0px;
+				top: -15px;
+				cursor: pointer;
+				display: block;
+				border: 0px solid red;			
+			}
+			.clsQuestionMarkPic {
+				width:45px;
+				height: auto;
+				display: block;
+			}		
+			.clsNumberPic {
+				width: 30px;
+				height: auto;
+				border: 0px solid red;
+			}
+			.clsNumbers {
+				font-size:35px; 
+				display:block;
+				border: 0px solid blue;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+	
+		<script language="javascript">
+			var rArrActSlideList = ["divActMain_1", "divActMain_2", "divActMain_3", "divActMain_4", "divActMain_5", "divActMain_6", "divActMain_7", "divActMain_8", "divActMain_9", "divActMain_10", "divActMain_11", "divActMain_12", "divActMain_13", "divActMain_14", "divActMain_15", "divActMain_16", "divActMain_17", "divActMain_18", "divActMain_19", "divActMain_20"];
+			var rDisplayMode = "SEQ";
+			var rActSlideIndex = 0;
+			
+			function doSetAndShowActivity() {
+				if (rDisplayMode=="SEQ") {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "block";
+					document.getElementById("divBtnNext").style.display = "none";				
+				}
+				
+				if (rDisplayMode=="SEQ") {
+					for (var i=0; i<rArrActSlideList.length; i++) {
+						document.getElementById(rArrActSlideList[i]).style.display = "none";
+						document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[0].style.display = "none";
+						document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[1].style.display = "none";
+					}
+				} else {
+					for (var i=0; i<rArrActSlideList.length; i++) {
+						document.getElementById(rArrActSlideList[i]).style.display = "block";
+						document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[0].style.display = "none";
+						document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[1].style.display = "block";
+					}					
+				}
+				
+				document.getElementById(rArrActSlideList[rActSlideIndex]).getElementsByTagName("div")[0].style.display = "block";
+				document.getElementById(rArrActSlideList[rActSlideIndex]).getElementsByTagName("div")[1].style.display = "none";
+				document.getElementById(rArrActSlideList[rActSlideIndex]).style.display = "block";				
+			}
+			
+			function doGetNextSlide(rObj) {
+				try {
+					for (var i=0; i<rArrActSlideList.length; i++) {
+						document.getElementById(rArrActSlideList[i]).style.display = "none";
+						document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[0].style.display = "none";
+						document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[1].style.display = "none";
+					}
+					
+					if (rDisplayMode=="SEQ") {
+						rActSlideIndex++;
+						if (rActSlideIndex>=rArrActSlideList.length) {
+							document.getElementById("divBtnReplay").style.display = "inline-block";
+							document.getElementById("divBtnNext").style.display = "inline-block";
+						}
+					} else {
+						rActSlideIndex = Math.floor(Math.random() * rArrActSlideList.length);
+					}
+
+					if (rDisplayMode=="SEQ") {
+						for (var i=0; i<=rActSlideIndex; i++) {
+							document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[0].style.display = "none";
+							document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[1].style.display = "block";
+							document.getElementById(rArrActSlideList[i]).style.display = "block";
+						}
+						
+						document.getElementById(rArrActSlideList[rActSlideIndex]).getElementsByTagName("div")[0].style.display = "block";
+						document.getElementById(rArrActSlideList[rActSlideIndex]).getElementsByTagName("div")[1].style.display = "none";					
+					} else {
+						for (var i=0; i<rArrActSlideList.length; i++) {
+							document.getElementById(rArrActSlideList[i]).style.display = "block";
+							document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[0].style.display = "none";
+							document.getElementById(rArrActSlideList[i]).getElementsByTagName("div")[1].style.display = "block";
+						}
+					}
+					
+					document.getElementById(rArrActSlideList[rActSlideIndex]).getElementsByTagName("div")[0].style.display = "block";
+					document.getElementById(rArrActSlideList[rActSlideIndex]).getElementsByTagName("div")[1].style.display = "none";
+					document.getElementById(rArrActSlideList[rActSlideIndex]).style.display = "block";					
+				} catch(err) {
+					//alert(err.message);
+				}
+			}
+
+			function doReplay() {
+				rDisplayMode = "SEQ";
+				rActSlideIndex = 0;
+				doSetAndShowActivity();
+			}
+			
+			function doGoToRNDOrder() {
+				rDisplayMode = "RND";
+				rActSlideIndex = Math.floor(Math.random() * rArrActSlideList.length);
+				doSetAndShowActivity();
+			}
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<div style="position:absolute; width:91%; height:300px; left:0px; top:0px; text-align:center; border:0px solid blue;">
+									<div id="divTableCol" name="divTableCol" style="position:relative; width:100%; height:74%; left:10px; top:20px; border:0px solid #666666; display:inline-block;">
+										<div id="divTableRow_1" name="divTableRow" style="position:absolute; width:100%; height:171px; left:0px; top:50px; border:0px solid #666666; display:inline-block;">
+											<div id="divActMain_1" name="divActMain" class="clsBox" style="left:0px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_1.png" style="width:20px;" />
+												</div>
+											</div>
+											<div id="divActMain_2" name="divActMain" class="clsBox" style="left:65px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_2.png" />
+												</div>
+											</div>
+											<div id="divActMain_3" name="divActMain" class="clsBox" style="left:130px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_3.png" />
+												</div>
+											</div>
+											<div id="divActMain_4" name="divActMain" class="clsBox" style="left:197px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_4.png" style="width:35px;" />
+												</div>
+											</div>
+											<div id="divActMain_5" name="divActMain" class="clsBox" style="left:265px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_5.png" style="width:35px;" />
+												</div>
+											</div>
+											<div id="divActMain_6" name="divActMain" class="clsBox" style="left:333px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_6.png" style="width:350x;" />
+												</div>
+											</div>
+											<div id="divActMain_7" name="divActMain" class="clsBox" style="left:400px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_7.png" style="width:35px;" />
+												</div>
+											</div>
+											<div id="divActMain_8" name="divActMain" class="clsBox" style="left:468px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_8.png" style="width:35px;" />
+												</div>
+											</div>
+											<div id="divActMain_9" name="divActMain" class="clsBox" style="left:535px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_9.png" />
+												</div>
+											</div>
+											<div id="divActMain_10" name="divActMain" class="clsBox" style="left:600px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_10.png" style="width:40px;" />
+												</div>
+											</div>											
+										</div>
+										
+										<div id="divTableRow_2" name="divTableRow" style="position:absolute; width:100%; height:171px; left:0px; top:150px; border:0px solid #666666; display:inline-block;">
+											<div id="divActMain_11" name="divActMain" class="clsBox" style="left:0px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_11.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_12" name="divActMain" class="clsBox" style="left:65px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_12.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_13" name="divActMain" class="clsBox" style="left:130px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_13.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_14" name="divActMain" class="clsBox" style="left:197px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_14.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_15" name="divActMain" class="clsBox" style="left:265px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_15.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_16" name="divActMain" class="clsBox" style="left:333px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_16.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_17" name="divActMain" class="clsBox" style="left:400px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_17.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_18" name="divActMain" class="clsBox" style="left:468px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_18.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_19" name="divActMain" class="clsBox" style="left:535px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_19.png" style="width:50px;" />
+												</div>
+											</div>
+											<div id="divActMain_20" name="divActMain" class="clsBox" style="left:600px;">
+												<div class="clsQuestionMarkDiv" onclick="javascript:doGetNextSlide(this);">
+													<img class="clsQuestionMarkPic" src="../../images/question_mark_small.gif" />												
+												</div>
+												<div class="clsNumbers">
+													<img class="clsNumberPic" src="images/number_20.png" style="width:50px;" />
+												</div>
+											</div>
+										</div>										
+									</div>
+								</div>
+								<div id="divBtnPanel" name="divBtnPanel" style="position:relative; width:100%; height:auto; left:0px; top:250px; border:0px solid #333333; display:block;">
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:none;" onclick="javascript:doReplay();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:none;" onclick="javascript:doGoToRNDOrder();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="40" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	
+		<script language="javascript">
+			doSetAndShowActivity();
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>

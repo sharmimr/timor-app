@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+		
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3"];
+			var rListIndex = 0;
+			var r33_1_DragId = "";
+
+			function doNavigateAct(rAction, rDragId) {
+				rDropCorrect2Excuted = false;
+				
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				if (rListIndex==1) {
+					document.getElementById("divBtnNext").style.display = "none";
+					document.getElementById("divImage_2_1").getElementsByTagName("img")[0].src = "images/img_part_2.png";
+					document.getElementById("divImage_2_2").getElementsByTagName("img")[0].src = "images/img_part_1.png";
+					document.getElementById("divImage_2_1_1").getElementsByTagName("img")[0].src = "images/img_part_2.png";
+					document.getElementById("divImage_2_2_1").getElementsByTagName("img")[0].src = "images/img_part_1.png";					
+					
+					document.getElementById("divImage_2_1").style.left = "535px";
+					document.getElementById("divImage_2_1").style.top = "50px";
+					document.getElementById("divImage_2_1_1").style.top = "75px";
+					document.getElementById("divImage_2_2").style.left = "560px";
+					document.getElementById("divImage_2_2").style.top = "150px";
+					document.getElementById("divImage_2_2").style.display = "inline-block";
+					
+					document.getElementById("divImage_2_1_1").style.left = "226px";
+					document.getElementById("divImage_2_1_1").style.top = "53px";
+					
+					document.getElementById("divImage_2_2_1").style.left = "417px";
+					document.getElementById("divImage_2_2_1").style.top = "140px";					
+					
+					document.getElementById("divImage_2_1_1").style.display = "none";
+					document.getElementById("divImage_2_2_1").style.display = "none";
+					
+					document.getElementById("divImage_2_1").style.display = "inline-block";
+					document.getElementById("divImage_2_2").style.display = "inline-block";
+					document.getElementById("divImage_2_1_1").style.display = "none";
+					document.getElementById("divImage_2_2_1").style.display = "none";
+					
+					document.getElementById("divDrop_1").style.display = "block";
+					document.getElementById("divDrop_2").style.display = "block";					
+
+					$(".clsBox_2").draggable({
+						axis: "x, y", containment: "#divDragArea_2", revert: true,
+						drag: function(event, ui) {
+							document.getElementById("divImage_2_1").style.zIndex = "auto";
+							document.getElementById("divImage_2_2").style.zIndex = "auto";
+							document.getElementById(this.id).style.zIndex = 9998;
+							if (doOverlapCheck(document.getElementById("divImage_2_1"), document.getElementById("divDrop_1"))) {
+								document.getElementById("divImage_2_1").style.display = "none";
+								document.getElementById("divImage_2_1_1").style.left = "226px";
+								document.getElementById("divImage_2_1_1").style.top = "53px";
+								document.getElementById("divImage_2_1_1").style.display = "inline-block";
+							} else {
+							if (doOverlapCheck(document.getElementById("divImage_2_2"), document.getElementById("divDrop_2"))) {
+								document.getElementById("divImage_2_2").style.display = "none";
+								document.getElementById("divImage_2_2_1").style.left = "417px";
+								document.getElementById("divImage_2_2_1").style.top = "140px";
+								document.getElementById("divImage_2_2_1").style.display = "inline-block";							
+							} }
+							doCheckAllDropCorrect_2();
+							/*
+							document.getElementById("divImage_2_1").style.zIndex = "auto";
+							document.getElementById("divImage_2_2").style.zIndex = "auto";
+							document.getElementById(this.id).style.zIndex = 9998;
+							var rDragObjLeftSPL = document.getElementById(this.id).style.left.split("px");
+							var rDragObjLeftNum = Number(rDragObjLeftSPL[0]);
+							if (document.getElementById(this.id).id=="divImage_2_1") {
+								if (rDragObjLeftNum<=380) {
+									document.getElementById("divImage_2_1").style.display = "none";
+									document.getElementById("divImage_2_1_1").style.left = "380px";
+									document.getElementById("divImage_2_1_1").style.display = "inline-block";
+								}
+							} else {
+							if (document.getElementById(this.id).id=="divImage_2_2") {
+								if (rDragObjLeftNum<=738) {
+									document.getElementById("divImage_2_2").style.display = "none";
+									document.getElementById("divImage_2_2_1").style.left = "738px";
+									document.getElementById("divImage_2_2_1").style.display = "inline-block";
+								}								
+							} }
+							
+							doCheckAllDropCorrect_2();
+							*/
+						}
+					});
+				}
+				
+				var rDropCorrect2Excuted = false;
+				function doCheckAllDropCorrect_2() {
+					if (rDropCorrect2Excuted==false) {
+						if (document.getElementById("divImage_2_1_1").style.display=="inline-block" && document.getElementById("divImage_2_2_1").style.display=="inline-block") {
+							doNavigateAct("N");
+							document.getElementById("divBtnNext").style.display = "none";
+							doResetMainNavButton();
+							rDropCorrect2Excuted = true;
+						}
+					}
+				}
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				rDropCorrect2Excuted = false
+				
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById("divImage_2_1").getElementsByTagName("img")[0].src = "images/img_part_2.png";
+				document.getElementById("divImage_2_2").getElementsByTagName("img")[0].src = "images/img_part_1.png";
+				document.getElementById("divImage_2_1_1").getElementsByTagName("img")[0].src = "images/img_part_2.png";
+				document.getElementById("divImage_2_2_1").getElementsByTagName("img")[0].src = "images/img_part_1.png";				
+				
+				document.getElementById("divImage_2_1").style.left = "535px";
+				document.getElementById("divImage_2_1").style.top = "50px";
+				document.getElementById("divImage_2_1_1").style.top = "75px";
+				document.getElementById("divImage_2_2").style.left = "560px";
+				document.getElementById("divImage_2_2").style.top = "150px";
+				document.getElementById("divImage_2_2").style.display = "inline-block";
+				
+				document.getElementById("divImage_2_1_1").style.left = "226px";
+				document.getElementById("divImage_2_1_1").style.top = "53px";
+				
+				document.getElementById("divImage_2_2_1").style.left = "417px";
+				document.getElementById("divImage_2_2_1").style.top = "140px";				
+					
+				document.getElementById("divImage_2_1_1").style.display = "none";
+				document.getElementById("divImage_2_2_1").style.display = "none";
+				
+				document.getElementById("divImage_2_1").style.display = "inline-block";
+				document.getElementById("divImage_2_2").style.display = "inline-block";
+				document.getElementById("divImage_2_1_1").style.display = "none";
+				document.getElementById("divImage_2_2_1").style.display = "none";
+
+				document.getElementById("divDrop_1").style.display = "block";
+				document.getElementById("divDrop_2").style.display = "block";				
+
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+			
+			function doOverlapCheck(a, b) {
+			  var rect1 = a.getBoundingClientRect();
+			  var rect2 = b.getBoundingClientRect();
+			  var isInHoriztonalBounds = rect1.x < rect2.x + rect2.width && rect1.x + rect1.width > rect2.x;
+			  var isInVerticalBounds = rect1.y < rect2.y + rect2.height && rect1.y + rect1.height > rect2.y;
+			  var isOverlapping = isInHoriztonalBounds && isInVerticalBounds;
+			  return isOverlapping;
+			}			
+		</script>		
+	</head>
+
+	<body bgcolor="#ffffff">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--Slides-->
+								<div id="div_1" name="div_1" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="font-size:200%;">aviaun</div>
+												</td>
+											</tr>
+											<tr>
+												<td align="center" valign="top">
+													<div style="position:relative; top:0px; cursor:default; display:block;">
+														<img width="auto" height="199" src="images/img_main.png" />
+													</div>
+												</td>
+											</tr>											
+										</table>
+									</div>
+								</div>
+								<div id="div_2" name="div_2" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div id="divDragArea_2" name=="divDragArea_2" style="position:relative; width:100%; height:300px; top:0px; border:0px solid red;">
+										<div style="position:relative; width:100%; height:auto; border:0px solid #333333;">
+											<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+												<tr>
+													<td align="center" valign="top">
+														<div style="font-size:200%;">Monta aviaun</div>
+													</td>
+												</tr>
+												<tr>
+													<td align="center" valign="top">
+														<div style="position:relative; top:0px; cursor:default; display:block;">
+															<img width="auto" height="200" src="images/img_without_parts.png" />
+														</div>
+													</td>
+												</tr>											
+											</table>
+
+											<div id="divImage_2_1" name="divImage_2_1" class="clsBox_2" style="position:absolute; left:535px; top:50px; cursor:pointer; border:0px solid red; display:inline-block;">
+												<img width="auto" height="90" src="images/img_part_2.png" />
+											</div>
+											<div id="divImage_2_1_1" name="divImage_2_1_1" style="position:absolute; left:226px; top:53px; cursor:pointer; border:0px solid red; display:none;">
+												<img width="auto" height="93" src="images/img_part_2.png" />
+											</div>											
+											<div id="divImage_2_2" name="divImage_2_2" class="clsBox_2" style="position:absolute; left:535px; top:150px; cursor:pointer; border:0px solid red; display:inline-block;">
+												<img width="auto" height="110" src="images/img_part_1.png" />
+											</div>
+											<div id="divImage_2_2_1" name="divImage_2_2_1" style="position:absolute; left:417px; top:140px; cursor:pointer; border:0px solid red; display:none;">
+												<img width="auto" height="110" src="images/img_part_1.png" />
+											</div>										
+										</div>
+										
+										<div id="divDrop_1" name="divDrop_1" style="position:absolute; left:260px; top:75px; width:45px; height:40px; border:0px solid red;"></div>
+										<div id="divDrop_2" name="divDrop_2" style="position:absolute; left:440px; top:175px; width:45px; height:40px; border:0px solid red;"></div>
+									</div>
+								</div>
+								<div id="div_3" name="div_3" style="position:absolute; width:100%; height:auto; left:0px; top:0px; border:0px solid #333333; display:none;">
+									<div style="position:relative; width:90%; height:auto; top:0px; border:0px solid #333333;">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr><td colspan="2" height="1"></td></tr>
+											<tr>
+												<td width="600" align="center" valign="top">
+													<div style="font-size:200%;">loos</div>
+												</td>
+												<td align="center" valign="top">
+													<div style="position:relative; left:-275px; top:5px; cursor:default; display:block;">
+														<img width="auto" height="35" src="images/right.png" />
+													</div>
+												</td>
+											</tr>
+										</table>
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="position:relative; top:0px; cursor:default; display:block;">
+														<img width="auto" height="199" src="images/img_main.png" />
+													</div>
+												</td>
+											</tr>											
+										</table>
+									</div>
+								</div>
+								
+								<!--Slides End-->							
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="50" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="50" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:0px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img width="auto" height="50" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>

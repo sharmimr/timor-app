@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSlideImgTop {
+				position: absolute; 
+				width: 100%; 
+				text-align: center; 
+				top: 10px;
+				border: 0px solid red;
+			}
+			.clsSubTitle_2_Bottom {
+			    position: absolute;
+			    width: 80%;
+			    top: 202px;
+			    left: 10%;
+			    font-size:140%;
+			    line-height: 1.3; 
+			    border:0px solid blue;
+			}	
+			.clsLabelMobileText {
+				position: relative;
+				width: 30%;
+				left: -3%;
+				top: 130px;
+			    font-size: 25px; 
+			    color:#000000;
+				line-height: 1.3;
+				border: 0px solid red;
+			}
+			.clsLabelTablet {
+				position: relative;
+				top: -10px;
+			    font-size: 20px; 
+			    color:#000000;
+				line-height: 1.3;
+			    border: 0px solid red;
+			}
+			.clsSubTitleTabletText {
+				font-size:180%; 
+				color: #000000;
+				line-height: 1.3; 
+				border: 0px solid red;
+			}
+			.clsBoxSizeMobile {
+				position: absolute; 
+				width: 190px;
+				border:0px solid #333333;
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+
+			function doResetActivity() {
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--Slides-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitle_1">Ko’alia kona-ba feriadu</div>
+                   					<div class="clsSlideImg"><img src="images/1.png" width="auto" height="165"/></div>
+								</div>
+								<div id="div_2" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsLabelMobileText">Halimar</div>
+                					<div class="clsBoxSizeMobile" style="left: 35px; bottom:190px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/2_a.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">elastik</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 250px; bottom:200px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/2_b.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">berlindus</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 465px; bottom:190px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/2_c.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">tapa</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 35px; bottom:50px;">
+										<div class="clsImgCenter"><img width="auto" height="95" src="images/2_d.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">haksoit jogu</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 250px; bottom:42px;">
+										<div class="clsImgCenter"><img width="auto" height="45" src="images/2_e.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">joga bola</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 465px; bottom:50px;">
+										<div class="clsImgCenter"><img width="auto" height="95" src="images/2_f.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">ai-than jogu</div>
+                					</div>
+								</div>
+								<div id="div_3" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsLabelMobileText">Uma</div>
+                					<div class="clsBoxSizeMobile" style="left: 35px; bottom:190px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/3_a.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">mehi</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 250px; bottom:200px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/3_b.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">te’in</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 465px; bottom:190px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/3_c.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">festa aniversáriu</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 35px; bottom:50px;">
+										<div class="clsImgCenter"><img width="auto" height="95" src="images/3_d.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">halibur bee</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 250px; bottom:42px;">
+										<div class="clsImgCenter"><img width="auto" height="45" src="images/3_e.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">toos</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 465px; bottom:50px;">
+										<div class="clsImgCenter"><img width="auto" height="95" src="images/3_f.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">hamoos</div>
+                					</div>
+								</div>
+								<div id="div_4" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsLabelMobileText">Kalma</div>
+                					<div class="clsBoxSizeMobile" style="left: 35px; bottom:190px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/4_a.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">hemu ai-koko</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 250px; bottom:200px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/4_b.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">toka múzica</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 465px; bottom:190px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/4_c.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">nani</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 35px; bottom:50px;">
+										<div class="clsImgCenter"><img width="auto" height="95" src="images/4_d.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">la'o ba cristo rei</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 465px; bottom:50px;">
+										<div class="clsImgCenter"><img width="auto" height="95" src="images/4_e.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">tein iha tasi-ibun</div>
+                					</div>
+								</div>
+								<div id="div_5" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsLabelMobileText">Komunidade</div>
+                					<div class="clsBoxSizeMobile" style="left: 35px; bottom:190px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/5_a.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">merkadu tais</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 250px; bottom:200px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/5_b.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">merkadu</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 465px; bottom:190px;">
+										<div class="clsImgCenter"><img width="auto" height="65" src="images/5_c.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">vizita avó sira</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 35px; bottom:50px;">
+										<div class="clsImgCenter"><img width="auto" height="95" src="images/5_d.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">uma kreda</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 250px; bottom:42px;">
+										<div class="clsImgCenter"><img width="auto" height="45" src="images/5_e.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">ró-ahi</div>
+                					</div>
+                					<div class="clsBoxSizeMobile" style="left: 465px; bottom:50px;">
+										<div class="clsImgCenter"><img width="auto" height="95" src="images/5_f.png" /></div>
+										<div class="clsImgCenter clsLabelTablet">bingo</div>
+                					</div>
+								</div>
+								<div id="div_6" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">Fatin saida maka ita-boot vizita  </br>iha loron feriadu sira?</div>
+                    				<div class="clsSlideImg" style="top:30px; border 0px solid blue;">
+                    					<div class="clsImgCenter"><img width="auto" height="180" src="images/6.png" /></div>
+                    				</div>
+								</div>
+								<div id="div_7" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">aldeia</div>
+                   					<div style="position:relative; top:20px;"><img width="auto" height="195" src="images/7.png" /></div>
+								</div>
+								<div id="div_8" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">ai-laran</div>
+                   					<div style="position:relative; top:20px;"><img width="auto" height="195" src="images/8.png" /></div>
+								</div>
+								<div id="div_9" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">uma tradisionál</div>
+                   					<div style="position:relative; top:20px;"><img width="auto" height="195" src="images/9.png" /></div>
+								</div>
+								<div id="div_10" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">parente nia uma</div>
+                   					<div style="position:relative; top:20px;"><img width="auto" height="195" src="images/10.png" /></div>
+								</div>
+								<div id="div_11" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">tasi-ibun</div>
+                   					<div style="position:relative; top:20px;"><img width="auto" height="195" src="images/11.png" /></div>
+								</div>
+								<div id="div_12" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">toos</div>
+                   					<div style="position:relative; top:20px;"><img width="auto" height="195" src="images/12.png" /></div>
+								</div>
+								<div id="div_13" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">sidade</div>
+                   					<div style="position:relative; top:20px;"><img width="auto" height="195" src="images/13.png" /></div>
+								</div>
+								<div id="div_14" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">dook tebes</div>
+                   					<div style="position:relative; top:20px;"><img width="auto" height="195" src="images/main_bg.png" /></div>
+								</div>
+								<div id="div_15" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitleTabletText">Oinsá ita-boot to'o iha ne'ebá?</div>
+                   					<div style="position:absolute; left: 45px; top:65px;"><img width="auto" height="100" src="images/15_a.png" /></div>
+                   					<div style="position:absolute; left: 275px; top:50px;"><img width="auto" height="110" src="images/15_b.png" /></div>
+									<div style="position:absolute; left: 515px; top:70px;"><img width="auto" height="110" src="images/15_c.png" /></div>
+									<div style="position:absolute; left: 55px; top:175px;"><img width="auto" height="110" src="images/15_d.png" /></div>
+									<div style="position:absolute; left: 285px; top:160px;"><img width="auto" height="120" src="images/15_e.png" /></div>
+									<div style="position:absolute; left: 480px; top:180px;"><img width="auto" height="90" src="images/15_f.png" /></div>
+								</div>
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>

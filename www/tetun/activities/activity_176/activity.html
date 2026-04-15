@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Home App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/main.css" />
+		
+		<style>
+			.clsSlideImgTop {
+				position: absolute; 
+				width: 100%; 
+				text-align: center; 
+				top: 15px;
+				border: 0px solid red;
+			}
+			.clsSubTitle_2_Bottom {
+			    position: absolute;
+			    width: 80%;
+			    top: 209px;
+			    left: 10%;
+			    font-size:120%;
+			    line-height: 1.3; 
+			    border:0px solid blue;
+			}
+			.clsSubTitle_2_Top {
+			    position: absolute;
+			    width: 80%;
+			    top: 20px;
+			    left: 10%;
+			    font-size:140%;
+			    line-height: 1.3; 
+			    border:0px solid blue;
+			}
+			.clsFlipH {
+			    -moz-transform: scaleX(-1);
+			    -o-transform: scaleX(-1);
+			    -webkit-transform: scaleX(-1);
+			    transform: scaleX(-1);
+			    filter: FlipH;
+			    -ms-filter: "clsFlipH";
+			}
+		</style>		
+
+		<script src="../../js/jquery-3.6.0.js"></script>
+		<script src="../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../js/main.js"></script>
+
+		<script language="javascript">
+
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19"];
+			var rListIndex = 0;
+			
+			function doNavigateAct(rAction) {
+
+				document.getElementById("bgAudio_1").pause();
+				document.getElementById("bgAudio_1").currentTime = 0;
+
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				if (rAction.toUpperCase()=="N") {
+					rListIndex++;
+				} else {
+					rListIndex--;
+				}
+				
+				if (rListIndex<=0) {
+					rListIndex = 0;
+				}
+
+				if (rListIndex>=rArrDivList.length-1) {
+					rListIndex = rArrDivList.length-1;
+				}
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+				
+				if (rListIndex==1) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==2) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==3) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==4) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==5) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==6) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==7) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==8) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==9) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==10) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==11) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==12) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==13) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==14) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==15) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==16) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==17) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==18) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+				if (rListIndex==19) {
+					document.getElementById("bgAudio_1").currentTime = 0;
+					document.getElementById("bgAudio_1").play();
+				}
+
+			}
+
+			function doResetActivity() {
+
+				document.getElementById("bgAudio_1").pause();
+				document.getElementById("bgAudio_1").currentTime = 0;
+
+				for (var i=0; i<rArrDivList.length; i++) {
+					document.getElementById(rArrDivList[i]).style.display = "none";
+				}
+				
+				rListIndex = 0;
+				
+				if (rListIndex<=0) {
+					document.getElementById("divBtnReplay").style.display = "none";
+					document.getElementById("divBtnBack").style.display = "none";
+					document.getElementById("divBtnNext").style.display = "inline-block";			
+				} else {
+				if (rListIndex>=rArrDivList.length-1) {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "none";
+				} else {
+					document.getElementById("divBtnReplay").style.display = "inline-block";
+					document.getElementById("divBtnBack").style.display = "inline-block";
+					document.getElementById("divBtnNext").style.display = "inline-block";				
+				} }
+				
+				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+			}
+		</script>
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:730px; height:310px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:relative; width:100%; height:100%; left:0px; top:0px; background:transparent; border:0px solid green;">
+								<!--Slides-->
+								<div id="div_1" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImg"><img src="images/1.gif" width="auto" height="310"/></div>
+                    				<div class="clsSubTitle_1" style="position: absolute; font-size: 30px; top: 10px;">Knananuk manu-rade neen</div>
+								</div>
+								<div id="divVidAni" name="divVidAni" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green; display:block;">
+									<audio id="bgAudio_1" name="bgAudio_1" loop src="media/audio/duck_1.mp3">
+								</div>
+
+								<div id="div_2" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/2.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Manu-rade Neen Manu-rade Neen Manu-rade neen ho kór oioin.</div>
+								</div>
+								<div id="div_3" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/2.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Manu-rade Neen Manu-rade Neen Manu-rade neen ho kór oioin.
+                    					</br>Balu mutin, balu mean no kinur.
+                    				</div>
+								</div>
+								<div id="div_4" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/3.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Maibé manu-rade ida ho kór-metan,</div>
+								</div>
+								<div id="div_5" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/3.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Maibé manu-rade ida ho kór-metan,
+                    					</br>Sira tuir nia ho kuak, kuak, kuak
+                    				</div>
+								</div>
+								<div id="div_6" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/4.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Kuak, kuak, kuak, kuak, kuak, kuak,</div>
+								</div>
+								<div id="div_7" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/4.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Kuak, kuak, kuak, kuak, kuak, kuak,
+                    					</br>Sira tuir nia ho kuak, kuak, kuak.
+                    				</div>
+								</div>
+								<div id="div_8" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/5.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Sira tun ba bee hodi nani,</div>
+								</div>
+								<div id="div_9" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/5.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Sira tun ba bee hodi nani,
+                    					</br>Bopa, bopa, bopa, bopa, loos no karuk.
+                    				</div>
+								</div>
+								<div id="div_10" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img class="clsFlipH" src="images/3.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Maibé manu-rade ida ho kór-metan,</div>
+								</div>
+								<div id="div_11" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img class="clsFlipH" src="images/3.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Maibé manu-rade ida ho kór-metan,
+                    					</br>Sira tuir nia ho kuak, kuak, kuak
+                    				</div>
+								</div>
+								<div id="div_12" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img class="clsFlipH" src="images/4.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Kuak, kuak, kuak, kuak, kuak, kuak,</div>
+								</div>
+								<div id="div_13" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img class="clsFlipH" src="images/4.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Kuak, kuak, kuak, kuak, kuak, kuak,
+                    					</br>Sira tuir nia ho kuak, kuak, kuak.
+                    				</div>
+								</div>
+								<div id="div_14" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/8.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Sira fila ba uma kontente,</div>
+								</div>
+								<div id="div_15" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/8.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Sira fila ba uma kontente,
+                    					</br>Bopa, bopa, bopa, bopa, loos no karuk.
+                    				</div>
+								</div>
+								<div id="div_16" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/9.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Maibé manu-rade ida ho kór-metan,</div>
+								</div>
+								<div id="div_17" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/9.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Maibé manu-rade ida ho kór-metan,
+                    					</br>Sira tuir nia ho kuak, kuak, kuak
+                    				</div>
+								</div>
+								<div id="div_18" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/10.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">Kuak, kuak, kuak, kuak, kuak, kuak,</div>
+								</div>
+								<div id="div_19" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImgTop"><img src="images/10.gif" width="auto" height="195"/></div>
+                    				<div class="clsSubTitle_2_Bottom">
+                    					Kuak, kuak, kuak, kuak, kuak, kuak,
+                    					</br>Sira tuir nia ho kuak, kuak, kuak.
+                    				</div>
+								</div>
+
+								<!--Slides End-->							
+								<!--Buttons Begin-->								
+								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
+									<div id="divBtnBack" name="divBtnBack" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('P');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroBack" src="../../images/back_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>
+									<div id="divBtnReplay" name="divBtnReplay" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doResetActivity();">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroReplay" src="../../images/replay.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>
+									<div style="position:relative; width:10px; display:inline-block;"></div>								
+									<div id="divBtnNext" name="divBtnNext" style="position:relative; border:0px solid #666666; cursor:pointer; display:inline-block;" onclick="javascript:doNavigateAct('N');">
+										<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+											<tr>
+												<td align="center" valign="top">
+													<div style="display:block;">
+														<img class="clsMicroNext" src="../../images/next_arrow.png" />
+													</div>
+												</td>
+											</tr>
+										</table>									
+									</div>									
+								</div>								
+							</div>
+							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
+								<div id="divPosterImage" name="divPosterImage" class="clsMacroPosterImage" style="border:0px solid red; cursor:pointer;">
+									<img id="imgPoster" name="imgPoster" width="100%" height="100%" />
+								</div>							
+								<div id="divBtnBackArrow" name="divBtnBackArrow" class="clsMacroBack" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../images/back_arrow.png" />
+								</div>
+								<div id="divBtnNextArrow" name="divBtnNextArrow" class="clsMacroNext" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../images/next_arrow.png" />
+								</div>					
+								<div id="divBtnHome" name="divBtnHome" class="clsMacroHome" style="cursor:pointer;" onclick="javascript:doRedirectToURL(this, 'H');">
+									<img width="100%" height="100%" src="../../images/home.png" />
+								</div>
+							</div>
+							<!--Buttons End-->								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetActivity();
+			doResetMainNavButton();
+		</script>		
+	</body>
+</html>
