@@ -42,18 +42,25 @@
         text-shadow: -2px 2px 4px #000000;
       }
       #divCompletionMsg {
-        background-color: #b8f1f7;
         text-align: center;
-        color: green;
+        color: #ffffff;
         position: absolute;
-        top: -250px;
-        left: 200px;
-        opacity: 0.7;
+        bottom: 60px;
+        left: 50%;
+        transform: translate(-50%);
       }
-      #tickImg {
+      #divCorrectTextPanel {
         transition: transform 0.3s ease;
+        cursor: pointer;
       }
 
+      .whiteTick {
+        filter: brightness(0) invert(1);
+      }
+      .greenTick {
+        /* green color */
+        filter: brightness(1) invert(0);
+      }
       .zoomTick {
         transform: scale(1.5);
       }
@@ -1369,26 +1376,27 @@
                       <tr>
                         <td align="center" valign="top">
                           <div style="display: block">
+                            <span
+                              id="childText"
+                              style="
+                                font-size: 18px;
+                                font-weight: bold;
+                                margin-left: 5px;
+                              "
+                            >
+                            </span>
                             <img
                               width="auto"
-                              height="55"
+                              height="30"
                               src="../../images/tick.png"
                               onclick="enlargeTick()"
-                              id="tickImg"
+                              id="divCorrectTextPanel"
+                              class="whiteTick"
                             />
                           </div>
                         </td>
                       </tr>
                     </table>
-                    <span
-                      style="
-                        font-size: 16px;
-                        font-weight: bold;
-                        margin-left: 5px;
-                      "
-                    >
-                      bele ko'alia kona-ba istória ida
-                    </span>
                   </div>
                 </div>
               </div>
@@ -1461,17 +1469,21 @@
     </div>
 
     <script language="javascript">
+      const activeChildId = sessionStorage.getItem("active_child_name");
+
+      const text = "bele ko'alia kona-ba istória ida";
+
+      document.getElementById("childText").innerText =
+        (activeChildId ? activeChildId + " " : "") + text;
       doResetActivity();
       doResetMainNavButton();
-      // function enlargeTick() {
-      //   const img = document.getElementById("tickImg");
-      //   img.style.transform = "scale(1.5)";
-      //   img.style.transition = "0.3s ease";
-      // }
       function enlargeTick() {
-        const img = document.getElementById("tickImg");
+        const img = document.getElementById("divCorrectTextPanel");
         img.classList.toggle("zoomTick");
+        img.classList.toggle("greenTick");
+        img.classList.remove("whiteTick");
       }
     </script>
+    <script src="../../activity-tracker.js"></script>
   </body>
 </html>

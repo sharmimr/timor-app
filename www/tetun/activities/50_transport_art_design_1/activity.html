@@ -42,7 +42,7 @@
       var rArrDivList = ["div_Title", "div_1", "div_2", "div_3", "div_4"];
       var rListIndex = 0;
       var rPickedColor = "default";
-      
+
       // Tracking variables
       var rObjectCompletionStatus = [false, false, false, false]; // Track completion for 4 objects
       var rObjectAttemptedStatus = [false, false, false, false]; // Track if object has any color
@@ -92,7 +92,7 @@
         // Load saved colors for the new object
         if (rListIndex > 0) {
           loadObjectState(rListIndex);
-          
+
           // Update completion status display
           updateCompletionDisplay();
         } else {
@@ -103,7 +103,7 @@
 
         // Only reset color panel, not object colors
         doResetColorPanel();
-        
+
         // Display current tracking status in console (for debugging)
         displayTrackingStatus();
       }
@@ -111,38 +111,38 @@
       // Save current object state
       function saveCurrentObjectState() {
         if (rListIndex <= 0) return; // Don't save title page
-        
+
         var currentDiv = document.getElementById(rArrDivList[rListIndex]);
         var images = currentDiv.getElementsByTagName("img");
         var objectIndex = rListIndex - 1;
-        
+
         // Create storage for this object if it doesn't exist
         if (!rObjectColors[objectIndex]) {
           rObjectColors[objectIndex] = {};
         }
-        
+
         var hasAnyColor = false;
-        
+
         // Save colors for each part
         for (var i = 0; i < images.length; i++) {
           if (images[i].getAttribute("name") == "imgObjectPart") {
             var rImageId = images[i].id;
             var rImageSrc = images[i].src;
-            
+
             // Extract color from src path
             var colorMatch = rImageSrc.match(/\/([^\/]+)\/\d+\.png$/);
-            if (colorMatch && colorMatch[1] !== 'default') {
+            if (colorMatch && colorMatch[1] !== "default") {
               rObjectColors[objectIndex][rImageId] = colorMatch[1];
               hasAnyColor = true;
             } else {
-              rObjectColors[objectIndex][rImageId] = 'default';
+              rObjectColors[objectIndex][rImageId] = "default";
             }
           }
         }
-        
+
         // Update attempted status
         rObjectAttemptedStatus[objectIndex] = hasAnyColor;
-        
+
         // Update completion status
         checkCurrentObjectCompletion();
       }
@@ -150,27 +150,37 @@
       // Load object state
       function loadObjectState(index) {
         if (index <= 0) return; // Don't load for title page
-        
+
         var currentDiv = document.getElementById(rArrDivList[index]);
         var images = currentDiv.getElementsByTagName("img");
         var objectIndex = index - 1;
-        
+
         // Load colors for each part
         for (var i = 0; i < images.length; i++) {
           if (images[i].getAttribute("name") == "imgObjectPart") {
             var rImageId = images[i].id;
             var rTempSpl = rImageId.split("_");
-            
+
             var rImageNum = rTempSpl[0].substring(5);
             var rObjectName = rTempSpl[1];
-            
+
             // Check if we have a saved color for this part
-            var savedColor = 'default';
-            if (rObjectColors[objectIndex] && rObjectColors[objectIndex][rImageId]) {
+            var savedColor = "default";
+            if (
+              rObjectColors[objectIndex] &&
+              rObjectColors[objectIndex][rImageId]
+            ) {
               savedColor = rObjectColors[objectIndex][rImageId];
             }
-            
-            var rImageSrc = "images/" + rObjectName + "/" + savedColor + "/" + rImageNum + ".png";
+
+            var rImageSrc =
+              "images/" +
+              rObjectName +
+              "/" +
+              savedColor +
+              "/" +
+              rImageNum +
+              ".png";
             images[i].src = rImageSrc;
           }
         }
@@ -204,7 +214,7 @@
             ".png";
 
           rImgElm.src = rImageSrc;
-          
+
           // Save the color immediately
           if (rListIndex > 0) {
             var objectIndex = rListIndex - 1;
@@ -212,7 +222,7 @@
               rObjectColors[objectIndex] = {};
             }
             rObjectColors[objectIndex][rImageId] = rPickedColor;
-            
+
             // Mark as attempted
             rObjectAttemptedStatus[objectIndex] = true;
           }
@@ -224,14 +234,14 @@
 
       function checkCurrentObjectCompletion() {
         if (rListIndex <= 0) return false;
-        
+
         var currentDiv = document.getElementById(rArrDivList[rListIndex]);
         var images = currentDiv.getElementsByTagName("img");
         var currentObjectIndex = rListIndex - 1;
 
         var isCurrentObjectComplete = true;
         var hasAnyColor = false;
-        
+
         for (var i = 0; i < images.length; i++) {
           if (images[i].getAttribute("name") == "imgObjectPart") {
             var rImageSrc = images[i].src;
@@ -257,15 +267,18 @@
       // New function to handle completion display
       function updateCompletionDisplay() {
         var allComplete = checkAllObjectsComplete();
-        var completionMessage = document.getElementById("divCorrectTextPanel").querySelector('.clsPageText');
-        
+        var completionMessage = document
+          .getElementById("divCorrectTextPanel")
+          .querySelector(".clsPageText");
+
         if (rListIndex > 0) {
           var currentObjectIndex = rListIndex - 1;
-          
+
           if (rObjectCompletionStatus[currentObjectIndex]) {
             // Current object is complete
             document.getElementById("divQuestionMark").style.display = "none";
-            document.getElementById("divCorrectTextPanel").style.display = "block";
+            document.getElementById("divCorrectTextPanel").style.display =
+              "block";
 
             if (allComplete) {
               completionMessage.innerHTML = "loos";
@@ -275,7 +288,8 @@
           } else {
             // Current object is not complete
             document.getElementById("divQuestionMark").style.display = "block";
-            document.getElementById("divCorrectTextPanel").style.display = "none";
+            document.getElementById("divCorrectTextPanel").style.display =
+              "none";
           }
         } else {
           // Title page
@@ -286,7 +300,7 @@
 
       function checkAllObjectsComplete() {
         var allComplete = true;
-        
+
         for (var i = 0; i < rTotalObjects; i++) {
           if (!rObjectCompletionStatus[i]) {
             allComplete = false;
@@ -299,18 +313,31 @@
 
       function displayTrackingStatus() {
         console.log("=== Tracking Status ===");
-        console.log("Current Object: " + (rListIndex > 0 ? "Object " + rListIndex : "Title Page"));
-        
+        console.log(
+          "Current Object: " +
+            (rListIndex > 0 ? "Object " + rListIndex : "Title Page"),
+        );
+
         console.log("\nCompletion Status:");
         for (var i = 0; i < rTotalObjects; i++) {
-          console.log("Object " + (i+1) + ": " + (rObjectCompletionStatus[i] ? "✓ COMPLETE" : "✗ Incomplete"));
+          console.log(
+            "Object " +
+              (i + 1) +
+              ": " +
+              (rObjectCompletionStatus[i] ? "✓ COMPLETE" : "✗ Incomplete"),
+          );
         }
-        
+
         console.log("\nAttempted Status:");
         for (var i = 0; i < rTotalObjects; i++) {
-          console.log("Object " + (i+1) + ": " + (rObjectAttemptedStatus[i] ? "🎨 Attempted" : "⭕ Not attempted"));
+          console.log(
+            "Object " +
+              (i + 1) +
+              ": " +
+              (rObjectAttemptedStatus[i] ? "🎨 Attempted" : "⭕ Not attempted"),
+          );
         }
-        
+
         var anyAttempted = false;
         for (var i = 0; i < rTotalObjects; i++) {
           if (rObjectAttemptedStatus[i]) {
@@ -318,9 +345,9 @@
             break;
           }
         }
-        
+
         var allComplete = checkAllObjectsComplete();
-        
+
         console.log("\nOverall Status:");
         if (allComplete) {
           console.log("🏆 COMPLETED - All objects fully colored!");
@@ -365,17 +392,17 @@
               "images/" + rObjectName + "/default/" + rImageNum + ".png";
 
             images[i].src = rImageSrc;
-            
+
             // Update stored colors
             if (rListIndex > 0) {
               var objectIndex = rListIndex - 1;
               if (rObjectColors[objectIndex]) {
-                rObjectColors[objectIndex][rImageId] = 'default';
+                rObjectColors[objectIndex][rImageId] = "default";
               }
             }
           }
         }
-        
+
         // Update completion and attempted status after reset
         if (rListIndex > 0) {
           var objectIndex = rListIndex - 1;
@@ -391,7 +418,7 @@
         }
 
         rListIndex = 0;
-        
+
         // Reset all tracking variables
         for (var i = 0; i < rTotalObjects; i++) {
           rObjectCompletionStatus[i] = false;
@@ -409,13 +436,15 @@
 
         doResetObjectPartsColor();
         doResetColorPanel();
-        
+
         // Reset completion message
-        var completionMessage = document.getElementById("divCorrectTextPanel").querySelector('.clsPageText');
+        var completionMessage = document
+          .getElementById("divCorrectTextPanel")
+          .querySelector(".clsPageText");
         if (completionMessage) {
           completionMessage.innerHTML = "loos";
         }
-        
+
         console.log("Activity reset - All tracking cleared");
         displayTrackingStatus();
       }
@@ -479,7 +508,7 @@
                   class="clsPageText"
                   style="position: relative; display: inline-block; top: -10px"
                 >
-                Loos
+                  Loos
                 </div>
                 <div style="width: 5px; display: inline-block"></div>
                 <div style="display: inline-block">
@@ -555,7 +584,7 @@
                     width: 100%;
                     height: 100%;
                     left: 0px;
-                    top: 0px;
+                    top: 25px;
                     background: transparent;
                     border: 0px solid green;
                   "
@@ -771,42 +800,6 @@
                                     name="imgObjectPart"
                                     width="110"
                                     height="70"
-                                  />
-                                </div>
-                                <div
-                                  style="
-                                    position: absolute;
-                                    left: 1px;
-                                    top: 114px;
-                                    border: 0px solid red;
-                                    display: block;
-                                    cursor: pointer;
-                                  "
-                                  onclick="javascript: doFillColor(this);"
-                                >
-                                  <img
-                                    id="image9_object1"
-                                    name="imgObjectPart"
-                                    width="14"
-                                    height="38"
-                                  />
-                                </div>
-                                <div
-                                  style="
-                                    position: absolute;
-                                    left: 414px;
-                                    top: 128px;
-                                    border: 0px solid red;
-                                    display: block;
-                                    cursor: pointer;
-                                  "
-                                  onclick="javascript: doFillColor(this);"
-                                >
-                                  <img
-                                    id="image10_object1"
-                                    name="imgObjectPart"
-                                    width="10"
-                                    height="19"
                                   />
                                 </div>
                                 <div
@@ -1630,7 +1623,7 @@
                     width: 100%;
                     height: auto;
                     left: 0px;
-                    bottom: 0px;
+                    bottom: 30px;
                     border: 0px solid #333333;
                     display: block;
                   "

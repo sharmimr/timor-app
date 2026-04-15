@@ -31,6 +31,28 @@
 				line-height: 1.3;
 				top: -10px;
 			}
+			#divCompletionMsg {
+        text-align: center;
+        color: #2d6839;
+        position: absolute;
+        bottom: 40px;
+        left: 46%; /* move to center horizontally */
+        transform: translateX(-50%); /* perfectly center it */
+      }
+      #divCorrectTextPanel {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      .whiteTick {
+        filter: brightness(10) invert(1);
+      }
+      .greenTick {
+        /* green color */
+        filter: brightness(1) invert(0);
+      }
+      .zoomTick {
+        transform: scale(1.5);
+      }
 		</style>		
 
 		<script src="../../js/jquery-3.6.0.js"></script>
@@ -38,7 +60,7 @@
 		<script type="text/javascript" src="../../js/main.js"></script>
 
 		<script language="javascript">
-			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19", "div_20", "div_21", "div_22", "div_23", "div_24", "div_25", "div_26", "div_27", "div_28", "div_29", "div_30", "div_31", "div_32", "div_33", "div_34", "div_35", "div_36", "div_37", "div_38", "div_39", "div_40", "div_41", "div_42", "div_43", "div_44", "div_45", "div_46", "div_47"];
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14", "div_15", "div_16", "div_17", "div_18", "div_19", "div_20", "div_21", "div_22", "div_23", "div_24", "div_25", "div_26", "div_27", "div_28", "div_29", "div_30", "div_31", "div_32", "div_33", "div_34", "div_35", "div_36", "div_37", "div_38", "div_39", "div_40", "div_41", "div_42", "div_43", "div_44", "div_45", "div_46", "div_47","div_48"];
 			var rListIndex = 0;
 			
 			function doNavigateAct(rAction) {
@@ -62,16 +84,19 @@
 				if (rListIndex<=0) {
 					document.getElementById("divBtnReplay").style.display = "none";
 					document.getElementById("divBtnBack").style.display = "none";
-					document.getElementById("divBtnNext").style.display = "inline-block";			
+					document.getElementById("divBtnNext").style.display = "inline-block";	
+          document.getElementById("divCompletionMsg").style.display = "none";		
 				} else {
 				if (rListIndex>=rArrDivList.length-1) {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
 					document.getElementById("divBtnNext").style.display = "none";
+          document.getElementById("divCompletionMsg").style.display = "block";
 				} else {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
-					document.getElementById("divBtnNext").style.display = "inline-block";				
+					document.getElementById("divBtnNext").style.display = "inline-block";	
+          document.getElementById("divCompletionMsg").style.display = "none";			
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
@@ -100,6 +125,11 @@
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+        if (rListIndex >= rArrDivList.length - 1) {
+          document.getElementById("divCompletionMsg").style.display = "block";
+        } else {
+          document.getElementById("divCompletionMsg").style.display = "none";
+        }
 			}
 		</script>
 	</head>
@@ -750,6 +780,11 @@
                     				<div class="clsSubTitle_1">Espíritu sira-nia ai-fuan</div>
                    					<div class="clsSlideImg"><img src="images/1.png" width="auto" height="165"/></div>
 								</div>
+								
+								<div id="div_48" name="divMyselfLang" class="clsSlide">
+                    				<div class="clsSubTitle_1"></div>
+                   					<div class="clsSlideImg"><img src="images/1.png" width="auto" height="165"/></div>
+								</div>
 								<!--Slides End-->							
 								<!--Buttons Begin-->								
 								<div id="divBtnPanel" name="divBtnPanel" style="position:absolute; width:100%; height:auto; left:0px; bottom:0px; border:0px solid #333333; display:block;">
@@ -787,7 +822,41 @@
 												</td>
 											</tr>
 										</table>									
-									</div>									
+									</div>	
+									
+                  <div id="divCompletionMsg" style="margin-top: 5px">
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <span
+                              id="childText"
+                              style="
+                                font-size: 16px;
+                                font-weight: bold;
+                                margin-left: 5px;
+                              "
+                            >
+                            </span>
+                            <img
+                              width="auto"
+                              height="30"
+                              src="../../images/tick.png"
+                              onclick="enlargeTick()"
+                              id="divCorrectTextPanel"
+                              class="whiteTick"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>								
 								</div>								
 							</div>
 							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
@@ -811,9 +880,22 @@
 			</table>
 		</div>
 		
-		<script language="javascript">
-			doResetActivity();
-			doResetMainNavButton();
-		</script>		<script src="../../activity-tracker.js"></script>
+		
+    <script language="javascript">
+      const activeChildId = sessionStorage.getItem("active_child_name");
+
+      const text = 'aprende  kona-ba hahalok diak';
+
+      document.getElementById("childText").innerText =
+        (activeChildId ? activeChildId + " " : "") + text;
+      doResetActivity();
+      doResetMainNavButton();
+      function enlargeTick() {
+        const img = document.getElementById("divCorrectTextPanel");
+        img.classList.toggle("zoomTick");
+        img.classList.toggle("greenTick");
+        img.classList.remove("whiteTick");
+      }
+    </script>	<script src="../../activity-tracker.js"></script>
 	</body>
 </html>

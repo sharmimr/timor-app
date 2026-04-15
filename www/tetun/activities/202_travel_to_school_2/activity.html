@@ -59,7 +59,28 @@
 			    color:#000000;
 				line-height: 1.3;
 			}
-
+#divCompletionMsg {
+        text-align: center;
+        color: #e2ece4;
+        position: absolute;
+        bottom: 32px;
+        left: 50%; /* move to center horizontally */
+        transform: translateX(-50%); /* perfectly center it */
+      }
+      #divCorrectTextPanel {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      .whiteTick {
+        filter: brightness(0) invert(1);
+      }
+      .greenTick {
+        /* green color */
+        filter: brightness(1) invert(0);
+      }
+      .zoomTick {
+        transform: scale(1.5);
+      }
 		</style>		
 
 		<script src="../../js/jquery-3.6.0.js"></script>
@@ -67,7 +88,7 @@
 		<script type="text/javascript" src="../../js/main.js"></script>
 
 		<script language="javascript">
-			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13"];
+			var rArrDivList = ["div_1", "div_2", "div_3", "div_4", "div_5", "div_6", "div_7", "div_8", "div_9", "div_10", "div_11", "div_12", "div_13", "div_14"];
 			var rListIndex = 0;
 			
 			function doNavigateAct(rAction) {
@@ -91,16 +112,19 @@
 				if (rListIndex<=0) {
 					document.getElementById("divBtnReplay").style.display = "none";
 					document.getElementById("divBtnBack").style.display = "none";
-					document.getElementById("divBtnNext").style.display = "inline-block";			
+					document.getElementById("divBtnNext").style.display = "inline-block";
+            document.getElementById("divCompletionMsg").style.display = "none";			
 				} else {
 				if (rListIndex>=rArrDivList.length-1) {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
 					document.getElementById("divBtnNext").style.display = "none";
+            document.getElementById("divCompletionMsg").style.display = "block";
 				} else {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
-					document.getElementById("divBtnNext").style.display = "inline-block";				
+					document.getElementById("divBtnNext").style.display = "inline-block";	
+            document.getElementById("divCompletionMsg").style.display = "none";			
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
@@ -129,6 +153,11 @@
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+        if (rListIndex >= rArrDivList.length - 1) {
+          document.getElementById("divCompletionMsg").style.display = "block";
+        } else {
+          document.getElementById("divCompletionMsg").style.display = "none";
+        }
 			}
 
 			function doNavigate(rNum) {
@@ -272,6 +301,13 @@
 										Tempu udan, bainhira udan boot, rai tarutu, rai nakdoko no abu-abu, labarik ida la sente tatidik tanba eskola laiha.
 									</div>
 								</div>
+								<div id="div_14" name="divMyselfLang" class="clsSlide">
+                   					<div class="clsSlideImg"><img src="images/13.gif" width="auto" height="310"/></div>
+                    				<div class="clsSubTitle_Mobile" style="width: 96%; left: 2%; top: 10px; color: white; text-shadow: -2px 2px 4px #000000;">
+										
+									</div>
+								</div>
+								</div>
 
 								<div id="divNumTopPanel" name="divNumTopPanel" style="position:absolute; width:auto; height:auto; left:10px; bottom:10px; border:0px solid red; cursor:pointer; display:inline-block; z-index:10000;">
 									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
@@ -338,7 +374,40 @@
 												</td>
 											</tr>
 										</table>									
-									</div>									
+									</div>		
+									<div id="divCompletionMsg" style="margin-top: 5px">
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <span
+                              id="childText"
+                              style="
+                                font-size: 14px;
+                                font-weight: bold;
+                                margin-left: 5px;
+                              "
+                            >
+                            </span>
+                            <img
+                              width="auto"
+                              height="30"
+                              src="../../images/tick.png"
+                              onclick="enlargeTick()"
+                              id="divCorrectTextPanel"
+                              class="whiteTick"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>							
 								</div>								
 							</div>
 							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
@@ -363,8 +432,21 @@
 		</div>
 		
 		<script language="javascript">
-			doResetActivity();
-			doResetMainNavButton();
-		</script>		
+			   const activeChildId = sessionStorage.getItem("active_child_name");
+
+      const text = 'kompleta ona istória "Viajen ba eskola"';
+
+      document.getElementById("childText").innerText =
+        (activeChildId ? activeChildId + " " : "") + text;
+      doResetActivity();
+      doResetMainNavButton();
+      function enlargeTick() {
+        const img = document.getElementById("divCorrectTextPanel");
+        img.classList.toggle("zoomTick");
+        img.classList.toggle("greenTick");
+        img.classList.remove("whiteTick");
+      }
+		</script>	
+    <script src="../../activity-tracker.js"></script>	
 	</body>
 </html>

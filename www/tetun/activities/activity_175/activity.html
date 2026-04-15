@@ -109,6 +109,29 @@
         height: 130px;
         border: 0px solid red;
       }
+
+      #divCompletionMsg {
+        text-align: center;
+        color: #29a03f;
+        position: absolute;
+        bottom: 70px;
+        left: 50%; /* move to center horizontally */
+        transform: translateX(-50%); /* perfectly center it */
+      }
+      #divCorrectTextPanel {
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+      .whiteTick {
+        filter: brightness(10) invert(1);
+      }
+      .greenTick {
+        /* green color */
+        filter: brightness(1) invert(0);
+      }
+      .zoomTick {
+        transform: scale(1.5);
+      }
     </style>
 
     <script src="../../js/jquery-3.6.0.js"></script>
@@ -176,6 +199,7 @@
           document.getElementById("divBtnReplay").style.display = "none";
           document.getElementById("divBtnBack").style.display = "none";
           document.getElementById("divBtnNext").style.display = "inline-block";
+          document.getElementById("divCompletionMsg").style.display = "none";
         } else {
           if (rListIndex >= rArrDivList.length - 1) {
             document.getElementById("divBtnReplay").style.display =
@@ -183,6 +207,7 @@
             document.getElementById("divBtnBack").style.display =
               "inline-block";
             document.getElementById("divBtnNext").style.display = "none";
+            document.getElementById("divCompletionMsg").style.display = "block";
           } else {
             document.getElementById("divBtnReplay").style.display =
               "inline-block";
@@ -190,6 +215,7 @@
               "inline-block";
             document.getElementById("divBtnNext").style.display =
               "inline-block";
+            document.getElementById("divCompletionMsg").style.display = "none";
           }
         }
 
@@ -250,6 +276,11 @@
 
         document.getElementById(rArrDivList[rListIndex]).style.display =
           "block";
+        if (rListIndex >= rArrDivList.length - 1) {
+          document.getElementById("divCompletionMsg").style.display = "block";
+        } else {
+          document.getElementById("divCompletionMsg").style.display = "none";
+        }
       }
     </script>
   </head>
@@ -318,8 +349,7 @@
                     <img src="images/3.gif" width="auto" height="225" />
                   </div>
                   <div class="clsSubTitle_2_Bottom">
-                    Ida-idak, labarik iha oin soe bola ida ho  marka "X" iha
-                    rai.
+                    Ida-idak, labarik iha oin soe bola ida ho marka "X" iha rai.
                   </div>
                 </div>
                 <div id="div_4" name="divMyselfLang" class="clsSlide">
@@ -367,7 +397,7 @@
                     <img src="images/9.gif" width="auto" height="225" />
                   </div>
                   <div class="clsSubTitle_2_Bottom" style="font-size: 115%">
-                    Labarik ida soe bola ba labarik ne'ebé hasoru  sira, ne'ebé
+                    Labarik ida soe bola ba labarik ne'ebé hasoru sira, ne'ebé
                     tenta atu kaer.
                   </div>
                 </div>
@@ -501,6 +531,44 @@
                             <img
                               class="clsMicroNext"
                               src="../../images/next_arrow.png"
+                              onclick="
+                                document.getElementById(
+                                  'divCompletionMsg',
+                                ).style.display = 'block'
+                              "
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <div id="divCompletionMsg" style="margin-top: 5px">
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+                            <span
+                              id="childText"
+                              style="
+                                font-size: 18px;
+                                font-weight: bold;
+                                margin-left: 5px;
+                              "
+                            >
+                            </span>
+                            <img
+                              width="auto"
+                              height="30"
+                              src="../../images/tick.png"
+                              onclick="enlargeTick()"
+                              id="divCorrectTextPanel"
+                              class="whiteTick"
                             />
                           </div>
                         </td>
@@ -578,8 +646,20 @@
     </div>
 
     <script language="javascript">
+      const activeChildId = sessionStorage.getItem("active_child_name");
+
+      const text = "bele halimar jogu bola";
+
+      document.getElementById("childText").innerText =
+        (activeChildId ? activeChildId + " " : "") + text;
       doResetActivity();
       doResetMainNavButton();
+      function enlargeTick() {
+        const img = document.getElementById("divCorrectTextPanel");
+        img.classList.toggle("zoomTick");
+        img.classList.toggle("greenTick");
+        img.classList.remove("whiteTick");
+      }
     </script>
     <script src="../../activity-tracker.js"></script>
   </body>

@@ -43,6 +43,29 @@
 				text-shadow: -2px 2px 4px #000000;
 				border: 0px solid red;
 			}
+			#divCompletionMsg {
+        text-align: center;
+        color: #ffffff;
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+		transform: translate(-50%);
+      }
+      #divCorrectTextPanel {
+        transition: transform 0.3s ease;
+		cursor: pointer;
+      }
+
+      .whiteTick {
+        filter: brightness(0) invert(1);
+      }
+      .greenTick {
+        /* green color */
+        filter: brightness(1) invert(0);
+      }
+      .zoomTick {
+        transform: scale(1.5);
+      }
 		</style>		
 
 		<script src="../../js/jquery-3.6.0.js"></script>
@@ -73,16 +96,19 @@
 				if (rListIndex<=0) {
 					document.getElementById("divBtnReplay").style.display = "none";
 					document.getElementById("divBtnBack").style.display = "none";
-					document.getElementById("divBtnNext").style.display = "inline-block";			
+					document.getElementById("divBtnNext").style.display = "inline-block";		
+          document.getElementById("divCompletionMsg").style.display = "none";	
 				} else {
 				if (rListIndex>=rArrDivList.length-1) {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
 					document.getElementById("divBtnNext").style.display = "none";
+            document.getElementById("divCompletionMsg").style.display = "block";
 				} else {
 					document.getElementById("divBtnReplay").style.display = "inline-block";
 					document.getElementById("divBtnBack").style.display = "inline-block";
-					document.getElementById("divBtnNext").style.display = "inline-block";				
+					document.getElementById("divBtnNext").style.display = "inline-block";	
+            document.getElementById("divCompletionMsg").style.display = "none";			
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
@@ -111,6 +137,11 @@
 				} }
 				
 				document.getElementById(rArrDivList[rListIndex]).style.display = "block";
+        if (rListIndex >= rArrDivList.length - 1) {
+          document.getElementById("divCompletionMsg").style.display = "block";
+        } else {
+          document.getElementById("divCompletionMsg").style.display = "none";
+        }
 			}
 			
 			function doNavigate(rNum) {
@@ -208,7 +239,7 @@
 													<div style="position: absolute;left: 291px; top: 162px; border:0px solid #333333;"><img width="auto" height="62" src="images/2_b.gif" /></div>
 												</div>
 												<div class="clsSubTitle_White">Kolam bruma</div>
-												<div class="clsPageTextSmall_White" style="top:205px;">Mori her  kolam bruma nan iso<br /> bruma loba tata bei sai somoli.</div>
+												<div class="clsPageTextSmall_White" style="top:205px;">Mori her kolam bruma nan iso<br /> bruma loba tata bei sai somoli.</div>
 											</td>
 										</tr>
 									</table>
@@ -252,7 +283,7 @@
 													<div style="position: relative; overflow:hidden; top:-30px; "><img width="730" height="auto" src="images/3.png" /></div>
 													<div style="position: absolute;left: 256px; top: 130px; border:0px solid #333333;"><img width="auto" height="151" src="images/3_a.gif" /></div>
 												</div>
-												<div class="clsPageTextSmall_White" style="top:205px;">Sole rae iri/bana Tata Bei bruma u<br />sai pe kolam nurat leti sole.</div>
+												<div class="clsPageTextSmall_White" style="top:205px;">Sole rae iri/banaTata Bei bruma u<br />sai pe kolam nurat leti sole.</div>
 											</td>
 										</tr>
 									</table>
@@ -280,7 +311,7 @@
 													<div style="position: relative; overflow:hidden; top:-30px; "><img width="730" height="auto" src="images/3.png" /></div>
 													<div style="position: absolute;left: 256px; top: 130px; border:0px solid #333333;"><img width="auto" height="151" src="images/3_a.gif" /></div>
 												</div>
-												<div class="clsPageTextSmall_White">Tatabei  u kole loba bro hui. </div>
+												<div class="clsPageTextSmall_White">Tatabei  u kole loba bro hui.</div>
 											</td>
 										</tr>
 									</table>
@@ -462,7 +493,7 @@
 													<div style="position: absolute;left: 0px; top: 0px; border:0px solid #333333;"><img width="auto" height="310" src="images/7.gif" /></div>
 												</div>
 												<div class="clsSubTitle_White">Sole mesa la tasi</div>
-												<div class="clsPageTextSmall_White" style="top:205px;">Tatabei manara i kontente, i ro’o<br/>nurat loe abertura ae iso pe tasi. </div>
+												<div class="clsPageTextSmall_White" style="top:205px;">Tatabei manara i kontente, i ro’o<br/>nurat loe abertura ae iso pe tasi.</div>
 											</td>
 										</tr>							
 									</table>
@@ -561,7 +592,7 @@
 													<div style="position: absolute; width: 300px; height: 133px; overflow: hidden; left: 202px; top: 47px; border:0px solid #333333;"><img width="auto" height="282" src="images/9_b.gif" /></div>
 												</div>
 												<div class="clsSubTitle_White">Tatabei so mekei kole</div>
-												<div class="clsPageTextSmall_White" style="top:205px;">“A telebo sole kro pita, a sai nahati ko sao.”</br>Tatabei u’u tapa ni mat i ena kabae </div>
+												<div class="clsPageTextSmall_White" style="top:205px;">“A telebo sole kro pita, a sai nahati ko sao.”</br>Tatabei u’u tapa ni mat i ena kabae</div>
 											</td>
 										</tr>							
 									</table>
@@ -590,7 +621,7 @@
 													<div style="position: absolute;left: 326px; top: 54px; border:0px solid #333333;"><img width="auto" height="131" src="images/10_b.gif" /></div>
 												</div>
 												<div class="clsSubTitle_White">Tatabei sai Timor Loro Sa’e</div>
-												<div class="clsPageTextSmall_White" style="top:205px;">Helhele, ni isin muda pita. Iso u’u sai ae pita,<br />sai  rae nuba iso bloi desi los rae bouk.</div>
+												<div class="clsPageTextSmall_White" style="top:205px;">Helhele, ni isin muda pita. Iso u’u sai ae pita,<br />sai rae nuba iso bloi desi los rae bouk.</div>
 											</td>
 										</tr>							
 									</table>
@@ -605,7 +636,7 @@
 													<div style="position: absolute;left: 326px; top: 54px; border:0px solid #333333;"><img width="auto" height="131" src="images/10_b.gif" /></div>
 												</div>
 												<div class="clsSubTitle_White">Tatabei sai Timor Loro Sa’e</div>
-												<div class="clsPageTextSmall_White" style="top:205px;">Kai-pu seri, los loa seri. Rae bouk su<br />meges tatabei iso, i ni galan Timor. </div>
+												<div class="clsPageTextSmall_White" style="top:205px;">Kai-pu seri, los loa seri. Rae bouk su<br />meges tatabei iso, i ni galan Timor.</div>
 											</td>
 										</tr>							
 									</table>
@@ -733,12 +764,49 @@
 											<tr>
 												<td align="center" valign="top">
 													<div style="display:block;">
-														<img height="25" width="auto" src="../../images/next_arrow.png" />
+														<img height="25" width="auto" src="../../images/next_arrow.png" onclick="
+                                document.getElementById(
+                                  'divCompletionMsg',
+                                ).style.display = 'block'
+                              "/>
 													</div>
 												</td>
 											</tr>
 										</table>									
-									</div>									
+									</div>		
+									<div id="divCompletionMsg" style="margin-top: 5px">
+                    <table
+                      width="100%"
+                      height="100%"
+                      cellspacing="0"
+                      cellpadding="0"
+                      border="0"
+                    >
+                      <tr>
+                        <td align="center" valign="top">
+                          <div style="display: block">
+							
+                    <span
+                      id="childText"
+                      style="
+                        font-size: 18px;
+                        font-weight: bold;
+                        margin-left: 5px;
+                      "
+                    >
+                    </span>
+                            <img
+                              width="auto"
+                              height="30"
+                              src="../../images/tick.png"
+                              onclick="enlargeTick()"
+                              id="divCorrectTextPanel" class="whiteTick"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>							
 								</div>								
 							</div>
 							<div id="divMacroBtnNavPanel" name="divMacroBtnNavPanel" style="position:absolute; width:65px; height:100%; right:0px; top:0px; border:0px solid red;">
@@ -763,8 +831,22 @@
 		</div>
 		
 		<script language="javascript">
+		const activeChildId = sessionStorage.getItem("active_child_name");
+
+      const text = "bele ko'alia kona-ba istória ida";
+
+      document.getElementById("childText").innerText =
+        (activeChildId ? activeChildId + " " : "") + text;
 			doResetActivity();
 			doResetMainNavButton();
+			
+      function enlargeTick() {
+        const img = document.getElementById("divCorrectTextPanel");
+        img.classList.toggle("zoomTick");
+        img.classList.toggle("greenTick");
+        img.classList.remove("whiteTick");
+      }
 		</script>
+    <script src="../../activity-tracker.js"></script>
 	</body>
 </html>

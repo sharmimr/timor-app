@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Timor Teacher App</title>
+		
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--
+		<link rel="shortcut icon" href="image/logo.jpg" />
+		<link rel="apple-touch-icon" href="image/logo.jpg" />
+		-->
+
+		<link rel="stylesheet" type="text/css" href="../../../css/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/jqueryui-style.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/font_awesome.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/main.css" />
+
+		<script src="../../../js/jquery-3.6.0.js"></script>
+		<script src="../../../js/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../js/main.js"></script>
+		
+		<script language="javascript">
+			function doGetParameterByName(name, url = window.location.href) {
+				name = name.replace(/[\[\]]/g, '\\$&');
+				var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+					results = regex.exec(url);
+				if (!results) return null;
+				if (!results[2]) return '';
+				return decodeURIComponent(results[2].replace(/\+/g, ' '));
+			}
+			
+			function doRedirectToURL(rObj, rAction) {
+				var rNavURL = "";
+				if (rObj.style.cursor=="pointer") {
+					switch (rAction.toUpperCase()) {
+						case "H":
+							rNavURL = rHomeURL;
+							break;
+						case "P":
+							rNavURL = rPreviousActURL;
+							break;
+						case "N":
+							rNavURL = rNextActURL;
+							break;						
+						default:
+							break;
+					}					
+					document.location.href = rNavURL;
+				}
+			}
+
+			function doResetMainNavButton() {
+				if (rPreviousActURL=="" && rNextActURL=="") {
+					document.getElementById("divBtnBackArrow").style.display = "none";
+					document.getElementById("divBtnNextArrow").style.display = "none";
+				} else {
+				if (rPreviousActURL=="" && rNextActURL!="") {
+					document.getElementById("divBtnBackArrow").style.display = "none";
+					document.getElementById("divBtnNextArrow").style.display = "inline-block";
+				} else {
+				if (rPreviousActURL!="" && rNextActURL=="") {
+					document.getElementById("divBtnBackArrow").style.display = "inline-block";
+					document.getElementById("divBtnNextArrow").style.display = "none";
+				} else {
+				if (rPreviousActURL!="" && rNextActURL!="") {
+					document.getElementById("divBtnBackArrow").style.display = "inline-block";
+					document.getElementById("divBtnNextArrow").style.display = "inline-block";				
+				} } } }
+			}
+			
+			var rDocumentURL = window.location.href;
+			var rActBaseURL = rDocumentURL.split("/tetun/")[0];
+			var rDocumentURLSpl = rDocumentURL.split("?");
+			var rTempURL = rDocumentURLSpl[0];
+			var rTempURLSpl = rTempURL.split("/tetun/");
+			var rTempDocumentURL = rTempURLSpl[1];
+
+			rStrMainActivityList = doGetParameterByName('MainActivityList');
+			
+			rArrMainActivityList = [];
+			if (rStrMainActivityList!=null && rStrMainActivityList!=undefined && rStrMainActivityList!="") {
+				rArrMainActivityList = rStrMainActivityList.split("~");
+			}
+			
+			var rHomeURL = "";
+			var rPreviousActURL = "";
+			var rNextActURL = "";
+			var rMainActivityListIndex = -1;
+			
+			if (rArrMainActivityList.length<=1) {
+				rPreviousActURL = "";
+				rNextActURL = "";
+			} else {
+				for (var i=0; i<rArrMainActivityList.length; i++) {
+					if (rArrMainActivityList[i].toLowerCase().trim()==rTempDocumentURL.toLowerCase().trim()) {
+						rMainActivityListIndex = i;
+						break;
+					}
+				}
+			}
+			rPreviousActURL = rActBaseURL + "/tetun/" + rArrMainActivityList[rMainActivityListIndex-1] + "?MainActivityList=" + rStrMainActivityList;
+			rNextActURL = rActBaseURL + "/tetun/" + rArrMainActivityList[rMainActivityListIndex+1] + "?MainActivityList=" + rStrMainActivityList;
+			rHomeURL = rActBaseURL + "/tetun/index.html";
+			
+			if (rMainActivityListIndex<=0) {
+				rPreviousActURL = "";
+			} else {
+			if (rMainActivityListIndex + 1 > rArrMainActivityList.length-1) {
+				rNextActURL = "";
+			} else {
+				rPreviousActURL = rActBaseURL + "/tetun/" + rArrMainActivityList[rMainActivityListIndex-1] + "?MainActivityList=" + rStrMainActivityList;
+				rNextActURL = rActBaseURL + "/tetun/" + rArrMainActivityList[rMainActivityListIndex+1] + "?MainActivityList=" + rStrMainActivityList;
+			} }
+		</script>		
+	</head>
+
+	<body bgcolor="#000000">
+		<div id="divWrapper" name="divWrapper" style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid red;">
+			<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+				<tr>
+					<td width="100%" height="100%" align="center" valign="middle">
+						<div id="divContainer" name="divContainer" style="position:relative; width:1280px; height:720px; background-color:#ffffff; border:0px solid blue;">
+							<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+								<div style="position:absolute; width:100%; height:100%; left:0px; top:0px; border:0px solid green;">
+									<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+										<tr>
+											<td width="100%" height="100%" align="center" valign="middle">
+												<!--
+												<img width="100%" height="100%" src="images/main_bg.png" />
+												-->											
+												<div style="font-size:100px;">
+													v
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							
+							<div id="divBtnHome" name="divBtnHome" style="position:absolute; width:auto; height:145px; left:10px; bottom:0px; border:0px solid blue; cursor:pointer; display:block;" onclick="javascript:doRedirectToURL(this, 'H');">
+								<img width="100%" height="100%" src="../../../images/home.png" />
+							</div>
+							
+							<div style="position:absolute; width:auto; height:95px; right:10px; bottom:0px; border:0px solid green;">
+								<div id="divBtnBackArrow" name="divBtnBackArrow" style="position:relative; width:auto; height:95px; bottom:0px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doRedirectToURL(this, 'P');">
+									<img width="100%" height="100%" src="../../../images/back_arrow.png" />
+								</div>							
+								<div id="divBtnNextArrow" name="divBtnNextArrow" style="position:relative; width:auto; height:95px; bottom:0px; border:0px solid blue; cursor:pointer; display:inline-block;" onclick="javascript:doRedirectToURL(this, 'N');">
+									<img width="100%" height="100%" src="../../../images/next_arrow.png" />
+								</div>								
+							</div>								
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<script language="javascript">
+			doResetMainNavButton();
+		</script>
+	</body>
+</html>
