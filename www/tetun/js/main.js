@@ -706,7 +706,7 @@ function doSetPosterIconAndURL() {
         doPlacePosterImage(rTempPosterImageURL, rTempPosterImageBackURL);
       }
     }
-    if (rTempDocHref.indexOf("music") >= 0) {
+    if (rTempDocHref.indexOf("busy") >= 0) {
       if (rFirstPartURL.indexOf("activities") >= 0) {
         if (rFirstPartURL.indexOf("activity_photo") >= 0) {
           rTempPosterImageURL =
