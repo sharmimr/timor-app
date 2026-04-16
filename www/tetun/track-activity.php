@@ -269,30 +269,43 @@ $completionHandled = false;
 /* ================= SID UPDATE ================= */
 if ($updateTarget === 'sid' && $sid) {
 
+    // First try to find an existing row for this parent + child.
     $s = mysqli_prepare($conn,
         "SELECT id FROM activity_result
-         WHERE pid=?
+         WHERE pid=? AND sid=?
          ORDER BY id DESC
          LIMIT 1"
     );
-    mysqli_stmt_bind_param($s, "i", $pid);
+    mysqli_stmt_bind_param($s, "is", $pid, $sid);
     mysqli_stmt_execute($s);
     $r = mysqli_stmt_get_result($s);
 
-    if ($row = mysqli_fetch_assoc($r)) {
-        $upd = mysqli_prepare($conn,
-            "UPDATE activity_result SET sid=? WHERE id=?"
+    if (!($row = mysqli_fetch_assoc($r))) {
+        $blank = mysqli_prepare($conn,
+            "SELECT id FROM activity_result
+             WHERE pid=? AND (sid='' OR sid IS NULL)
+             ORDER BY id DESC
+             LIMIT 1"
         );
-        mysqli_stmt_bind_param($upd, "ss", $sid, $row['id']);
-        mysqli_stmt_execute($upd);
-    } else {
-        $ins = mysqli_prepare($conn,
-            "INSERT INTO activity_result
-             (pid, status, sid, activity_name, activity_result, category1, category2, category3)
-             VALUES (?, 'Tentadu', ?, '', 'Tentadu', '', '', '')"
-        );
-        mysqli_stmt_bind_param($ins, "ss", $pid, $sid);
-        mysqli_stmt_execute($ins);
+        mysqli_stmt_bind_param($blank, "i", $pid);
+        mysqli_stmt_execute($blank);
+        $blankRes = mysqli_stmt_get_result($blank);
+
+        if ($blankRow = mysqli_fetch_assoc($blankRes)) {
+            $upd = mysqli_prepare($conn,
+                "UPDATE activity_result SET sid=? WHERE id=?"
+            );
+            mysqli_stmt_bind_param($upd, "si", $sid, $blankRow['id']);
+            mysqli_stmt_execute($upd);
+        } else {
+            $ins = mysqli_prepare($conn,
+                "INSERT INTO activity_result
+                 (pid, status, sid, activity_name, activity_result, category1, category2, category3)
+                 VALUES (?, 'Tentadu', ?, '', 'Tentadu', '', '', '')"
+            );
+            mysqli_stmt_bind_param($ins, "is", $pid, $sid);
+            mysqli_stmt_execute($ins);
+        }
     }
 
     echo json_encode([
