@@ -592,33 +592,6 @@ if ($statusFlag === 'completed') {
     exit;
 }
 
-// /* ================= CATEGORY1 ================= */
-// if ($updateTarget === 'category1' && $link !== '') {
-
-//     if ($isLocked) {
-//         $ins = mysqli_prepare($conn,
-//             "INSERT INTO activity_result
-//              (pid, sid, status, activity_name, activity_result, category1, category2, category3)
-//              VALUES (?, ?, 'Tentadu', '', 'Tentadu', '', '', '')"
-//         );
-//         mysqli_stmt_bind_param($ins,"ss",$pid,$row['sid']);
-//         mysqli_stmt_execute($ins);
-
-//         $targetId = mysqli_insert_id($conn);
-//         $current  = '';
-//     } else {
-//         $targetId = $activityId;
-//         $current  = $row['category1'] ?? '';
-//     }
-
-//     $newValue = $current ? ($current . ' - ' . $link) : ($page === 'theme_explore_level_1.html' && $link === 'activity' ? 'Esplora':$link);
-
-//     $upd = mysqli_prepare($conn,
-//         "UPDATE activity_result SET category1=? WHERE id=?"
-//     );
-//     mysqli_stmt_bind_param($upd,"si",$newValue,$targetId);
-//     mysqli_stmt_execute($upd);
-// }
 /* ================= CATEGORY1 ================= */
 if ($updateTarget === 'category1' && $link !== '') {
 
@@ -630,44 +603,34 @@ if ($updateTarget === 'category1' && $link !== '') {
         exit;
     }
 
-    // ✅ Use already fetched row (DO NOT query again)
-    $targetId = $activityId;
-    $current  = $row['category1'] ?? '';
-    $isLocked = !empty($row['activity_name']);
+    // Use the current session-derived category path directly — do not append to existing DB values.
+    $newValue = ($page === 'theme_explore_level_1.html' && $link === 'activity')
+        ? 'Esplora'
+        : $link;
 
-    // ✅ If locked → create new row
-    if ($isLocked) {
+    // If current row is locked by an activity selection, start a fresh row.
+    $targetId = $activityId;
+    if (!empty($row['activity_name'])) {
         $ins = mysqli_prepare($conn,
             "INSERT INTO activity_result
              (pid, sid, status, activity_name, activity_result, category1, category2, category3)
              VALUES (?, ?, 'Tentadu', '', 'Tentadu', '', '', '')"
         );
 
-        mysqli_stmt_bind_param($ins,"ss",$pid,$sid);
+        mysqli_stmt_bind_param($ins, "ss", $pid, $sid);
         mysqli_stmt_execute($ins);
 
         $targetId = mysqli_insert_id($conn);
-        $current  = '';
     }
 
-    // ✅ Build new value
-    $newValue = $current
-        ? ($current . ' - ' . $link)
-        : ($page === 'theme_explore_level_1.html' && $link === 'activity'
-            ? 'Esplora'
-            : $link);
-
-    // ✅ Update ONLY by id (avoid sid mismatch issues)
     $upd = mysqli_prepare($conn,
         "UPDATE activity_result
          SET category1 = ?
          WHERE id = ?"
     );
-
     mysqli_stmt_bind_param($upd, "si", $newValue, $targetId);
     mysqli_stmt_execute($upd);
 
-    // 🔍 Debug (optional)
     error_log("CATEGORY1 UPDATE → ID: $targetId, VALUE: $newValue");
 
     echo json_encode([
