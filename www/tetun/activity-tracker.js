@@ -182,7 +182,7 @@ document.addEventListener("click", (e) => {
 
             console.log(
               tickEl,
-              styleOfDivCompletionBbq.display,
+              styleOfDivCompletionBbq?.display,
               "STYLE OF DIV COMPLETION BBQ",
             );
             // console.log(
@@ -333,7 +333,7 @@ document.addEventListener("click", (e) => {
         bodyText.includes("loos") ||
         document
           .querySelector('img[src*="tick.png"]')
-          ?.closest("#divRightMarkPanel").style.display === "block"
+          ?.closest("#divRightMarkPanel")?.style.display === "block"
       ) {
         console.log("❌ Loss detected → FAILED");
         sendStatus("completed");
