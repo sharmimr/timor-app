@@ -116,6 +116,14 @@ document.addEventListener("click", (e) => {
     console.log(status);
     const token = localStorage.getItem("token");
     const sid = sessionStorage.getItem("active_child_id");
+
+    const cat_l1 = sessionStorage.getItem("cat_l1") || "";
+    const cat_l2 = sessionStorage.getItem("cat_l2") || "";
+    const cat_l3 = sessionStorage.getItem("cat_l3") || "";
+    const activity_name = sessionStorage.getItem("activity_name") || "";
+
+    // Build same category string as backend expects
+    const category = [cat_l1, cat_l2, cat_l3].filter(Boolean).join(" - ");
     if (!token) {
       console.error("No auth token found in localStorage!");
       return;
@@ -127,7 +135,12 @@ document.addEventListener("click", (e) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ status, sid }),
+      body: JSON.stringify({
+        status,
+        sid,
+        category,
+        activity_name,
+      }),
       keepalive: true,
     })
       .then((r) => r.json())

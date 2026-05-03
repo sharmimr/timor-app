@@ -46,6 +46,8 @@ $pageLevel    = $data['pageLevel'] ?? null;
 $updateTarget = $data['updateTarget'] ?? null;
 $statusFlag   = $data['status'] ?? null;
 $sid = trim($data['sid'] ?? '');
+$categoryFromReq = trim($data['category'] ?? '');
+$activityFromReq = trim($data['activity_name'] ?? '');
 
 if ($link === '' && $statusFlag === null && $updateTarget !== 'sid') {
     echo json_encode(["status"=>"error","message"=>"No data received"]);
@@ -357,7 +359,7 @@ if ($updateTarget === 'activity_name' && $link !== '') {
          WHERE id = ?"
     );
 
-    mysqli_stmt_bind_param($refetch, "i", $activityId);
+    mysqli_stmt_bind_param($refetch, "i", $finalActivityId);
     mysqli_stmt_execute($refetch);
     $res = mysqli_stmt_get_result($refetch);
     $row = mysqli_fetch_assoc($res);
@@ -433,6 +435,8 @@ mysqli_stmt_bind_param($refetch, "i", $activityId);
 mysqli_stmt_execute($refetch);
 $res = mysqli_stmt_get_result($refetch);
 $row = mysqli_fetch_assoc($res);
+    // 🔒 Lock final activityId
+    $finalActivityId = $activityId;
 // 🔥 IMPORTANT FIX: update activity_name on the correct (existing) row
     $upd = mysqli_prepare($conn,
         "UPDATE activity_result
@@ -441,7 +445,7 @@ $row = mysqli_fetch_assoc($res);
     );
     mysqli_stmt_bind_param($upd, "si", $link, $activityId);
     mysqli_stmt_execute($upd);
-// $completedText = updateCompletion(
+    // $completedText = updateCompletion(
 //         $conn,
 //         $activityId,
 //         $row['category1'],
@@ -512,24 +516,57 @@ else {
         );
         mysqli_stmt_bind_param($upd, "si", $link, $activityId);
         mysqli_stmt_execute($upd);
-        if ($statusFlag === 'completed') {
-
-    // Re-fetch updated row (VERY IMPORTANT)
-    $refetch = mysqli_prepare($conn,
-        "SELECT category1, activity_name FROM activity_result WHERE id = ?"
-    );
-    mysqli_stmt_bind_param($refetch, "i", $activityId);
-    mysqli_stmt_execute($refetch);
-    $res = mysqli_stmt_get_result($refetch);
-    $row = mysqli_fetch_assoc($res);
     
+    if ($statusFlag === 'completed') {
 
-        if ($statusFlag === 'completed') {
+    if (!$sid || !$categoryFromReq || !$activityFromReq) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Missing required fields for completion"
+        ]);
+        exit;
+    }
+
+    // ✅ Find EXACT row using request data
+    $find = mysqli_prepare($conn,
+        "SELECT id
+         FROM activity_result
+         WHERE pid = ?
+           AND sid = ?
+           AND category1 = ?
+           AND activity_name = ?
+         ORDER BY id DESC
+         LIMIT 1"
+    );
+
+    mysqli_stmt_bind_param(
+        $find,
+        "isss",
+        $pid,
+        $sid,
+        $categoryFromReq,
+        $activityFromReq
+    );
+
+    mysqli_stmt_execute($find);
+    $res = mysqli_stmt_get_result($find);
+
+    if (!$target = mysqli_fetch_assoc($res)) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "No matching row found for completion"
+        ]);
+        exit;
+    }
+
+    $activityId = (int)$target['id'];
+
+    // ✅ NOW use correct row
     $completedText = updateCompletion(
         $conn,
         $activityId,
-        $row['category1'],
-        $row['activity_name']
+        $categoryFromReq,
+        $activityFromReq
     );
 
     echo json_encode([
@@ -540,7 +577,6 @@ else {
     ]);
     exit;
 }
-        }
     }
 }
 
@@ -563,24 +599,55 @@ if (!$row) {
 }
 
 if ($statusFlag === 'completed') {
-    // ALWAYS refetch fresh data
-    $refetch = mysqli_prepare($conn,
-        "SELECT category1, activity_name
+
+    if (!$sid || !$categoryFromReq || !$activityFromReq) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Missing required fields for completion"
+        ]);
+        exit;
+    }
+
+    // ✅ Find EXACT row using request data
+    $find = mysqli_prepare($conn,
+        "SELECT id
          FROM activity_result
-         WHERE id = ?"
+         WHERE pid = ?
+           AND sid = ?
+           AND category1 = ?
+           AND activity_name = ?
+         ORDER BY id DESC
+         LIMIT 1"
     );
-    mysqli_stmt_bind_param($refetch, "i", $activityId);
-    mysqli_stmt_execute($refetch);
-    $res = mysqli_stmt_get_result($refetch);
-    $row = mysqli_fetch_assoc($res);
 
-    error_log("FINAL COMPLETION → ID: $activityId | CAT: ".$row['category1']." | ACT: ".$row['activity_name']);
+    mysqli_stmt_bind_param(
+        $find,
+        "isss",
+        $pid,
+        $sid,
+        $categoryFromReq,
+        $activityFromReq
+    );
 
+    mysqli_stmt_execute($find);
+    $res = mysqli_stmt_get_result($find);
+
+    if (!$target = mysqli_fetch_assoc($res)) {
+        echo json_encode([
+            "status" => "error",
+            "message" => "No matching row found for completion"
+        ]);
+        exit;
+    }
+
+    $activityId = (int)$target['id'];
+
+    // ✅ NOW use correct row
     $completedText = updateCompletion(
         $conn,
         $activityId,
-        $row['category1'],
-        $row['activity_name']
+        $categoryFromReq,
+        $activityFromReq
     );
 
     echo json_encode([
@@ -592,33 +659,6 @@ if ($statusFlag === 'completed') {
     exit;
 }
 
-// /* ================= CATEGORY1 ================= */
-// if ($updateTarget === 'category1' && $link !== '') {
-
-//     if ($isLocked) {
-//         $ins = mysqli_prepare($conn,
-//             "INSERT INTO activity_result
-//              (pid, sid, status, activity_name, activity_result, category1, category2, category3)
-//              VALUES (?, ?, 'Tentadu', '', 'Tentadu', '', '', '')"
-//         );
-//         mysqli_stmt_bind_param($ins,"ss",$pid,$row['sid']);
-//         mysqli_stmt_execute($ins);
-
-//         $targetId = mysqli_insert_id($conn);
-//         $current  = '';
-//     } else {
-//         $targetId = $activityId;
-//         $current  = $row['category1'] ?? '';
-//     }
-
-//     $newValue = $current ? ($current . ' - ' . $link) : ($page === 'theme_explore_level_1.html' && $link === 'activity' ? 'Esplora':$link);
-
-//     $upd = mysqli_prepare($conn,
-//         "UPDATE activity_result SET category1=? WHERE id=?"
-//     );
-//     mysqli_stmt_bind_param($upd,"si",$newValue,$targetId);
-//     mysqli_stmt_execute($upd);
-// }
 /* ================= CATEGORY1 ================= */
 if ($updateTarget === 'category1' && $link !== '') {
 
@@ -630,44 +670,34 @@ if ($updateTarget === 'category1' && $link !== '') {
         exit;
     }
 
-    // ✅ Use already fetched row (DO NOT query again)
-    $targetId = $activityId;
-    $current  = $row['category1'] ?? '';
-    $isLocked = !empty($row['activity_name']);
+    // Use the current session-derived category path directly — do not append to existing DB values.
+    $newValue = ($page === 'theme_explore_level_1.html' && $link === 'activity')
+        ? 'Esplora'
+        : $link;
 
-    // ✅ If locked → create new row
-    if ($isLocked) {
+    // If current row is locked by an activity selection, start a fresh row.
+    $targetId = $activityId;
+    if (!empty($row['activity_name'])) {
         $ins = mysqli_prepare($conn,
             "INSERT INTO activity_result
              (pid, sid, status, activity_name, activity_result, category1, category2, category3)
              VALUES (?, ?, 'Tentadu', '', 'Tentadu', '', '', '')"
         );
 
-        mysqli_stmt_bind_param($ins,"ss",$pid,$sid);
+        mysqli_stmt_bind_param($ins, "ss", $pid, $sid);
         mysqli_stmt_execute($ins);
 
         $targetId = mysqli_insert_id($conn);
-        $current  = '';
     }
 
-    // ✅ Build new value
-    $newValue = $current
-        ? ($current . ' - ' . $link)
-        : ($page === 'theme_explore_level_1.html' && $link === 'activity'
-            ? 'Esplora'
-            : $link);
-
-    // ✅ Update ONLY by id (avoid sid mismatch issues)
     $upd = mysqli_prepare($conn,
         "UPDATE activity_result
          SET category1 = ?
          WHERE id = ?"
     );
-
     mysqli_stmt_bind_param($upd, "si", $newValue, $targetId);
     mysqli_stmt_execute($upd);
 
-    // 🔍 Debug (optional)
     error_log("CATEGORY1 UPDATE → ID: $targetId, VALUE: $newValue");
 
     echo json_encode([
