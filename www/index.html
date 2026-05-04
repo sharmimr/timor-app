@@ -199,9 +199,11 @@
           try {
             const data = JSON.parse(text);
             if (data.status === "ok" && data.token) {
+              console.log(data,JSON.stringify(data));
               localStorage.setItem("token", data.token);
               localStorage.setItem("child_ids", JSON.stringify(data.child));
               localStorage.setItem("username", data.username);
+              localStorage.setItem("pid", data.pid);
               sessionStorage.setItem("first_page_loaded", "true");
               window.location.replace("tetun/children.html");
             } else {

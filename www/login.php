@@ -131,6 +131,7 @@ echo json_encode([
     "token" => $token,
     "child" => $children,
     "username" => $username,
+    "pid" => $user['id'],
 ]);
 
 mysqli_close($conn);

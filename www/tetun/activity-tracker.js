@@ -116,6 +116,7 @@ document.addEventListener("click", (e) => {
     console.log(status);
     const token = localStorage.getItem("token");
     const sid = sessionStorage.getItem("active_child_id");
+    const pid = localStorage.getItem("pid");
 
     const cat_l1 = sessionStorage.getItem("cat_l1") || "";
     const cat_l2 = sessionStorage.getItem("cat_l2") || "";
@@ -137,6 +138,7 @@ document.addEventListener("click", (e) => {
       },
       body: JSON.stringify({
         status,
+        pid,
         sid,
         category,
         activity_name,
@@ -688,7 +690,7 @@ async function trackClick(data) {
     } else if (updateTarget === "activity_name") {
       finalLink = sessionStorage.getItem("activity_name") || linkName;
     }
-    const payload = {
+    let payload = {
       link: finalLink,
       page: pageName,
       updateTarget,
@@ -696,6 +698,17 @@ async function trackClick(data) {
       status: null,
     };
 
+    if (updateTarget === "activity_name") {
+      const cat_l1 = sessionStorage.getItem("cat_l1") || "";
+      const cat_l2 = sessionStorage.getItem("cat_l2") || "";
+      const cat_l3 = sessionStorage.getItem("cat_l3") || "";
+      const category = [cat_l1, cat_l2, cat_l3].filter(Boolean).join(" - ");
+      payload.category = category;
+    }
+    const pid = localStorage.getItem("pid");
+    if (pid) {
+      payload.pid = pid;
+    }
     // 🔥 SEND SID ONLY ON FIRST CATEGORY1
     const sid = sessionStorage.getItem("active_child_id");
     if (sid) {

@@ -359,16 +359,14 @@ if ($updateTarget === 'activity_name' && $link !== '') {
          WHERE id = ?"
     );
 
-    mysqli_stmt_bind_param($refetch, "i", $finalActivityId);
+    mysqli_stmt_bind_param($refetch, "i", $activityId);
     mysqli_stmt_execute($refetch);
     $res = mysqli_stmt_get_result($refetch);
     $row = mysqli_fetch_assoc($res);
 
     // 1️⃣ Look for existing row with same pid, sid, category1, activity_name
     // Get session values sent from frontend
-$cat_l1 = $_POST['cat_l1'] ?? '';
-$cat_l2 = $_POST['cat_l2'] ?? '';
-$cat_l3 = $_POST['cat_l3'] ?? '';
+$cat_l1 = $data['category'] ?? '';
 $activityName = $link;
 
 // Build base query (NOW includes activity_name)
@@ -377,27 +375,19 @@ $sql = "
     FROM activity_result
     WHERE pid = ?
       AND sid = ?
-      AND category1 LIKE ?
-      AND category1 LIKE ?
+      AND category1 = ?
       AND activity_name = ?
 ";
 
 $params = [
-    $pid,
+    $data['pid'] ?? $pid,
     $sid,
-    "%$cat_l1%",
-    "%$cat_l2%",
+    "$cat_l1",
     "$activityName"
 ];
 
-$types = "issss";
+$types = "isss";
 
-// 👉 Special case: Esplora → include cat_l3
-if (strtolower($cat_l1) === "esplora" && !empty($cat_l3)) {
-    $sql .= " AND category1 LIKE ?";
-    $params[] = "%$cat_l3%";
-    $types .= "s";
-}
 
 // Optional: limit to 1 (like your old query)
 $sql .= " ORDER BY id ASC LIMIT 1";
